@@ -1,78 +1,2199 @@
-text-align:center;
-  color:#777;
-  border:1px dashed #333;
-  border-radius:18px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIRK GAMING | Premium Gaming Store</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* MOBILE */
+:root{
+  --bg:#07080d;
+  --panel:#10121a;
+  --panel2:#151824;
+  --line:rgba(255,255,255,.10);
+  --text:#fff;
+  --muted:#9298a9;
+  --blue:#00c8ff;
+  --purple:#7657ff;
+  --green:#20e39b;
+  --orange:#ff9d35;
+  --danger:#ff5470;
+}
 
-@media(max-width:850px){
+html{
+  scroll-behavior:smooth;
+}
 
-  .nav{
-    display:none;
+body{
+  background:
+    radial-gradient(circle at 10% 5%,rgba(118,87,255,.18),transparent 25%),
+    radial-gradient(circle at 90% 15%,rgba(0,200,255,.12),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ================= TOP BAR ================= */
+
+.top-strip{
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(90deg,#5134db,#007fbe,#5134db);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(7,8,13,.90);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+
+.header-main{
+  max-width:1400px;
+  margin:auto;
+  min-height:72px;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.logo{
+  min-width:190px;
+  font-family:Orbitron;
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:var(--blue);
+  text-shadow:0 0 20px var(--blue);
+}
+
+.search-box{
+  flex:1;
+  max-width:700px;
+  height:46px;
+  display:flex;
+  background:#fff;
+  border-radius:9px;
+  overflow:hidden;
+}
+
+.search-box select{
+  border:0;
+  outline:0;
+  padding:0 12px;
+  background:#eee;
+  color:#333;
+}
+
+.search-box input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:0 15px;
+  font-size:14px;
+}
+
+.search-btn{
+  width:55px;
+  border:0;
+  background:var(--blue);
+  cursor:pointer;
+  font-size:20px;
+}
+
+.header-actions{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.header-btn{
+  height:45px;
+  min-width:45px;
+  padding:0 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.header-btn:hover{
+  border-color:var(--blue);
+  transform:translateY(-2px);
+}
+
+.cart-count{
+  display:inline-flex;
+  min-width:19px;
+  height:19px;
+  padding:0 5px;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  background:var(--danger);
+  font-size:10px;
+  font-weight:800;
+}
+
+/* ================= NAV ================= */
+
+.nav-row{
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+.nav-inner{
+  max-width:1400px;
+  margin:auto;
+  min-height:45px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:25px;
+  overflow:auto;
+}
+
+.nav-inner a{
+  color:#c5c8d4;
+  text-decoration:none;
+  white-space:nowrap;
+  font-size:13px;
+  font-weight:600;
+}
+
+.nav-inner a:hover{
+  color:var(--blue);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  max-width:1400px;
+  margin:auto;
+  padding:28px 20px 10px;
+}
+
+.hero-card{
+  min-height:460px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:60px;
+  background:
+    radial-gradient(circle at 80% 50%,rgba(0,200,255,.18),transparent 30%),
+    radial-gradient(circle at 70% 30%,rgba(118,87,255,.25),transparent 35%),
+    linear-gradient(135deg,#111321,#090a10);
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.hero-card:before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  right:-150px;
+  top:-100px;
+  border:1px solid rgba(0,200,255,.15);
+  box-shadow:
+    0 0 100px rgba(0,200,255,.12),
+    inset 0 0 80px rgba(118,87,255,.10);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero-label{
+  display:inline-block;
+  padding:8px 13px;
+  border-radius:30px;
+  background:rgba(0,200,255,.08);
+  border:1px solid rgba(0,200,255,.25);
+  color:#b9f5ff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-family:Orbitron;
+  font-size:clamp(42px,5vw,70px);
+  line-height:1.05;
+  letter-spacing:-2px;
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,#fff,#8d7bff,#00d9ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:570px;
+  color:var(--muted);
+  line-height:1.8;
+  margin:22px 0;
+  font-size:14px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:14px 21px;
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.primary{
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  box-shadow:0 12px 30px rgba(0,200,255,.18);
+}
+
+.secondary{
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--line);
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px rgba(0,200,255,.2);
+}
+
+/* ================= 3D HERO ================= */
+
+.hero-3d{
+  height:390px;
+  position:relative;
+  perspective:1000px;
+}
+
+.cube{
+  position:absolute;
+  width:220px;
+  height:220px;
+  left:50%;
+  top:50%;
+  transform-style:preserve-3d;
+  transform:translate(-50%,-50%) rotateX(-20deg) rotateY(35deg);
+  animation:spin 12s linear infinite;
+}
+
+@keyframes spin{
+  from{
+    transform:translate(-50%,-50%) rotateX(-20deg) rotateY(0deg);
+  }
+  to{
+    transform:translate(-50%,-50%) rotateX(-20deg) rotateY(360deg);
+  }
+}
+
+.face{
+  position:absolute;
+  width:220px;
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(0,220,255,.4);
+  background:linear-gradient(145deg,rgba(118,87,255,.28),rgba(0,200,255,.08));
+  backdrop-filter:blur(5px);
+  box-shadow:inset 0 0 50px rgba(0,200,255,.08);
+  font-size:60px;
+}
+
+.front{transform:translateZ(110px)}
+.back{transform:rotateY(180deg) translateZ(110px)}
+.right{transform:rotateY(90deg) translateZ(110px)}
+.left{transform:rotateY(-90deg) translateZ(110px)}
+.top{transform:rotateX(90deg) translateZ(110px)}
+.bottom{transform:rotateX(-90deg) translateZ(110px)}
+
+.orbit{
+  position:absolute;
+  width:420px;
+  height:150px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotateX(65deg);
+  border:1px solid rgba(0,200,255,.4);
+  border-radius:50%;
+  box-shadow:0 0 30px rgba(0,200,255,.12);
+}
+
+.orbit2{
+  transform:translate(-50%,-50%) rotateX(65deg) rotateZ(60deg);
+  border-color:rgba(118,87,255,.35);
+}
+
+/* ================= SECTION ================= */
+
+.section{
+  max-width:1400px;
+  margin:auto;
+  padding:55px 20px 20px;
+}
+
+.section-title{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.section-title h2{
+  font-family:Orbitron;
+  font-size:27px;
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:7px;
+}
+
+/* ================= CATEGORY ================= */
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:15px;
+}
+
+.category-card{
+  min-height:145px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  cursor:pointer;
+  transition:.35s;
+  transform-style:preserve-3d;
+}
+
+.category-card:hover{
+  transform:perspective(800px) rotateX(6deg) rotateY(-6deg) translateY(-7px);
+  border-color:rgba(0,200,255,.4);
+  box-shadow:15px 20px 50px rgba(0,0,0,.4);
+}
+
+.category-icon{
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.category-card h3{
+  font-size:15px;
+}
+
+.category-card p{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:5px;
+}
+
+/* ================= DEAL ================= */
+
+.deal{
+  border:1px solid rgba(255,157,53,.25);
+  background:
+    radial-gradient(circle at 90% 50%,rgba(255,157,53,.12),transparent 35%),
+    linear-gradient(135deg,#171116,#0e1018);
+  border-radius:20px;
+  padding:28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.deal h2{
+  font-family:Orbitron;
+  font-size:25px;
+}
+
+.deal p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:7px;
+}
+
+/* ================= FILTER ================= */
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+}
+
+.filter-input,
+.filter-select{
+  height:44px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.045);
+  color:#fff;
+  border-radius:10px;
+  padding:0 14px;
+  outline:none;
+}
+
+.filter-input{
+  flex:1;
+  min-width:220px;
+}
+
+.filter-select{
+  background:#121520;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.product{
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#151824,#0d0f16);
+  transition:.4s;
+  transform-style:preserve-3d;
+}
+
+.product:hover{
+  transform:perspective(900px) rotateX(4deg) rotateY(-5deg) translateY(-9px);
+  border-color:rgba(0,200,255,.35);
+  box-shadow:15px 25px 55px rgba(0,0,0,.45);
+}
+
+.product-image{
+  height:220px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle,rgba(118,87,255,.25),transparent 55%),
+    #090b12;
+}
+
+/* YOUR PRODUCT IMAGE */
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.product-placeholder{
+  width:105px;
+  height:130px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  background:linear-gradient(145deg,#30265c,#10121c);
+  box-shadow:
+    12px 18px 30px rgba(0,0,0,.6),
+    inset 2px 2px 10px rgba(255,255,255,.15);
+  transform:rotateY(-18deg) rotateX(7deg);
+}
+
+.product-badge{
+  position:absolute;
+  left:12px;
+  top:12px;
+  padding:6px 9px;
+  border-radius:6px;
+  background:var(--green);
+  color:#03160e;
+  font-size:9px;
+  font-weight:900;
+}
+
+.heart{
+  position:absolute;
+  right:12px;
+  top:12px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.45);
+  color:#fff;
+  cursor:pointer;
+}
+
+.product-body{
+  padding:17px;
+}
+
+.product-body h3{
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.product-desc{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+  min-height:35px;
+}
+
+.rating{
+  color:#ffb23e;
+  font-size:11px;
+  margin:10px 0;
+}
+
+.rating span{
+  color:var(--muted);
+  margin-left:5px;
+}
+
+.price-line{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:13px;
+}
+
+.price{
+  font-family:Orbitron;
+  font-size:17px;
+}
+
+.old-price{
+  color:#777d8c;
+  font-size:10px;
+  text-decoration:line-through;
+  margin-left:5px;
+}
+
+.cart-add{
+  border:0;
+  padding:10px 12px;
+  border-radius:9px;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* ================= TRUST ================= */
+
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.trust-card{
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+}
+
+.trust-icon{
+  font-size:30px;
+  margin-bottom:14px;
+}
+
+.trust-card h3{
+  font-size:14px;
+}
+
+.trust-card p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.7;
+  margin-top:7px;
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+  border-top:1px solid var(--line);
+}
+
+.faq-item{
+  border-bottom:1px solid var(--line);
+}
+
+.question{
+  padding:20px 5px;
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:600;
+}
+
+.answer{
+  max-height:0;
+  overflow:hidden;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+  transition:.35s;
+}
+
+.faq-item.open .answer{
+  max-height:150px;
+  padding:0 5px 20px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  margin-top:70px;
+  border-top:1px solid var(--line);
+  background:#05060a;
+  padding:55px 20px 25px;
+}
+
+.footer-inner{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+  max-width:350px;
+  margin-top:12px;
+}
+
+.footer-col h4{
+  margin-bottom:15px;
+  font-size:13px;
+}
+
+.footer-col a{
+  display:block;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:11px;
+  margin:9px 0;
+}
+
+.footer-col a:hover{
+  color:#fff;
+}
+
+.copyright{
+  max-width:1400px;
+  margin:40px auto 0;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#676c7b;
+  font-size:10px;
+  text-align:center;
+}
+
+/* ================= CART ================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:2000;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.cart-panel{
+  position:fixed;
+  top:0;
+  right:-470px;
+  width:440px;
+  max-width:94%;
+  height:100vh;
+  background:#0d0f17;
+  border-left:1px solid var(--line);
+  z-index:3000;
+  padding:25px;
+  transition:.4s;
+  box-shadow:-30px 0 80px rgba(0,0,0,.5);
+}
+
+.cart-panel.open{
+  right:0;
+}
+
+.cart-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-head h2{
+  font-family:Orbitron;
+  font-size:18px;
+}
+
+.close{
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  cursor:pointer;
+}
+
+.cart-list{
+  height:62vh;
+  overflow:auto;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-item-icon{
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:#171a28;
+  font-size:25px;
+}
+
+.cart-item-info{
+  flex:1;
+}
+
+.cart-item-info h4{
+  font-size:12px;
+}
+
+.cart-item-info p{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:5px;
+}
+
+.remove{
+  border:0;
+  background:none;
+  color:var(--danger);
+  cursor:pointer;
+}
+
+.cart-bottom{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
+
+.total-line{
+  display:flex;
+  justify-content:space-between;
+  font-family:Orbitron;
+  margin-bottom:15px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:4000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.75);
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  padding:20px;
+}
+
+.modal.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal-box{
+  width:850px;
+  max-width:100%;
+  max-height:90vh;
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#0e1018;
+  padding:25px;
+}
+
+.modal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.modal-image{
+  min-height:350px;
+  border-radius:17px;
+  background:
+    radial-gradient(circle,rgba(118,87,255,.25),transparent 55%),
+    #090b12;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:100px;
+}
+
+.modal-info h2{
+  font-family:Orbitron;
+  margin-bottom:10px;
+}
+
+.modal-info p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:13px;
+}
+
+.modal-price{
+  font-family:Orbitron;
+  font-size:25px;
+  margin:25px 0;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,100px);
+  padding:13px 20px;
+  background:#171a25;
+  border:1px solid var(--line);
+  border-radius:10px;
+  z-index:6000;
+  font-size:12px;
+  transition:.35s;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.toast.show{
+  transform:translate(-50%,0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+  .header-main{
+    flex-wrap:wrap;
   }
 
-  .menu-btn{
-    display:block;
+  .logo{
+    min-width:auto;
+  }
+
+  .search-box{
+    order:3;
+    flex-basis:100%;
+    max-width:none;
+  }
+
+  .hero-card{
+    grid-template-columns:1fr;
+    padding:45px 30px;
+  }
+
+  .hero-3d{
+    height:330px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .products{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .features{
-    grid-template-columns:1fr;
+  .trust-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
   }
 }
 
-@media(max-width:550px){
+@media(max-width:600px){
 
-  header{
-    padding:0 15px;
+  .top-strip{
+    font-size:9px;
   }
 
-  .logo{
-    font-size:18px;
-  }
-
-  .hero{
-    padding:60px 15px 40px;
-  }
-
-  .hero h1{
-    font-size:43px;
-  }
-
-  .filter-row{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .filter-row .filter-item:last-child{
-    grid-column:1/-1;
-  }
-
-  .products{
+  .header-main{
+    padding:9px 12px;
     gap:10px;
   }
 
-  .product-img{
-    height:135px;
+  .logo{
+    font-size:16px;
   }
 
-  .product-info{
-    padding:12px;
+  .header-btn{
+    min-width:40px;
+    height:40px;
   }
 
-  .product h3{
-    font-size:15px;
+  .nav-inner{
+    padding:0 12px;
+    gap:18px;
   }
 
-  .product-description{
-    font-size:12px;
+  .hero{
+    padding:15px 12px;
   }
 
-  .product-price{
-    font-size:17px;
+  .hero-card{
+    min-height:auto;
+    padding:35px 20px;
+    border-radius:18px;
   }
 
-  .add-btn{
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero-3d{
+    transform:scale(.72);
+    margin:-30px 0;
+  }
+
+  .section{
+    padding:45px 12px 10px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr;
+  }
+
+  .deal{
+    display:block;
+  }
+
+  .deal .btn{
+    margin-top:18px;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+  }
+
+  .footer-brand{
+    grid-column:1/-1;
+  }
+
+  .modal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .modal-image{
+    min-height:230px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="top-strip">
+  ⚡ PREMIUM GAMING STORE • NEW ITEMS EVERY WEEK • 24/7 ACCESS
+</div>
+
+<!-- HEADER -->
+<header>
+
+  <div class="header-main">
+
+    <div class="logo">
+      VIRK<span>•</span>GAMING
+    </div>
+
+    <div class="search-box">
+
+      <select id="categorySelect">
+        <option value="all">All</option>
+        <option value="Accounts">Accounts</option>
+        <option value="Items">Items</option>
+        <option value="UC">UC</option>
+        <option value="Offers">Offers</option>
+      </select>
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search gaming items..."
+        oninput="renderProducts()"
+      >
+
+      <button class="search-btn" onclick="renderProducts()">
+        🔍
+      </button>
+
+    </div>
+
+    <div class="header-actions">
+
+      <button class="header-btn" onclick="showToast('Wishlist opened ❤️')">
+        ♡
+      </button>
+
+      <button class="header-btn" onclick="openCart()">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="nav-row">
+    <div class="nav-inner">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#deals">Today's Deals</a>
+      <a href="#shop">Gaming Store</a>
+      <a href="#trust">Why Us</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <div class="hero-card">
+
+    <div class="hero-content">
+
+      <div class="hero-label">
+        🔥 PREMIUM GAMING MARKETPLACE
+      </div>
+
+      <h1>
+        YOUR GAME.<br>
+        YOUR <span>POWER.</span>
+      </h1>
+
+      <p>
+        Discover premium gaming products with a futuristic
+        shopping experience. Browse collections, compare
+        products and build your ultimate gaming setup.
+      </p>
+
+      <div class="hero-buttons">
+
+        <button
+          class="btn primary"
+          onclick="document.getElementById('shop').scrollIntoView()">
+          SHOP NOW →
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick="document.getElementById('deals').scrollIntoView()">
+          🔥 TODAY'S DEALS
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="hero-3d">
+
+      <div class="orbit"></div>
+      <div class="orbit orbit2"></div>
+
+      <div class="cube">
+
+        <div class="face front">🎮</div>
+        <div class="face back">⚡</div>
+        <div class="face right">💎</div>
+        <div class="face left">🔥</div>
+        <div class="face top">👑</div>
+        <div class="face bottom">🎁</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+
+  <div class="section-title">
+    <div>
+      <h2>SHOP BY CATEGORY</h2>
+      <p>Find exactly what you're looking for.</p>
+    </div>
+  </div>
+
+  <div class="category-grid">
+
+    <div class="category-card" onclick="setCategory('Accounts')">
+      <div class="category-icon">👑</div>
+      <h3>Accounts</h3>
+      <p>Premium listings</p>
+    </div>
+
+    <div class="category-card" onclick="setCategory('Items')">
+      <div class="category-icon">🎮</div>
+      <h3>Gaming Items</h3>
+      <p>Featured items</p>
+    </div>
+
+    <div class="category-card" onclick="setCategory('UC')">
+      <div class="category-icon">💎</div>
+      <h3>UC / Credits</h3>
+      <p>Digital products</p>
+    </div>
+
+    <div class="category-card" onclick="setCategory('Offers')">
+      <div class="category-icon">🔥</div>
+      <h3>Offers</h3>
+      <p>Special deals</p>
+    </div>
+
+    <div class="category-card" onclick="setCategory('all')">
+      <div class="category-icon">🛍️</div>
+      <h3>All Products</h3>
+      <p>View everything</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- DEAL -->
+<section class="section" id="deals">
+
+  <div class="deal">
+
+    <div>
+      <h2>🔥 TODAY'S GAMING DEALS</h2>
+      <p>
+        Limited offers are displayed here. Update this section
+        whenever you have a new promotion.
+      </p>
+    </div>
+
+    <button
+      class="btn primary"
+      onclick="setCategory('Offers')">
+      VIEW OFFERS →
+    </button>
+
+  </div>
+
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="shop">
+
+  <div class="section-title">
+
+    <div>
+      <h2>FEATURED PRODUCTS</h2>
+      <p id="productCount">Showing products</p>
+    </div>
+
+  </div>
+
+  <div class="toolbar">
+
+    <input
+      class="filter-input"
+      id="searchInput2"
+      placeholder="Search products..."
+      oninput="syncSearch(this.value)"
+    >
+
+    <select
+      class="filter-select"
+      id="sortSelect"
+      onchange="renderProducts()">
+
+      <option value="featured">Featured</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+
+    </select>
+
+  </div>
+
+  <div class="products" id="products"></div>
+
+</section>
+
+<!-- TRUST -->
+<section class="section" id="trust">
+
+  <div class="section-title">
+    <div>
+      <h2>WHY SHOP WITH US?</h2>
+      <p>A premium storefront built for gamers.</p>
+    </div>
+  </div>
+
+  <div class="trust-grid">
+
+    <div class="trust-card">
+      <div class="trust-icon">🛡️</div>
+      <h3>Secure Experience</h3>
+      <p>
+        Clean and secure checkout experience for customers.
+      </p>
+    </div>
+
+    <div class="trust-card">
+      <div class="trust-icon">⚡</div>
+      <h3>Fast Processing</h3>
+      <p>
+        Orders can be processed quickly after payment confirmation.
+      </p>
+    </div>
+
+    <div class="trust-card">
+      <div class="trust-icon">💎</div>
+      <h3>Premium Products</h3>
+      <p>
+        Showcase your own legitimate gaming products professionally.
+      </p>
+    </div>
+
+    <div class="trust-card">
+      <div class="trust-icon">📱</div>
+      <h3>Mobile Friendly</h3>
+      <p>
+        The complete storefront adapts to phones, tablets and desktop.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+
+  <div class="section-title">
+    <div>
+      <h2>FREQUENTLY ASKED QUESTIONS</h2>
+      <p>Everything customers need to know.</p>
+    </div>
+  </div>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="question">
+        How can I place an order?
+        <span>+</span>
+      </div>
+      <div class="answer">
+        Choose a product, add it to your cart and continue
+        through the checkout process.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        Which payment methods do you support?
+        <span>+</span>
+      </div>
+      <div class="answer">
+        A legitimate payment gateway can be connected to the
+        checkout. Payment verification should be handled securely
+        by the gateway and backend.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        How will I receive my order?
+        <span>+</span>
+      </div>
+      <div class="answer">
+        Delivery depends on the type of legitimate digital product
+        being sold and the platform's rules.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        How can I contact support?
+        <span>+</span>
+      </div>
+      <div class="answer">
+        Add your official support contact details in the footer.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+
+      <div class="logo">
+        VIRK<span>•</span>GAMING
+      </div>
+
+      <p>
+        A premium gaming marketplace interface designed for
+        modern digital products and gaming collections.
+      </p>
+
+    </div>
+
+    <div class="footer-col">
+
+      <h4>STORE</h4>
+
+      <a href="#shop">All Products</a>
+      <a href="#deals">Deals</a>
+      <a href="#categories">Categories</a>
+
+    </div>
+
+    <div class="footer-col">
+
+      <h4>HELP</h4>
+
+      <a href="#faq">FAQ</a>
+      <a href="#trust">Security</a>
+      <a href="#faq">Support</a>
+
+    </div>
+
+    <div class="footer-col">
+
+      <h4>CONNECT</h4>
+
+      <!-- Replace these with your real links -->
+
+      <a href="#" onclick="showToast('Add your WhatsApp link here')">
+        WhatsApp
+      </a>
+
+      <a href="#" onclick="showToast('Add your Instagram link here')">
+        Instagram
+      </a>
+
+      <a href="#" onclick="showToast('Add your Telegram link here')">
+        Telegram
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 VIRK GAMING • All rights reserved.
+  </div>
+
+</footer>
+
+<!-- OVERLAY -->
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeCart()">
+</div>
+
+<!-- CART -->
+<aside class="cart-panel" id="cartPanel">
+
+  <div class="cart-head">
+
+    <h2>YOUR CART</h2>
+
+    <button
+      class="close"
+      onclick="closeCart()">
+      ✕
+    </button>
+
+  </div>
+
+  <div class="cart-list" id="cartList">
+  </div>
+
+  <div class="cart-bottom">
+
+    <div class="total-line">
+      <span>TOTAL</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+
+    <button
+      class="btn primary"
+      style="width:100%"
+      onclick="checkout()">
+      PROCEED TO CHECKOUT
+    </button>
+
+  </div>
+
+</aside>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal">
+
+  <div class="modal-box">
+
+    <button
+      class="close"
+      style="float:right"
+      onclick="closeProduct()">
+      ✕
+    </button>
+
+    <div class="modal-grid">
+
+      <div class="modal-image" id="modalImage">
+        🎮
+      </div>
+
+      <div class="modal-info">
+
+        <h2 id="modalName">
+          Product
+        </h2>
+
+        <div class="rating">
+          ★★★★★
+          <span>Premium listing</span>
+        </div>
+
+        <p id="modalDescription">
+          Product description.
+        </p>
+
+        <div
+          class="modal-price"
+          id="modalPrice">
+          ₹0
+        </div>
+
+        <button
+          class="btn primary"
+          onclick="addModalToCart()">
+          ADD TO CART
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* ==================================================
+   PRODUCT DATA
+   ================================================
+
+   YAHAN SE PRODUCTS EDIT KARNA HAI.
+
+   name     = Product name
+   category = Accounts / Items / UC / Offers
+   price    = Current price
+   oldPrice = Old price
+   icon     = Temporary image
+   badge    = Product badge
+   image    = Apni image ka filename
+
+   Example:
+
+   image:"images/item1.jpg"
+
+   ================================================== */
+
+const products = [
+
+  {
+    id:1,
+    name:"Premium Gaming Item",
+    category:"Items",
+    price:499,
+    oldPrice:699,
+    icon:"🎁",
+    badge:"POPULAR",
+    rating:"4.9",
+    description:"Premium gaming item for your collection.",
+    image:""
+  },
+
+  {
+    id:2,
+    name:"Elite Collection",
+    category:"Items",
+    price:799,
+    oldPrice:999,
+    icon:"💎",
+    badge:"HOT",
+    rating:"4.8",
+    description:"Exclusive premium collection.",
+    image:""
+  },
+
+  {
+    id:3,
+    name:"Starter Offer",
+    category:"Offers",
+    price:199,
+    oldPrice:299,
+    icon:"⚡",
+    badge:"SALE",
+    rating:"4.7",
+    description:"Affordable starter gaming product.",
+    image:""
+  },
+
+  {
+    id:4,
+    name:"Premium Account Listing",
+    category:"Accounts",
+    price:1499,
+    oldPrice:1999,
+    icon:"👑",
+    badge:"PREMIUM",
+    rating:"5.0",
+    description:"Premium account listing. Only sell accounts you are legitimately allowed to transfer.",
+    image:""
+  },
+
+  {
+    id:5,
+    name:"Digital UC Package",
+    category:"UC",
+    price:399,
+    oldPrice:499,
+    icon:"💰",
+    badge:"NEW",
+    rating:"4.9",
+    description:"Digital gaming credit package.",
+    image:""
+  },
+
+  {
+    id:6,
+    name:"Legendary Collection",
+    category:"Items",
+    price:1999,
+    oldPrice:2499,
+    icon:"🔥",
+    badge:"RARE",
+    rating:"4.9",
+    description:"Premium legendary collection.",
+    image:""
+  },
+
+  {
+    id:7,
+    name:"Gaming Bundle",
+    category:"Offers",
+    price:999,
+    oldPrice:1399,
+    icon:"🎮",
+    badge:"DEAL",
+    rating:"4.8",
+    description:"Special gaming bundle.",
+    image:""
+  },
+
+  {
+    id:8,
+    name:"Ultimate Pack",
+    category:"Items",
+    price:2499,
+    oldPrice:2999,
+    icon:"🚀",
+    badge:"TOP",
+    rating:"5.0",
+    description:"Ultimate premium gaming package.",
+    image:""
+  }
+
+];
+
+/* ==================================================
+   CART
+   ================================================== */
+
+let cart =
+  JSON.parse(localStorage.getItem("virkCart") || "[]");
+
+let selectedProduct = null;
+
+/* ==================================================
+   RENDER PRODUCTS
+   ================================================== */
+
+function renderProducts(){
+
+  const container =
+    document.getElementById("products");
+
+  const search =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase();
+
+  const category =
+    document
+      .getElementById("categorySelect")
+      .value;
+
+  const sort =
+    document
+      .getElementById("sortSelect")
+      .value;
+
+  let list = products.filter(product => {
+
+    const matchesSearch =
+      product.name
+        .toLowerCase()
+        .includes(search) ||
+      product.description
+        .toLowerCase()
+        .includes(search);
+
+    const matchesCategory =
+      category === "all" ||
+      product.category === category;
+
+    return matchesSearch && matchesCategory;
+
+  });
+
+  if(sort === "low"){
+    list.sort((a,b)=>a.price-b.price);
+  }
+
+  if(sort === "high"){
+    list.sort((a,b)=>b.price-a.price);
+  }
+
+  document.getElementById("productCount")
+    .textContent =
+    `${list.length} products available`;
+
+  if(list.length === 0){
+
+    container.innerHTML = `
+      <div style="
+        grid-column:1/-1;
+        padding:60px;
+        text-align:center;
+        color:#9298a9;
+      ">
+        <div style="font-size:45px">🔍</div>
+        <h3 style="color:white;margin-top:15px">
+          No products found
+        </h3>
+        <p style="margin-top:7px">
+          Try another search.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML = list.map(product => {
+
+    const imageHTML =
+      product.image
+      ?
+      `<img src="${product.image}" alt="${product.name}">`
+      :
+      `<div class="product-placeholder">${product.icon}</div>`;
+
+    return `
+
+      <article
+        class="product"
+        onclick="openProduct(${product.id})">
+
+        <div class="product-image">
+
+          <div class="product-badge">
+            ${product.badge}
+          </div>
+
+          <button
+            class="heart"
+            onclick="event.stopPropagation();wishlist(${product.id})">
+            ♡
+          </button>
+
+          ${imageHTML}
+
+        </div>
+
+        <div class="product-body">
+
+          <h3>${product.name}</h3>
+
+          <div class="product-desc">
+            ${product.description}
+          </div>
+
+          <div class="rating">
+            ★★★★★
+            <span>${product.rating}</span>
+          </div>
+
+          <div class="price-line">
+
+            <div>
+
+              <span class="price">
+                ₹${product.price.toLocaleString("en-IN")}
+              </span>
+
+              <span class="old-price">
+                ₹${product.oldPrice.toLocaleString("en-IN")}
+              </span>
+
+            </div>
+
+            <button
+              class="cart-add"
+              onclick="event.stopPropagation();addToCart(${product.id})">
+              + CART
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `;
+
+  }).join("");
+
+}
+
+/* ==================================================
+   CATEGORY
+   ================================================== */
+
+function setCategory(category){
+
+  document.getElementById("categorySelect").value =
+    category;
+
+  document.getElementById("searchInput").value = "";
+
+  document.getElementById("searchInput2").value = "";
+
+  renderProducts();
+
+  document
+    .getElementById("shop")
+    .scrollIntoView();
+
+}
+
+/* ==================================================
+   SEARCH SYNC
+   ================================================== */
+
+function syncSearch(value){
+
+  document.getElementById("searchInput").value =
+    value;
+
+  renderProducts();
+
+}
+
+/* ==================================================
+   CART
+   ================================================== */
+
+function addToCart(id){
+
+  const product =
+    products.find(p=>p.id===id);
+
+  cart.push(product);
+
+  saveCart();
+
+  updateCart();
+
+  showToast(
+    product.name + " added to cart 🛒"
+  );
+
+}
+
+function saveCart(){
+
+  localStorage.setItem(
+    "virkCart",
+    JSON.stringify(cart)
+  );
+
+}
+
+function updateCart(){
+
+  const list =
+    document.getElementById("cartList");
+
+  document.getElementById("cartCount")
+    .textContent = cart.length;
+
+  if(cart.length === 0){
+
+    list.innerHTML = `
+      <div style="
+        text-align:center;
+        padding:70px 10px;
+        color:#9298a9;
+      ">
+        <div style="font-size:50px">🛒</div>
+        <p style="margin-top:12px">
+          Your cart is empty.
+        </p>
+      </div>
+    `;
+
+  }else{
+
+    list.innerHTML =
+      cart.map((product,index)=>`
+
+        <div class="cart-item">
+
+          <div class="cart-item-icon">
+            ${product.icon}
+          </div>
+
+          <div class="cart-item-info">
+
+            <h4>${product.name}</h4>
+
+            <p>
+              ₹${product.price.toLocaleString("en-IN")}
+            </p>
+
+          </div>
+
+          <button
+            class="remove"
+            onclick="removeFromCart(${index})">
+            ✕
+          </button>
+
+        </div>
+
+      `).join("");
+
+  }
+
+  const total =
+    cart.reduce(
+      (sum,product)=>sum+product.price,
+      0
+    );
+
+  document.getElementById("cartTotal")
+    .textContent =
+    "₹"+total.toLocaleString("en-IN");
+
+}
+
+function removeFromCart(index){
+
+  cart.splice(index,1);
+
+  saveCart();
+
+  updateCart();
+
+  showToast("Product removed");
+
+}
+
+function openCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
+}
+
+function closeCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+  document
+    .getElementById("overlay")
+    .classList.remove("show");
+
+}
+
+/* ==================================================
+   PRODUCT MODAL
+   ================================================== */
+
+function openProduct(id){
+
+  selectedProduct =
+    products.find(p=>p.id===id);
+
+  document.getElementById("modalName")
+    .textContent =
+    selectedProduct.name;
+
+  document.getElementById("modalDescription")
+    .textContent =
+    selectedProduct.description;
+
+  document.getElementById("modalPrice")
+    .textContent =
+    "₹"+selectedProduct.price.toLocaleString("en-IN");
+
+  document.getElementById("modalImage")
+    .textContent =
+    selectedProduct.icon;
+
+  document
+    .getElementById("productModal")
+    .classList.add("show");
+
+}
+
+function closeProduct(){
+
+  document
+    .getElementById("productModal")
+    .classList.remove("show");
+
+}
+
+function addModalToCart(){
+
+  if(selectedProduct){
+
+    addToCart(selectedProduct.id);
+
+    closeProduct();
+
+  }
+
+}
+
+/* ==================================================
+   WISHLIST
+   ================================================== */
+
+function wishlist(id){
+
+  const product =
+    products.find(p=>p.id===id);
+
+  showToast(
+    product.name+" added to wishlist ❤️"
+  );
+
+}
+
+/* ==================================================
+   CHECKOUT
+   ================================================== */
+
+function checkout(){
+
+  if(cart.length === 0){
+
+    showToast("Your cart is empty!");
+
+    return;
+
+  }
+
+  /*
+    REAL PAYMENT NOTE:
+
+    This button is intentionally not pretending
+    to verify a payment.
+
+    For real automatic UPI/payment processing,
+    connect a legitimate payment gateway and
+    secure backend.
+
+    Never put secret API keys, passwords,
+    OTPs or payment credentials in this file.
+  */
+
+  showToast(
+    "Checkout ready — payment gateway required."
+  );
+
+}
+
+/* ==================================================
+   TOAST
+   ================================================== */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },2500);
+
+}
+
+/* ==================================================
+   FAQ
+   ================================================== */
+
+document
+  .querySelectorAll(".question")
+  .forEach(question=>{
+
+    question.addEventListener("click",()=>{
+
+      question
+        .parentElement
+        .classList
+        .toggle("open");
+
+    });
+
+  });
+
+/* ==================================================
+   START
+   ================================================== */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
