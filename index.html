@@ -5604,5 +5604,3214 @@ document.addEventListener("keydown",event=>{
 
 </script>
 
+<!-- =========================================================
+     MEGAMART / NEXORA STORE
+     PART 2 — MARKETPLACE + PRODUCT SYSTEM + USER FEATURES
+     ========================================================= -->
+
+<style>
+/* ================= PART 2 GLOBAL ================= */
+
+.mm2-section{
+  width:100%;
+  padding:30px 18px;
+}
+
+.mm2-container{
+  max-width:1400px;
+  margin:auto;
+}
+
+.mm2-title{
+  font-size:28px;
+  font-weight:800;
+  margin:0 0 8px;
+}
+
+.mm2-subtitle{
+  color:#64748b;
+  margin-bottom:22px;
+}
+
+.mm2-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.mm2-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);
+}
+
+.mm2-btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:700;
+  transition:.2s;
+}
+
+.mm2-btn:hover{
+  transform:translateY(-1px);
+}
+
+.mm2-primary{
+  background:#2563eb;
+  color:#fff;
+}
+
+.mm2-success{
+  background:#16a34a;
+  color:#fff;
+}
+
+.mm2-warning{
+  background:#f59e0b;
+  color:#111827;
+}
+
+.mm2-danger{
+  background:#dc2626;
+  color:#fff;
+}
+
+.mm2-dark{
+  background:#111827;
+  color:#fff;
+}
+
+.mm2-light{
+  background:#f1f5f9;
+  color:#111827;
+}
+
+.mm2-outline{
+  background:#fff;
+  border:1px solid #cbd5e1;
+}
+
+.mm2-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.mm2-input{
+  width:100%;
+  border:1px solid #cbd5e1;
+  padding:12px 14px;
+  border-radius:10px;
+  outline:none;
+  font-size:14px;
+}
+
+.mm2-input:focus{
+  border-color:#2563eb;
+}
+
+.mm2-select{
+  border:1px solid #cbd5e1;
+  padding:11px 13px;
+  border-radius:10px;
+  background:#fff;
+}
+
+.mm2-badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#eff6ff;
+  color:#2563eb;
+  font-size:12px;
+  font-weight:800;
+}
+
+.mm2-stat{
+  font-size:28px;
+  font-weight:900;
+  margin-top:8px;
+}
+
+.mm2-muted{
+  color:#64748b;
+}
+
+.mm2-icon{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#eff6ff;
+  font-size:23px;
+}
+
+.mm2-actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+
+.mm2-product-img{
+  height:190px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:65px;
+  margin-bottom:14px;
+}
+
+.mm2-price{
+  font-size:22px;
+  font-weight:900;
+}
+
+.mm2-old{
+  color:#94a3b8;
+  text-decoration:line-through;
+  margin-left:7px;
+}
+
+.mm2-rating{
+  color:#f59e0b;
+  font-weight:800;
+}
+
+.mm2-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(2,6,23,.65);
+  z-index:99999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+.mm2-modal.active{
+  display:flex;
+}
+
+.mm2-modal-box{
+  background:#fff;
+  width:min(1100px,100%);
+  max-height:92vh;
+  overflow:auto;
+  border-radius:22px;
+  padding:24px;
+  position:relative;
+}
+
+.mm2-close{
+  position:absolute;
+  right:18px;
+  top:15px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f1f5f9;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.mm2-detail{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:28px;
+}
+
+.mm2-gallery-main{
+  height:380px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:130px;
+}
+
+.mm2-thumbs{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.mm2-thumb{
+  width:65px;
+  height:65px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  background:#f8fafc;
+  cursor:pointer;
+  font-size:25px;
+}
+
+.mm2-variant{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:10px 0 18px;
+}
+
+.mm2-variant button{
+  padding:9px 14px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+  background:#fff;
+  cursor:pointer;
+}
+
+.mm2-variant button.selected{
+  border-color:#2563eb;
+  color:#2563eb;
+  background:#eff6ff;
+}
+
+.mm2-qty{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.mm2-qty button{
+  width:35px;
+  height:35px;
+  border:1px solid #cbd5e1;
+  background:#fff;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.mm2-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.mm2-table th,
+.mm2-table td{
+  padding:12px;
+  border-bottom:1px solid #e5e7eb;
+  text-align:left;
+}
+
+.mm2-drawer{
+  position:fixed;
+  top:0;
+  right:-460px;
+  width:min(460px,100%);
+  height:100vh;
+  background:#fff;
+  z-index:100000;
+  box-shadow:-10px 0 40px rgba(0,0,0,.18);
+  transition:.3s;
+  overflow:auto;
+  padding:22px;
+}
+
+.mm2-drawer.active{
+  right:0;
+}
+
+.mm2-drawer-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.mm2-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.mm2-list-item{
+  padding:14px;
+  border:1px solid #e5e7eb;
+  border-radius:13px;
+}
+
+.mm2-progress{
+  height:10px;
+  background:#e2e8f0;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.mm2-progress span{
+  display:block;
+  height:100%;
+  background:#2563eb;
+}
+
+.mm2-dashboard{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:18px;
+}
+
+.mm2-sidebar{
+  background:#111827;
+  color:#fff;
+  border-radius:18px;
+  padding:15px;
+  height:max-content;
+}
+
+.mm2-sidebar button{
+  width:100%;
+  text-align:left;
+  background:transparent;
+  color:#fff;
+  border:0;
+  padding:12px;
+  border-radius:9px;
+  cursor:pointer;
+  margin-bottom:3px;
+}
+
+.mm2-sidebar button:hover{
+  background:#1e293b;
+}
+
+.mm2-chart{
+  height:240px;
+  display:flex;
+  align-items:end;
+  gap:10px;
+  padding:20px;
+  border:1px solid #e5e7eb;
+  border-radius:15px;
+}
+
+.mm2-bar{
+  flex:1;
+  background:#2563eb;
+  border-radius:7px 7px 0 0;
+  min-height:20px;
+}
+
+.mm2-notification{
+  display:flex;
+  gap:12px;
+  padding:13px;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.mm2-mobile-nav{
+  display:none;
+}
+
+@media(max-width:1000px){
+  .mm2-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .mm2-detail{
+    grid-template-columns:1fr;
+  }
+
+  .mm2-dashboard{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .mm2-section{
+    padding:20px 12px;
+  }
+
+  .mm2-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mm2-actions{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .mm2-gallery-main{
+    height:280px;
+    font-size:90px;
+  }
+
+  .mm2-title{
+    font-size:23px;
+  }
+
+  .mm2-mobile-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    border-top:1px solid #ddd;
+    z-index:9998;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    padding:8px 3px;
+  }
+
+  .mm2-mobile-nav button{
+    border:0;
+    background:none;
+    font-size:11px;
+    cursor:pointer;
+  }
+
+  .mm2-mobile-nav span{
+    display:block;
+    font-size:20px;
+  }
+}
+</style>
+
+
+<!-- =========================================================
+     MARKETPLACE CONTROL BAR
+     ========================================================= -->
+
+<section class="mm2-section">
+  <div class="mm2-container">
+
+    <div class="mm2-card">
+
+      <div class="mm2-row" style="justify-content:space-between">
+
+        <div>
+          <div class="mm2-title">Marketplace Control Center</div>
+          <div class="mm2-subtitle">
+            Products, deals, sellers, orders, wishlist aur shopping tools
+          </div>
+        </div>
+
+        <div class="mm2-row">
+
+          <button class="mm2-btn mm2-primary"
+            onclick="MM2.openDrawer('notifications')">
+            🔔 Notifications
+          </button>
+
+          <button class="mm2-btn mm2-light"
+            onclick="MM2.openDrawer('wishlist')">
+            ❤️ Wishlist
+          </button>
+
+          <button class="mm2-btn mm2-light"
+            onclick="MM2.openDrawer('compare')">
+            ⚖ Compare
+          </button>
+
+          <button class="mm2-btn mm2-light"
+            onclick="MM2.openDrawer('coupons')">
+            🎟 Coupons
+          </button>
+
+          <button class="mm2-btn mm2-dark"
+            onclick="MM2.openDrawer('rewards')">
+            ⭐ Rewards
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     QUICK SERVICES
+     ========================================================= -->
+
+<section class="mm2-section">
+  <div class="mm2-container">
+
+    <div class="mm2-title">Quick Shopping Services</div>
+    <div class="mm2-subtitle">One click me important sections open karo</div>
+
+    <div class="mm2-grid">
+
+      <div class="mm2-card">
+        <div class="mm2-icon">⚡</div>
+        <h3>Flash Sale</h3>
+        <p class="mm2-muted">Limited time deals</p>
+        <button class="mm2-btn mm2-warning"
+          onclick="MM2.filterType('flash')">
+          View Deals
+        </button>
+      </div>
+
+      <div class="mm2-card">
+        <div class="mm2-icon">🔥</div>
+        <h3>Trending</h3>
+        <p class="mm2-muted">Popular products</p>
+        <button class="mm2-btn mm2-primary"
+          onclick="MM2.filterType('trending')">
+          Explore
+        </button>
+      </div>
+
+      <div class="mm2-card">
+        <div class="mm2-icon">💰</div>
+        <h3>Under ₹999</h3>
+        <p class="mm2-muted">Budget friendly products</p>
+        <button class="mm2-btn mm2-success"
+          onclick="MM2.priceUnder(999)">
+          Shop Now
+        </button>
+      </div>
+
+      <div class="mm2-card">
+        <div class="mm2-icon">🎁</div>
+        <h3>Gift Zone</h3>
+        <p class="mm2-muted">Gifts for every occasion</p>
+        <button class="mm2-btn mm2-danger"
+          onclick="MM2.toast('Gift Zone opened')">
+          Open Gift Zone
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     ADVANCED FILTER
+     ========================================================= -->
+
+<section class="mm2-section">
+  <div class="mm2-container">
+
+    <div class="mm2-card">
+
+      <div class="mm2-title">Advanced Product Search</div>
+
+      <div class="mm2-row">
+
+        <div style="flex:2">
+          <input
+            id="mm2Search"
+            class="mm2-input"
+            placeholder="Search products, brands, categories..."
+            oninput="MM2.search(this.value)"
+          >
+        </div>
+
+        <select id="mm2Category" class="mm2-select"
+          onchange="MM2.applyFilters()">
+
+          <option value="all">All Categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="home">Home</option>
+          <option value="beauty">Beauty</option>
+          <option value="sports">Sports</option>
+          <option value="gaming">Gaming</option>
+
+        </select>
+
+        <select id="mm2Sort" class="mm2-select"
+          onchange="MM2.applyFilters()">
+
+          <option value="popular">Popular</option>
+          <option value="low">Price Low → High</option>
+          <option value="high">Price High → Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="new">Newest</option>
+
+        </select>
+
+        <button class="mm2-btn mm2-primary"
+          onclick="MM2.resetFilters()">
+          Reset
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     PRODUCT MARKETPLACE
+     ========================================================= -->
+
+<section class="mm2-section">
+  <div class="mm2-container">
+
+    <div class="mm2-row" style="justify-content:space-between">
+
+      <div>
+        <div class="mm2-title">Marketplace Products</div>
+        <div class="mm2-subtitle">
+          Thousands of products ke liye expandable product engine
+        </div>
+      </div>
+
+      <span id="mm2ResultCount" class="mm2-badge">
+        Products
+      </span>
+
+    </div>
+
+    <div id="mm2ProductGrid" class="mm2-grid"></div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     RECENTLY VIEWED
+     ========================================================= -->
+
+<section class="mm2-section">
+  <div class="mm2-container">
+
+    <div class="mm2-title">Recently Viewed</div>
+
+    <div id="mm2RecentGrid" class="mm2-grid"></div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SELLER / BRAND HUB
+     ========================================================= -->
+
+<section class="mm2-section">
+  <div class="mm2-container">
+
+    <div class="mm2-title">Seller & Brand Hub</div>
+
+    <div class="mm2-grid">
+
+      <div class="mm2-card">
+        <div class="mm2-icon">🏪</div>
+        <h3>Become a Seller</h3>
+        <p class="mm2-muted">
+          Apna store start karo.
+        </p>
+
+        <button class="mm2-btn mm2-primary"
+          onclick="MM2.openSeller()">
+          Start Selling
+        </button>
+
+        <button class="mm2-btn mm2-light"
+          onclick="MM2.toast('Seller eligibility checked')">
+          Check Eligibility
+        </button>
+      </div>
+
+      <div class="mm2-card">
+        <div class="mm2-icon">📦</div>
+        <h3>Seller Dashboard</h3>
+        <p class="mm2-muted">
+          Products, orders aur sales.
+        </p>
+
+        <button class="mm2-btn mm2-dark"
+          onclick="MM2.openDrawer('seller')">
+          Open Dashboard
+        </button>
+      </div>
+
+      <div class="mm2-card">
+        <div class="mm2-icon">🏷️</div>
+        <h3>Brand Store</h3>
+        <p class="mm2-muted">
+          Official brand collections.
+        </p>
+
+        <button class="mm2-btn mm2-primary"
+          onclick="MM2.toast('Brand stores opened')">
+          Explore Brands
+        </button>
+      </div>
+
+      <div class="mm2-card">
+        <div class="mm2-icon">⭐</div>
+        <h3>Top Sellers</h3>
+        <p class="mm2-muted">
+          Highly rated sellers.
+        </p>
+
+        <button class="mm2-btn mm2-warning"
+          onclick="MM2.toast('Top sellers opened')">
+          View Sellers
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     PRODUCT DETAIL MODAL
+     ========================================================= -->
+
+<div id="mm2ProductModal" class="mm2-modal">
+
+  <div class="mm2-modal-box">
+
+    <button class="mm2-close"
+      onclick="MM2.closeModal('mm2ProductModal')">
+      ×
+    </button>
+
+    <div id="mm2ProductDetail"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     GENERIC DRAWER
+     ========================================================= -->
+
+<div id="mm2Drawer" class="mm2-drawer">
+
+  <div class="mm2-drawer-head">
+
+    <h2 id="mm2DrawerTitle">Panel</h2>
+
+    <button class="mm2-close"
+      style="position:static"
+      onclick="MM2.closeDrawer()">
+      ×
+    </button>
+
+  </div>
+
+  <div id="mm2DrawerContent"></div>
+
+</div>
+
+
+<!-- =========================================================
+     MOBILE NAVIGATION
+     ========================================================= -->
+
+<div class="mm2-mobile-nav">
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <span>🏠</span>
+    Home
+  </button>
+
+  <button onclick="MM2.openDrawer('wishlist')">
+    <span>❤️</span>
+    Wishlist
+  </button>
+
+  <button onclick="MM2.openDrawer('compare')">
+    <span>⚖️</span>
+    Compare
+  </button>
+
+  <button onclick="MM2.openDrawer('notifications')">
+    <span>🔔</span>
+    Alerts
+  </button>
+
+  <button onclick="MM2.openDrawer('account')">
+    <span>👤</span>
+    Account
+  </button>
+
+</div>
+
+
+<script>
+/* =========================================================
+   PART 2 JAVASCRIPT ENGINE
+   ========================================================= */
+
+(function(){
+
+"use strict";
+
+const MM2 = {};
+
+window.MM2 = MM2;
+
+
+/* =========================================================
+   PRODUCT DATABASE
+   ========================================================= */
+
+MM2.products = [
+
+{
+ id:201,
+ name:"Nova X Pro Smartphone",
+ category:"electronics",
+ price:24999,
+ old:29999,
+ rating:4.7,
+ emoji:"📱",
+ seller:"Nova Electronics",
+ stock:24,
+ type:"trending",
+ brand:"Nova"
+},
+
+{
+ id:202,
+ name:"Ultra Bass Wireless Headphones",
+ category:"electronics",
+ price:1999,
+ old:3999,
+ rating:4.5,
+ emoji:"🎧",
+ seller:"Sound House",
+ stock:57,
+ type:"flash",
+ brand:"SoundMax"
+},
+
+{
+ id:203,
+ name:"Smart Fitness Watch",
+ category:"electronics",
+ price:2999,
+ old:4999,
+ rating:4.4,
+ emoji:"⌚",
+ seller:"Tech World",
+ stock:31,
+ type:"trending",
+ brand:"FitPro"
+},
+
+{
+ id:204,
+ name:"Mechanical Gaming Keyboard",
+ category:"gaming",
+ price:3499,
+ old:5999,
+ rating:4.8,
+ emoji:"⌨️",
+ seller:"Gaming Zone",
+ stock:18,
+ type:"trending",
+ brand:"GameX"
+},
+
+{
+ id:205,
+ name:"RGB Gaming Mouse",
+ category:"gaming",
+ price:1299,
+ old:1999,
+ rating:4.6,
+ emoji:"🖱️",
+ seller:"Gaming Zone",
+ stock:43,
+ type:"flash",
+ brand:"GameX"
+},
+
+{
+ id:206,
+ name:"Gaming Chair Pro",
+ category:"gaming",
+ price:8999,
+ old:12999,
+ rating:4.3,
+ emoji:"🪑",
+ seller:"Comfort Hub",
+ stock:11,
+ type:"popular",
+ brand:"Comfort"
+},
+
+{
+ id:207,
+ name:"Premium Cotton Hoodie",
+ category:"fashion",
+ price:899,
+ old:1499,
+ rating:4.5,
+ emoji:"👕",
+ seller:"Urban Wear",
+ stock:65,
+ type:"trending",
+ brand:"Urban"
+},
+
+{
+ id:208,
+ name:"Classic Sneakers",
+ category:"fashion",
+ price:1599,
+ old:2499,
+ rating:4.4,
+ emoji:"👟",
+ seller:"Shoe World",
+ stock:38,
+ type:"popular",
+ brand:"Street"
+},
+
+{
+ id:209,
+ name:"Travel Backpack",
+ category:"fashion",
+ price:1299,
+ old:1999,
+ rating:4.6,
+ emoji:"🎒",
+ seller:"Travel Store",
+ stock:29,
+ type:"trending",
+ brand:"TravelX"
+},
+
+{
+ id:210,
+ name:"Premium Coffee Maker",
+ category:"home",
+ price:4499,
+ old:6999,
+ rating:4.7,
+ emoji:"☕",
+ seller:"Home Expert",
+ stock:14,
+ type:"flash",
+ brand:"BrewPro"
+},
+
+{
+ id:211,
+ name:"Air Fryer Digital",
+ category:"home",
+ price:3299,
+ old:4999,
+ rating:4.6,
+ emoji:"🍟",
+ seller:"Kitchen World",
+ stock:25,
+ type:"popular",
+ brand:"KitchenX"
+},
+
+{
+ id:212,
+ name:"Smart LED Lamp",
+ category:"home",
+ price:799,
+ old:1299,
+ rating:4.3,
+ emoji:"💡",
+ seller:"Home Expert",
+ stock:76,
+ type:"trending",
+ brand:"Bright"
+},
+
+{
+ id:213,
+ name:"Face Care Combo",
+ category:"beauty",
+ price:699,
+ old:1099,
+ rating:4.5,
+ emoji:"🧴",
+ seller:"Beauty Store",
+ stock:54,
+ type:"flash",
+ brand:"Glow"
+},
+
+{
+ id:214,
+ name:"Daily Skincare Kit",
+ category:"beauty",
+ price:1199,
+ old:1799,
+ rating:4.6,
+ emoji:"✨",
+ seller:"Beauty Store",
+ stock:32,
+ type:"popular",
+ brand:"Glow"
+},
+
+{
+ id:215,
+ name:"Sports Running Shoes",
+ category:"sports",
+ price:2199,
+ old:3499,
+ rating:4.7,
+ emoji:"🏃",
+ seller:"Sports Hub",
+ stock:21,
+ type:"trending",
+ brand:"RunPro"
+},
+
+{
+ id:216,
+ name:"Football Training Ball",
+ category:"sports",
+ price:599,
+ old:999,
+ rating:4.5,
+ emoji:"⚽",
+ seller:"Sports Hub",
+ stock:48,
+ type:"popular",
+ brand:"ProBall"
+},
+
+{
+ id:217,
+ name:"Smart Tablet 11",
+ category:"electronics",
+ price:16999,
+ old:20999,
+ rating:4.6,
+ emoji:"📲",
+ seller:"Nova Electronics",
+ stock:16,
+ type:"new",
+ brand:"Nova"
+},
+
+{
+ id:218,
+ name:"Portable Bluetooth Speaker",
+ category:"electronics",
+ price:1799,
+ old:2999,
+ rating:4.4,
+ emoji:"🔊",
+ seller:"Sound House",
+ stock:61,
+ type:"flash",
+ brand:"SoundMax"
+},
+
+{
+ id:219,
+ name:"Gaming Controller",
+ category:"gaming",
+ price:2499,
+ old:3999,
+ rating:4.7,
+ emoji:"🎮",
+ seller:"Gaming Zone",
+ stock:27,
+ type:"new",
+ brand:"GameX"
+},
+
+{
+ id:220,
+ name:"Study Desk",
+ category:"home",
+ price:2999,
+ old:4499,
+ rating:4.2,
+ emoji:"🖥️",
+ seller:"Furniture Hub",
+ stock:19,
+ type:"popular",
+ brand:"WoodCraft"
+},
+
+{
+ id:221,
+ name:"Casual Denim Jacket",
+ category:"fashion",
+ price:1899,
+ old:2999,
+ rating:4.5,
+ emoji:"🧥",
+ seller:"Urban Wear",
+ stock:44,
+ type:"new",
+ brand:"Urban"
+},
+
+{
+ id:222,
+ name:"Sports Water Bottle",
+ category:"sports",
+ price:499,
+ old:799,
+ rating:4.4,
+ emoji:"🥤",
+ seller:"Sports Hub",
+ stock:83,
+ type:"flash",
+ brand:"ProBall"
+},
+
+{
+ id:223,
+ name:"Wireless Earbuds",
+ category:"electronics",
+ price:1499,
+ old:2499,
+ rating:4.5,
+ emoji:"🎵",
+ seller:"Sound House",
+ stock:72,
+ type:"trending",
+ brand:"SoundMax"
+},
+
+{
+ id:224,
+ name:"Digital Wall Clock",
+ category:"home",
+ price:699,
+ old:999,
+ rating:4.1,
+ emoji:"🕐",
+ seller:"Home Expert",
+ stock:34,
+ type:"new",
+ brand:"Bright"
+},
+
+{
+ id:225,
+ name:"Makeup Organizer",
+ category:"beauty",
+ price:599,
+ old:899,
+ rating:4.3,
+ emoji:"💄",
+ seller:"Beauty Store",
+ stock:41,
+ type:"popular",
+ brand:"Glow"
+},
+
+{
+ id:226,
+ name:"Yoga Mat Premium",
+ category:"sports",
+ price:899,
+ old:1399,
+ rating:4.6,
+ emoji:"🧘",
+ seller:"Sports Hub",
+ stock:56,
+ type:"trending",
+ brand:"Fit"
+},
+
+{
+ id:227,
+ name:"Mini Projector",
+ category:"electronics",
+ price:4999,
+ old:7999,
+ rating:4.3,
+ emoji:"📽️",
+ seller:"Tech World",
+ stock:9,
+ type:"flash",
+ brand:"Vision"
+},
+
+{
+ id:228,
+ name:"Smart Home Camera",
+ category:"electronics",
+ price:2299,
+ old:3499,
+ rating:4.5,
+ emoji:"📷",
+ seller:"Tech World",
+ stock:22,
+ type:"new",
+ brand:"SecureX"
+},
+
+{
+ id:229,
+ name:"Premium Bedsheet Set",
+ category:"home",
+ price:1299,
+ old:1999,
+ rating:4.5,
+ emoji:"🛏️",
+ seller:"Home Expert",
+ stock:36,
+ type:"popular",
+ brand:"Comfort"
+},
+
+{
+ id:230,
+ name:"Casual Cap",
+ category:"fashion",
+ price:399,
+ old:699,
+ rating:4.2,
+ emoji:"🧢",
+ seller:"Urban Wear",
+ stock:91,
+ type:"flash",
+ brand:"Urban"
+}
+
+];
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+MM2.state = {
+
+ cart:JSON.parse(localStorage.getItem("mm2_cart") || "[]"),
+
+ wishlist:JSON.parse(localStorage.getItem("mm2_wishlist") || "[]"),
+
+ compare:JSON.parse(localStorage.getItem("mm2_compare") || "[]"),
+
+ recent:JSON.parse(localStorage.getItem("mm2_recent") || "[]"),
+
+ notifications:JSON.parse(
+   localStorage.getItem("mm2_notifications") || "[]"
+ ),
+
+ points:Number(
+   localStorage.getItem("mm2_points") || "250"
+ ),
+
+ search:"",
+
+ category:"all",
+
+ type:"all"
+
+};
+
+
+/* =========================================================
+   SAVE STATE
+   ========================================================= */
+
+MM2.save = function(){
+
+ localStorage.setItem(
+   "mm2_cart",
+   JSON.stringify(MM2.state.cart)
+ );
+
+ localStorage.setItem(
+   "mm2_wishlist",
+   JSON.stringify(MM2.state.wishlist)
+ );
+
+ localStorage.setItem(
+   "mm2_compare",
+   JSON.stringify(MM2.state.compare)
+ );
+
+ localStorage.setItem(
+   "mm2_recent",
+   JSON.stringify(MM2.state.recent)
+ );
+
+ localStorage.setItem(
+   "mm2_notifications",
+   JSON.stringify(MM2.state.notifications)
+ );
+
+ localStorage.setItem(
+   "mm2_points",
+   MM2.state.points
+ );
+
+};
+
+
+/* =========================================================
+   FORMAT PRICE
+   ========================================================= */
+
+MM2.money = function(value){
+
+ return "₹" + Number(value).toLocaleString("en-IN");
+
+};
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+MM2.card = function(p){
+
+ const wished =
+   MM2.state.wishlist.includes(p.id);
+
+ const compared =
+   MM2.state.compare.includes(p.id);
+
+ return `
+
+ <div class="mm2-card">
+
+   <div class="mm2-product-img"
+     onclick="MM2.openProduct(${p.id})">
+     ${p.emoji}
+   </div>
+
+   <span class="mm2-badge">
+     ${p.type.toUpperCase()}
+   </span>
+
+   <h3>${p.name}</h3>
+
+   <div class="mm2-rating">
+     ⭐ ${p.rating}
+   </div>
+
+   <div class="mm2-price">
+     ${MM2.money(p.price)}
+     <span class="mm2-old">
+       ${MM2.money(p.old)}
+     </span>
+   </div>
+
+   <p class="mm2-muted">
+     Seller: ${p.seller}
+   </p>
+
+   <p>
+     ${p.stock <= 10
+       ? "⚠️ Only " + p.stock + " left"
+       : "✅ In stock"}
+   </p>
+
+   <div class="mm2-actions">
+
+     <button class="mm2-btn mm2-primary"
+       onclick="MM2.addCart(${p.id})">
+       🛒 Cart
+     </button>
+
+     <button class="mm2-btn ${wished ? "mm2-danger":"mm2-light"}"
+       onclick="MM2.toggleWishlist(${p.id})">
+       ${wished ? "❤️ Saved":"♡ Save"}
+     </button>
+
+     <button class="mm2-btn ${compared ? "mm2-warning":"mm2-light"}"
+       onclick="MM2.toggleCompare(${p.id})">
+       ⚖ Compare
+     </button>
+
+     <button class="mm2-btn mm2-light"
+       onclick="MM2.openProduct(${p.id})">
+       👁 View
+     </button>
+
+     <button class="mm2-btn mm2-success"
+       onclick="MM2.buyNow(${p.id})">
+       ⚡ Buy
+     </button>
+
+     <button class="mm2-btn mm2-light"
+       onclick="MM2.shareProduct(${p.id})">
+       ↗ Share
+     </button>
+
+   </div>
+
+ </div>
+
+ `;
+
+};
+
+
+/* =========================================================
+   RENDER PRODUCTS
+   ========================================================= */
+
+MM2.render = function(list){
+
+ const grid =
+   document.getElementById("mm2ProductGrid");
+
+ if(!grid) return;
+
+ grid.innerHTML =
+   list.map(MM2.card).join("");
+
+ const count =
+   document.getElementById("mm2ResultCount");
+
+ if(count){
+
+   count.textContent =
+     list.length + " Products";
+
+ }
+
+};
+
+
+/* =========================================================
+   FILTER ENGINE
+   ========================================================= */
+
+MM2.applyFilters = function(){
+
+ const search =
+   MM2.state.search.toLowerCase();
+
+ const category =
+   document.getElementById("mm2Category")?.value || "all";
+
+ const sort =
+   document.getElementById("mm2Sort")?.value || "popular";
+
+ MM2.state.category = category;
+
+ let list =
+   [...MM2.products];
+
+ if(search){
+
+   list =
+     list.filter(p =>
+
+       p.name.toLowerCase().includes(search) ||
+
+       p.brand.toLowerCase().includes(search) ||
+
+       p.category.toLowerCase().includes(search) ||
+
+       p.seller.toLowerCase().includes(search)
+
+     );
+
+ }
+
+ if(category !== "all"){
+
+   list =
+     list.filter(p =>
+       p.category === category
+     );
+
+ }
+
+ if(MM2.state.type !== "all"){
+
+   list =
+     list.filter(p =>
+       p.type === MM2.state.type
+     );
+
+ }
+
+ if(sort === "low"){
+
+   list.sort((a,b)=>a.price-b.price);
+
+ }
+
+ if(sort === "high"){
+
+   list.sort((a,b)=>b.price-a.price);
+
+ }
+
+ if(sort === "rating"){
+
+   list.sort((a,b)=>b.rating-a.rating);
+
+ }
+
+ if(sort === "new"){
+
+   list.reverse();
+
+ }
+
+ MM2.render(list);
+
+};
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+MM2.search = function(value){
+
+ MM2.state.search =
+   value || "";
+
+ MM2.applyFilters();
+
+};
+
+
+/* =========================================================
+   TYPE FILTER
+   ========================================================= */
+
+MM2.filterType = function(type){
+
+ MM2.state.type = type;
+
+ MM2.applyFilters();
+
+ window.scrollTo({
+   top:document.getElementById("mm2ProductGrid")
+     ?.offsetTop - 100 || 0,
+   behavior:"smooth"
+ });
+
+};
+
+
+/* =========================================================
+   PRICE FILTER
+   ========================================================= */
+
+MM2.priceUnder = function(price){
+
+ MM2.state.type = "all";
+
+ const list =
+   MM2.products.filter(p =>
+     p.price <= price
+   );
+
+ MM2.render(list);
+
+};
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+MM2.resetFilters = function(){
+
+ MM2.state.search = "";
+
+ MM2.state.category = "all";
+
+ MM2.state.type = "all";
+
+ const search =
+   document.getElementById("mm2Search");
+
+ const category =
+   document.getElementById("mm2Category");
+
+ if(search) search.value="";
+
+ if(category) category.value="all";
+
+ MM2.applyFilters();
+
+};
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+MM2.addCart = function(id){
+
+ const p =
+   MM2.products.find(x=>x.id===id);
+
+ if(!p) return;
+
+ const existing =
+   MM2.state.cart.find(x=>x.id===id);
+
+ if(existing){
+
+   existing.qty += 1;
+
+ }else{
+
+   MM2.state.cart.push({
+     id:id,
+     qty:1
+   });
+
+ }
+
+ MM2.save();
+
+ MM2.toast(
+   p.name + " cart me add ho gaya 🛒"
+ );
+
+};
+
+
+MM2.removeCart = function(id){
+
+ MM2.state.cart =
+   MM2.state.cart.filter(x=>x.id!==id);
+
+ MM2.save();
+
+ MM2.openDrawer("cart");
+
+};
+
+
+MM2.changeQty = function(id,change){
+
+ const item =
+   MM2.state.cart.find(x=>x.id===id);
+
+ if(!item) return;
+
+ item.qty += change;
+
+ if(item.qty <= 0){
+
+   MM2.removeCart(id);
+   return;
+
+ }
+
+ MM2.save();
+
+ MM2.openDrawer("cart");
+
+};
+
+
+/* =========================================================
+   WISHLIST
+   ========================================================= */
+
+MM2.toggleWishlist = function(id){
+
+ const index =
+   MM2.state.wishlist.indexOf(id);
+
+ if(index === -1){
+
+   MM2.state.wishlist.push(id);
+
+   MM2.toast("Wishlist me add ❤️");
+
+ }else{
+
+   MM2.state.wishlist.splice(index,1);
+
+   MM2.toast("Wishlist se remove");
+
+ }
+
+ MM2.save();
+
+ MM2.applyFilters();
+
+};
+
+
+/* =========================================================
+   COMPARE
+   ========================================================= */
+
+MM2.toggleCompare = function(id){
+
+ const index =
+   MM2.state.compare.indexOf(id);
+
+ if(index === -1){
+
+   if(MM2.state.compare.length >= 4){
+
+     MM2.toast(
+       "Maximum 4 products compare kar sakte ho"
+     );
+
+     return;
+
+   }
+
+   MM2.state.compare.push(id);
+
+   MM2.toast("Compare me add ⚖️");
+
+ }else{
+
+   MM2.state.compare.splice(index,1);
+
+   MM2.toast("Compare se remove");
+
+ }
+
+ MM2.save();
+
+ MM2.applyFilters();
+
+};
+
+
+/* =========================================================
+   RECENTLY VIEWED
+   ========================================================= */
+
+MM2.addRecent = function(id){
+
+ MM2.state.recent =
+   MM2.state.recent.filter(x=>x!==id);
+
+ MM2.state.recent.unshift(id);
+
+ MM2.state.recent =
+   MM2.state.recent.slice(0,8);
+
+ MM2.save();
+
+ MM2.renderRecent();
+
+};
+
+
+MM2.renderRecent = function(){
+
+ const box =
+   document.getElementById("mm2RecentGrid");
+
+ if(!box) return;
+
+ const list =
+   MM2.state.recent
+     .map(id =>
+       MM2.products.find(p=>p.id===id)
+     )
+     .filter(Boolean);
+
+ if(!list.length){
+
+   box.innerHTML = `
+     <div class="mm2-card">
+       <h3>Abhi kuch viewed nahi hai</h3>
+       <p class="mm2-muted">
+         Product open karoge to yahan show hoga.
+       </p>
+     </div>
+   `;
+
+   return;
+
+ }
+
+ box.innerHTML =
+   list.map(MM2.card).join("");
+
+};
+
+
+/* =========================================================
+   PRODUCT DETAIL
+   ========================================================= */
+
+MM2.openProduct = function(id){
+
+ const p =
+   MM2.products.find(x=>x.id===id);
+
+ if(!p) return;
+
+ MM2.addRecent(id);
+
+ const modal =
+   document.getElementById("mm2ProductModal");
+
+ const detail =
+   document.getElementById("mm2ProductDetail");
+
+ detail.innerHTML = `
+
+ <div class="mm2-detail">
+
+   <div>
+
+     <div class="mm2-gallery-main">
+       ${p.emoji}
+     </div>
+
+     <div class="mm2-thumbs">
+
+       <button class="mm2-thumb">
+         ${p.emoji}
+       </button>
+
+       <button class="mm2-thumb">
+         📦
+       </button>
+
+       <button class="mm2-thumb">
+         ⭐
+       </button>
+
+       <button class="mm2-thumb">
+         🏷️
+       </button>
+
+     </div>
+
+   </div>
+
+
+   <div>
+
+     <span class="mm2-badge">
+       ${p.brand}
+     </span>
+
+     <h1>${p.name}</h1>
+
+     <div class="mm2-rating">
+       ⭐ ${p.rating} / 5
+     </div>
+
+     <br>
+
+     <div class="mm2-price">
+       ${MM2.money(p.price)}
+
+       <span class="mm2-old">
+         ${MM2.money(p.old)}
+       </span>
+     </div>
+
+     <p>
+       🔥 Limited offer available
+     </p>
+
+     <hr>
+
+     <h3>Choose Variant</h3>
+
+     <div class="mm2-variant">
+
+       <button class="selected">
+         Standard
+       </button>
+
+       <button>
+         Premium
+       </button>
+
+       <button>
+         Pro
+       </button>
+
+       <button>
+         Black
+       </button>
+
+       <button>
+         Blue
+       </button>
+
+     </div>
+
+     <h3>Quantity</h3>
+
+     <div class="mm2-qty">
+
+       <button
+         onclick="MM2.detailQty(-1)">
+         −
+       </button>
+
+       <strong id="mm2DetailQty">
+         1
+       </strong>
+
+       <button
+         onclick="MM2.detailQty(1)">
+         +
+       </button>
+
+     </div>
+
+     <br>
+
+     <div class="mm2-row">
+
+       <button
+         class="mm2-btn mm2-primary"
+         onclick="MM2.addCart(${p.id})">
+         🛒 Add To Cart
+       </button>
+
+       <button
+         class="mm2-btn mm2-warning"
+         onclick="MM2.buyNow(${p.id})">
+         ⚡ Buy Now
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toggleWishlist(${p.id})">
+         ❤️ Wishlist
+       </button>
+
+     </div>
+
+     <br>
+
+     <button
+       class="mm2-btn mm2-outline"
+       onclick="MM2.priceAlert(${p.id})">
+       🔔 Alert Me When Price Drops
+     </button>
+
+     <button
+       class="mm2-btn mm2-outline"
+       onclick="MM2.stockAlert(${p.id})">
+       📦 Back In Stock Alert
+     </button>
+
+     <button
+       class="mm2-btn mm2-outline"
+       onclick="MM2.shareProduct(${p.id})">
+       ↗ Share Product
+     </button>
+
+     <hr>
+
+     <h3>Delivery</h3>
+
+     <div class="mm2-row">
+
+       <input
+         id="mm2Pincode"
+         class="mm2-input"
+         style="max-width:180px"
+         placeholder="Enter PIN code"
+       >
+
+       <button
+         class="mm2-btn mm2-primary"
+         onclick="MM2.checkDelivery()">
+         Check
+       </button>
+
+     </div>
+
+     <p id="mm2DeliveryResult"></p>
+
+   </div>
+
+ </div>
+
+
+ <hr>
+
+ <h2>Product Information</h2>
+
+ <table class="mm2-table">
+
+   <tr>
+     <th>Brand</th>
+     <td>${p.brand}</td>
+   </tr>
+
+   <tr>
+     <th>Seller</th>
+     <td>${p.seller}</td>
+   </tr>
+
+   <tr>
+     <th>Category</th>
+     <td>${p.category}</td>
+   </tr>
+
+   <tr>
+     <th>Availability</th>
+     <td>${p.stock} units</td>
+   </tr>
+
+   <tr>
+     <th>Rating</th>
+     <td>${p.rating} / 5</td>
+   </tr>
+
+ </table>
+
+ <br>
+
+ <div class="mm2-row">
+
+   <button class="mm2-btn mm2-light"
+     onclick="MM2.toast('Reviews opened')">
+     ⭐ Reviews
+   </button>
+
+   <button class="mm2-btn mm2-light"
+     onclick="MM2.toast('Questions opened')">
+     ❓ Q&A
+   </button>
+
+   <button class="mm2-btn mm2-light"
+     onclick="MM2.toast('Specifications opened')">
+     📋 Specifications
+   </button>
+
+   <button class="mm2-btn mm2-light"
+     onclick="MM2.toast('Seller information opened')">
+     🏪 Seller
+   </button>
+
+   <button class="mm2-btn mm2-light"
+     onclick="MM2.toast('Warranty information opened')">
+     🛡️ Warranty
+   </button>
+
+ </div>
+
+ `;
+
+ modal.classList.add("active");
+
+};
+
+
+/* =========================================================
+   DETAIL QUANTITY
+   ========================================================= */
+
+MM2.detailQuantity = 1;
+
+MM2.detailQty = function(change){
+
+ MM2.detailQuantity += change;
+
+ if(MM2.detailQuantity < 1){
+
+   MM2.detailQuantity = 1;
+
+ }
+
+ const el =
+   document.getElementById("mm2DetailQty");
+
+ if(el){
+
+   el.textContent =
+     MM2.detailQuantity;
+
+ }
+
+};
+
+
+/* =========================================================
+   DELIVERY CHECK
+   ========================================================= */
+
+MM2.checkDelivery = function(){
+
+ const pin =
+   document.getElementById("mm2Pincode")?.value;
+
+ const result =
+   document.getElementById("mm2DeliveryResult");
+
+ if(!pin){
+
+   result.textContent =
+     "⚠️ PIN code enter karo.";
+
+   return;
+
+ }
+
+ result.textContent =
+   "✅ Delivery available. Estimated delivery: 2–5 days.";
+
+};
+
+
+/* =========================================================
+   PRICE ALERT
+   ========================================================= */
+
+MM2.priceAlert = function(id){
+
+ MM2.toast(
+   "Price drop alert enabled 🔔"
+ );
+
+};
+
+
+/* =========================================================
+   STOCK ALERT
+   ========================================================= */
+
+MM2.stockAlert = function(id){
+
+ MM2.toast(
+   "Back-in-stock alert enabled 📦"
+ );
+
+};
+
+
+/* =========================================================
+   BUY NOW
+   ========================================================= */
+
+MM2.buyNow = function(id){
+
+ const p =
+   MM2.products.find(x=>x.id===id);
+
+ if(!p) return;
+
+ MM2.addCart(id);
+
+ MM2.closeModal("mm2ProductModal");
+
+ MM2.openDrawer("checkout");
+
+};
+
+
+/* =========================================================
+   SHARE
+   ========================================================= */
+
+MM2.shareProduct = async function(id){
+
+ const p =
+   MM2.products.find(x=>x.id===id);
+
+ if(!p) return;
+
+ const text =
+   p.name + " - " + MM2.money(p.price);
+
+ if(
+   navigator.share
+ ){
+
+   try{
+
+     await navigator.share({
+       title:p.name,
+       text:text
+     });
+
+   }catch(e){}
+
+ }else{
+
+   try{
+
+     await navigator.clipboard.writeText(text);
+
+     MM2.toast("Product link/text copied");
+
+   }catch(e){
+
+     MM2.toast("Share option opened");
+
+   }
+
+ }
+
+};
+
+
+/* =========================================================
+   DRAWER
+   ========================================================= */
+
+MM2.openDrawer = function(type){
+
+ const drawer =
+   document.getElementById("mm2Drawer");
+
+ const title =
+   document.getElementById("mm2DrawerTitle");
+
+ const content =
+   document.getElementById("mm2DrawerContent");
+
+ drawer.classList.add("active");
+
+
+ if(type === "wishlist"){
+
+   title.textContent =
+     "❤️ My Wishlist";
+
+   const list =
+     MM2.state.wishlist
+       .map(id =>
+         MM2.products.find(p=>p.id===id)
+       )
+       .filter(Boolean);
+
+   content.innerHTML =
+
+     list.length
+
+     ? `<div class="mm2-list">
+         ${list.map(p=>`
+
+           <div class="mm2-list-item">
+
+             <strong>
+               ${p.emoji} ${p.name}
+             </strong>
+
+             <p>
+               ${MM2.money(p.price)}
+             </p>
+
+             <button
+               class="mm2-btn mm2-primary"
+               onclick="MM2.addCart(${p.id})">
+               Add Cart
+             </button>
+
+             <button
+               class="mm2-btn mm2-danger"
+               onclick="MM2.toggleWishlist(${p.id});
+                        MM2.openDrawer('wishlist')">
+               Remove
+             </button>
+
+           </div>
+
+         `).join("")}
+       </div>`
+
+     : `<p>Your wishlist is empty.</p>`;
+
+ }
+
+
+ else if(type === "compare"){
+
+   title.textContent =
+     "⚖ Compare Products";
+
+   const list =
+     MM2.state.compare
+       .map(id =>
+         MM2.products.find(p=>p.id===id)
+       )
+       .filter(Boolean);
+
+   if(!list.length){
+
+     content.innerHTML =
+       "<p>No products selected for comparison.</p>";
+
+   }else{
+
+     content.innerHTML = `
+
+       <table class="mm2-table">
+
+         <tr>
+           <th>Feature</th>
+           ${list.map(p=>`
+             <th>${p.emoji}<br>${p.name}</th>
+           `).join("")}
+         </tr>
+
+         <tr>
+           <td>Price</td>
+           ${list.map(p=>`
+             <td>${MM2.money(p.price)}</td>
+           `).join("")}
+         </tr>
+
+         <tr>
+           <td>Rating</td>
+           ${list.map(p=>`
+             <td>⭐ ${p.rating}</td>
+           `).join("")}
+         </tr>
+
+         <tr>
+           <td>Seller</td>
+           ${list.map(p=>`
+             <td>${p.seller}</td>
+           `).join("")}
+         </tr>
+
+         <tr>
+           <td>Stock</td>
+           ${list.map(p=>`
+             <td>${p.stock}</td>
+           `).join("")}
+         </tr>
+
+       </table>
+
+       <br>
+
+       <button
+         class="mm2-btn mm2-danger"
+         onclick="MM2.state.compare=[];
+                  MM2.save();
+                  MM2.openDrawer('compare');
+                  MM2.applyFilters();">
+         Clear Compare
+       </button>
+
+     `;
+
+   }
+
+ }
+
+
+ else if(type === "cart"){
+
+   title.textContent =
+     "🛒 Shopping Cart";
+
+   const items =
+     MM2.state.cart.map(item=>{
+
+       const p =
+         MM2.products.find(x=>x.id===item.id);
+
+       if(!p) return null;
+
+       return {
+         ...p,
+         qty:item.qty
+       };
+
+     }).filter(Boolean);
+
+   if(!items.length){
+
+     content.innerHTML =
+       "<h3>Your cart is empty.</h3>";
+
+     return;
+
+   }
+
+   let total = 0;
+
+   content.innerHTML = `
+
+     <div class="mm2-list">
+
+       ${items.map(p=>{
+
+         total +=
+           p.price * p.qty;
+
+         return `
+
+         <div class="mm2-list-item">
+
+           <strong>
+             ${p.emoji} ${p.name}
+           </strong>
+
+           <p>
+             ${MM2.money(p.price)}
+           </p>
+
+           <div class="mm2-qty">
+
+             <button
+               onclick="MM2.changeQty(${p.id},-1)">
+               −
+             </button>
+
+             <strong>
+               ${p.qty}
+             </strong>
+
+             <button
+               onclick="MM2.changeQty(${p.id},1)">
+               +
+             </button>
+
+           </div>
+
+           <br>
+
+           <button
+             class="mm2-btn mm2-danger"
+             onclick="MM2.removeCart(${p.id})">
+             Remove
+           </button>
+
+         </div>
+
+         `;
+
+       }).join("")}
+
+     </div>
+
+     <hr>
+
+     <h2>
+       Total: ${MM2.money(total)}
+     </h2>
+
+     <button
+       class="mm2-btn mm2-success"
+       onclick="MM2.openDrawer('checkout')">
+       Continue Checkout →
+     </button>
+
+   `;
+
+ }
+
+
+ else if(type === "checkout"){
+
+   title.textContent =
+     "🛍️ Checkout";
+
+   const items =
+     MM2.state.cart;
+
+   if(!items.length){
+
+     content.innerHTML =
+       "<h3>Cart empty hai.</h3>";
+
+     return;
+
+   }
+
+   content.innerHTML = `
+
+     <div class="mm2-card">
+
+       <h3>1. Delivery Address</h3>
+
+       <input
+         class="mm2-input"
+         placeholder="Full Name"
+       >
+
+       <br><br>
+
+       <input
+         class="mm2-input"
+         placeholder="House / Street / Area"
+       >
+
+       <br><br>
+
+       <input
+         class="mm2-input"
+         placeholder="City"
+       >
+
+       <br><br>
+
+       <input
+         class="mm2-input"
+         placeholder="PIN Code"
+       >
+
+     </div>
+
+     <br>
+
+     <div class="mm2-card">
+
+       <h3>2. Delivery Method</h3>
+
+       <button
+         class="mm2-btn mm2-primary">
+         🚚 Standard Delivery
+       </button>
+
+       <button
+         class="mm2-btn mm2-light">
+         ⚡ Express Delivery
+       </button>
+
+       <button
+         class="mm2-btn mm2-light">
+         📅 Schedule Delivery
+       </button>
+
+     </div>
+
+     <br>
+
+     <div class="mm2-card">
+
+       <h3>3. Payment</h3>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('UPI selected')">
+         UPI
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Card selected')">
+         💳 Card
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Cash on Delivery selected')">
+         💵 COD
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Wallet selected')">
+         👛 Wallet
+       </button>
+
+     </div>
+
+     <br>
+
+     <button
+       class="mm2-btn mm2-success"
+       style="width:100%;padding:15px"
+       onclick="MM2.placeOrder()">
+       ✅ Place Order
+     </button>
+
+   `;
+
+ }
+
+
+ else if(type === "coupons"){
+
+   title.textContent =
+     "🎟 Coupon Center";
+
+   content.innerHTML = `
+
+     <div class="mm2-list">
+
+       <div class="mm2-list-item">
+
+         <strong>WELCOME100</strong>
+
+         <p>₹100 off on eligible orders</p>
+
+         <button
+           class="mm2-btn mm2-primary"
+           onclick="MM2.applyCoupon('WELCOME100')">
+           Apply
+         </button>
+
+       </div>
+
+       <div class="mm2-list-item">
+
+         <strong>MEGA10</strong>
+
+         <p>10% discount on selected products</p>
+
+         <button
+           class="mm2-btn mm2-primary"
+           onclick="MM2.applyCoupon('MEGA10')">
+           Apply
+         </button>
+
+       </div>
+
+       <div class="mm2-list-item">
+
+         <strong>NEWUSER</strong>
+
+         <p>Special new customer offer</p>
+
+         <button
+           class="mm2-btn mm2-primary"
+           onclick="MM2.applyCoupon('NEWUSER')">
+           Apply
+         </button>
+
+       </div>
+
+       <div class="mm2-list-item">
+
+         <strong>FREESHIP</strong>
+
+         <p>Eligible orders par free shipping</p>
+
+         <button
+           class="mm2-btn mm2-primary"
+           onclick="MM2.applyCoupon('FREESHIP')">
+           Apply
+         </button>
+
+       </div>
+
+     </div>
+
+   `;
+
+ }
+
+
+ else if(type === "rewards"){
+
+   title.textContent =
+     "⭐ Rewards Center";
+
+   content.innerHTML = `
+
+     <div class="mm2-card">
+
+       <div class="mm2-icon">
+         ⭐
+       </div>
+
+       <h2>
+         ${MM2.state.points} Points
+       </h2>
+
+       <p class="mm2-muted">
+         Shopping karke points earn karo.
+       </p>
+
+       <div class="mm2-progress">
+         <span style="width:62%"></span>
+       </div>
+
+       <p>
+         400 points tak next reward.
+       </p>
+
+       <button
+         class="mm2-btn mm2-primary"
+         onclick="MM2.toast('Rewards catalog opened')">
+         Redeem Rewards
+       </button>
+
+       <button
+         class="mm2-btn mm2-warning"
+         onclick="MM2.toast('Bonus points claimed')">
+         Claim Daily Bonus
+       </button>
+
+     </div>
+
+   `;
+
+ }
+
+
+ else if(type === "notifications"){
+
+   title.textContent =
+     "🔔 Notifications";
+
+   content.innerHTML = `
+
+     <div class="mm2-notification">
+       🔥
+       <div>
+         <strong>Flash Sale</strong>
+         <p>New deals available.</p>
+       </div>
+     </div>
+
+     <div class="mm2-notification">
+       📦
+       <div>
+         <strong>Order Update</strong>
+         <p>Your order tracking updated.</p>
+       </div>
+     </div>
+
+     <div class="mm2-notification">
+       💰
+       <div>
+         <strong>Price Drop</strong>
+         <p>A wishlist item got cheaper.</p>
+       </div>
+     </div>
+
+     <div class="mm2-notification">
+       🎟️
+       <div>
+         <strong>Coupon</strong>
+         <p>New coupon available.</p>
+       </div>
+     </div>
+
+     <br>
+
+     <button
+       class="mm2-btn mm2-light"
+       onclick="MM2.toast('All notifications marked read')">
+       ✓ Mark All Read
+     </button>
+
+   `;
+
+ }
+
+
+ else if(type === "seller"){
+
+   title.textContent =
+     "🏪 Seller Dashboard";
+
+   content.innerHTML = `
+
+     <div class="mm2-grid">
+
+       <div class="mm2-card">
+         <div class="mm2-icon">💰</div>
+         <div class="mm2-muted">
+           Revenue
+         </div>
+         <div class="mm2-stat">
+           ₹1,24,590
+         </div>
+       </div>
+
+       <div class="mm2-card">
+         <div class="mm2-icon">📦</div>
+         <div class="mm2-muted">
+           Orders
+         </div>
+         <div class="mm2-stat">
+           384
+         </div>
+       </div>
+
+       <div class="mm2-card">
+         <div class="mm2-icon">🛍️</div>
+         <div class="mm2-muted">
+           Products
+         </div>
+         <div class="mm2-stat">
+           126
+         </div>
+       </div>
+
+       <div class="mm2-card">
+         <div class="mm2-icon">⭐</div>
+         <div class="mm2-muted">
+           Rating
+         </div>
+         <div class="mm2-stat">
+           4.7
+         </div>
+       </div>
+
+     </div>
+
+     <br>
+
+     <div class="mm2-row">
+
+       <button
+         class="mm2-btn mm2-primary"
+         onclick="MM2.toast('Add product form opened')">
+         ➕ Add Product
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Inventory opened')">
+         📦 Inventory
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Seller orders opened')">
+         🛒 Orders
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Analytics opened')">
+         📊 Analytics
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Coupons opened')">
+         🎟 Coupons
+       </button>
+
+       <button
+         class="mm2-btn mm2-light"
+         onclick="MM2.toast('Payouts opened')">
+         💳 Payouts
+       </button>
+
+     </div>
+
+     <br>
+
+     <div class="mm2-chart">
+
+       <div class="mm2-bar" style="height:35%"></div>
+       <div class="mm2-bar" style="height:55%"></div>
+       <div class="mm2-bar" style="height:45%"></div>
+       <div class="mm2-bar" style="height:75%"></div>
+       <div class="mm2-bar" style="height:65%"></div>
+       <div class="mm2-bar" style="height:90%"></div>
+       <div class="mm2-bar" style="height:78%"></div>
+
+     </div>
+
+   `;
+
+ }
+
+
+ else if(type === "account"){
+
+   title.textContent =
+     "👤 My Account";
+
+   content.innerHTML = `
+
+     <div class="mm2-list">
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Profile opened')">
+         👤 Profile
+       </button>
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Orders opened')">
+         📦 My Orders
+       </button>
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Addresses opened')">
+         📍 Addresses
+       </button>
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Payments opened')">
+         💳 Payment Methods
+       </button>
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Returns opened')">
+         🔄 Returns & Refunds
+       </button>
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Support opened')">
+         💬 Customer Support
+       </button>
+
+       <button class="mm2-btn mm2-light"
+         onclick="MM2.toast('Settings opened')">
+         ⚙️ Settings
+       </button>
+
+     </div>
+
+   `;
+
+ }
+
+};
+
+
+/* =========================================================
+   SELLER REGISTRATION
+   ========================================================= */
+
+MM2.openSeller = function(){
+
+ MM2.openDrawer("seller");
+
+ MM2.toast(
+   "Seller dashboard demo opened"
+ );
+
+};
+
+
+/* =========================================================
+   APPLY COUPON
+   ========================================================= */
+
+MM2.applyCoupon = function(code){
+
+ localStorage.setItem(
+   "mm2_coupon",
+   code
+ );
+
+ MM2.toast(
+   code + " applied successfully 🎟️"
+ );
+
+};
+
+
+/* =========================================================
+   PLACE ORDER
+   ========================================================= */
+
+MM2.placeOrder = function(){
+
+ if(!MM2.state.cart.length){
+
+   MM2.toast(
+     "Cart empty hai"
+   );
+
+   return;
+
+ }
+
+ const orderId =
+   "MM" +
+   Date.now().toString().slice(-8);
+
+ MM2.state.points += 25;
+
+ MM2.state.cart = [];
+
+ MM2.save();
+
+ MM2.closeDrawer();
+
+ MM2.toast(
+   "Order placed successfully! #" +
+   orderId
+ );
+
+};
+
+
+/* =========================================================
+   CLOSE DRAWER
+   ========================================================= */
+
+MM2.closeDrawer = function(){
+
+ const drawer =
+   document.getElementById("mm2Drawer");
+
+ if(drawer){
+
+   drawer.classList.remove("active");
+
+ }
+
+};
+
+
+/* =========================================================
+   CLOSE MODAL
+   ========================================================= */
+
+MM2.closeModal = function(id){
+
+ const modal =
+   document.getElementById(id);
+
+ if(modal){
+
+   modal.classList.remove("active");
+
+ }
+
+};
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+MM2.toast = function(message){
+
+ let toast =
+   document.getElementById("mm2Toast");
+
+ if(!toast){
+
+   toast =
+     document.createElement("div");
+
+   toast.id =
+     "mm2Toast";
+
+   toast.style.position =
+     "fixed";
+
+   toast.style.left =
+     "50%";
+
+   toast.style.bottom =
+     "85px";
+
+   toast.style.transform =
+     "translateX(-50%)";
+
+   toast.style.background =
+     "#111827";
+
+   toast.style.color =
+     "#fff";
+
+   toast.style.padding =
+     "13px 20px";
+
+   toast.style.borderRadius =
+     "12px";
+
+   toast.style.zIndex =
+     "200000";
+
+   toast.style.boxShadow =
+     "0 10px 30px rgba(0,0,0,.25)";
+
+   document.body.appendChild(toast);
+
+ }
+
+ toast.textContent =
+   message;
+
+ toast.style.opacity =
+   "1";
+
+ clearTimeout(MM2.toastTimer);
+
+ MM2.toastTimer =
+   setTimeout(()=>{
+
+     toast.style.opacity =
+       "0";
+
+   },2500);
+
+};
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+   ========================================================= */
+
+document.addEventListener(
+ "keydown",
+ function(e){
+
+   if(
+     e.key === "/" &&
+     document.activeElement.tagName !== "INPUT"
+   ){
+
+     e.preventDefault();
+
+     document.getElementById(
+       "mm2Search"
+     )?.focus();
+
+   }
+
+   if(e.key === "Escape"){
+
+     MM2.closeDrawer();
+
+     MM2.closeModal(
+       "mm2ProductModal"
+     );
+
+   }
+
+ }
+);
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+MM2.init = function(){
+
+ MM2.render(
+   MM2.products
+ );
+
+ MM2.renderRecent();
+
+};
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+if(
+ document.readyState === "loading"
+){
+
+ document.addEventListener(
+   "DOMContentLoaded",
+   MM2.init
+ );
+
+}else{
+
+ MM2.init();
+
+}
+
+})();
+
+</script>
+
 </body>
 </html>
