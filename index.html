@@ -26871,5 +26871,3277 @@ body.p4-dark .p4-offer-card {
 })();
 </script>
 
-<!
+<!-- ============================================================
+     NEXORA MARKETPLACE
+     PART 6 / 30K BUILD
+     ADVANCED DISCOVERY + HOMEPAGE EXPERIENCE
+     ============================================================ -->
+
+<style>
+
+/* ============================================================
+   PART 6 ROOT
+   ============================================================ */
+
+#NEXORA_P6_ROOT{
+  --p6-primary:#4f46e5;
+  --p6-secondary:#7c3aed;
+  --p6-accent:#ec4899;
+  --p6-bg:#f7f8fc;
+  --p6-card:#ffffff;
+  --p6-text:#111827;
+  --p6-muted:#6b7280;
+  --p6-border:#e5e7eb;
+  --p6-green:#16a34a;
+  --p6-red:#ef4444;
+  --p6-orange:#f97316;
+  font-family:Inter,system-ui,-apple-system,
+  BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+#NEXORA_P6_ROOT *{
+  box-sizing:border-box;
+}
+
+.p6-container{
+  width:min(1450px,94%);
+  margin:auto;
+}
+
+.p6-section{
+  padding:35px 0;
+}
+
+.p6-card{
+  background:var(--p6-card);
+  border:1px solid var(--p6-border);
+  border-radius:22px;
+  box-shadow:0 12px 35px rgba(15,23,42,.06);
+}
+
+.p6-title{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-.7px;
+  margin:0;
+}
+
+.p6-subtitle{
+  color:var(--p6-muted);
+  margin:7px 0 23px;
+}
+
+.p6-btn{
+  border:0;
+  border-radius:12px;
+  padding:11px 16px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.p6-btn:hover{
+  transform:translateY(-2px);
+}
+
+.p6-primary{
+  color:white;
+  background:
+    linear-gradient(
+      135deg,
+      var(--p6-primary),
+      var(--p6-secondary)
+    );
+}
+
+.p6-light{
+  background:#f3f4f6;
+  color:#111827;
+}
+
+.p6-danger{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.p6-success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.p6-hidden{
+  display:none!important;
+}
+
+/* ============================================================
+   DISCOVERY HERO
+   ============================================================ */
+
+.p6-discovery-hero{
+  position:relative;
+  overflow:hidden;
+  min-height:370px;
+  border-radius:30px;
+  padding:45px;
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(236,72,153,.45),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 20% 90%,
+      rgba(59,130,246,.35),
+      transparent 32%
+    ),
+    linear-gradient(
+      120deg,
+      #111827,
+      #312e81,
+      #581c87
+    );
+
+  box-shadow:
+    0 30px 70px
+    rgba(49,46,129,.25);
+}
+
+.p6-discovery-content{
+  position:relative;
+  z-index:2;
+  max-width:670px;
+}
+
+.p6-eyebrow{
+  display:inline-flex;
+  padding:7px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  font-size:12px;
+  font-weight:850;
+}
+
+.p6-hero-title{
+  font-size:52px;
+  line-height:1.02;
+  letter-spacing:-2px;
+  margin:18px 0;
+  font-weight:950;
+}
+
+.p6-hero-text{
+  color:#ddd6fe;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.p6-hero-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.p6-floating-card{
+  position:absolute;
+  right:50px;
+  top:50%;
+  transform:translateY(-50%);
+  width:270px;
+  padding:20px;
+  border-radius:24px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
+}
+
+.p6-floating-icon{
+  height:140px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:85px;
+}
+
+.p6-floating-price{
+  font-size:27px;
+  font-weight:950;
+}
+
+/* ============================================================
+   CATEGORY RAIL
+   ============================================================ */
+
+.p6-category-rail{
+  display:flex;
+  gap:14px;
+  overflow:auto;
+  padding:4px 2px 12px;
+}
+
+.p6-category{
+  min-width:125px;
+  padding:17px 12px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.p6-category:hover{
+  transform:translateY(-4px);
+}
+
+.p6-category-icon{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#eef2ff;
+  font-size:30px;
+}
+
+.p6-category-name{
+  font-size:13px;
+  font-weight:850;
+  margin-top:9px;
+}
+
+.p6-category-count{
+  font-size:11px;
+  color:var(--p6-muted);
+  margin-top:3px;
+}
+
+/* ============================================================
+   FLASH SALE
+   ============================================================ */
+
+.p6-sale{
+  overflow:hidden;
+  border-radius:26px;
+  background:
+    linear-gradient(
+      135deg,
+      #7f1d1d,
+      #be123c,
+      #c2410c
+    );
+  color:white;
+}
+
+.p6-sale-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:22px 24px;
+}
+
+.p6-sale-title{
+  font-size:26px;
+  font-weight:950;
+}
+
+.p6-countdown{
+  display:flex;
+  gap:7px;
+}
+
+.p6-time-box{
+  min-width:50px;
+  text-align:center;
+  background:rgba(255,255,255,.14);
+  padding:8px;
+  border-radius:10px;
+}
+
+.p6-time-number{
+  font-weight:950;
+  font-size:18px;
+}
+
+.p6-time-label{
+  font-size:9px;
+  opacity:.8;
+}
+
+.p6-sale-products{
+  display:flex;
+  gap:14px;
+  overflow:auto;
+  padding:0 24px 24px;
+}
+
+.p6-sale-product{
+  min-width:205px;
+  background:white;
+  color:var(--p6-text);
+  border-radius:18px;
+  padding:12px;
+}
+
+.p6-sale-image{
+  height:145px;
+  border-radius:14px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:60px;
+  background:#fef2f2;
+}
+
+.p6-sale-name{
+  font-weight:850;
+  margin-top:9px;
+}
+
+.p6-sale-price{
+  font-size:20px;
+  font-weight:950;
+  margin-top:6px;
+}
+
+.p6-sale-old{
+  font-size:11px;
+  color:#9ca3af;
+  text-decoration:line-through;
+}
+
+/* ============================================================
+   RECOMMENDATIONS
+   ============================================================ */
+
+.p6-recommend-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(5,minmax(0,1fr));
+  gap:15px;
+}
+
+.p6-rec-card{
+  overflow:hidden;
+  position:relative;
+}
+
+.p6-rec-image{
+  height:185px;
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #faf5ff
+    );
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:70px;
+}
+
+.p6-rec-body{
+  padding:14px;
+}
+
+.p6-rec-badge{
+  font-size:10px;
+  font-weight:900;
+  color:var(--p6-primary);
+  text-transform:uppercase;
+}
+
+.p6-rec-name{
+  font-size:14px;
+  font-weight:850;
+  min-height:40px;
+  margin-top:5px;
+}
+
+.p6-rec-rating{
+  font-size:12px;
+  color:#a16207;
+  margin-top:5px;
+}
+
+.p6-rec-price{
+  font-size:19px;
+  font-weight:950;
+  margin-top:7px;
+}
+
+.p6-rec-action{
+  width:100%;
+  margin-top:9px;
+}
+
+/* ============================================================
+   DEAL BANNER
+   ============================================================ */
+
+.p6-deal-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+  gap:17px;
+}
+
+.p6-deal-card{
+  position:relative;
+  overflow:hidden;
+  min-height:190px;
+  padding:25px;
+}
+
+.p6-deal-card:nth-child(1){
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #ddd6fe
+    );
+}
+
+.p6-deal-card:nth-child(2){
+  background:
+    linear-gradient(
+      135deg,
+      #fdf2f8,
+      #fce7f3
+    );
+}
+
+.p6-deal-card:nth-child(3){
+  background:
+    linear-gradient(
+      135deg,
+      #ecfdf5,
+      #d1fae5
+    );
+}
+
+.p6-deal-icon{
+  position:absolute;
+  right:20px;
+  bottom:5px;
+  font-size:80px;
+  opacity:.75;
+}
+
+.p6-deal-tag{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  background:white;
+  font-size:10px;
+  font-weight:900;
+}
+
+.p6-deal-title{
+  font-size:22px;
+  font-weight:950;
+  max-width:220px;
+  margin:15px 0 5px;
+}
+
+.p6-deal-text{
+  color:#4b5563;
+  font-size:13px;
+  max-width:220px;
+}
+
+/* ============================================================
+   NEW ARRIVALS
+   ============================================================ */
+
+.p6-new-layout{
+  display:grid;
+  grid-template-columns:
+    260px 1fr;
+  gap:18px;
+}
+
+.p6-new-feature{
+  padding:24px;
+  color:white;
+  min-height:350px;
+  background:
+    linear-gradient(
+      150deg,
+      #0f172a,
+      #1e1b4b
+    );
+  position:relative;
+  overflow:hidden;
+}
+
+.p6-new-feature-icon{
+  font-size:95px;
+  text-align:center;
+  margin:25px 0;
+}
+
+.p6-new-products{
+  display:grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+
+/* ============================================================
+   TOP RATED
+   ============================================================ */
+
+.p6-rating-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+
+.p6-rating-card{
+  padding:18px;
+}
+
+.p6-rating-number{
+  font-size:37px;
+  font-weight:950;
+}
+
+.p6-stars{
+  letter-spacing:2px;
+  margin:7px 0;
+}
+
+/* ============================================================
+   GIFT CENTER
+   ============================================================ */
+
+.p6-gift{
+  padding:28px;
+  border-radius:27px;
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(255,255,255,.25),
+      transparent 25%
+    ),
+    linear-gradient(
+      120deg,
+      #831843,
+      #be185d,
+      #7e22ce
+    );
+  color:white;
+}
+
+.p6-gift-content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.p6-gift-title{
+  font-size:32px;
+  font-weight:950;
+}
+
+.p6-gift-text{
+  color:#fbcfe8;
+  max-width:600px;
+  line-height:1.6;
+}
+
+.p6-gift-cards{
+  display:flex;
+  gap:9px;
+}
+
+.p6-gift-card{
+  width:100px;
+  height:65px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.2);
+  font-weight:950;
+}
+
+/* ============================================================
+   NOTIFICATIONS
+   ============================================================ */
+
+.p6-notification-panel{
+  padding:20px;
+}
+
+.p6-notification{
+  display:flex;
+  gap:13px;
+  padding:14px 4px;
+  border-bottom:1px solid var(--p6-border);
+}
+
+.p6-notification-icon{
+  width:42px;
+  height:42px;
+  flex-shrink:0;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eef2ff;
+}
+
+.p6-notification-title{
+  font-weight:850;
+  font-size:14px;
+}
+
+.p6-notification-text{
+  color:var(--p6-muted);
+  font-size:12px;
+  margin-top:3px;
+}
+
+.p6-notification-time{
+  color:#9ca3af;
+  font-size:10px;
+  margin-top:5px;
+}
+
+/* ============================================================
+   LOCATION BAR
+   ============================================================ */
+
+.p6-location{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:16px 18px;
+  background:white;
+}
+
+.p6-location-left{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.p6-location-pin{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:#fef2f2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+}
+
+.p6-location-title{
+  font-weight:850;
+}
+
+.p6-location-text{
+  color:var(--p6-muted);
+  font-size:12px;
+}
+
+/* ============================================================
+   MOBILE NAVIGATION
+   ============================================================ */
+
+.p6-mobile-nav{
+  display:none;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:9998;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--p6-border);
+  padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+}
+
+.p6-mobile-nav-inner{
+  display:grid;
+  grid-template-columns:
+    repeat(5,1fr);
+}
+
+.p6-mobile-nav button{
+  border:0;
+  background:none;
+  cursor:pointer;
+  padding:7px 3px;
+  color:#6b7280;
+  font-size:10px;
+  font-weight:800;
+}
+
+.p6-mobile-nav-icon{
+  font-size:20px;
+  display:block;
+  margin-bottom:2px;
+}
+
+/* ============================================================
+   SEARCH SUGGESTIONS
+   ============================================================ */
+
+.p6-search-panel{
+  padding:20px;
+}
+
+.p6-search-row{
+  display:flex;
+  gap:9px;
+}
+
+.p6-search-input{
+  flex:1;
+  border:1px solid var(--p6-border);
+  border-radius:13px;
+  padding:13px;
+  outline:none;
+  font:inherit;
+}
+
+.p6-search-input:focus{
+  border-color:var(--p6-primary);
+}
+
+.p6-suggestion-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:13px;
+}
+
+.p6-suggestion{
+  border:1px solid var(--p6-border);
+  background:#fff;
+  border-radius:999px;
+  padding:8px 12px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:750;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width:1150px){
+
+  .p6-recommend-grid{
+    grid-template-columns:
+      repeat(4,minmax(0,1fr));
+  }
+
+  .p6-new-products{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+  .p6-rating-grid{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+}
+
+@media(max-width:850px){
+
+  .p6-hero-title{
+    font-size:39px;
+  }
+
+  .p6-floating-card{
+    display:none;
+  }
+
+  .p6-discovery-hero{
+    min-height:330px;
+    padding:30px;
+  }
+
+  .p6-recommend-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .p6-deal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .p6-new-layout{
+    grid-template-columns:1fr;
+  }
+
+  .p6-new-products{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .p6-rating-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .p6-gift-content{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .p6-mobile-nav{
+    display:block;
+  }
+
+}
+
+@media(max-width:520px){
+
+  .p6-section{
+    padding:25px 0;
+  }
+
+  .p6-title{
+    font-size:23px;
+  }
+
+  .p6-hero-title{
+    font-size:32px;
+  }
+
+  .p6-discovery-hero{
+    padding:25px;
+    border-radius:22px;
+  }
+
+  .p6-sale-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .p6-sale-product{
+    min-width:175px;
+  }
+
+  .p6-rec-image{
+    height:145px;
+  }
+
+  .p6-new-products{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p6-rating-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p6-gift-title{
+    font-size:26px;
+  }
+
+  .p6-gift-cards{
+    width:100%;
+    overflow:auto;
+  }
+
+}
+
+</style>
+
+
+<div id="NEXORA_P6_ROOT">
+
+  <!-- ========================================================
+       LOCATION
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <div class="p6-card p6-location">
+
+        <div class="p6-location-left">
+
+          <div class="p6-location-pin">
+            📍
+          </div>
+
+          <div>
+
+            <div class="p6-location-title">
+              Delivering to your location
+            </div>
+
+            <div
+              id="p6LocationText"
+              class="p6-location-text">
+              Select your delivery location
+            </div>
+
+          </div>
+
+        </div>
+
+        <button
+          class="p6-btn p6-light"
+          onclick="NEXORA_P6.changeLocation()">
+
+          Change
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       DISCOVERY HERO
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <div class="p6-discovery-hero">
+
+        <div class="p6-discovery-content">
+
+          <span class="p6-eyebrow">
+            ✨ NEXORA DISCOVERY
+          </span>
+
+          <h1 class="p6-hero-title">
+            Find something
+            amazing today.
+          </h1>
+
+          <p class="p6-hero-text">
+            Explore trending products, personalized
+            recommendations, limited-time deals and
+            thousands of marketplace choices.
+          </p>
+
+          <div class="p6-hero-actions">
+
+            <button
+              class="p6-btn p6-primary"
+              onclick="NEXORA_P6.scrollTo('p6Recommendations')">
+
+              ✨ Explore For You
+
+            </button>
+
+            <button
+              class="p6-btn p6-light"
+              onclick="NEXORA_P6.scrollTo('p6FlashSale')">
+
+              🔥 Flash Sale
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="p6-floating-card">
+
+          <div class="p6-floating-icon">
+            🎁
+          </div>
+
+          <div>
+            Today's Pick
+          </div>
+
+          <div class="p6-floating-price">
+            Up to 70% OFF
+          </div>
+
+          <div style="color:#ddd6fe;font-size:12px">
+            Selected marketplace deals
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       SEARCH CENTER
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <div class="p6-card p6-search-panel">
+
+        <div style="
+          font-size:18px;
+          font-weight:900;
+        ">
+          🔎 What are you looking for?
+        </div>
+
+        <div class="p6-search-row"
+             style="margin-top:12px">
+
+          <input
+            id="p6SearchInput"
+            class="p6-search-input"
+            placeholder="Search phones, shoes, gaming, home..."
+            oninput="NEXORA_P6.searchSuggest(this.value)"
+            onkeydown="
+              if(event.key==='Enter')
+              NEXORA_P6.executeSearch()
+            ">
+
+          <button
+            class="p6-btn p6-primary"
+            onclick="NEXORA_P6.executeSearch()">
+
+            Search
+
+          </button>
+
+        </div>
+
+        <div
+          id="p6SuggestionList"
+          class="p6-suggestion-list">
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Smartphone')">
+            📱 Smartphones
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Gaming')">
+            🎮 Gaming
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Shoes')">
+            👟 Shoes
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Laptop')">
+            💻 Laptops
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Home')">
+            🏠 Home
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       CATEGORIES
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <h2 class="p6-title">
+        🧭 Explore Categories
+      </h2>
+
+      <p class="p6-subtitle">
+        Jump directly into your favorite shopping sections.
+      </p>
+
+      <div class="p6-category-rail">
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('electronics')">
+
+          <div class="p6-category-icon">
+            📱
+          </div>
+
+          <div class="p6-category-name">
+            Electronics
+          </div>
+
+          <div class="p6-category-count">
+            12K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('fashion')">
+
+          <div class="p6-category-icon">
+            👕
+          </div>
+
+          <div class="p6-category-name">
+            Fashion
+          </div>
+
+          <div class="p6-category-count">
+            24K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('gaming')">
+
+          <div class="p6-category-icon">
+            🎮
+          </div>
+
+          <div class="p6-category-name">
+            Gaming
+          </div>
+
+          <div class="p6-category-count">
+            8K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('home')">
+
+          <div class="p6-category-icon">
+            🏠
+          </div>
+
+          <div class="p6-category-name">
+            Home
+          </div>
+
+          <div class="p6-category-count">
+            19K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('beauty')">
+
+          <div class="p6-category-icon">
+            💄
+          </div>
+
+          <div class="p6-category-name">
+            Beauty
+          </div>
+
+          <div class="p6-category-count">
+            11K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('books')">
+
+          <div class="p6-category-icon">
+            📚
+          </div>
+
+          <div class="p6-category-name">
+            Books
+          </div>
+
+          <div class="p6-category-count">
+            15K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('sports')">
+
+          <div class="p6-category-icon">
+            🏏
+          </div>
+
+          <div class="p6-category-name">
+            Sports
+          </div>
+
+          <div class="p6-category-count">
+            9K+ products
+          </div>
+
+        </div>
+
+
+        <div
+          class="p6-card p6-category"
+          onclick="NEXORA_P6.category('automotive')">
+
+          <div class="p6-category-icon">
+            🚗
+          </div>
+
+          <div class="p6-category-name">
+            Automotive
+          </div>
+
+          <div class="p6-category-count">
+            7K+ products
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       FLASH SALE
+       ======================================================== -->
+
+  <section
+    id="p6FlashSale"
+    class="p6-section">
+
+    <div class="p6-container">
+
+      <div class="p6-sale">
+
+        <div class="p6-sale-head">
+
+          <div>
+
+            <div class="p6-sale-title">
+              🔥 Flash Sale
+            </div>
+
+            <div style="
+              opacity:.82;
+              font-size:12px;
+              margin-top:4px;
+            ">
+              Limited-time marketplace deals
+            </div>
+
+          </div>
+
+
+          <div
+            id="p6Countdown"
+            class="p6-countdown">
+
+            <div class="p6-time-box">
+
+              <div
+                id="p6Hours"
+                class="p6-time-number">
+                05
+              </div>
+
+              <div class="p6-time-label">
+                HRS
+              </div>
+
+            </div>
+
+            <div class="p6-time-box">
+
+              <div
+                id="p6Minutes"
+                class="p6-time-number">
+                42
+              </div>
+
+              <div class="p6-time-label">
+                MIN
+              </div>
+
+            </div>
+
+            <div class="p6-time-box">
+
+              <div
+                id="p6Seconds"
+                class="p6-time-number">
+                18
+              </div>
+
+              <div class="p6-time-label">
+                SEC
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="p6-sale-products">
+
+          <div class="p6-sale-product">
+
+            <div class="p6-sale-image">
+              📱
+            </div>
+
+            <div class="p6-sale-name">
+              Nova Smartphone
+            </div>
+
+            <div class="p6-sale-price">
+              ₹24,999
+            </div>
+
+            <span class="p6-sale-old">
+              ₹32,999
+            </span>
+
+            <button
+              class="p6-btn p6-primary"
+              style="width:100%;margin-top:9px"
+              onclick="NEXORA_P6.demoCart('Nova Smartphone')">
+
+              Add to Cart
+
+            </button>
+
+          </div>
+
+
+          <div class="p6-sale-product">
+
+            <div class="p6-sale-image">
+              🎧
+            </div>
+
+            <div class="p6-sale-name">
+              Pro Wireless Audio
+            </div>
+
+            <div class="p6-sale-price">
+              ₹2,999
+            </div>
+
+            <span class="p6-sale-old">
+              ₹5,499
+            </span>
+
+            <button
+              class="p6-btn p6-primary"
+              style="width:100%;margin-top:9px"
+              onclick="NEXORA_P6.demoCart('Pro Wireless Audio')">
+
+              Add to Cart
+
+            </button>
+
+          </div>
+
+
+          <div class="p6-sale-product">
+
+            <div class="p6-sale-image">
+              💻
+            </div>
+
+            <div class="p6-sale-name">
+              Creator Laptop
+            </div>
+
+            <div class="p6-sale-price">
+              ₹64,999
+            </div>
+
+            <span class="p6-sale-old">
+              ₹79,999
+            </span>
+
+            <button
+              class="p6-btn p6-primary"
+              style="width:100%;margin-top:9px"
+              onclick="NEXORA_P6.demoCart('Creator Laptop')">
+
+              Add to Cart
+
+            </button>
+
+          </div>
+
+
+          <div class="p6-sale-product">
+
+            <div class="p6-sale-image">
+              👟
+            </div>
+
+            <div class="p6-sale-name">
+              Running Shoes
+            </div>
+
+            <div class="p6-sale-price">
+              ₹1,999
+            </div>
+
+            <span class="p6-sale-old">
+              ₹3,499
+            </span>
+
+            <button
+              class="p6-btn p6-primary"
+              style="width:100%;margin-top:9px"
+              onclick="NEXORA_P6.demoCart('Running Shoes')">
+
+              Add to Cart
+
+            </button>
+
+          </div>
+
+
+          <div class="p6-sale-product">
+
+            <div class="p6-sale-image">
+              🎮
+            </div>
+
+            <div class="p6-sale-name">
+              Gaming Controller
+            </div>
+
+            <div class="p6-sale-price">
+              ₹3,299
+            </div>
+
+            <span class="p6-sale-old">
+              ₹4,999
+            </span>
+
+            <button
+              class="p6-btn p6-primary"
+              style="width:100%;margin-top:9px"
+              onclick="NEXORA_P6.demoCart('Gaming Controller')">
+
+              Add to Cart
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       RECOMMENDATIONS
+       ======================================================== -->
+
+  <section
+    id="p6Recommendations"
+    class="p6-section">
+
+    <div class="p6-container">
+
+      <h2 class="p6-title">
+        ✨ Recommended For You
+      </h2>
+
+      <p class="p6-subtitle">
+        Personalized discovery based on your browsing activity.
+      </p>
+
+      <div
+        id="p6RecommendationGrid"
+        class="p6-recommend-grid">
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       DEAL BANNERS
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <h2 class="p6-title">
+        🏷️ Today's Best Deals
+      </h2>
+
+      <p class="p6-subtitle">
+        Special offers curated for the NEXORA marketplace.
+      </p>
+
+      <div class="p6-deal-grid">
+
+        <div class="p6-card p6-deal-card">
+
+          <span class="p6-deal-tag">
+            ELECTRONICS
+          </span>
+
+          <div class="p6-deal-title">
+            Upgrade Your Tech
+          </div>
+
+          <div class="p6-deal-text">
+            Discover laptops, phones and smart devices.
+          </div>
+
+          <button
+            class="p6-btn p6-primary"
+            style="margin-top:15px"
+            onclick="NEXORA_P6.category('electronics')">
+
+            Shop Electronics
+
+          </button>
+
+          <div class="p6-deal-icon">
+            💻
+          </div>
+
+        </div>
+
+
+        <div class="p6-card p6-deal-card">
+
+          <span class="p6-deal-tag">
+            FASHION
+          </span>
+
+          <div class="p6-deal-title">
+            Fresh Style Drop
+          </div>
+
+          <div class="p6-deal-text">
+            New looks and everyday essentials.
+          </div>
+
+          <button
+            class="p6-btn p6-primary"
+            style="margin-top:15px"
+            onclick="NEXORA_P6.category('fashion')">
+
+            Shop Fashion
+
+          </button>
+
+          <div class="p6-deal-icon">
+            👕
+          </div>
+
+        </div>
+
+
+        <div class="p6-card p6-deal-card">
+
+          <span class="p6-deal-tag">
+            HOME
+          </span>
+
+          <div class="p6-deal-title">
+            Make Home Better
+          </div>
+
+          <div class="p6-deal-text">
+            Smart and stylish products for every room.
+          </div>
+
+          <button
+            class="p6-btn p6-primary"
+            style="margin-top:15px"
+            onclick="NEXORA_P6.category('home')">
+
+            Shop Home
+
+          </button>
+
+          <div class="p6-deal-icon">
+            🏠
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       NEW ARRIVALS
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <h2 class="p6-title">
+        🆕 New Arrivals
+      </h2>
+
+      <p class="p6-subtitle">
+        Fresh products recently added to the marketplace.
+      </p>
+
+      <div class="p6-new-layout">
+
+        <div class="p6-card p6-new-feature">
+
+          <div
+            style="
+              font-size:12px;
+              font-weight:850;
+              opacity:.8;
+            ">
+            JUST DROPPED
+          </div>
+
+          <div class="p6-new-feature-icon">
+            🚀
+          </div>
+
+          <h3 style="font-size:25px">
+            Explore What's New
+          </h3>
+
+          <p style="
+            color:#cbd5e1;
+            font-size:13px;
+            line-height:1.6;
+          ">
+            Discover new products from brands and sellers
+            joining NEXORA every day.
+          </p>
+
+          <button
+            class="p6-btn p6-light"
+            onclick="NEXORA_P6.showToast('New arrivals opened')">
+
+            Explore New
+
+          </button>
+
+        </div>
+
+
+        <div
+          id="p6NewProducts"
+          class="p6-new-products">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       TOP RATED
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <h2 class="p6-title">
+        ⭐ Top Rated
+      </h2>
+
+      <p class="p6-subtitle">
+        Products loved by the NEXORA community.
+      </p>
+
+      <div class="p6-rating-grid">
+
+        <div class="p6-card p6-rating-card">
+
+          <div style="font-size:42px">
+            📱
+          </div>
+
+          <div class="p6-rating-number">
+            4.9
+          </div>
+
+          <div class="p6-stars">
+            ⭐⭐⭐⭐⭐
+          </div>
+
+          <strong>
+            Nova Smartphone X
+          </strong>
+
+          <div class="p6-subtitle"
+               style="font-size:12px">
+            8,421 verified ratings
+          </div>
+
+        </div>
+
+
+        <div class="p6-card p6-rating-card">
+
+          <div style="font-size:42px">
+            🎧
+          </div>
+
+          <div class="p6-rating-number">
+            4.8
+          </div>
+
+          <div class="p6-stars">
+            ⭐⭐⭐⭐⭐
+          </div>
+
+          <strong>
+            Wireless Pro Audio
+          </strong>
+
+          <div class="p6-subtitle"
+               style="font-size:12px">
+            5,831 verified ratings
+          </div>
+
+        </div>
+
+
+        <div class="p6-card p6-rating-card">
+
+          <div style="font-size:42px">
+            💻
+          </div>
+
+          <div class="p6-rating-number">
+            4.8
+          </div>
+
+          <div class="p6-stars">
+            ⭐⭐⭐⭐⭐
+          </div>
+
+          <strong>
+            Creator Laptop
+          </strong>
+
+          <div class="p6-subtitle"
+               style="font-size:12px">
+            4,218 verified ratings
+          </div>
+
+        </div>
+
+
+        <div class="p6-card p6-rating-card">
+
+          <div style="font-size:42px">
+            👟
+          </div>
+
+          <div class="p6-rating-number">
+            4.7
+          </div>
+
+          <div class="p6-stars">
+            ⭐⭐⭐⭐⭐
+          </div>
+
+          <strong>
+            ActiveRun Shoes
+          </strong>
+
+          <div class="p6-subtitle"
+               style="font-size:12px">
+            3,941 verified ratings
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       GIFT CENTER
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <div class="p6-gift">
+
+        <div class="p6-gift-content">
+
+          <div>
+
+            <div class="p6-gift-title">
+              🎁 Gift Center
+            </div>
+
+            <p class="p6-gift-text">
+              Create a beautiful gift experience with
+              demo gift cards, occasions and curated
+              collections.
+            </p>
+
+            <button
+              class="p6-btn p6-light"
+              onclick="NEXORA_P6.openGiftCenter()">
+
+              Open Gift Center
+
+            </button>
+
+          </div>
+
+
+          <div class="p6-gift-cards">
+
+            <div class="p6-gift-card">
+              🎂 Birthday
+            </div>
+
+            <div class="p6-gift-card">
+              💝 Love
+            </div>
+
+            <div class="p6-gift-card">
+              🎉 Party
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       NOTIFICATIONS
+       ======================================================== -->
+
+  <section class="p6-section">
+
+    <div class="p6-container">
+
+      <h2 class="p6-title">
+        🔔 Latest Updates
+      </h2>
+
+      <p class="p6-subtitle">
+        Important marketplace activity and recommendations.
+      </p>
+
+      <div class="p6-card p6-notification-panel">
+
+        <div class="p6-notification">
+
+          <div class="p6-notification-icon">
+            🔥
+          </div>
+
+          <div>
+
+            <div class="p6-notification-title">
+              Flash Sale is live
+            </div>
+
+            <div class="p6-notification-text">
+              Limited-time offers are available now.
+            </div>
+
+            <div class="p6-notification-time">
+              Just now
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="p6-notification">
+
+          <div class="p6-notification-icon">
+            📦
+          </div>
+
+          <div>
+
+            <div class="p6-notification-title">
+              Order update available
+            </div>
+
+            <div class="p6-notification-text">
+              Check your Order Center for latest tracking.
+            </div>
+
+            <div class="p6-notification-time">
+              18 minutes ago
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="p6-notification">
+
+          <div class="p6-notification-icon">
+            🎁
+          </div>
+
+          <div>
+
+            <div class="p6-notification-title">
+              New reward unlocked
+            </div>
+
+            <div class="p6-notification-text">
+              Your loyalty progress has been updated.
+            </div>
+
+            <div class="p6-notification-time">
+              1 hour ago
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="p6-notification">
+
+          <div class="p6-notification-icon">
+            ✨
+          </div>
+
+          <div>
+
+            <div class="p6-notification-title">
+              New recommendations
+            </div>
+
+            <div class="p6-notification-text">
+              We found products you may like.
+            </div>
+
+            <div class="p6-notification-time">
+              2 hours ago
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       MOBILE NAV
+       ======================================================== -->
+
+  <nav class="p6-mobile-nav">
+
+    <div class="p6-mobile-nav-inner">
+
+      <button
+        onclick="NEXORA_P6.scrollToTop()">
+
+        <span class="p6-mobile-nav-icon">
+          🏠
+        </span>
+
+        Home
+
+      </button>
+
+
+      <button
+        onclick="NEXORA_P6.focusSearch()">
+
+        <span class="p6-mobile-nav-icon">
+          🔎
+        </span>
+
+        Search
+
+      </button>
+
+
+      <button
+        onclick="NEXORA_P6.scrollTo('p6FlashSale')">
+
+        <span class="p6-mobile-nav-icon">
+          🔥
+        </span>
+
+        Deals
+
+      </button>
+
+
+      <button
+        onclick="NEXORA_P6.scrollTo('p6Recommendations')">
+
+        <span class="p6-mobile-nav-icon">
+          ✨
+        </span>
+
+        For You
+
+      </button>
+
+
+      <button
+        onclick="NEXORA_P6.showToast('Account section opened')">
+
+        <span class="p6-mobile-nav-icon">
+          👤
+        </span>
+
+        Account
+
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ========================================================
+       PART 6 TOAST
+       ======================================================== -->
+
+  <div
+    id="p6Toast"
+    style="
+      position:fixed;
+      left:50%;
+      bottom:85px;
+      transform:translateX(-50%) translateY(20px);
+      background:#111827;
+      color:white;
+      padding:13px 18px;
+      border-radius:14px;
+      z-index:999999;
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+      font-size:13px;
+      font-weight:750;
+      box-shadow:0 20px 50px rgba(0,0,0,.25);
+    ">
+  Done
+  </div>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   NEXORA PART 6 ENGINE
+   ============================================================ */
+
+(function(){
+
+  "use strict";
+
+
+  const NEXORA_P6 = {
+
+    /* ========================================================
+       DATA
+       ======================================================== */
+
+    recommendations:[
+      {
+        name:"Nova Smartphone X",
+        brand:"NEXORA",
+        price:29999,
+        rating:4.8,
+        icon:"📱",
+        category:"electronics"
+      },
+
+      {
+        name:"Ultra Gaming Laptop",
+        brand:"NEXORA Gaming",
+        price:79999,
+        rating:4.9,
+        icon:"💻",
+        category:"gaming"
+      },
+
+      {
+        name:"Wireless Pro Headphones",
+        brand:"SoundMax",
+        price:4999,
+        rating:4.7,
+        icon:"🎧",
+        category:"electronics"
+      },
+
+      {
+        name:"ActiveRun Shoes",
+        brand:"ActiveRun",
+        price:2899,
+        rating:4.6,
+        icon:"👟",
+        category:"fashion"
+      },
+
+      {
+        name:"Smart LED TV",
+        brand:"VisionMax",
+        price:42999,
+        rating:4.7,
+        icon:"📺",
+        category:"electronics"
+      },
+
+      {
+        name:"Gaming Controller",
+        brand:"PlayZone",
+        price:4499,
+        rating:4.8,
+        icon:"🎮",
+        category:"gaming"
+      },
+
+      {
+        name:"Modern Office Chair",
+        brand:"ComfortHub",
+        price:8999,
+        rating:4.4,
+        icon:"🪑",
+        category:"home"
+      },
+
+      {
+        name:"Premium Coffee Maker",
+        brand:"HomeBrew",
+        price:6499,
+        rating:4.5,
+        icon:"☕",
+        category:"home"
+      },
+
+      {
+        name:"GlowCare Essentials",
+        brand:"GlowCare",
+        price:1299,
+        rating:4.6,
+        icon:"🧴",
+        category:"beauty"
+      },
+
+      {
+        name:"Coding Handbook",
+        brand:"BookWorld",
+        price:799,
+        rating:4.9,
+        icon:"📚",
+        category:"books"
+      }
+
+    ],
+
+
+    newProducts:[
+      {
+        name:"Smart Ring Air",
+        price:4999,
+        icon:"💍"
+      },
+
+      {
+        name:"AI Desk Lamp",
+        price:2399,
+        icon:"💡"
+      },
+
+      {
+        name:"Creator Mic Mini",
+        price:5999,
+        icon:"🎙️"
+      },
+
+      {
+        name:"Travel Backpack X",
+        price:1899,
+        icon:"🎒"
+      },
+
+      {
+        name:"Smart Home Hub",
+        price:3499,
+        icon:"🏠"
+      },
+
+      {
+        name:"Portable Projector",
+        price:12999,
+        icon:"📽️"
+      },
+
+      {
+        name:"Gaming Desk",
+        price:14999,
+        icon:"🖥️"
+      },
+
+      {
+        name:"Digital Notebook",
+        price:7999,
+        icon:"📓"
+      }
+
+    ],
+
+
+    searchHistory:[],
+
+
+    /* ========================================================
+       INIT
+       ======================================================== */
+
+    init(){
+
+      this.load();
+
+      this.renderRecommendations();
+
+      this.renderNewProducts();
+
+      this.startCountdown();
+
+    },
+
+
+    /* ========================================================
+       LOAD
+       ======================================================== */
+
+    load(){
+
+      try{
+
+        const saved =
+          localStorage.getItem(
+            "NEXORA_P6_SEARCH_HISTORY"
+          );
+
+        if(saved){
+
+          this.searchHistory =
+            JSON.parse(saved);
+
+        }
+
+      }catch(error){
+
+        console.warn(
+          "P6 localStorage unavailable",
+          error
+        );
+
+      }
+
+    },
+
+
+    /* ========================================================
+       SAVE
+       ======================================================== */
+
+    save(){
+
+      try{
+
+        localStorage.setItem(
+          "NEXORA_P6_SEARCH_HISTORY",
+          JSON.stringify(
+            this.searchHistory
+          )
+        );
+
+      }catch(error){
+
+        console.warn(
+          "P6 save error",
+          error
+        );
+
+      }
+
+    },
+
+
+    /* ========================================================
+       RECOMMENDATIONS
+       ======================================================== */
+
+    renderRecommendations(){
+
+      const grid =
+        document.getElementById(
+          "p6RecommendationGrid"
+        );
+
+      if(!grid){
+        return;
+      }
+
+
+      grid.innerHTML =
+        this.recommendations
+        .map(product=>`
+
+          <article class="p6-card p6-rec-card">
+
+            <div class="p6-rec-image">
+
+              ${product.icon}
+
+            </div>
+
+            <div class="p6-rec-body">
+
+              <div class="p6-rec-badge">
+
+                ${product.brand}
+
+              </div>
+
+              <div class="p6-rec-name">
+
+                ${product.name}
+
+              </div>
+
+              <div class="p6-rec-rating">
+
+                ⭐ ${product.rating}
+
+              </div>
+
+              <div class="p6-rec-price">
+
+                ₹${this.money(product.price)}
+
+              </div>
+
+              <button
+                class="p6-btn p6-primary p6-rec-action"
+                onclick="
+                  NEXORA_P6.demoCart(
+                    '${product.name.replace(/'/g,"\\'")}'
+                  )
+                ">
+
+                🛒 Add to Cart
+
+              </button>
+
+            </div>
+
+          </article>
+
+        `)
+        .join("");
+
+    },
+
+
+    /* ========================================================
+       NEW PRODUCTS
+       ======================================================== */
+
+    renderNewProducts(){
+
+      const grid =
+        document.getElementById(
+          "p6NewProducts"
+        );
+
+      if(!grid){
+        return;
+      }
+
+
+      grid.innerHTML =
+        this.newProducts
+        .map(product=>`
+
+          <div class="p6-card p6-rec-card">
+
+            <div class="p6-rec-image">
+
+              ${product.icon}
+
+            </div>
+
+            <div class="p6-rec-body">
+
+              <div class="p6-rec-badge">
+                NEW
+              </div>
+
+              <div class="p6-rec-name">
+                ${product.name}
+              </div>
+
+              <div class="p6-rec-price">
+                ₹${this.money(product.price)}
+              </div>
+
+              <button
+                class="p6-btn p6-light p6-rec-action"
+                onclick="
+                  NEXORA_P6.demoCart(
+                    '${product.name.replace(/'/g,"\\'")}'
+                  )
+                ">
+
+                Explore
+
+              </button>
+
+            </div>
+
+          </div>
+
+        `)
+        .join("");
+
+    },
+
+
+    /* ========================================================
+       SEARCH
+       ======================================================== */
+
+    searchSuggest(value){
+
+      const list =
+        document.getElementById(
+          "p6SuggestionList"
+        );
+
+      if(!list){
+        return;
+      }
+
+
+      const term =
+        value.trim().toLowerCase();
+
+
+      if(!term){
+
+        list.innerHTML = `
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Smartphone')">
+            📱 Smartphones
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Gaming')">
+            🎮 Gaming
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Shoes')">
+            👟 Shoes
+          </button>
+
+          <button
+            class="p6-suggestion"
+            onclick="NEXORA_P6.fillSearch('Laptop')">
+            💻 Laptops
+          </button>
+
+        `;
+
+        return;
+
+      }
+
+
+      const suggestions = [
+
+        "Smartphone",
+
+        "Gaming Laptop",
+
+        "Wireless Headphones",
+
+        "Running Shoes",
+
+        "Smart Watch",
+
+        "Home Decor",
+
+        "Office Chair",
+
+        "Books",
+
+        "Bluetooth Speaker",
+
+        "Keyboard"
+
+      ];
+
+
+      const filtered =
+        suggestions.filter(
+          item =>
+            item.toLowerCase()
+              .includes(term)
+        );
+
+
+      list.innerHTML =
+        filtered
+        .map(item=>`
+
+          <button
+            class="p6-suggestion"
+            onclick="
+              NEXORA_P6.fillSearch(
+                '${item}'
+              )
+            ">
+
+            🔎 ${item}
+
+          </button>
+
+        `)
+        .join("");
+
+    },
+
+
+    fillSearch(value){
+
+      const input =
+        document.getElementById(
+          "p6SearchInput"
+        );
+
+      if(input){
+
+        input.value =
+          value;
+
+      }
+
+      this.executeSearch();
+
+    },
+
+
+    executeSearch(){
+
+      const input =
+        document.getElementById(
+          "p6SearchInput"
+        );
+
+      if(!input){
+        return;
+      }
+
+
+      const value =
+        input.value.trim();
+
+
+      if(!value){
+
+        this.showToast(
+          "Type something to search"
+        );
+
+        return;
+
+      }
+
+
+      this.searchHistory =
+        this.searchHistory.filter(
+          item =>
+            item.toLowerCase() !==
+            value.toLowerCase()
+        );
+
+
+      this.searchHistory.unshift(
+        value
+      );
+
+
+      this.searchHistory =
+        this.searchHistory.slice(
+          0,
+          10
+        );
+
+
+      this.save();
+
+
+      this.showToast(
+        "Searching for: " +
+        value
+      );
+
+
+      /* Try existing P5 search system */
+
+      if(
+        window.NEXORA_P5 &&
+        typeof
+        window.NEXORA_P5.quickSearch ===
+        "function"
+      ){
+
+        window.NEXORA_P5.quickSearch(
+          value
+        );
+
+      }
+
+    },
+
+
+    /* ========================================================
+       CATEGORY
+       ======================================================== */
+
+    category(category){
+
+      this.showToast(
+        "Opening " +
+        category +
+        " category"
+      );
+
+
+      if(
+        window.NEXORA_P5 &&
+        typeof
+        window.NEXORA_P5.quickSearch ===
+        "function"
+      ){
+
+        window.NEXORA_P5.quickSearch(
+          category
+        );
+
+      }
+
+    },
+
+
+    /* ========================================================
+       CART
+       ======================================================== */
+
+    demoCart(name){
+
+      try{
+
+        const cart =
+          JSON.parse(
+            localStorage.getItem(
+              "NEXORA_CART"
+            ) || "[]"
+          );
+
+
+        cart.push({
+
+          id:
+            "P6-" +
+            Date.now(),
+
+          name:name,
+
+          qty:1,
+
+          source:"NEXORA_P6"
+
+        });
+
+
+        localStorage.setItem(
+          "NEXORA_CART",
+          JSON.stringify(cart)
+        );
+
+
+      }catch(error){
+
+        console.warn(error);
+
+      }
+
+
+      this.showToast(
+        name +
+        " added to cart 🛒"
+      );
+
+    },
+
+
+    /* ========================================================
+       LOCATION
+       ======================================================== */
+
+    changeLocation(){
+
+      const location =
+        prompt(
+          "Enter your delivery city:"
+        );
+
+
+      if(!location){
+        return;
+      }
+
+
+      const text =
+        document.getElementById(
+          "p6LocationText"
+        );
+
+
+      if(text){
+
+        text.textContent =
+          location;
+
+      }
+
+
+      try{
+
+        localStorage.setItem(
+          "NEXORA_P6_LOCATION",
+          location
+        );
+
+      }catch(error){
+
+        console.warn(error);
+
+      }
+
+
+      this.showToast(
+        "Delivery location updated"
+      );
+
+    },
+
+
+    /* ========================================================
+       GIFT CENTER
+       ======================================================== */
+
+    openGiftCenter(){
+
+      const modal = `
+
+        <div
+          id="p6GiftModal"
+          style="
+            position:fixed;
+            inset:0;
+            background:rgba(15,23,42,.65);
+            backdrop-filter:blur(6px);
+            z-index:999999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+          "
+          onclick="
+            if(event.target===this)
+            NEXORA_P6.closeGiftCenter()
+          ">
+
+          <div
+            style="
+              background:#fff;
+              width:min(700px,100%);
+              border-radius:25px;
+              padding:28px;
+              position:relative;
+            ">
+
+            <button
+              onclick="
+                NEXORA_P6.closeGiftCenter()
+              "
+              style="
+                position:absolute;
+                right:15px;
+                top:15px;
+                width:38px;
+                height:38px;
+                border:0;
+                border-radius:50%;
+                cursor:pointer;
+              ">
+
+              ×
+
+            </button>
+
+            <div style="font-size:50px">
+              🎁
+            </div>
+
+            <h2>
+              NEXORA Gift Center
+            </h2>
+
+            <p style="
+              color:#6b7280;
+              line-height:1.6;
+            ">
+              Choose a demo gift experience.
+            </p>
+
+            <div
+              style="
+                display:grid;
+                grid-template-columns:
+                repeat(3,1fr);
+                gap:12px;
+                margin-top:20px;
+              ">
+
+              <button
+                class="p6-btn p6-light"
+                onclick="
+                  NEXORA_P6.showToast(
+                    'Birthday gift selected'
+                  )
+                ">
+
+                🎂 Birthday
+
+              </button>
+
+              <button
+                class="p6-btn p6-light"
+                onclick="
+                  NEXORA_P6.showToast(
+                    'Celebration gift selected'
+                  )
+                ">
+
+                🎉 Celebration
+
+              </button>
+
+              <button
+                class="p6-btn p6-light"
+                onclick="
+                  NEXORA_P6.showToast(
+                    'Thank you gift selected'
+                  )
+                ">
+
+                💝 Thank You
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        modal
+      );
+
+    },
+
+
+    closeGiftCenter(){
+
+      const modal =
+        document.getElementById(
+          "p6GiftModal"
+        );
+
+      if(modal){
+        modal.remove();
+      }
+
+    },
+
+
+    /* ========================================================
+       COUNTDOWN
+       ======================================================== */
+
+    startCountdown(){
+
+      let total =
+        5 * 60 * 60 +
+        42 * 60 +
+        18;
+
+
+      const update = ()=>{
+
+        if(total <= 0){
+
+          total =
+            6 * 60 * 60;
+
+        }
+
+
+        total--;
+
+
+        const hours =
+          Math.floor(
+            total / 3600
+          );
+
+
+        const minutes =
+          Math.floor(
+            (total % 3600) / 60
+          );
+
+
+        const seconds =
+            total % 60;
+
+
+        const h =
+          document.getElementById(
+            "p6Hours"
+          );
+
+        const m =
+          document.getElementById(
+            "p6Minutes"
+          );
+
+        const s =
+          document.getElementById(
+            "p6Seconds"
+          );
+
+
+        if(h){
+
+          h.textContent =
+            String(hours)
+              .padStart(2,"0");
+
+        }
+
+
+        if(m){
+
+          m.textContent =
+            String(minutes)
+              .padStart(2,"0");
+
+        }
+
+
+        if(s){
+
+          s.textContent =
+            String(seconds)
+              .padStart(2,"0");
+
+        }
+
+      };
+
+
+      update();
+
+      setInterval(
+        update,
+        1000
+      );
+
+    },
+
+
+    /* ========================================================
+       SCROLL
+       ======================================================== */
+
+    scrollTo(id){
+
+      const element =
+        document.getElementById(
+          id
+        );
+
+      if(element){
+
+        element.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+      }
+
+    },
+
+
+    scrollToTop(){
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    },
+
+
+    focusSearch(){
+
+      const input =
+        document.getElementById(
+          "p6SearchInput"
+        );
+
+      if(input){
+
+        input.focus();
+
+        input.scrollIntoView({
+          behavior:"smooth",
+          block:"center"
+        });
+
+      }
+
+    },
+
+
+    /* ========================================================
+       MONEY
+       ======================================================== */
+
+    money(value){
+
+      return Number(value)
+        .toLocaleString(
+          "en-IN"
+        );
+
+    },
+
+
+    /* ========================================================
+       TOAST
+       ======================================================== */
+
+    showToast(message){
+
+      const toast =
+        document.getElementById(
+          "p6Toast"
+        );
+
+      if(!toast){
+        return;
+      }
+
+
+      toast.textContent =
+        message;
+
+
+      toast.style.opacity =
+        "1";
+
+
+      toast.style.transform =
+        "translateX(-50%) translateY(0)";
+
+
+      clearTimeout(
+        this.toastTimer
+      );
+
+
+      this.toastTimer =
+        setTimeout(()=>{
+
+          toast.style.opacity =
+            "0";
+
+          toast.style.transform =
+            "translateX(-50%) translateY(20px)";
+
+        },2600);
+
+    }
+
+  };
+
+
+  /* ==========================================================
+     GLOBAL
+     ========================================================== */
+
+  window.NEXORA_P6 =
+    NEXORA_P6;
+
+
+  /* ==========================================================
+     START
+     ========================================================== */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+      NEXORA_P6.init();
+
+
+      try{
+
+        const location =
+          localStorage.getItem(
+            "NEXORA_P6_LOCATION"
+          );
+
+        if(location){
+
+          const text =
+            document.getElementById(
+              "p6LocationText"
+            );
+
+          if(text){
+            text.textContent =
+              location;
+          }
+
+        }
+
+      }catch(error){
+
+        console.warn(error);
+
+      }
+
+    }
+  );
+
+
+})();
+</script>
+
+<!-
 
