@@ -2,1526 +2,5606 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#111827">
-<title>MEGAWORLD — Everything Marketplace</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2874f0">
+<meta name="description" content="NEXORA - Modern All In One Shopping Marketplace">
+<title>NEXORA — Everything You Need</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+/* =========================================================
+   NEXORA MARKETPLACE
+   PART 1 / 15
+   Foundation + Premium UI + Header + Hero + Categories
+   ========================================================= */
+
 :root{
-  --bg:#f5f7fb;
-  --card:#fff;
-  --text:#111827;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-  --primary:#2563eb;
-  --primary2:#1d4ed8;
-  --danger:#ef4444;
-  --success:#16a34a;
-  --warning:#f59e0b;
-  --shadow:0 8px 30px rgba(0,0,0,.08);
-  --radius:18px;
+    --primary:#2874f0;
+    --primary-dark:#1557c0;
+    --secondary:#ff9f00;
+    --danger:#e53935;
+    --success:#16a34a;
+    --warning:#f59e0b;
+    --purple:#7c3aed;
+    --pink:#ec4899;
+    --cyan:#0891b2;
+
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+    --shadow:0 8px 30px rgba(20,30,50,.08);
+    --shadow-hover:0 16px 40px rgba(20,30,50,.15);
+
+    --radius:14px;
+    --header:72px;
 }
-body.dark{
-  --bg:#0b1120;
-  --card:#111827;
-  --text:#f9fafb;
-  --muted:#9ca3af;
-  --line:#263244;
-  --shadow:0 8px 30px rgba(0,0,0,.3);
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.hidden{display:none!important}
 
-/* TOP BAR */
-.topbar{
-  background:#111827;color:#fff;padding:8px 4%;
-  display:flex;justify-content:space-between;gap:15px;
-  font-size:13px;align-items:center;
+button,
+input,
+select,
+textarea{
+    font:inherit;
 }
-.topbar .links{display:flex;gap:18px;flex-wrap:wrap}
-.topbar span{opacity:.9}
 
-/* HEADER */
-.header{
-  background:var(--card);
-  border-bottom:1px solid var(--line);
-  position:sticky;top:0;z-index:1000;
+button{
+    cursor:pointer;
+    border:0;
 }
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1440px,94%);
+    margin:auto;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================================================
+   TOP ANNOUNCEMENT
+   ========================================================= */
+
+.top-strip{
+    min-height:36px;
+    background:#172337;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:7px 15px;
+    font-size:13px;
+}
+
+.top-strip-inner{
+    width:min(1440px,94%);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.top-strip-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.top-strip-right{
+    display:flex;
+    gap:18px;
+    opacity:.9;
+}
+
+.top-link{
+    cursor:pointer;
+    transition:.2s;
+}
+
+.top-link:hover{
+    color:#ffd166;
+}
+
+/* =========================================================
+   MAIN HEADER
+   ========================================================= */
+
+.main-header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
 .header-main{
-  padding:14px 4%;
-  display:flex;align-items:center;gap:18px;
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
+
 .logo{
-  font-size:27px;font-weight:900;letter-spacing:-1.5px;
-  white-space:nowrap;color:var(--primary);
+    min-width:175px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:var(--primary);
 }
-.logo span{color:#111827}
-body.dark .logo span{color:#fff}
-.search{
-  flex:1;position:relative;min-width:180px;
-}
-.search input{
-  width:100%;padding:14px 50px 14px 18px;
-  border:1px solid var(--line);border-radius:14px;
-  outline:none;background:var(--bg);color:var(--text);
-}
-.search button{
-  position:absolute;right:7px;top:7px;
-  width:36px;height:36px;border-radius:10px;
-  background:var(--primary);color:#fff;
-}
-.header-actions{display:flex;gap:8px;align-items:center}
-.icon-btn{
-  min-width:44px;height:44px;border-radius:12px;
-  background:var(--bg);color:var(--text);
-  border:1px solid var(--line);padding:0 10px;
-}
-.icon-btn:hover{background:var(--primary);color:white}
-.badge{
-  display:inline-flex;background:var(--danger);color:white;
-  min-width:19px;height:19px;border-radius:50%;
-  align-items:center;justify-content:center;font-size:11px;
-}
-.nav{
-  display:flex;gap:7px;overflow:auto;padding:0 4% 12px;
-}
-.nav button{
-  padding:9px 14px;background:transparent;color:var(--text);
-  border-radius:10px;white-space:nowrap;
-}
-.nav button:hover{background:var(--bg);color:var(--primary)}
 
-/* HERO */
-.hero{
-  margin:24px 4%;border-radius:28px;overflow:hidden;
-  background:linear-gradient(135deg,#1d4ed8,#7c3aed);
-  color:#fff;min-height:390px;display:grid;
-  grid-template-columns:1.2fr .8fr;align-items:center;
-  padding:50px;position:relative;
+.logo-mark{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#2874f0,#7c3aed);
+    color:#fff;
+    box-shadow:0 8px 20px rgba(40,116,240,.25);
 }
-.hero:after{
-  content:"";position:absolute;width:380px;height:380px;
-  border-radius:50%;right:5%;top:-100px;
-  background:rgba(255,255,255,.1);
+
+.logo small{
+    display:block;
+    font-size:9px;
+    color:#f59e0b;
+    letter-spacing:1px;
+    margin-top:-4px;
 }
-.hero h1{font-size:clamp(38px,6vw,72px);line-height:.95;
-  letter-spacing:-4px;max-width:720px}
-.hero p{font-size:18px;margin:24px 0;max-width:650px;opacity:.9}
-.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+
+.location-box{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 12px;
+    border-radius:10px;
+    background:#f7f8fa;
+    min-width:145px;
+    cursor:pointer;
+}
+
+.location-icon{
+    font-size:20px;
+}
+
+.location-text{
+    font-size:11px;
+    color:var(--muted);
+}
+
+.location-text strong{
+    display:block;
+    color:var(--text);
+    font-size:13px;
+}
+
+/* Search */
+
+.search-wrap{
+    flex:1;
+    position:relative;
+    max-width:680px;
+}
+
+.search-box{
+    height:46px;
+    display:flex;
+    align-items:center;
+    background:#f1f5fb;
+    border:1px solid transparent;
+    border-radius:10px;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.search-box:focus-within{
+    background:#fff;
+    border-color:#8bb3f8;
+    box-shadow:0 0 0 4px rgba(40,116,240,.1);
+}
+
+.search-category{
+    height:100%;
+    border:0;
+    background:transparent;
+    padding:0 12px;
+    color:#555;
+    border-right:1px solid #ddd;
+    outline:0;
+}
+
+.search-input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    padding:0 14px;
+    min-width:0;
+}
+
+.search-btn{
+    width:54px;
+    height:100%;
+    background:var(--primary);
+    color:#fff;
+    font-size:20px;
+    transition:.2s;
+}
+
+.search-btn:hover{
+    background:var(--primary-dark);
+}
+
+.search-suggestions{
+    position:absolute;
+    left:0;
+    right:0;
+    top:54px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:var(--shadow-hover);
+    overflow:hidden;
+    display:none;
+    z-index:2000;
+}
+
+.search-suggestions.active{
+    display:block;
+}
+
+.suggestion{
+    padding:11px 15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.suggestion:hover{
+    background:#f4f7fc;
+}
+
+.suggestion-icon{
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    background:#f0f4fa;
+    display:grid;
+    place-items:center;
+}
+
+/* Header actions */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.header-action{
+    position:relative;
+    min-width:62px;
+    height:56px;
+    padding:5px 7px;
+    border-radius:10px;
+    background:transparent;
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:2px;
+    transition:.2s;
+}
+
+.header-action:hover{
+    background:#f2f6fc;
+    color:var(--primary);
+}
+
+.header-action .icon{
+    font-size:20px;
+}
+
+.header-action span:last-child{
+    font-size:11px;
+    white-space:nowrap;
+}
+
+.badge-count{
+    position:absolute;
+    top:5px;
+    right:8px;
+    min-width:18px;
+    height:18px;
+    border-radius:20px;
+    background:var(--danger);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-size:10px;
+    font-weight:800;
+    padding:0 4px;
+}
+
+/* =========================================================
+   CATEGORY NAV
+   ========================================================= */
+
+.category-nav{
+    border-top:1px solid #edf0f4;
+    background:#fff;
+}
+
+.category-nav-inner{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.category-nav-inner::-webkit-scrollbar{
+    display:none;
+}
+
+.nav-item{
+    position:relative;
+    padding:13px 15px;
+    font-size:13px;
+    font-weight:700;
+    white-space:nowrap;
+    cursor:pointer;
+    color:#374151;
+    transition:.2s;
+}
+
+.nav-item:hover{
+    color:var(--primary);
+    background:#f5f8ff;
+}
+
+.nav-item.hot{
+    color:#e11d48;
+}
+
+.mega-trigger::after{
+    content:"⌄";
+    margin-left:6px;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-section{
+    padding:18px 0 10px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:2.1fr .9fr;
+    gap:16px;
+}
+
+.hero-slider{
+    position:relative;
+    min-height:365px;
+    border-radius:20px;
+    overflow:hidden;
+    color:#fff;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.18),transparent 30%),
+        linear-gradient(120deg,#1d4ed8,#6d28d9);
+    box-shadow:var(--shadow);
+}
+
+.hero-slide{
+    position:absolute;
+    inset:0;
+    padding:48px 55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    opacity:0;
+    transform:translateX(20px);
+    transition:.5s;
+    pointer-events:none;
+}
+
+.hero-slide.active{
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+}
+
+.hero-kicker{
+    display:inline-flex;
+    width:max-content;
+    padding:6px 12px;
+    border-radius:30px;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.2);
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.hero-title{
+    font-size:clamp(32px,4vw,58px);
+    line-height:1.03;
+    max-width:680px;
+    letter-spacing:-2px;
+    margin-bottom:16px;
+}
+
+.hero-subtitle{
+    max-width:560px;
+    opacity:.9;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
 .btn{
-  padding:12px 18px;border-radius:12px;
-  background:var(--primary);color:white;font-weight:700;
+    min-height:42px;
+    padding:10px 17px;
+    border-radius:9px;
+    font-weight:800;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    transition:.2s;
 }
-.btn.light{background:#fff;color:#111827}
-.btn.dark{background:#111827;color:#fff}
-.btn.outline{background:transparent;border:1px solid var(--line);color:var(--text)}
-.btn.danger{background:var(--danger)}
-.btn.success{background:var(--success)}
-.btn.small{padding:8px 12px;font-size:13px}
-.hero-card{
-  background:rgba(255,255,255,.13);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.2);border-radius:25px;
-  padding:28px;position:relative;z-index:2;
-}
-.hero-card h3{font-size:24px;margin-bottom:15px}
-.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.hero-stat{background:rgba(0,0,0,.15);padding:17px;border-radius:15px}
-.hero-stat strong{display:block;font-size:25px}
 
-/* LAYOUT */
-.container{padding:0 4%;margin-bottom:50px}
-.section{margin:42px 0}
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark);
+    transform:translateY(-1px);
+}
+
+.btn-white{
+    background:#fff;
+    color:#1d4ed8;
+}
+
+.btn-white:hover{
+    transform:translateY(-2px);
+}
+
+.btn-dark{
+    background:#172033;
+    color:#fff;
+}
+
+.btn-outline{
+    border:1px solid var(--border);
+    background:#fff;
+}
+
+.btn-outline:hover{
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+.btn-success{
+    background:#16a34a;
+    color:#fff;
+}
+
+.btn-danger{
+    background:#e53935;
+    color:#fff;
+}
+
+.btn-warning{
+    background:#f59e0b;
+    color:#fff;
+}
+
+.btn-purple{
+    background:#7c3aed;
+    color:#fff;
+}
+
+.hero-art{
+    position:absolute;
+    right:3%;
+    bottom:0;
+    width:42%;
+    height:100%;
+    pointer-events:none;
+}
+
+.hero-orb{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    right:8%;
+    top:14%;
+}
+
+.hero-device{
+    position:absolute;
+    right:7%;
+    bottom:-20px;
+    width:280px;
+    height:350px;
+    border-radius:30px 30px 0 0;
+    background:linear-gradient(145deg,#fff,#dbeafe);
+    transform:rotate(-7deg);
+    box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+.hero-device-screen{
+    margin:22px;
+    height:220px;
+    border-radius:20px;
+    background:
+        linear-gradient(135deg,#60a5fa,#8b5cf6);
+    display:grid;
+    place-items:center;
+    font-size:70px;
+}
+
+.hero-dots{
+    position:absolute;
+    bottom:17px;
+    left:55px;
+    display:flex;
+    gap:6px;
+    z-index:5;
+}
+
+.hero-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    cursor:pointer;
+}
+
+.hero-dot.active{
+    width:26px;
+    border-radius:20px;
+    background:#fff;
+}
+
+.hero-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.2);
+    z-index:5;
+}
+
+.hero-arrow:hover{
+    background:#fff;
+    color:var(--primary);
+}
+
+.hero-prev{
+    left:15px;
+}
+
+.hero-next{
+    right:15px;
+}
+
+/* Hero side cards */
+
+.hero-side{
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    gap:16px;
+}
+
+.promo-card{
+    border-radius:20px;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+    box-shadow:var(--shadow);
+}
+
+.promo-card:nth-child(1){
+    background:linear-gradient(135deg,#f97316,#ef4444);
+}
+
+.promo-card:nth-child(2){
+    background:linear-gradient(135deg,#059669,#0891b2);
+}
+
+.promo-card h3{
+    font-size:23px;
+    line-height:1.1;
+    max-width:230px;
+    margin-bottom:8px;
+}
+
+.promo-card p{
+    font-size:13px;
+    opacity:.9;
+    max-width:240px;
+    margin-bottom:15px;
+}
+
+.promo-icon{
+    position:absolute;
+    right:20px;
+    bottom:10px;
+    font-size:75px;
+    opacity:.2;
+}
+
+/* =========================================================
+   QUICK SERVICES
+   ========================================================= */
+
+.service-strip{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    background:#fff;
+    border-radius:16px;
+    margin:14px 0 25px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.service-item{
+    min-height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    border-right:1px solid var(--border);
+    padding:12px;
+}
+
+.service-item:last-child{
+    border:0;
+}
+
+.service-icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:#eef4ff;
+    font-size:22px;
+}
+
+.service-item strong{
+    display:block;
+    font-size:13px;
+}
+
+.service-item span{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* =========================================================
+   SECTION COMMON
+   ========================================================= */
+
+.section{
+    margin:25px 0;
+}
+
 .section-head{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:15px;margin-bottom:18px
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:14px;
 }
-.section-head h2{font-size:28px;letter-spacing:-1px}
-.section-head p{color:var(--muted);font-size:14px}
-.viewall{color:var(--primary);font-weight:700}
 
-/* CATEGORIES */
+.section-title{
+    font-size:24px;
+    letter-spacing:-.5px;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:3px;
+}
+
+.view-all{
+    color:var(--primary);
+    font-size:13px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.section-controls{
+    display:flex;
+    gap:7px;
+}
+
+.circle-btn{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#fff;
+    border:1px solid var(--border);
+    display:grid;
+    place-items:center;
+}
+
+.circle-btn:hover{
+    color:var(--primary);
+    border-color:var(--primary);
+}
+
+/* =========================================================
+   CATEGORY CARDS
+   ========================================================= */
+
 .category-grid{
-  display:grid;grid-template-columns:repeat(8,1fr);gap:12px;
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:12px;
 }
-.category{
-  background:var(--card);border:1px solid var(--line);
-  border-radius:17px;padding:20px 10px;text-align:center;
-  transition:.2s;box-shadow:0 3px 12px rgba(0,0,0,.03);
-}
-.category:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.category .emoji{font-size:34px;margin-bottom:9px}
-.category small{color:var(--muted)}
 
-/* DEAL STRIP */
-.deal-strip{
-  display:grid;grid-template-columns:1fr auto;
-  gap:20px;background:var(--card);border:1px solid var(--line);
-  border-radius:20px;padding:22px;align-items:center;
+.category-card{
+    background:#fff;
+    border:1px solid #edf0f5;
+    border-radius:14px;
+    padding:16px 8px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
 }
-.countdown{display:flex;gap:8px}
-.timebox{
-  background:#111827;color:#fff;padding:10px 12px;
-  border-radius:10px;text-align:center;min-width:58px;
-}
-.timebox strong{display:block;font-size:19px}
-.timebox small{font-size:10px;color:#d1d5db}
 
-/* PRODUCT GRID */
+.category-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow-hover);
+    border-color:#c9dafe;
+}
+
+.category-image{
+    width:72px;
+    height:72px;
+    margin:auto;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:34px;
+    background:#f2f5fb;
+}
+
+.category-card h4{
+    margin-top:10px;
+    font-size:13px;
+}
+
+.category-card p{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:3px;
+}
+
+/* =========================================================
+   DEALS BANNER
+   ========================================================= */
+
+.deal-banner{
+    min-height:150px;
+    border-radius:18px;
+    padding:25px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:#fff;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.18),transparent 30%),
+        linear-gradient(100deg,#111827,#374151);
+    overflow:hidden;
+}
+
+.deal-left{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.deal-icon{
+    font-size:58px;
+}
+
+.deal-banner h2{
+    font-size:28px;
+}
+
+.deal-banner p{
+    opacity:.8;
+    font-size:13px;
+}
+
+.timer{
+    display:flex;
+    gap:6px;
+    margin-top:10px;
+}
+
+.time-box{
+    min-width:45px;
+    padding:6px;
+    border-radius:7px;
+    text-align:center;
+    background:#fff;
+    color:#111827;
+    font-weight:900;
+}
+
+.time-box small{
+    display:block;
+    font-size:8px;
+    color:#6b7280;
+}
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
 .product-grid{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:16px;
-}
-.product{
-  background:var(--card);border:1px solid var(--line);
-  border-radius:18px;overflow:hidden;position:relative;
-  transition:.2s;
-}
-.product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.product-img{
-  height:190px;background:var(--bg);
-  display:flex;align-items:center;justify-content:center;
-  font-size:72px;position:relative;
-}
-.product-img .heart{
-  position:absolute;right:10px;top:10px;width:36px;height:36px;
-  border-radius:50%;background:var(--card);color:var(--text);
-}
-.product-body{padding:14px}
-.product-title{
-  font-weight:700;line-height:1.3;min-height:40px;
-}
-.product-meta{color:var(--muted);font-size:12px;margin:7px 0}
-.rating{color:#f59e0b;font-size:13px}
-.price{font-size:20px;font-weight:900;margin-top:7px}
-.old{text-decoration:line-through;color:var(--muted);font-size:12px;margin-left:5px}
-.discount{color:var(--success);font-size:12px;font-weight:700}
-.product-actions{display:flex;gap:7px;margin-top:12px}
-.product-actions button{flex:1}
-.stock{font-size:11px;color:var(--danger);margin-top:7px}
-
-/* FILTER BAR */
-.filterbar{
-  display:flex;gap:9px;flex-wrap:wrap;background:var(--card);
-  border:1px solid var(--line);padding:14px;border-radius:16px;
-  margin-bottom:18px;
-}
-.filterbar input,.filterbar select{
-  padding:10px 12px;border:1px solid var(--line);
-  background:var(--bg);color:var(--text);border-radius:10px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
 }
 
-/* CARDS */
-.cards{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+.product-card{
+    background:#fff;
+    border:1px solid #edf0f5;
+    border-radius:15px;
+    overflow:hidden;
+    position:relative;
+    transition:.25s;
 }
-.info-card{
-  background:var(--card);border:1px solid var(--line);
-  padding:22px;border-radius:18px;
-}
-.info-card .big{font-size:35px;margin-bottom:12px}
-.info-card h3{margin-bottom:7px}
-.info-card p{color:var(--muted);font-size:14px;line-height:1.5}
 
-/* BRAND */
+.product-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-hover);
+}
+
+.product-image-wrap{
+    height:210px;
+    background:#f7f8fb;
+    position:relative;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+}
+
+.product-image-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.35s;
+}
+
+.product-card:hover .product-image-wrap img{
+    transform:scale(1.06);
+}
+
+.product-badge{
+    position:absolute;
+    left:9px;
+    top:9px;
+    padding:5px 8px;
+    border-radius:6px;
+    background:#16a34a;
+    color:#fff;
+    font-size:10px;
+    font-weight:900;
+}
+
+.product-wish{
+    position:absolute;
+    right:9px;
+    top:9px;
+    width:33px;
+    height:33px;
+    border-radius:50%;
+    background:#fff;
+    display:grid;
+    place-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.product-wish:hover{
+    color:#e11d48;
+}
+
+.product-info{
+    padding:13px;
+}
+
+.product-brand{
+    color:#7c3aed;
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-size:14px;
+    font-weight:700;
+    margin:5px 0;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.rating{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:11px;
+    background:#ecfdf5;
+    color:#15803d;
+    padding:3px 6px;
+    border-radius:5px;
+}
+
+.product-rating-count{
+    color:#9ca3af;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-top:8px;
+}
+
+.price{
+    font-size:19px;
+    font-weight:900;
+}
+
+.old-price{
+    color:#9ca3af;
+    font-size:12px;
+    text-decoration:line-through;
+}
+
+.discount{
+    color:#16a34a;
+    font-size:11px;
+    font-weight:800;
+}
+
+.product-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    margin-top:10px;
+}
+
+.small-btn{
+    min-height:36px;
+    padding:7px;
+    border-radius:7px;
+    font-size:11px;
+    font-weight:800;
+}
+
+.add-cart{
+    background:#ff9f00;
+    color:#fff;
+}
+
+.buy-now{
+    background:#2874f0;
+    color:#fff;
+}
+
+.add-cart:hover,
+.buy-now:hover{
+    filter:brightness(.94);
+}
+
+.quick-view{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:80px;
+    background:#fff;
+    color:#2874f0;
+    padding:8px 13px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:900;
+    box-shadow:0 5px 18px rgba(0,0,0,.18);
+    opacity:0;
+    transition:.2s;
+}
+
+.product-card:hover .quick-view{
+    opacity:1;
+}
+
+/* =========================================================
+   BRAND STRIP
+   ========================================================= */
+
 .brand-grid{
-  display:grid;grid-template-columns:repeat(8,1fr);gap:12px;
-}
-.brand{
-  background:var(--card);border:1px solid var(--line);
-  padding:18px 10px;border-radius:15px;text-align:center;
-  font-weight:800;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
 }
 
-/* BANNER GRID */
-.banner-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px}
-.banner{
-  min-height:190px;border-radius:20px;padding:25px;
-  background:linear-gradient(135deg,#111827,#374151);color:#fff;
-  display:flex;flex-direction:column;justify-content:flex-end;
-}
-.banner:nth-child(2){background:linear-gradient(135deg,#7c2d12,#ea580c)}
-.banner:nth-child(3){background:linear-gradient(135deg,#14532d,#16a34a)}
-.banner h3{font-size:25px;margin-bottom:6px}
-.banner p{opacity:.8;margin-bottom:12px}
-
-/* TABLE */
-.table-wrap{overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:18px}
-table{width:100%;border-collapse:collapse;min-width:750px}
-th,td{padding:14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
-th{background:var(--bg)}
-.status{padding:5px 9px;border-radius:20px;font-size:11px;font-weight:700}
-.status.green{background:#dcfce7;color:#166534}
-.status.orange{background:#fef3c7;color:#92400e}
-.status.red{background:#fee2e2;color:#991b1b}
-
-/* DASHBOARD */
-.dashboard-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
-}
-.metric{
-  background:var(--card);border:1px solid var(--line);
-  border-radius:18px;padding:22px;
-}
-.metric p{color:var(--muted);font-size:13px}
-.metric strong{font-size:30px;display:block;margin:7px 0}
-.metric small{color:var(--success)}
-.chart{
-  height:230px;background:var(--card);border:1px solid var(--line);
-  border-radius:18px;padding:20px;display:flex;align-items:flex-end;gap:8px;
-}
-.bar{flex:1;background:var(--primary);border-radius:7px 7px 0 0;min-height:20px}
-
-/* DRAWER / MODAL */
-.overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.55);
-  z-index:2000;display:none;
-}
-.overlay.show{display:block}
-.drawer{
-  position:absolute;right:0;top:0;height:100%;width:min(470px,95vw);
-  background:var(--card);color:var(--text);padding:22px;
-  overflow:auto;
-}
-.modal{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(850px,94vw);max-height:90vh;overflow:auto;
-  background:var(--card);border-radius:22px;padding:25px;
-}
-.close{
-  width:38px;height:38px;border-radius:10px;
-  background:var(--bg);color:var(--text);float:right;
-}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.big-product{
-  min-height:330px;background:var(--bg);border-radius:20px;
-  display:flex;align-items:center;justify-content:center;font-size:130px;
-}
-.variant-row{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
-.variant{
-  padding:9px 13px;border:1px solid var(--line);
-  border-radius:9px;background:var(--bg);color:var(--text);
-}
-.variant.active{border:2px solid var(--primary)}
-.cart-item{
-  display:grid;grid-template-columns:60px 1fr auto;gap:10px;
-  align-items:center;padding:13px 0;border-bottom:1px solid var(--line);
-}
-.cart-img{
-  width:60px;height:60px;background:var(--bg);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:28px;
-}
-.qty{display:flex;gap:5px;align-items:center;margin-top:7px}
-.qty button{width:25px;height:25px;border-radius:7px;background:var(--bg);color:var(--text)}
-.total-box{margin-top:20px;padding-top:15px;border-top:1px solid var(--line)}
-.total-row{display:flex;justify-content:space-between;margin:9px 0}
-
-/* TOAST */
-.toast{
-  position:fixed;right:20px;bottom:20px;z-index:5000;
-  background:#111827;color:white;padding:14px 18px;
-  border-radius:12px;box-shadow:var(--shadow);
-  transform:translateY(100px);opacity:0;transition:.3s;
-}
-.toast.show{transform:translateY(0);opacity:1}
-
-/* PAGES */
-.page{display:none}
-.page.active{display:block}
-.page-title{padding:35px 4% 15px}
-.page-title h1{font-size:40px}
-.page-title p{color:var(--muted);margin-top:7px}
-.empty{
-  padding:70px 20px;text-align:center;background:var(--card);
-  border:1px solid var(--line);border-radius:20px;color:var(--muted)
+.brand-card{
+    height:105px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-/* FOOTER */
+.brand-card:hover{
+    border-color:#aac5f7;
+    box-shadow:var(--shadow);
+    transform:translateY(-3px);
+}
+
+.brand-logo{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#f2f5fa;
+    font-weight:900;
+    font-size:18px;
+}
+
+.brand-card strong{
+    font-size:12px;
+}
+
+/* =========================================================
+   OFFER GRID
+   ========================================================= */
+
+.offer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.offer-card{
+    min-height:180px;
+    border-radius:17px;
+    padding:22px;
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+}
+
+.offer-card:nth-child(1){
+    background:linear-gradient(135deg,#db2777,#7c3aed);
+}
+
+.offer-card:nth-child(2){
+    background:linear-gradient(135deg,#ea580c,#f59e0b);
+}
+
+.offer-card:nth-child(3){
+    background:linear-gradient(135deg,#0284c7,#2563eb);
+}
+
+.offer-card h3{
+    font-size:22px;
+    max-width:230px;
+}
+
+.offer-card p{
+    font-size:12px;
+    opacity:.88;
+    margin:6px 0 14px;
+}
+
+.offer-symbol{
+    position:absolute;
+    right:10px;
+    bottom:-15px;
+    font-size:100px;
+    opacity:.15;
+}
+
+/* =========================================================
+   RECENTLY VIEWED
+   ========================================================= */
+
+.horizontal-products{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:220px;
+    overflow-x:auto;
+    gap:12px;
+    padding-bottom:8px;
+    scrollbar-width:thin;
+}
+
+.horizontal-products .product-card{
+    min-width:220px;
+}
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+
+.newsletter{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    border:1px solid var(--border);
+}
+
+.newsletter h2{
+    font-size:25px;
+}
+
+.newsletter p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.newsletter-form{
+    display:flex;
+    min-width:min(480px,100%);
+}
+
+.newsletter-form input{
+    flex:1;
+    height:44px;
+    border:1px solid var(--border);
+    outline:0;
+    padding:0 13px;
+    border-radius:8px 0 0 8px;
+}
+
+.newsletter-form button{
+    border-radius:0 8px 8px 0;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 footer{
-  background:#111827;color:#fff;margin-top:70px;padding:50px 4% 25px;
+    background:#111827;
+    color:#d1d5db;
+    margin-top:45px;
 }
-.footer-grid{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:30px;
-}
-footer h3{margin-bottom:14px}
-footer a,footer p{display:block;color:#9ca3af;margin:8px 0;font-size:14px}
-.copyright{border-top:1px solid #374151;margin-top:30px;padding-top:20px;color:#9ca3af}
 
-/* MOBILE */
-@media(max-width:1100px){
- .category-grid{grid-template-columns:repeat(5,1fr)}
- .product-grid{grid-template-columns:repeat(4,1fr)}
- .brand-grid{grid-template-columns:repeat(5,1fr)}
- .dashboard-grid{grid-template-columns:repeat(2,1fr)}
+.footer-main{
+    padding:45px 0;
+    display:grid;
+    grid-template-columns:1.5fr repeat(4,1fr);
+    gap:35px;
 }
-@media(max-width:800px){
- .hero{grid-template-columns:1fr;padding:32px;min-height:auto}
- .hero-card{margin-top:25px}
- .product-grid{grid-template-columns:repeat(2,1fr)}
- .cards{grid-template-columns:repeat(2,1fr)}
- .banner-grid{grid-template-columns:1fr}
- .footer-grid{grid-template-columns:repeat(2,1fr)}
- .header-actions .hide-mobile{display:none}
- .modal-grid{grid-template-columns:1fr}
- .big-product{min-height:230px}
+
+.footer-brand{
+    font-size:25px;
+    color:#fff;
+    font-weight:900;
+    margin-bottom:12px;
 }
-@media(max-width:520px){
- .topbar{display:none}
- .header-main{padding:10px 3%;gap:7px}
- .logo{font-size:21px}
- .search input{padding:11px 40px 11px 12px}
- .search button{width:30px;height:30px;top:5px}
- .icon-btn{min-width:38px;height:38px;padding:0 7px}
- .nav{padding-left:3%;padding-right:3%}
- .hero{margin:14px 3%;padding:25px;border-radius:20px}
- .hero h1{font-size:42px;letter-spacing:-2px}
- .container{padding:0 3%}
- .category-grid{grid-template-columns:repeat(3,1fr)}
- .product-grid{grid-template-columns:repeat(2,1fr);gap:9px}
- .product-img{height:140px;font-size:52px}
- .product-body{padding:10px}
- .product-title{font-size:13px}
- .price{font-size:17px}
- .brand-grid{grid-template-columns:repeat(3,1fr)}
- .cards,.dashboard-grid{grid-template-columns:1fr}
- .deal-strip{grid-template-columns:1fr}
- .countdown{overflow:auto}
- .footer-grid{grid-template-columns:1fr}
- .page-title h1{font-size:32px}
+
+.footer-col h4{
+    color:#fff;
+    font-size:14px;
+    margin-bottom:13px;
 }
+
+.footer-col a{
+    display:block;
+    font-size:12px;
+    margin:8px 0;
+    color:#9ca3af;
+}
+
+.footer-col a:hover{
+    color:#fff;
+}
+
+.footer-description{
+    font-size:12px;
+    color:#9ca3af;
+    max-width:280px;
+}
+
+.socials{
+    display:flex;
+    gap:8px;
+    margin-top:17px;
+}
+
+.social{
+    width:35px;
+    height:35px;
+    border-radius:8px;
+    background:#1f2937;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+}
+
+.footer-bottom{
+    border-top:1px solid #263143;
+    padding:17px 0;
+    font-size:11px;
+    color:#9ca3af;
+    display:flex;
+    justify-content:space-between;
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast-container{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.toast{
+    min-width:280px;
+    max-width:380px;
+    background:#172033;
+    color:#fff;
+    border-radius:11px;
+    padding:13px 15px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    animation:toastIn .3s ease;
+    font-size:13px;
+}
+
+.toast.success{
+    border-left:4px solid #22c55e;
+}
+
+.toast.error{
+    border-left:4px solid #ef4444;
+}
+
+.toast.info{
+    border-left:4px solid #3b82f6;
+}
+
+@keyframes toastIn{
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(10,18,32,.58);
+    backdrop-filter:blur(5px);
+    z-index:3000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
+.modal{
+    width:min(900px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 25px 80px rgba(0,0,0,.3);
+    animation:modalIn .25s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.98);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.modal-head{
+    position:sticky;
+    top:0;
+    z-index:2;
+    background:#fff;
+    padding:17px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.modal-head h3{
+    font-size:18px;
+}
+
+.modal-close{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#f3f4f6;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+}
+
+.modal-body{
+    padding:20px;
+}
+
+/* =========================================================
+   PRODUCT MODAL
+   ========================================================= */
+
+.product-detail{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.detail-image{
+    min-height:400px;
+    background:#f6f7fa;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+}
+
+.detail-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.detail-info h2{
+    font-size:25px;
+    line-height:1.2;
+}
+
+.detail-brand{
+    color:var(--purple);
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.detail-price{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin:15px 0;
+}
+
+.detail-price strong{
+    font-size:30px;
+}
+
+.detail-section{
+    padding:13px 0;
+    border-top:1px solid var(--border);
+}
+
+.option-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:8px;
+}
+
+.option{
+    padding:8px 13px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:#fff;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.option:hover,
+.option.selected{
+    border-color:var(--primary);
+    color:var(--primary);
+    background:#eff6ff;
+}
+
+.detail-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:15px;
+}
+
+/* =========================================================
+   CART DRAWER
+   ========================================================= */
+
+.drawer-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:4000;
+    display:none;
+}
+
+.drawer-overlay.active{
+    display:block;
+}
+
+.drawer{
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    width:min(450px,94%);
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    box-shadow:-15px 0 40px rgba(0,0,0,.18);
+    animation:drawerIn .25s ease;
+}
+
+@keyframes drawerIn{
+    from{
+        transform:translateX(100%);
+    }
+    to{
+        transform:none;
+    }
+}
+
+.drawer-head{
+    min-height:65px;
+    padding:14px 18px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.drawer-body{
+    flex:1;
+    overflow:auto;
+    padding:15px;
+}
+
+.drawer-foot{
+    padding:15px;
+    border-top:1px solid var(--border);
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:72px 1fr auto;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.cart-item-img{
+    width:72px;
+    height:72px;
+    border-radius:9px;
+    background:#f4f5f8;
+    overflow:hidden;
+}
+
+.cart-item-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.cart-item-name{
+    font-size:12px;
+    font-weight:700;
+}
+
+.cart-item-price{
+    font-weight:900;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.qty-control{
+    display:flex;
+    align-items:center;
+    margin-top:7px;
+}
+
+.qty-control button{
+    width:25px;
+    height:25px;
+    background:#f0f2f5;
+}
+
+.qty-control span{
+    width:28px;
+    text-align:center;
+    font-size:12px;
+}
+
+.remove-cart{
+    color:#e53935;
+    font-size:11px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   LOGIN MODAL
+   ========================================================= */
+
+.login-box{
+    max-width:450px;
+}
+
+.auth-tabs{
+    display:flex;
+    border-bottom:1px solid var(--border);
+}
+
+.auth-tab{
+    flex:1;
+    padding:13px;
+    background:#fff;
+    font-weight:800;
+    color:var(--muted);
+}
+
+.auth-tab.active{
+    color:var(--primary);
+    border-bottom:2px solid var(--primary);
+}
+
+.form-group{
+    margin-bottom:13px;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.form-control{
+    width:100%;
+    height:43px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    outline:0;
+    padding:0 12px;
+    background:#fff;
+}
+
+.form-control:focus{
+    border-color:#8bb3f8;
+    box-shadow:0 0 0 3px rgba(40,116,240,.08);
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+/* =========================================================
+   MOBILE BOTTOM NAV
+   ========================================================= */
+
+.mobile-bottom{
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:1500;
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:7px 5px calc(7px + env(safe-area-inset-bottom));
+    grid-template-columns:repeat(5,1fr);
+}
+
+.mobile-nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    font-size:10px;
+    color:#6b7280;
+}
+
+.mobile-nav-item .m-icon{
+    font-size:19px;
+}
+
+.mobile-nav-item.active{
+    color:var(--primary);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1200px){
+    .location-box{
+        display:none;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(6,1fr);
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .footer-main{
+        grid-template-columns:1.5fr repeat(3,1fr);
+    }
+}
+
+@media(max-width:900px){
+    .header-main{
+        flex-wrap:wrap;
+        padding:9px 0;
+    }
+
+    .logo{
+        min-width:auto;
+    }
+
+    .header-actions{
+        margin-left:auto;
+    }
+
+    .search-wrap{
+        order:5;
+        flex-basis:100%;
+        max-width:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-side{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:none;
+    }
+
+    .service-strip{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .service-item:nth-child(n+4){
+        display:none;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .brand-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .footer-main{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .footer-main .footer-brand-col{
+        grid-column:1/-1;
+    }
+}
+
+@media(max-width:650px){
+    body{
+        padding-bottom:65px;
+    }
+
+    .top-strip-right{
+        display:none;
+    }
+
+    .top-strip-inner{
+        justify-content:center;
+    }
+
+    .header-main{
+        gap:8px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .logo-mark{
+        width:35px;
+        height:35px;
+    }
+
+    .header-action{
+        min-width:40px;
+        width:40px;
+        padding:0;
+    }
+
+    .header-action span:last-child{
+        display:none;
+    }
+
+    .header-action .icon{
+        font-size:19px;
+    }
+
+    .header-actions{
+        gap:0;
+    }
+
+    .search-category{
+        display:none;
+    }
+
+    .hero-slider{
+        min-height:430px;
+    }
+
+    .hero-slide{
+        padding:30px 25px;
+    }
+
+    .hero-title{
+        font-size:37px;
+    }
+
+    .hero-art{
+        opacity:.35;
+        width:70%;
+    }
+
+    .hero-dots{
+        left:25px;
+    }
+
+    .hero-side{
+        grid-template-columns:1fr;
+    }
+
+    .service-strip{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .service-item{
+        border-bottom:1px solid var(--border);
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(4,1fr);
+        gap:7px;
+    }
+
+    .category-card{
+        padding:10px 4px;
+    }
+
+    .category-image{
+        width:55px;
+        height:55px;
+        font-size:26px;
+    }
+
+    .category-card h4{
+        font-size:11px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:8px;
+    }
+
+    .product-image-wrap{
+        height:175px;
+    }
+
+    .product-info{
+        padding:9px;
+    }
+
+    .product-name{
+        font-size:12px;
+    }
+
+    .price{
+        font-size:16px;
+    }
+
+    .product-actions{
+        grid-template-columns:1fr;
+    }
+
+    .quick-view{
+        display:none;
+    }
+
+    .brand-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .offer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .deal-banner{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .newsletter{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .newsletter-form{
+        min-width:100%;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr 1fr;
+        gap:25px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .product-detail{
+        grid-template-columns:1fr;
+    }
+
+    .detail-image{
+        min-height:280px;
+    }
+
+    .mobile-bottom{
+        display:grid;
+    }
+
+    .section-title{
+        font-size:20px;
+    }
+}
+
+/* =========================================================
+   EXTRA UTILITY CLASSES
+   ========================================================= */
+
+.text-muted{
+    color:var(--muted);
+}
+
+.text-primary{
+    color:var(--primary);
+}
+
+.text-success{
+    color:var(--success);
+}
+
+.text-danger{
+    color:var(--danger);
+}
+
+.fw-bold{
+    font-weight:800;
+}
+
+.mt-10{
+    margin-top:10px;
+}
+
+.mt-15{
+    margin-top:15px;
+}
+
+.mt-20{
+    margin-top:20px;
+}
+
+.center{
+    text-align:center;
+}
+
+.flex{
+    display:flex;
+}
+
+.items-center{
+    align-items:center;
+}
+
+.justify-between{
+    justify-content:space-between;
+}
+
+.gap-10{
+    gap:10px;
+}
+
+/* =========================================================
+   DARK MODE PREPARATION
+   ========================================================= */
+
+body.dark{
+    --bg:#0b1120;
+    --card:#111827;
+    --text:#f3f4f6;
+    --muted:#9ca3af;
+    --border:#253044;
+    --shadow:0 8px 30px rgba(0,0,0,.25);
+}
+
+body.dark .main-header,
+body.dark .category-nav,
+body.dark .product-card,
+body.dark .category-card,
+body.dark .brand-card,
+body.dark .service-strip,
+body.dark .newsletter,
+body.dark .modal,
+body.dark .modal-head,
+body.dark .drawer,
+body.dark .auth-tab,
+body.dark .btn-outline{
+    background:#111827;
+    color:#f3f4f6;
+}
+
+body.dark .search-box{
+    background:#1f2937;
+}
+
+body.dark .search-input{
+    color:#fff;
+}
+
+body.dark .product-image-wrap,
+body.dark .category-image,
+body.dark .brand-logo,
+body.dark .cart-item-img{
+    background:#1f2937;
+}
+
+body.dark .mobile-bottom{
+    background:#111827;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading{
+    animation:pulse 1.2s infinite;
+    background:linear-gradient(
+        90deg,
+        #f0f2f5,
+        #fafafa,
+        #f0f2f5
+    );
+    background-size:200% 100%;
+}
+
+@keyframes pulse{
+    0%{
+        background-position:200% 0;
+    }
+    100%{
+        background-position:-200% 0;
+    }
+}
+
+/* =========================================================
+   END CSS PART 1
+   ========================================================= */
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="links">
-    <span>🚚 Free delivery on selected orders</span>
-    <span>⚡ Mega Deals every day</span>
-    <span>🛡️ Secure shopping</span>
-  </div>
-  <div class="links">
-    <span>Help</span>
-    <span>Sell on MEGAWORLD</span>
-    <span>Download App</span>
-  </div>
+<!-- =======================================================
+     TOP STRIP
+     ======================================================= -->
+
+<div class="top-strip">
+    <div class="top-strip-inner">
+        <div class="top-strip-left">
+            <span>🚚 Free delivery on selected orders</span>
+            <span class="top-link" onclick="showToast('Today only: extra savings unlocked!','info')">
+                ⚡ Today's Deals
+            </span>
+        </div>
+
+        <div class="top-strip-right">
+            <span class="top-link">Download App</span>
+            <span class="top-link">Sell on NEXORA</span>
+            <span class="top-link">Help Center</span>
+        </div>
+    </div>
 </div>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-main">
-    <button class="icon-btn" onclick="showPage('home')" title="Home">⌂</button>
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
 
-    <div class="logo">MEGA<span>WORLD</span></div>
+<header class="main-header">
 
-    <div class="search">
-      <input id="searchInput" type="search"
-        placeholder="Search products, brands, sellers, categories..."
-        oninput="liveSearch(this.value)">
-      <button onclick="doSearch()">⌕</button>
-      <div id="searchSuggestions"
-        style="display:none;position:absolute;top:55px;left:0;right:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;z-index:1500"></div>
+    <div class="container header-main">
+
+        <div class="logo" onclick="goHome()">
+            <div class="logo-mark">N</div>
+            <div>
+                NEXORA
+                <small>EVERYTHING. TOGETHER.</small>
+            </div>
+        </div>
+
+        <div class="location-box" onclick="openLocationModal()">
+            <div class="location-icon">📍</div>
+            <div class="location-text">
+                Deliver to
+                <strong id="locationText">Select location</strong>
+            </div>
+        </div>
+
+        <div class="search-wrap">
+
+            <div class="search-box">
+
+                <select class="search-category" id="searchCategory">
+                    <option value="all">All</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="sports">Sports</option>
+                    <option value="grocery">Grocery</option>
+                </select>
+
+                <input
+                    id="searchInput"
+                    class="search-input"
+                    type="search"
+                    placeholder="Search products, brands and more..."
+                    autocomplete="off"
+                >
+
+                <button
+                    class="search-btn"
+                    onclick="performSearch()"
+                    aria-label="Search"
+                >🔍</button>
+
+            </div>
+
+            <div id="searchSuggestions" class="search-suggestions"></div>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button class="header-action" onclick="openAuthModal()">
+                <span class="icon">👤</span>
+                <span>Account</span>
+            </button>
+
+            <button class="header-action" onclick="openOrders()">
+                <span class="icon">📦</span>
+                <span>Orders</span>
+            </button>
+
+            <button class="header-action" onclick="openWishlist()">
+                <span class="icon">♡</span>
+                <span>Wishlist</span>
+                <span class="badge-count" id="wishlistCount">0</span>
+            </button>
+
+            <button class="header-action" onclick="openCart()">
+                <span class="icon">🛒</span>
+                <span>Cart</span>
+                <span class="badge-count" id="cartCount">0</span>
+            </button>
+
+        </div>
+
     </div>
 
-    <div class="header-actions">
-      <button class="icon-btn hide-mobile" onclick="openAccount()">👤</button>
-      <button class="icon-btn hide-mobile" onclick="showPage('orders')">📦</button>
-      <button class="icon-btn" onclick="showPage('wishlist')">❤️ <span id="wishCount" class="badge">0</span></button>
-      <button class="icon-btn" onclick="openCart()">🛒 <span id="cartCount" class="badge">0</span></button>
-      <button class="icon-btn" onclick="toggleTheme()">◐</button>
-    </div>
-  </div>
+    <!-- ===================================================
+         CATEGORY NAV
+         =================================================== -->
 
-  <nav class="nav">
-    <button onclick="showPage('shop')">Shop All</button>
-    <button onclick="filterCategory('Electronics')">📱 Electronics</button>
-    <button onclick="filterCategory('Fashion')">👕 Fashion</button>
-    <button onclick="filterCategory('Home')">🏠 Home</button>
-    <button onclick="filterCategory('Gaming')">🎮 Gaming</button>
-    <button onclick="filterCategory('Beauty')">💄 Beauty</button>
-    <button onclick="filterCategory('Grocery')">🛒 Grocery</button>
-    <button onclick="showPage('deals')">🔥 Deals</button>
-    <button onclick="showPage('brands')">🏷️ Brands</button>
-    <button onclick="showPage('sellers')">🏪 Sellers</button>
-    <button onclick="showPage('services')">🧑‍🔧 Services</button>
-    <button onclick="showPage('business')">🏢 Business</button>
-    <button onclick="showPage('admin')">⚙️ Admin Demo</button>
-  </nav>
+    <nav class="category-nav">
+
+        <div class="container category-nav-inner">
+
+            <div class="nav-item mega-trigger" onclick="showToast('Mega Menu is loading...','info')">
+                All Categories
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('electronics')">
+                Electronics
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('fashion')">
+                Fashion
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('home')">
+                Home & Kitchen
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('beauty')">
+                Beauty
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('sports')">
+                Sports
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('grocery')">
+                Grocery
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('books')">
+                Books
+            </div>
+
+            <div class="nav-item" onclick="filterCategory('toys')">
+                Toys
+            </div>
+
+            <div class="nav-item hot" onclick="scrollToSection('flashSale')">
+                🔥 Hot Deals
+            </div>
+
+            <div class="nav-item" onclick="scrollToSection('brands')">
+                Brands
+            </div>
+
+            <div class="nav-item" onclick="showToast('New arrivals opened','success')">
+                New Arrivals
+            </div>
+
+        </div>
+
+    </nav>
+
 </header>
 
-<!-- HOME -->
-<main id="home" class="page active">
+<!-- =======================================================
+     MAIN
+     ======================================================= -->
 
-<section class="hero">
-  <div>
-    <h1>Everything.<br>In One World.</h1>
-    <p>
-      Discover products, brands, sellers, deals, services and business
-      solutions inside one giant marketplace experience.
-    </p>
-    <div class="hero-buttons">
-      <button class="btn light" onclick="showPage('shop')">Explore Marketplace →</button>
-      <button class="btn" onclick="showPage('deals')">🔥 Today's Deals</button>
-    </div>
-  </div>
-
-  <div class="hero-card">
-    <h3>🌎 MEGAWORLD TODAY</h3>
-    <div class="hero-stats">
-      <div class="hero-stat"><strong>12K+</strong><span>Products</span></div>
-      <div class="hero-stat"><strong>1.8K+</strong><span>Sellers</span></div>
-      <div class="hero-stat"><strong>420+</strong><span>Brands</span></div>
-      <div class="hero-stat"><strong>99+</strong><span>Categories</span></div>
-    </div>
-  </div>
-</section>
+<main>
 
 <div class="container">
 
-<section class="section">
- <div class="section-head">
-   <div><h2>Explore Everything</h2><p>Choose your shopping universe</p></div>
-   <button class="viewall" onclick="showPage('categories')">View all →</button>
- </div>
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
- <div class="category-grid">
-  <div class="category" onclick="filterCategory('Electronics')"><div class="emoji">📱</div><b>Electronics</b><br><small>1,250+</small></div>
-  <div class="category" onclick="filterCategory('Fashion')"><div class="emoji">👕</div><b>Fashion</b><br><small>2,400+</small></div>
-  <div class="category" onclick="filterCategory('Home')"><div class="emoji">🏠</div><b>Home</b><br><small>1,800+</small></div>
-  <div class="category" onclick="filterCategory('Gaming')"><div class="emoji">🎮</div><b>Gaming</b><br><small>740+</small></div>
-  <div class="category" onclick="filterCategory('Beauty')"><div class="emoji">💄</div><b>Beauty</b><br><small>980+</small></div>
-  <div class="category" onclick="filterCategory('Grocery')"><div class="emoji">🛒</div><b>Grocery</b><br><small>3,200+</small></div>
-  <div class="category" onclick="filterCategory('Sports')"><div class="emoji">⚽</div><b>Sports</b><br><small>860+</small></div>
-  <div class="category" onclick="showPage('services')"><div class="emoji">🧑‍🔧</div><b>Services</b><br><small>500+</small></div>
- </div>
-</section>
+    <section class="hero-section">
 
-<section class="section">
- <div class="deal-strip">
-  <div>
-   <h2>🔥 MEGA FLASH SALE</h2>
-   <p style="color:var(--muted);margin-top:5px">Huge deals. Limited time. New products added regularly.</p>
-  </div>
-  <div class="countdown">
-   <div class="timebox"><strong id="hh">05</strong><small>HRS</small></div>
-   <div class="timebox"><strong id="mm">42</strong><small>MIN</small></div>
-   <div class="timebox"><strong id="ss">19</strong><small>SEC</small></div>
-   <button class="btn" onclick="showPage('deals')">View Deals</button>
-  </div>
- </div>
-</section>
+        <div class="hero-grid">
 
-<section class="section">
- <div class="section-head">
-  <div><h2>🔥 Trending Now</h2><p>Popular products customers are exploring</p></div>
-  <button class="viewall" onclick="showPage('shop')">See marketplace →</button>
- </div>
- <div id="trendingProducts" class="product-grid"></div>
-</section>
+            <div class="hero-slider" id="heroSlider">
 
-<section class="section">
- <div class="section-head">
-  <div><h2>🏷️ Popular Brands</h2><p>Explore stores from leading brands</p></div>
-  <button class="viewall" onclick="showPage('brands')">All brands →</button>
- </div>
- <div class="brand-grid">
-  <div class="brand">NOVA</div><div class="brand">PIXEL</div>
-  <div class="brand">AURORA</div><div class="brand">TECHMAX</div>
-  <div class="brand">URBAN</div><div class="brand">ZEN</div>
-  <div class="brand">VOLT</div><div class="brand">ORBIT</div>
- </div>
-</section>
+                <!-- SLIDE 1 -->
 
-<section class="section">
- <div class="banner-grid">
-  <div class="banner"><h3>⚡ Tech Week</h3><p>Upgrade your setup with selected electronics.</p><button class="btn light" onclick="filterCategory('Electronics')">Shop Electronics</button></div>
-  <div class="banner"><h3>👕 Fashion Drop</h3><p>Fresh styles are here.</p><button class="btn light" onclick="filterCategory('Fashion')">Explore</button></div>
-  <div class="banner"><h3>🌿 Home Refresh</h3><p>Make your space better.</p><button class="btn light" onclick="filterCategory('Home')">Shop Home</button></div>
- </div>
-</section>
+                <div class="hero-slide active">
 
-<section class="section">
- <div class="section-head"><div><h2>✨ Why MEGAWORLD?</h2><p>A marketplace built around discovery</p></div></div>
- <div class="cards">
-  <div class="info-card"><div class="big">🔎</div><h3>Discover More</h3><p>Explore products, brands, sellers and categories from one place.</p></div>
-  <div class="info-card"><div class="big">🏪</div><h3>Thousands of Stores</h3><p>Shop from different sellers and explore independent storefronts.</p></div>
-  <div class="info-card"><div class="big">🎁</div><h3>More Ways to Save</h3><p>Deals, coupons, bundles and reward-style experiences.</p></div>
-  <div class="info-card"><div class="big">🛡️</div><h3>Shopping Tools</h3><p>Wishlist, comparison, order history, tracking and support tools.</p></div>
- </div>
-</section>
+                    <span class="hero-kicker">
+                        ✨ NEXT-GEN SHOPPING
+                    </span>
+
+                    <h1 class="hero-title">
+                        Everything you want.<br>
+                        One smarter place.
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Discover electronics, fashion, home essentials,
+                        sports gear and thousands of everyday products.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="btn btn-white"
+                            onclick="scrollToSection('products')"
+                        >
+                            🛍️ Shop Now
+                        </button>
+
+                        <button
+                            class="btn"
+                            style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)"
+                            onclick="scrollToSection('flashSale')"
+                        >
+                            ⚡ View Deals
+                        </button>
+
+                    </div>
+
+                    <div class="hero-art">
+                        <div class="hero-orb"></div>
+                        <div class="hero-device">
+                            <div class="hero-device-screen">📱</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SLIDE 2 -->
+
+                <div class="hero-slide">
+
+                    <span class="hero-kicker">
+                        🔥 LIMITED TIME
+                    </span>
+
+                    <h1 class="hero-title">
+                        Mega deals.<br>
+                        Bigger savings.
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Grab selected products before today's special
+                        prices disappear.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="btn btn-white"
+                            onclick="scrollToSection('flashSale')"
+                        >
+                            ⚡ Flash Sale
+                        </button>
+
+                        <button
+                            class="btn"
+                            style="background:rgba(255,255,255,.12);color:#fff"
+                            onclick="showToast('Deal notifications enabled!','success')"
+                        >
+                            🔔 Notify Me
+                        </button>
+
+                    </div>
+
+                    <div class="hero-art">
+                        <div class="hero-orb"></div>
+                        <div class="hero-device">
+                            <div class="hero-device-screen">🎁</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SLIDE 3 -->
+
+                <div class="hero-slide">
+
+                    <span class="hero-kicker">
+                        🚀 NEW EXPERIENCE
+                    </span>
+
+                    <h1 class="hero-title">
+                        Shop faster.<br>
+                        Choose better.
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Compare products, save favourites and build your
+                        perfect cart with NEXORA.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="btn btn-white"
+                            onclick="openWishlist()"
+                        >
+                            ❤️ My Wishlist
+                        </button>
+
+                        <button
+                            class="btn"
+                            style="background:rgba(255,255,255,.12);color:#fff"
+                            onclick="showToast('Comparison feature ready!','success')"
+                        >
+                            ⚖️ Compare
+                        </button>
+
+                    </div>
+
+                    <div class="hero-art">
+                        <div class="hero-orb"></div>
+                        <div class="hero-device">
+                            <div class="hero-device-screen">🛍️</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="hero-arrow hero-prev" onclick="changeHero(-1)">
+                    ‹
+                </button>
+
+                <button class="hero-arrow hero-next" onclick="changeHero(1)">
+                    ›
+                </button>
+
+                <div class="hero-dots" id="heroDots">
+
+                    <span
+                        class="hero-dot active"
+                        onclick="setHero(0)"
+                    ></span>
+
+                    <span
+                        class="hero-dot"
+                        onclick="setHero(1)"
+                    ></span>
+
+                    <span
+                        class="hero-dot"
+                        onclick="setHero(2)"
+                    ></span>
+
+                </div>
+
+            </div>
+
+            <div class="hero-side">
+
+                <div class="promo-card">
+
+                    <h3>
+                        Smart Tech Week
+                    </h3>
+
+                    <p>
+                        Upgrade your setup with selected gadgets and accessories.
+                    </p>
+
+                    <button
+                        class="btn btn-white"
+                        onclick="filterCategory('electronics')"
+                    >
+                        Explore
+                    </button>
+
+                    <div class="promo-icon">💻</div>
+
+                </div>
+
+                <div class="promo-card">
+
+                    <h3>
+                        Fashion Picks
+                    </h3>
+
+                    <p>
+                        Fresh styles, everyday essentials and seasonal collections.
+                    </p>
+
+                    <button
+                        class="btn btn-white"
+                        onclick="filterCategory('fashion')"
+                    >
+                        Shop Fashion
+                    </button>
+
+                    <div class="promo-icon">👟</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================
+         SERVICE STRIP
+         =================================================== -->
+
+    <div class="service-strip">
+
+        <div class="service-item">
+            <div class="service-icon">🚚</div>
+            <div>
+                <strong>Fast Delivery</strong>
+                <span>Across supported locations</span>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">🔄</div>
+            <div>
+                <strong>Easy Returns</strong>
+                <span>Simple return experience</span>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">🔒</div>
+            <div>
+                <strong>Secure Checkout</strong>
+                <span>Protected shopping UI</span>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">💬</div>
+            <div>
+                <strong>24/7 Support</strong>
+                <span>Help when you need it</span>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">🏆</div>
+            <div>
+                <strong>Trusted Sellers</strong>
+                <span>Ratings & reviews</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===================================================
+         CATEGORIES
+         =================================================== -->
+
+    <section class="section" id="categories">
+
+        <div class="section-head">
+
+            <div>
+                <h2 class="section-title">
+                    Shop by Category
+                </h2>
+
+                <p class="section-subtitle">
+                    Find everything organized for you
+                </p>
+            </div>
+
+            <span
+                class="view-all"
+                onclick="showAllCategories()"
+            >
+                View All →
+            </span>
+
+        </div>
+
+        <div class="category-grid" id="categoryGrid"></div>
+
+    </section>
+
+    <!-- ===================================================
+         FLASH SALE
+         =================================================== -->
+
+    <section class="section" id="flashSale">
+
+        <div class="deal-banner">
+
+            <div class="deal-left">
+
+                <div class="deal-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <h2>
+                        Flash Sale
+                    </h2>
+
+                    <p>
+                        Prices drop for a limited time
+                    </p>
+
+                    <div class="timer">
+
+                        <div class="time-box">
+                            <span id="hours">05</span>
+                            <small>HRS</small>
+                        </div>
+
+                        <div class="time-box">
+                            <span id="minutes">32</span>
+                            <small>MIN</small>
+                        </div>
+
+                        <div class="time-box">
+                            <span id="seconds">19</span>
+                            <small>SEC</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button
+                class="btn btn-white"
+                onclick="scrollToSection('products')"
+            >
+                View All Deals →
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================
+         PRODUCTS
+         =================================================== -->
+
+    <section class="section" id="products">
+
+        <div class="section-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    Trending Products
+                </h2>
+
+                <p class="section-subtitle">
+                    Popular picks shoppers are exploring right now
+                </p>
+
+            </div>
+
+            <div class="section-controls">
+
+                <button
+                    class="circle-btn"
+                    onclick="previousProducts()"
+                >
+                    ‹
+                </button>
+
+                <button
+                    class="circle-btn"
+                    onclick="nextProducts()"
+                >
+                    ›
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product-grid"
+            id="productGrid"
+        ></div>
+
+    </section>
+
+    <!-- ===================================================
+         OFFERS
+         =================================================== -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    Special Offers
+                </h2>
+
+                <p class="section-subtitle">
+                    Extra ways to save on your next order
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="offer-grid">
+
+            <div class="offer-card">
+
+                <h3>
+                    New User Bonus
+                </h3>
+
+                <p>
+                    Unlock special introductory offers on selected products.
+                </p>
+
+                <button
+                    class="btn btn-white"
+                    onclick="openAuthModal()"
+                >
+                    Create Account
+                </button>
+
+                <div class="offer-symbol">
+                    🎁
+                </div>
+
+            </div>
+
+            <div class="offer-card">
+
+                <h3>
+                    Buy More, Save More
+                </h3>
+
+                <p>
+                    Discover quantity-based savings across selected collections.
+                </p>
+
+                <button
+                    class="btn btn-white"
+                    onclick="showToast('Bulk offers opened!','success')"
+                >
+                    Explore Offers
+                </button>
+
+                <div class="offer-symbol">
+                    💰
+                </div>
+
+            </div>
+
+            <div class="offer-card">
+
+                <h3>
+                    Rewards Zone
+                </h3>
+
+                <p>
+                    Collect points from eligible shopping activity.
+                </p>
+
+                <button
+                    class="btn btn-white"
+                    onclick="showToast('Rewards center coming in the next section','info')"
+                >
+                    View Rewards
+                </button>
+
+                <div class="offer-symbol">
+                    🏆
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================================
+         BRANDS
+         =================================================== -->
+
+    <section class="section" id="brands">
+
+        <div class="section-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    Popular Brands
+                </h2>
+
+                <p class="section-subtitle">
+                    Explore collections from popular categories
+                </p>
+
+            </div>
+
+            <span
+                class="view-all"
+                onclick="showToast('Brand marketplace will open here','info')"
+            >
+                View All →
+            </span>
+
+        </div>
+
+        <div class="brand-grid" id="brandGrid"></div>
+
+    </section>
+
+    <!-- ===================================================
+         RECENTLY VIEWED
+         =================================================== -->
+
+    <section class="section" id="recentSection">
+
+        <div class="section-head">
+
+            <div>
+
+                <h2 class="section-title">
+                    Recently Viewed
+                </h2>
+
+                <p class="section-subtitle">
+                    Products you've explored
+                </p>
+
+            </div>
+
+            <span
+                class="view-all"
+                onclick="clearRecentlyViewed()"
+            >
+                Clear
+            </span>
+
+        </div>
+
+        <div
+            class="horizontal-products"
+            id="recentProducts"
+        ></div>
+
+    </section>
+
+    <!-- ===================================================
+         NEWSLETTER
+         =================================================== -->
+
+    <section class="section">
+
+        <div class="newsletter">
+
+            <div>
+
+                <h2>
+                    Stay in the loop 📩
+                </h2>
+
+                <p>
+                    Get updates about new arrivals, deals and useful shopping features.
+                </p>
+
+            </div>
+
+            <form
+                class="newsletter-form"
+                onsubmit="subscribeNewsletter(event)"
+            >
+
+                <input
+                    id="newsletterEmail"
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >
+                    Subscribe
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
 
 </div>
+
 </main>
 
-<!-- SHOP -->
-<section id="shop" class="page">
- <div class="page-title">
-  <h1>🛍️ Marketplace</h1>
-  <p>Search, filter and explore the product universe.</p>
- </div>
- <div class="container">
-  <div class="filterbar">
-   <input id="shopSearch" placeholder="Search marketplace..." oninput="renderShop()">
-   <select id="categoryFilter" onchange="renderShop()">
-    <option value="">All categories</option>
-    <option>Electronics</option><option>Fashion</option><option>Home</option>
-    <option>Gaming</option><option>Beauty</option><option>Grocery</option>
-    <option>Sports</option><option>Books</option>
-   </select>
-   <select id="brandFilter" onchange="renderShop()">
-    <option value="">All brands</option>
-    <option>NOVA</option><option>PIXEL</option><option>AURORA</option>
-    <option>TECHMAX</option><option>URBAN</option><option>ZEN</option>
-   </select>
-   <select id="sortFilter" onchange="renderShop()">
-    <option value="popular">Popular</option>
-    <option value="low">Price: Low to High</option>
-    <option value="high">Price: High to Low</option>
-    <option value="rating">Top Rated</option>
-    <option value="discount">Biggest Discount</option>
-   </select>
-   <button class="btn small" onclick="clearFilters()">Clear Filters</button>
-  </div>
-  <div id="shopProducts" class="product-grid"></div>
- </div>
-</section>
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
 
-<!-- CATEGORIES -->
-<section id="categories" class="page">
- <div class="page-title"><h1>📚 All Categories</h1><p>Explore every shopping department.</p></div>
- <div class="container">
-  <div class="category-grid" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))">
-   <div class="category" onclick="filterCategory('Electronics')"><div class="emoji">📱</div><b>Electronics</b></div>
-   <div class="category" onclick="filterCategory('Fashion')"><div class="emoji">👕</div><b>Fashion</b></div>
-   <div class="category" onclick="filterCategory('Home')"><div class="emoji">🏠</div><b>Home</b></div>
-   <div class="category" onclick="filterCategory('Gaming')"><div class="emoji">🎮</div><b>Gaming</b></div>
-   <div class="category" onclick="filterCategory('Beauty')"><div class="emoji">💄</div><b>Beauty</b></div>
-   <div class="category" onclick="filterCategory('Grocery')"><div class="emoji">🛒</div><b>Grocery</b></div>
-   <div class="category" onclick="filterCategory('Sports')"><div class="emoji">⚽</div><b>Sports</b></div>
-   <div class="category" onclick="filterCategory('Books')"><div class="emoji">📚</div><b>Books</b></div>
-   <div class="category"><div class="emoji">🚗</div><b>Automotive</b></div>
-   <div class="category"><div class="emoji">🧸</div><b>Toys</b></div>
-   <div class="category"><div class="emoji">🐾</div><b>Pet Care</b></div>
-   <div class="category"><div class="emoji">💻</div><b>Computers</b></div>
-   <div class="category"><div class="emoji">🪑</div><b>Furniture</b></div>
-   <div class="category"><div class="emoji">💍</div><b>Jewelry</b></div>
-   <div class="category"><div class="emoji">✈️</div><b>Travel</b></div>
-   <div class="category"><div class="emoji">🎵</div><b>Music</b></div>
-  </div>
- </div>
-</section>
-
-<!-- DEALS -->
-<section id="deals" class="page">
- <div class="page-title"><h1>🔥 Mega Deals</h1><p>Limited-time offers and special collections.</p></div>
- <div class="container">
-  <div class="cards" style="margin-bottom:25px">
-   <div class="info-card"><div class="big">⚡</div><h3>Flash Sale</h3><p>Limited-time selected deals.</p><button class="btn small" onclick="showPage('shop')">Shop</button></div>
-   <div class="info-card"><div class="big">🎁</div><h3>Bundle Deals</h3><p>Combine selected products for better value.</p><button class="btn small" onclick="showPage('shop')">Explore</button></div>
-   <div class="info-card"><div class="big">🏷️</div><h3>Clearance</h3><p>Last-chance products and offers.</p><button class="btn small" onclick="showPage('shop')">View</button></div>
-   <div class="info-card"><div class="big">🌟</div><h3>Top Picks</h3><p>Popular products selected for discovery.</p><button class="btn small" onclick="showPage('shop')">Discover</button></div>
-  </div>
-  <div id="dealProducts" class="product-grid"></div>
- </div>
-</section>
-
-<!-- BRANDS -->
-<section id="brands" class="page">
- <div class="page-title"><h1>🏷️ Brand Universe</h1><p>Explore stores and collections.</p></div>
- <div class="container">
-  <div class="brand-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
-   <div class="brand">NOVA<br><small>320 products</small></div>
-   <div class="brand">PIXEL<br><small>210 products</small></div>
-   <div class="brand">AURORA<br><small>185 products</small></div>
-   <div class="brand">TECHMAX<br><small>450 products</small></div>
-   <div class="brand">URBAN<br><small>610 products</small></div>
-   <div class="brand">ZEN<br><small>270 products</small></div>
-   <div class="brand">VOLT<br><small>190 products</small></div>
-   <div class="brand">ORBIT<br><small>360 products</small></div>
-   <div class="brand">LUMINA<br><small>240 products</small></div>
-   <div class="brand">FUSION<br><small>310 products</small></div>
-   <div class="brand">MATRIX<br><small>280 products</small></div>
-   <div class="brand">NEXTGEN<br><small>390 products</small></div>
-  </div>
- </div>
-</section>
-
-<!-- SELLERS -->
-<section id="sellers" class="page">
- <div class="page-title"><h1>🏪 Seller Marketplace</h1><p>Discover independent stores and marketplace sellers.</p></div>
- <div class="container">
-  <div class="cards">
-   <div class="info-card"><div class="big">🏪</div><h3>TechHub Store</h3><p>Electronics · ⭐ 4.8 · 12K sales</p><button class="btn small" onclick="showPage('shop')">Visit Store</button></div>
-   <div class="info-card"><div class="big">👕</div><h3>Urban Closet</h3><p>Fashion · ⭐ 4.7 · 8K sales</p><button class="btn small" onclick="showPage('shop')">Visit Store</button></div>
-   <div class="info-card"><div class="big">🏠</div><h3>HomeCraft</h3><p>Home · ⭐ 4.6 · 6K sales</p><button class="btn small" onclick="showPage('shop')">Visit Store</button></div>
-   <div class="info-card"><div class="big">🎮</div><h3>GameZone</h3><p>Gaming · ⭐ 4.9 · 15K sales</p><button class="btn small" onclick="showPage('shop')">Visit Store</button></div>
-  </div>
- </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="page">
- <div class="page-title"><h1>🧑‍🔧 Services Marketplace</h1><p>Discover service categories.</p></div>
- <div class="container">
-  <div class="cards">
-   <div class="info-card"><div class="big">🔧</div><h3>Repairs</h3><p>Device, appliance and electronics repair services.</p><button class="btn small" onclick="toast('Service booking demo opened')">Book Service</button></div>
-   <div class="info-card"><div class="big">🧹</div><h3>Home Cleaning</h3><p>Cleaning and home-care service marketplace.</p><button class="btn small" onclick="toast('Service booking demo opened')">Book Service</button></div>
-   <div class="info-card"><div class="big">💻</div><h3>Computer Services</h3><p>Setup, troubleshooting and technical services.</p><button class="btn small" onclick="toast('Service booking demo opened')">Book Service</button></div>
-   <div class="info-card"><div class="big">📚</div><h3>Education</h3><p>Learning and tutoring service discovery.</p><button class="btn small" onclick="toast('Service booking demo opened')">Explore</button></div>
-  </div>
- </div>
-</section>
-
-<!-- BUSINESS -->
-<section id="business" class="page">
- <div class="page-title"><h1>🏢 Business Marketplace</h1><p>Tools for teams, companies and bulk purchasing.</p></div>
- <div class="container">
-  <div class="dashboard-grid">
-   <div class="metric"><p>Business Orders</p><strong>248</strong><small>+18% this month</small></div>
-   <div class="metric"><p>Purchase Volume</p><strong>₹8.4L</strong><small>+12% this month</small></div>
-   <div class="metric"><p>Saved</p><strong>₹74K</strong><small>through bulk offers</small></div>
-   <div class="metric"><p>Team Members</p><strong>24</strong><small>active</small></div>
-  </div>
-  <div class="section">
-   <div class="cards">
-    <div class="info-card"><div class="big">📦</div><h3>Bulk Orders</h3><p>Build large orders for business needs.</p><button class="btn small" onclick="toast('Bulk order builder opened')">Create Order</button></div>
-    <div class="info-card"><div class="big">👥</div><h3>Team Accounts</h3><p>Manage team members and permissions.</p><button class="btn small" onclick="toast('Team management opened')">Manage Team</button></div>
-    <div class="info-card"><div class="big">📑</div><h3>Purchase Orders</h3><p>Track company purchase workflows.</p><button class="btn small" onclick="toast('Purchase order center opened')">Open POs</button></div>
-    <div class="info-card"><div class="big">📊</div><h3>Business Analytics</h3><p>Monitor company purchasing activity.</p><button class="btn small" onclick="toast('Business analytics opened')">Analytics</button></div>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- WISHLIST -->
-<section id="wishlist" class="page">
- <div class="page-title"><h1>❤️ Wishlist</h1><p>Your saved products.</p></div>
- <div class="container"><div id="wishlistProducts" class="product-grid"></div></div>
-</section>
-
-<!-- ORDERS -->
-<section id="orders" class="page">
- <div class="page-title"><h1>📦 Your Orders</h1><p>Track purchases and order activity.</p></div>
- <div class="container">
-  <div class="table-wrap">
-   <table>
-    <thead><tr><th>Order</th><th>Product</th><th>Date</th><th>Total</th><th>Status</th><th>Action</th></tr></thead>
-    <tbody id="ordersTable">
-      <tr><td>#MW10291</td><td>Nova X Smartphone</td><td>Today</td><td>₹24,999</td><td><span class="status green">Delivered</span></td><td><button class="btn small" onclick="openTracking('#MW10291')">Track</button></td></tr>
-      <tr><td>#MW10282</td><td>Gaming Laptop</td><td>Yesterday</td><td>₹74,999</td><td><span class="status orange">Shipped</span></td><td><button class="btn small" onclick="openTracking('#MW10282')">Track</button></td></tr>
-      <tr><td>#MW10264</td><td>Urban Sneakers</td><td>12 Aug</td><td>₹2,499</td><td><span class="status orange">Processing</span></td><td><button class="btn small" onclick="openTracking('#MW10264')">Track</button></td></tr>
-    </tbody>
-   </table>
-  </div>
- </div>
-</section>
-
-<!-- ACCOUNT -->
-<section id="account" class="page">
- <div class="page-title"><h1>👤 Account Center</h1><p>Manage your shopping experience.</p></div>
- <div class="container">
-  <div class="cards">
-   <div class="info-card"><div class="big">👤</div><h3>Profile</h3><p>Manage your account details.</p><button class="btn small" onclick="toast('Profile editor opened')">Edit Profile</button></div>
-   <div class="info-card"><div class="big">📍</div><h3>Addresses</h3><p>Manage delivery addresses.</p><button class="btn small" onclick="toast('Address manager opened')">Manage</button></div>
-   <div class="info-card"><div class="big">🎟️</div><h3>Coupons</h3><p>View available shopping coupons.</p><button class="btn small" onclick="toast('Coupon center opened')">View Coupons</button></div>
-   <div class="info-card"><div class="big">⭐</div><h3>Rewards</h3><p>Points, levels and reward history.</p><button class="btn small" onclick="toast('Rewards center opened')">Open Rewards</button></div>
-   <div class="info-card"><div class="big">🔔</div><h3>Notifications</h3><p>Manage shopping notifications.</p><button class="btn small" onclick="toast('Notifications opened')">Open</button></div>
-   <div class="info-card"><div class="big">💬</div><h3>Support</h3><p>Get help with orders and shopping.</p><button class="btn small" onclick="toast('Support center opened')">Get Help</button></div>
-  </div>
- </div>
-</section>
-
-<!-- ADMIN -->
-<section id="admin" class="page">
- <div class="page-title">
-  <h1>⚙️ Super Admin Demo</h1>
-  <p>Marketplace management and analytics interface.</p>
- </div>
-
- <div class="container">
-  <div class="dashboard-grid">
-   <div class="metric"><p>Total Sales</p><strong>₹48.6L</strong><small>+24.8%</small></div>
-   <div class="metric"><p>Orders</p><strong>18,492</strong><small>+13.2%</small></div>
-   <div class="metric"><p>Customers</p><strong>84,290</strong><small>+9.4%</small></div>
-   <div class="metric"><p>Sellers</p><strong>1,842</strong><small>+7.8%</small></div>
-  </div>
-
-  <div class="section">
-   <div class="section-head"><div><h2>📈 Sales Analytics</h2><p>Demo marketplace performance</p></div></div>
-   <div class="chart">
-    <div class="bar" style="height:35%"></div>
-    <div class="bar" style="height:55%"></div>
-    <div class="bar" style="height:43%"></div>
-    <div class="bar" style="height:70%"></div>
-    <div class="bar" style="height:60%"></div>
-    <div class="bar" style="height:82%"></div>
-    <div class="bar" style="height:92%"></div>
-    <div class="bar" style="height:76%"></div>
-    <div class="bar" style="height:96%"></div>
-    <div class="bar" style="height:88%"></div>
-   </div>
-  </div>
-
-  <div class="section">
-   <div class="cards">
-    <div class="info-card"><div class="big">👥</div><h3>User Management</h3><p>Customers, accounts and activity.</p><button class="btn small" onclick="toast('User management opened')">Manage Users</button></div>
-    <div class="info-card"><div class="big">🏪</div><h3>Seller Management</h3><p>Seller onboarding and storefronts.</p><button class="btn small" onclick="toast('Seller management opened')">Manage Sellers</button></div>
-    <div class="info-card"><div class="big">📦</div><h3>Inventory</h3><p>Products, stock and warehouses.</p><button class="btn small" onclick="toast('Inventory manager opened')">Inventory</button></div>
-    <div class="info-card"><div class="big">📣</div><h3>Marketing</h3><p>Campaigns, coupons and banners.</p><button class="btn small" onclick="toast('Marketing center opened')">Marketing</button></div>
-   </div>
-  </div>
-
-  <div class="table-wrap">
-   <table>
-    <thead><tr><th>Product</th><th>Category</th><th>Sales</th><th>Stock</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td>Nova X Smartphone</td><td>Electronics</td><td>4,820</td><td>128</td><td><span class="status green">Active</span></td></tr>
-      <tr><td>Gaming Laptop</td><td>Gaming</td><td>2,140</td><td>42</td><td><span class="status orange">Low Stock</span></td></tr>
-      <tr><td>Urban Sneakers</td><td>Fashion</td><td>7,320</td><td>890</td><td><span class="status green">Active</span></td></tr>
-      <tr><td>Smart TV 55</td><td>Electronics</td><td>3,190</td><td>17</td><td><span class="status red">Critical</span></td></tr>
-    </tbody>
-   </table>
-  </div>
- </div>
-</section>
-
-<!-- CART OVERLAY -->
-<div id="cartOverlay" class="overlay" onclick="closeOverlay(event,'cartOverlay')">
- <aside class="drawer" onclick="event.stopPropagation()">
-  <button class="close" onclick="closeCart()">×</button>
-  <h2>🛒 Your Cart</h2>
-  <p style="color:var(--muted);margin:6px 0 20px">Review your selected products.</p>
-  <div id="cartItems"></div>
-  <div class="total-box">
-   <div class="total-row"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
-   <div class="total-row"><span>Delivery</span><strong>FREE</strong></div>
-   <div class="total-row" style="font-size:20px"><span>Total</span><strong id="cartTotal">₹0</strong></div>
-   <button class="btn success" style="width:100%;margin-top:15px" onclick="checkout()">Proceed to Checkout</button>
-  </div>
- </aside>
-</div>
-
-<!-- PRODUCT MODAL -->
-<div id="productOverlay" class="overlay" onclick="closeOverlay(event,'productOverlay')">
- <div class="modal" onclick="event.stopPropagation()">
-  <button class="close" onclick="closeProduct()">×</button>
-  <div id="productDetails"></div>
- </div>
-</div>
-
-<!-- ACCOUNT MODAL -->
-<div id="accountOverlay" class="overlay" onclick="closeOverlay(event,'accountOverlay')">
- <div class="modal" style="max-width:450px" onclick="event.stopPropagation()">
-  <button class="close" onclick="closeAccount()">×</button>
-  <h2>👤 Welcome to MEGAWORLD</h2>
-  <p style="color:var(--muted);margin:8px 0 20px">Demo account interface</p>
-  <input class="filterbar" style="width:100%;margin-bottom:10px" placeholder="Email or phone">
-  <input class="filterbar" style="width:100%;margin-bottom:15px" placeholder="Password" type="password">
-  <button class="btn" style="width:100%" onclick="loginDemo()">Continue</button>
-  <p style="text-align:center;margin:15px;color:var(--muted)">or</p>
-  <button class="btn outline" style="width:100%" onclick="toast('Demo registration opened')">Create new account</button>
- </div>
-</div>
-
-<!-- TRACKING MODAL -->
-<div id="trackingOverlay" class="overlay" onclick="closeOverlay(event,'trackingOverlay')">
- <div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
-  <button class="close" onclick="closeTracking()">×</button>
-  <div id="trackingContent"></div>
- </div>
-</div>
-
-<!-- TOAST -->
-<div id="toast" class="toast"></div>
-
-<!-- FOOTER -->
 <footer>
- <div class="footer-grid">
-  <div>
-   <h3>MEGAWORLD</h3>
-   <p>Everything marketplace experience.</p>
-   <p>Discover more. Shop smarter.</p>
-  </div>
-  <div>
-   <h3>Marketplace</h3>
-   <a onclick="showPage('shop')">Shop All</a>
-   <a onclick="showPage('categories')">Categories</a>
-   <a onclick="showPage('brands')">Brands</a>
-   <a onclick="showPage('sellers')">Sellers</a>
-  </div>
-  <div>
-   <h3>Customer</h3>
-   <a onclick="showPage('orders')">Orders</a>
-   <a onclick="showPage('wishlist')">Wishlist</a>
-   <a onclick="showPage('account')">Account</a>
-   <a onclick="toast('Help center opened')">Help Center</a>
-  </div>
-  <div>
-   <h3>Business</h3>
-   <a onclick="showPage('business')">Business</a>
-   <a onclick="toast('Seller registration opened')">Sell on MEGAWORLD</a>
-   <a onclick="toast('Brand center opened')">Brand Center</a>
-   <a onclick="toast('Creator center opened')">Creator Center</a>
-  </div>
-  <div>
-   <h3>Platform</h3>
-   <a onclick="showPage('services')">Services</a>
-   <a onclick="showPage('deals')">Deals</a>
-   <a onclick="showPage('admin')">Admin Demo</a>
-   <a onclick="toast('Privacy page opened')">Privacy</a>
-  </div>
- </div>
- <div class="copyright">© 2026 MEGAWORLD. Demo marketplace frontend.</div>
+
+    <div class="container footer-main">
+
+        <div class="footer-brand-col">
+
+            <div class="footer-brand">
+                NEXORA
+            </div>
+
+            <p class="footer-description">
+                A modern all-in-one marketplace experience designed
+                for discovering products, comparing choices and managing
+                your shopping journey in one place.
+            </p>
+
+            <div class="socials">
+
+                <div
+                    class="social"
+                    onclick="showToast('Social page opened','info')"
+                >f</div>
+
+                <div
+                    class="social"
+                    onclick="showToast('Social page opened','info')"
+                >◎</div>
+
+                <div
+                    class="social"
+                    onclick="showToast('Social page opened','info')"
+                >𝕏</div>
+
+                <div
+                    class="social"
+                    onclick="showToast('Social page opened','info')"
+                >▶</div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-col">
+
+            <h4>Shop</h4>
+
+            <a onclick="filterCategory('electronics')">Electronics</a>
+            <a onclick="filterCategory('fashion')">Fashion</a>
+            <a onclick="filterCategory('home')">Home & Kitchen</a>
+            <a onclick="filterCategory('beauty')">Beauty</a>
+            <a onclick="filterCategory('sports')">Sports</a>
+
+        </div>
+
+        <div class="footer-col">
+
+            <h4>Customer</h4>
+
+            <a onclick="openOrders()">My Orders</a>
+            <a onclick="openWishlist()">Wishlist</a>
+            <a onclick="openCart()">Cart</a>
+            <a onclick="openAuthModal()">Account</a>
+            <a onclick="showToast('Support center opened','info')">Help Center</a>
+
+        </div>
+
+        <div class="footer-col">
+
+            <h4>Business</h4>
+
+            <a onclick="showToast('Seller center coming soon','info')">Sell on NEXORA</a>
+            <a onclick="showToast('Seller dashboard coming soon','info')">Seller Dashboard</a>
+            <a onclick="showToast('Partner program coming soon','info')">Partner Program</a>
+            <a onclick="showToast('Affiliate center coming soon','info')">Affiliate Center</a>
+            <a onclick="showToast('Advertising center coming soon','info')">Advertise</a>
+
+        </div>
+
+        <div class="footer-col">
+
+            <h4>Company</h4>
+
+            <a onclick="showToast('About page coming soon','info')">About</a>
+            <a onclick="showToast('Careers page coming soon','info')">Careers</a>
+            <a onclick="showToast('Privacy page coming soon','info')">Privacy</a>
+            <a onclick="showToast('Terms page coming soon','info')">Terms</a>
+            <a onclick="toggleDarkMode()">🌙 Theme</a>
+
+        </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+
+        <span>
+            © 2026 NEXORA Marketplace. Demo storefront.
+        </span>
+
+        <span>
+            Secure UI • Responsive • LocalStorage
+        </span>
+
+    </div>
+
 </footer>
 
-<script>
-/* =========================================================
-   MEGAWORLD DATA ENGINE
-========================================================= */
+<!-- =======================================================
+     CART DRAWER
+     ======================================================= -->
 
-const products=[
- {id:1,name:"Nova X Smartphone",cat:"Electronics",brand:"NOVA",price:24999,old:29999,rating:4.8,reviews:1842,emoji:"📱",stock:128,seller:"TechHub Store"},
- {id:2,name:"Pixel Pro Max Phone",cat:"Electronics",brand:"PIXEL",price:49999,old:57999,rating:4.7,reviews:942,emoji:"📱",stock:67,seller:"Digital Planet"},
- {id:3,name:"Aurora Wireless Buds",cat:"Electronics",brand:"AURORA",price:1999,old:2999,rating:4.5,reviews:3210,emoji:"🎧",stock:240,seller:"Audio World"},
- {id:4,name:"Techmax 55 Smart TV",cat:"Electronics",brand:"TECHMAX",price:32999,old:44999,rating:4.6,reviews:728,emoji:"📺",stock:17,seller:"TechHub Store"},
- {id:5,name:"Ultra Gaming Laptop",cat:"Gaming",brand:"VOLT",price:74999,old:89999,rating:4.9,reviews:410,emoji:"💻",stock:42,seller:"GameZone"},
- {id:6,name:"Mechanical RGB Keyboard",cat:"Gaming",brand:"VOLT",price:3499,old:4999,rating:4.7,reviews:1240,emoji:"⌨️",stock:95,seller:"GameZone"},
- {id:7,name:"Pro Gaming Mouse",cat:"Gaming",brand:"ORBIT",price:1899,old:2499,rating:4.6,reviews:880,emoji:"🖱️",stock:180,seller:"GameZone"},
- {id:8,name:"Urban Oversized T-Shirt",cat:"Fashion",brand:"URBAN",price:599,old:999,rating:4.4,reviews:5300,emoji:"👕",stock:320,seller:"Urban Closet"},
- {id:9,name:"Classic Denim Jacket",cat:"Fashion",brand:"URBAN",price:1999,old:2999,rating:4.5,reviews:2100,emoji:"🧥",stock:120,seller:"Urban Closet"},
- {id:10,name:"Urban Sneakers",cat:"Fashion",brand:"URBAN",price:2499,old:3999,rating:4.8,reviews:6840,emoji:"👟",stock:890,seller:"Urban Closet"},
- {id:11,name:"Aurora Smart Watch",cat:"Electronics",brand:"AURORA",price:4999,old:6999,rating:4.5,reviews:3300,emoji:"⌚",stock:155,seller:"Digital Planet"},
- {id:12,name:"Wireless Headphones",cat:"Electronics",brand:"ZEN",price:2999,old:4999,rating:4.6,reviews:2900,emoji:"🎧",stock:210,seller:"Audio World"},
- {id:13,name:"Home LED Lamp",cat:"Home",brand:"ZEN",price:799,old:1299,rating:4.3,reviews:1700,emoji:"💡",stock:400,seller:"HomeCraft"},
- {id:14,name:"Ergonomic Office Chair",cat:"Home",brand:"ZEN",price:6999,old:9999,rating:4.7,reviews:920,emoji:"🪑",stock:35,seller:"HomeCraft"},
- {id:15,name:"Modern Coffee Table",cat:"Home",brand:"LUMINA",price:5499,old:7999,rating:4.4,reviews:520,emoji:"🛋️",stock:24,seller:"HomeCraft"},
- {id:16,name:"Smart Air Fryer",cat:"Home",brand:"TECHMAX",price:3999,old:5999,rating:4.6,reviews:1400,emoji:"🍳",stock:74,seller:"Kitchen World"},
- {id:17,name:"Premium Face Wash",cat:"Beauty",brand:"LUMINA",price:499,old:699,rating:4.4,reviews:7400,emoji:"🧴",stock:600,seller:"Beauty House"},
- {id:18,name:"Daily Skincare Set",cat:"Beauty",brand:"LUMINA",price:1499,old:2199,rating:4.7,reviews:2600,emoji:"✨",stock:210,seller:"Beauty House"},
- {id:19,name:"Fitness Smart Scale",cat:"Sports",brand:"NEXTGEN",price:1799,old:2499,rating:4.3,reviews:930,emoji:"⚖️",stock:80,seller:"Fit Store"},
- {id:20,name:"Professional Football",cat:"Sports",brand:"ORBIT",price:999,old:1499,rating:4.6,reviews:1200,emoji:"⚽",stock:190,seller:"Sport Arena"},
- {id:21,name:"Yoga Mat Pro",cat:"Sports",brand:"ZEN",price:1299,old:1799,rating:4.5,reviews:1800,emoji:"🧘",stock:310,seller:"Fit Store"},
- {id:22,name:"Organic Grocery Box",cat:"Grocery",brand:"NOVA",price:899,old:1099,rating:4.6,reviews:4300,emoji:"🥗",stock:250,seller:"Fresh Basket"},
- {id:23,name:"Premium Coffee Beans",cat:"Grocery",brand:"AURORA",price:699,old:899,rating:4.7,reviews:2800,emoji:"☕",stock:340,seller:"Fresh Basket"},
- {id:24,name:"Chocolate Gift Box",cat:"Grocery",brand:"LUMINA",price:799,old:999,rating:4.5,reviews:1500,emoji:"🍫",stock:160,seller:"Sweet House"},
- {id:25,name:"The Future of Technology",cat:"Books",brand:"NEXTGEN",price:499,old:699,rating:4.4,reviews:820,emoji:"📚",stock:90,seller:"Book World"},
- {id:26,name:"Wireless Power Bank",cat:"Electronics",brand:"ORBIT",price:1599,old:2299,rating:4.5,reviews:2100,emoji:"🔋",stock:270,seller:"Digital Planet"},
- {id:27,name:"Portable Bluetooth Speaker",cat:"Electronics",brand:"AURORA",price:2499,old:3499,rating:4.7,reviews:1900,emoji:"🔊",stock:150,seller:"Audio World"},
- {id:28,name:"Running Shoes Pro",cat:"Fashion",brand:"URBAN",price:2999,old:4499,rating:4.8,reviews:3800,emoji:"👟",stock:220,seller:"Urban Closet"},
- {id:29,name:"Minimalist Backpack",cat:"Fashion",brand:"URBAN",price:1499,old:2199,rating:4.6,reviews:2500,emoji:"🎒",stock:340,seller:"Urban Closet"},
- {id:30,name:"Smart Home Camera",cat:"Home",brand:"TECHMAX",price:2999,old:3999,rating:4.5,reviews:1100,emoji:"📷",stock:60,seller:"HomeCraft"},
- {id:31,name:"4K Gaming Monitor",cat:"Gaming",brand:"VOLT",price:28999,old:34999,rating:4.8,reviews:760,emoji:"🖥️",stock:31,seller:"GameZone"},
- {id:32,name:"Gaming Controller",cat:"Gaming",brand:"ORBIT",price:3999,old:4999,rating:4.7,reviews:1200,emoji:"🎮",stock:105,seller:"GameZone"},
- {id:33,name:"Premium Hoodie",cat:"Fashion",brand:"URBAN",price:1799,old:2499,rating:4.6,reviews:3100,emoji:"🧥",stock:180,seller:"Urban Closet"},
- {id:34,name:"Smart Desk Lamp",cat:"Home",brand:"ZEN",price:1299,old:1899,rating:4.4,reviews:870,emoji:"💡",stock:130,seller:"HomeCraft"},
- {id:35,name:"Kitchen Mixer",cat:"Home",brand:"TECHMAX",price:4499,old:5999,rating:4.5,reviews:950,emoji:"🥣",stock:44,seller:"Kitchen World"},
- {id:36,name:"Electric Kettle",cat:"Home",brand:"TECHMAX",price:1399,old:1999,rating:4.5,reviews:2400,emoji:"🫖",stock:200,seller:"Kitchen World"},
- {id:37,name:"Makeup Organizer",cat:"Beauty",brand:"LUMINA",price:699,old:999,rating:4.3,reviews:1300,emoji:"💄",stock:260,seller:"Beauty House"},
- {id:38,name:"Hair Care Kit",cat:"Beauty",brand:"LUMINA",price:1199,old:1699,rating:4.5,reviews:1800,emoji:"🧴",stock:140,seller:"Beauty House"},
- {id:39,name:"Resistance Bands Set",cat:"Sports",brand:"NEXTGEN",price:899,old:1299,rating:4.5,reviews:1600,emoji:"🏋️",stock:300,seller:"Fit Store"},
- {id:40,name:"Sports Water Bottle",cat:"Sports",brand:"NEXTGEN",price:599,old:899,rating:4.4,reviews:2100,emoji:"🥤",stock:400,seller:"Fit Store"}
+<div
+    class="drawer-overlay"
+    id="cartDrawer"
+    onclick="closeCartOnOverlay(event)"
+>
+
+    <div class="drawer">
+
+        <div class="drawer-head">
+
+            <div>
+                <strong>Shopping Cart</strong>
+                <div
+                    class="text-muted"
+                    style="font-size:11px"
+                    id="cartItemText"
+                >
+                    0 items
+                </div>
+            </div>
+
+            <button
+                class="modal-close"
+                onclick="closeCart()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            class="drawer-body"
+            id="cartItems"
+        ></div>
+
+        <div class="drawer-foot">
+
+            <div
+                class="flex items-center justify-between"
+                style="margin-bottom:10px"
+            >
+
+                <span class="text-muted">
+                    Subtotal
+                </span>
+
+                <strong id="cartSubtotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <button
+                class="btn btn-primary"
+                style="width:100%"
+                onclick="checkout()"
+            >
+                Proceed to Checkout →
+            </button>
+
+            <button
+                class="btn btn-outline"
+                style="width:100%;margin-top:7px"
+                onclick="closeCart()"
+            >
+                Continue Shopping
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     PRODUCT MODAL
+     ======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="productModal"
+    onclick="closeModalOnOverlay(event,'productModal')"
+>
+
+    <div class="modal">
+
+        <div class="modal-head">
+
+            <h3>
+                Product Details
+            </h3>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('productModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            class="modal-body"
+            id="productModalBody"
+        ></div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     AUTH MODAL
+     ======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="authModal"
+    onclick="closeModalOnOverlay(event,'authModal')"
+>
+
+    <div class="modal login-box">
+
+        <div class="modal-head">
+
+            <h3>
+                Welcome to NEXORA
+            </h3>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('authModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="auth-tabs">
+
+            <button
+                class="auth-tab active"
+                id="loginTab"
+                onclick="switchAuth('login')"
+            >
+                Login
+            </button>
+
+            <button
+                class="auth-tab"
+                id="registerTab"
+                onclick="switchAuth('register')"
+            >
+                Create Account
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <form
+                id="loginForm"
+                onsubmit="loginUser(event)"
+            >
+
+                <div class="form-group">
+
+                    <label>Email or mobile</label>
+
+                    <input
+                        class="form-control"
+                        id="loginEmail"
+                        placeholder="Enter email or mobile"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        class="form-control"
+                        id="loginPassword"
+                        type="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    class="btn btn-primary"
+                    style="width:100%"
+                >
+                    Login
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    style="width:100%;margin-top:8px"
+                    onclick="showToast('Demo OTP flow selected','info')"
+                >
+                    📱 Login with OTP
+                </button>
+
+            </form>
+
+            <form
+                id="registerForm"
+                class="hidden"
+                onsubmit="registerUser(event)"
+            >
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>First name</label>
+
+                        <input
+                            class="form-control"
+                            id="firstName"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Last name</label>
+
+                        <input
+                            class="form-control"
+                            id="lastName"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        class="form-control"
+                        id="registerEmail"
+                        type="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        class="form-control"
+                        id="registerPassword"
+                        type="password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    class="btn btn-primary"
+                    style="width:100%"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     LOCATION MODAL
+     ======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="locationModal"
+    onclick="closeModalOnOverlay(event,'locationModal')"
+>
+
+    <div class="modal login-box">
+
+        <div class="modal-head">
+
+            <h3>
+                Choose Delivery Location
+            </h3>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('locationModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="form-group">
+
+                <label>PIN code</label>
+
+                <input
+                    class="form-control"
+                    id="pincodeInput"
+                    maxlength="6"
+                    placeholder="Enter PIN code"
+                >
+
+            </div>
+
+            <button
+                class="btn btn-primary"
+                style="width:100%"
+                onclick="setLocation()"
+            >
+                Check & Save Location
+            </button>
+
+            <button
+                class="btn btn-outline"
+                style="width:100%;margin-top:8px"
+                onclick="useCurrentLocation()"
+            >
+                📍 Use Current Location
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     TOAST CONTAINER
+     ======================================================= -->
+
+<div
+    class="toast-container"
+    id="toastContainer"
+></div>
+
+<!-- =======================================================
+     MOBILE NAV
+     ======================================================= -->
+
+<nav class="mobile-bottom">
+
+    <button
+        class="mobile-nav-item active"
+        onclick="goHome()"
+    >
+        <span class="m-icon">⌂</span>
+        Home
+    </button>
+
+    <button
+        class="mobile-nav-item"
+        onclick="showAllCategories()"
+    >
+        <span class="m-icon">☰</span>
+        Categories
+    </button>
+
+    <button
+        class="mobile-nav-item"
+        onclick="performSearch()"
+    >
+        <span class="m-icon">🔍</span>
+        Search
+    </button>
+
+    <button
+        class="mobile-nav-item"
+        onclick="openWishlist()"
+    >
+        <span class="m-icon">♡</span>
+        Wishlist
+    </button>
+
+    <button
+        class="mobile-nav-item"
+        onclick="openCart()"
+    >
+        <span class="m-icon">🛒</span>
+        Cart
+    </button>
+
+</nav>
+
+<!-- =======================================================
+     JAVASCRIPT
+     ======================================================= -->
+
+<script>
+
+/* =========================================================
+   GLOBAL STATE
+   ========================================================= */
+
+const state = {
+
+    cart:
+        JSON.parse(localStorage.getItem("nexora_cart") || "[]"),
+
+    wishlist:
+        JSON.parse(localStorage.getItem("nexora_wishlist") || "[]"),
+
+    recentlyViewed:
+        JSON.parse(localStorage.getItem("nexora_recent") || "[]"),
+
+    user:
+        JSON.parse(localStorage.getItem("nexora_user") || "null"),
+
+    location:
+        localStorage.getItem("nexora_location") || "",
+
+    theme:
+        localStorage.getItem("nexora_theme") || "light",
+
+    heroIndex:0,
+
+    productIndex:0
+
+};
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+const categories = [
+
+    {
+        id:"electronics",
+        name:"Electronics",
+        icon:"📱",
+        count:"2,400+"
+    },
+
+    {
+        id:"fashion",
+        name:"Fashion",
+        icon:"👕",
+        count:"8,100+"
+    },
+
+    {
+        id:"home",
+        name:"Home",
+        icon:"🏠",
+        count:"4,500+"
+    },
+
+    {
+        id:"beauty",
+        name:"Beauty",
+        icon:"💄",
+        count:"3,200+"
+    },
+
+    {
+        id:"sports",
+        name:"Sports",
+        icon:"⚽",
+        count:"1,900+"
+    },
+
+    {
+        id:"grocery",
+        name:"Grocery",
+        icon:"🛒",
+        count:"6,800+"
+    },
+
+    {
+        id:"books",
+        name:"Books",
+        icon:"📚",
+        count:"5,400+"
+    },
+
+    {
+        id:"toys",
+        name:"Toys",
+        icon:"🧸",
+        count:"2,100+"
+    },
+
+    {
+        id:"computers",
+        name:"Computers",
+        icon:"💻",
+        count:"1,700+"
+    },
+
+    {
+        id:"appliances",
+        name:"Appliances",
+        icon:"🧊",
+        count:"1,300+"
+    },
+
+    {
+        id:"automotive",
+        name:"Automotive",
+        icon:"🚗",
+        count:"2,900+"
+    },
+
+    {
+        id:"accessories",
+        name:"Accessories",
+        icon:"⌚",
+        count:"7,600+"
+    }
+
 ];
 
-let cart=JSON.parse(localStorage.getItem("mw_cart")||"[]");
-let wishlist=JSON.parse(localStorage.getItem("mw_wishlist")||"[]");
-let currentProduct=null;
+/* =========================================================
+   BRANDS
+   ========================================================= */
+
+const brands = [
+
+    {
+        name:"Nova",
+        logo:"N"
+    },
+
+    {
+        name:"Orbit",
+        logo:"O"
+    },
+
+    {
+        name:"Pixel",
+        logo:"P"
+    },
+
+    {
+        name:"Urban",
+        logo:"U"
+    },
+
+    {
+        name:"Vertex",
+        logo:"V"
+    },
+
+    {
+        name:"Luma",
+        logo:"L"
+    },
+
+    {
+        name:"Aero",
+        logo:"A"
+    },
+
+    {
+        name:"PrimeX",
+        logo:"PX"
+    },
+
+    {
+        name:"Zen",
+        logo:"Z"
+    },
+
+    {
+        name:"Core",
+        logo:"C"
+    },
+
+    {
+        name:"Vibe",
+        logo:"VB"
+    },
+
+    {
+        name:"Fusion",
+        logo:"F"
+    }
+
+];
 
 /* =========================================================
-   STORAGE
-========================================================= */
+   PRODUCT DATABASE
+   ========================================================= */
 
-function save(){
- localStorage.setItem("mw_cart",JSON.stringify(cart));
- localStorage.setItem("mw_wishlist",JSON.stringify(wishlist));
- updateCounts();
-}
+const products = [
 
-function updateCounts(){
- document.getElementById("cartCount").textContent=cart.reduce((a,b)=>a+b.qty,0);
- document.getElementById("wishCount").textContent=wishlist.length;
+    {
+        id:1,
+        category:"electronics",
+        brand:"Nova",
+        name:"Nova X1 Wireless Headphones",
+        price:1999,
+        old:3499,
+        rating:4.5,
+        reviews:842,
+        stock:24,
+        badge:"Best Seller",
+        image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80",
+        description:"Wireless over-ear headphones with immersive audio, comfortable cushions and long battery life.",
+        colors:["Black","White","Blue"],
+        sizes:["One Size"]
+    },
+
+    {
+        id:2,
+        category:"electronics",
+        brand:"Orbit",
+        name:"Orbit Smart Watch Pro",
+        price:2799,
+        old:5999,
+        rating:4.4,
+        reviews:521,
+        stock:17,
+        badge:"Hot",
+        image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80",
+        description:"Modern smartwatch interface with activity tracking and useful daily features.",
+        colors:["Black","Silver"],
+        sizes:["42mm","46mm"]
+    },
+
+    {
+        id:3,
+        category:"electronics",
+        brand:"Pixel",
+        name:"PixelView 4K Smart Display",
+        price:24999,
+        old:31999,
+        rating:4.7,
+        reviews:329,
+        stock:9,
+        badge:"Limited",
+        image:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=700&q=80",
+        description:"Ultra-clear display designed for movies, gaming and everyday entertainment.",
+        colors:["Black"],
+        sizes:["43 inch","55 inch"]
+    },
+
+    {
+        id:4,
+        category:"fashion",
+        brand:"Urban",
+        name:"Urban Everyday Sneakers",
+        price:1499,
+        old:2999,
+        rating:4.3,
+        reviews:1102,
+        stock:45,
+        badge:"Trending",
+        image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+        description:"Comfortable everyday sneakers with lightweight construction.",
+        colors:["White","Black","Red"],
+        sizes:["7","8","9","10"]
+    },
+
+    {
+        id:5,
+        category:"fashion",
+        brand:"Vibe",
+        name:"Vibe Classic Casual Jacket",
+        price:2299,
+        old:4499,
+        rating:4.2,
+        reviews:482,
+        stock:31,
+        badge:"New",
+        image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=80",
+        description:"Classic casual jacket suitable for everyday outfits.",
+        colors:["Black","Brown","Green"],
+        sizes:["S","M","L","XL"]
+    },
+
+    {
+        id:6,
+        category:"home",
+        brand:"Luma",
+        name:"Luma Minimal Table Lamp",
+        price:899,
+        old:1599,
+        rating:4.6,
+        reviews:712,
+        stock:62,
+        badge:"Top Rated",
+        image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80",
+        description:"Minimal decorative table lamp for bedrooms, study areas and living spaces.",
+        colors:["White","Black"],
+        sizes:["Standard"]
+    },
+
+    {
+        id:7,
+        category:"home",
+        brand:"Zen",
+        name:"Zen Comfort Cushion Set",
+        price:699,
+        old:1299,
+        rating:4.1,
+        reviews:302,
+        stock:88,
+        badge:"Value",
+        image:"https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80",
+        description:"Soft decorative cushion set for adding comfort to your room.",
+        colors:["Grey","Beige","Blue"],
+        sizes:["16x16"]
+    },
+
+    {
+        id:8,
+        category:"beauty",
+        brand:"Luma",
+        name:"Luma Daily Care Essentials",
+        price:799,
+        old:1199,
+        rating:4.5,
+        reviews:921,
+        stock:56,
+        badge:"Popular",
+        image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=80",
+        description:"A convenient everyday personal-care collection.",
+        colors:["Original"],
+        sizes:["Standard"]
+    },
+
+    {
+        id:9,
+        category:"sports",
+        brand:"Aero",
+        name:"Aero Training Backpack",
+        price:1299,
+        old:2499,
+        rating:4.4,
+        reviews:610,
+        stock:39,
+        badge:"Deal",
+        image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80",
+        description:"Durable backpack for sports, school and everyday travel.",
+        colors:["Black","Blue"],
+        sizes:["25L","35L"]
+    },
+
+    {
+        id:10,
+        category:"sports",
+        brand:"Core",
+        name:"Core Performance Running Shoes",
+        price:2199,
+        old:3999,
+        rating:4.6,
+        reviews:874,
+        stock:28,
+        badge:"Best Seller",
+        image:"https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=700&q=80",
+        description:"Lightweight running shoes built for comfortable everyday training.",
+        colors:["Black","White"],
+        sizes:["7","8","9","10","11"]
+    },
+
+    {
+        id:11,
+        category:"grocery",
+        brand:"PrimeX",
+        name:"PrimeX Premium Snack Box",
+        price:499,
+        old:699,
+        rating:4.3,
+        reviews:243,
+        stock:100,
+        badge:"Value Pack",
+        image:"https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=700&q=80",
+        description:"Assorted snack selection for everyday enjoyment.",
+        colors:["Mixed"],
+        sizes:["Small","Large"]
+    },
+
+    {
+        id:12,
+        category:"books",
+        brand:"Nova",
+        name:"The Everyday Ideas Collection",
+        price:599,
+        old:999,
+        rating:4.7,
+        reviews:385,
+        stock:41,
+        badge:"Editor's Pick",
+        image:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=80",
+        description:"A curated reading collection for curious minds.",
+        colors:["Paperback"],
+        sizes:["Standard"]
+    },
+
+    {
+        id:13,
+        category:"toys",
+        brand:"Orbit",
+        name:"Orbit Creative Building Set",
+        price:999,
+        old:1799,
+        rating:4.5,
+        reviews:418,
+        stock:25,
+        badge:"Popular",
+        image:"https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80",
+        description:"Creative building set designed for imaginative play.",
+        colors:["Multi"],
+        sizes:["Classic"]
+    },
+
+    {
+        id:14,
+        category:"computers",
+        brand:"Vertex",
+        name:"Vertex Wireless Keyboard",
+        price:1199,
+        old:1999,
+        rating:4.4,
+        reviews:561,
+        stock:34,
+        badge:"Trending",
+        image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80",
+        description:"Slim wireless keyboard designed for modern desks.",
+        colors:["Black","White"],
+        sizes:["Full Size"]
+    },
+
+    {
+        id:15,
+        category:"accessories",
+        brand:"Zen",
+        name:"Zen Everyday Travel Bottle",
+        price:449,
+        old:799,
+        rating:4.2,
+        reviews:1023,
+        stock:71,
+        badge:"Popular",
+        image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80",
+        description:"Reusable bottle for travel, school and everyday use.",
+        colors:["Blue","Black","Silver"],
+        sizes:["750ml","1L"]
+    }
+
+];
+
+/* =========================================================
+   SAVE STATE
+   ========================================================= */
+
+function saveState(){
+
+    localStorage.setItem(
+        "nexora_cart",
+        JSON.stringify(state.cart)
+    );
+
+    localStorage.setItem(
+        "nexora_wishlist",
+        JSON.stringify(state.wishlist)
+    );
+
+    localStorage.setItem(
+        "nexora_recent",
+        JSON.stringify(state.recentlyViewed)
+    );
+
+    if(state.user){
+
+        localStorage.setItem(
+            "nexora_user",
+            JSON.stringify(state.user)
+        );
+
+    }
+
 }
 
 /* =========================================================
-   NAVIGATION
-========================================================= */
+   INITIALIZATION
+   ========================================================= */
 
-function showPage(id){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- const page=document.getElementById(id);
- if(page) page.classList.add("active");
- window.scrollTo({top:0,behavior:"smooth"});
+document.addEventListener("DOMContentLoaded",()=>{
 
- if(id==="shop") renderShop();
- if(id==="wishlist") renderWishlist();
- if(id==="deals") renderDeals();
-}
+    if(state.theme==="dark"){
+        document.body.classList.add("dark");
+    }
 
-function filterCategory(cat){
- showPage("shop");
- document.getElementById("categoryFilter").value=cat;
- document.getElementById("shopSearch").value="";
- renderShop();
-}
+    if(state.location){
+        document.getElementById("locationText").textContent =
+            state.location;
+    }
 
-function clearFilters(){
- document.getElementById("shopSearch").value="";
- document.getElementById("categoryFilter").value="";
- document.getElementById("brandFilter").value="";
- document.getElementById("sortFilter").value="popular";
- renderShop();
+    renderCategories();
+    renderBrands();
+    renderProducts();
+    renderRecentlyViewed();
+    updateCounts();
+    startHero();
+    startCountdown();
+    setupSearch();
+
+});
+
+/* =========================================================
+   CATEGORY RENDER
+   ========================================================= */
+
+function renderCategories(){
+
+    const grid =
+        document.getElementById("categoryGrid");
+
+    grid.innerHTML = categories
+        .slice(0,8)
+        .map(category=>`
+
+            <div
+                class="category-card"
+                onclick="filterCategory('${category.id}')"
+            >
+
+                <div class="category-image">
+                    ${category.icon}
+                </div>
+
+                <h4>
+                    ${category.name}
+                </h4>
+
+                <p>
+                    ${category.count} items
+                </p>
+
+            </div>
+
+        `)
+        .join("");
+
 }
 
 /* =========================================================
-   PRODUCT CARDS
-========================================================= */
+   BRAND RENDER
+   ========================================================= */
 
-function discount(p){
- return Math.round((1-p.price/p.old)*100);
-}
+function renderBrands(){
 
-function productCard(p){
- const wished=wishlist.includes(p.id);
- return `
- <article class="product">
-   <div class="product-img">
-     <button class="heart" onclick="toggleWishlist(${p.id})">${wished?"❤️":"♡"}</button>
-     <span>${p.emoji}</span>
-   </div>
-   <div class="product-body">
-     <div class="product-title">${p.name}</div>
-     <div class="product-meta">${p.brand} · ${p.seller}</div>
-     <div class="rating">★ ${p.rating} <span style="color:var(--muted)">(${p.reviews.toLocaleString()})</span></div>
-     <div class="price">₹${p.price.toLocaleString()} <span class="old">₹${p.old.toLocaleString()}</span></div>
-     <div class="discount">${discount(p)}% OFF</div>
-     <div class="stock">${p.stock<30?"Only "+p.stock+" left":"In stock"}</div>
-     <div class="product-actions">
-       <button class="btn small" onclick="addCart(${p.id})">Add to Cart</button>
-       <button class="btn outline small" onclick="openProduct(${p.id})">View</button>
-     </div>
-   </div>
- </article>`;
-}
+    const grid =
+        document.getElementById("brandGrid");
 
-function renderProducts(list,id){
- const el=document.getElementById(id);
- if(!list.length){
-  el.innerHTML=`<div class="empty" style="grid-column:1/-1"><h2>No products found</h2><p>Try different filters or search terms.</p></div>`;
-  return;
- }
- el.innerHTML=list.map(productCard).join("");
-}
+    grid.innerHTML = brands
+        .slice(0,6)
+        .map(brand=>`
 
-/* =========================================================
-   HOME
-========================================================= */
+            <div
+                class="brand-card"
+                onclick="filterBrand('${brand.name}')"
+            >
 
-function renderHome(){
- renderProducts(products.slice(0,10),"trendingProducts");
-}
+                <div class="brand-logo">
+                    ${brand.logo}
+                </div>
 
-function renderDeals(){
- const list=[...products].sort((a,b)=>discount(b)-discount(a)).slice(0,15);
- renderProducts(list,"dealProducts");
+                <strong>
+                    ${brand.name}
+                </strong>
+
+                <span
+                    class="text-muted"
+                    style="font-size:9px"
+                >
+                    Explore
+                </span>
+
+            </div>
+
+        `)
+        .join("");
+
 }
 
 /* =========================================================
-   SHOP SEARCH / FILTER
-========================================================= */
+   PRODUCT RENDER
+   ========================================================= */
 
-function renderShop(){
- let list=[...products];
+function renderProducts(list=products){
 
- const q=(document.getElementById("shopSearch")?.value||"").toLowerCase();
- const cat=document.getElementById("categoryFilter")?.value||"";
- const brand=document.getElementById("brandFilter")?.value||"";
- const sort=document.getElementById("sortFilter")?.value||"popular";
+    const grid =
+        document.getElementById("productGrid");
 
- if(q){
-  list=list.filter(p=>
-   p.name.toLowerCase().includes(q)||
-   p.brand.toLowerCase().includes(q)||
-   p.cat.toLowerCase().includes(q)||
-   p.seller.toLowerCase().includes(q)
-  );
- }
+    if(!list.length){
 
- if(cat) list=list.filter(p=>p.cat===cat);
- if(brand) list=list.filter(p=>p.brand===brand);
+        grid.innerHTML = `
 
- if(sort==="low") list.sort((a,b)=>a.price-b.price);
- if(sort==="high") list.sort((a,b)=>b.price-a.price);
- if(sort==="rating") list.sort((a,b)=>b.rating-a.rating);
- if(sort==="discount") list.sort((a,b)=>discount(b)-discount(a));
- if(sort==="popular") list.sort((a,b)=>b.reviews-a.reviews);
+            <div
+                style="
+                    grid-column:1/-1;
+                    background:#fff;
+                    padding:45px;
+                    border-radius:15px;
+                    text-align:center;
+                "
+            >
 
- renderProducts(list,"shopProducts");
+                <div style="font-size:50px">
+                    🔎
+                </div>
+
+                <h3>
+                    No products found
+                </h3>
+
+                <p class="text-muted">
+                    Try another search or category.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    style="margin-top:12px"
+                    onclick="renderProducts()"
+                >
+                    Show All Products
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+    grid.innerHTML = list.map(product=>productCard(product)).join("");
+
 }
 
 /* =========================================================
-   LIVE SEARCH
-========================================================= */
+   PRODUCT CARD
+   ========================================================= */
 
-function liveSearch(value){
- const box=document.getElementById("searchSuggestions");
- const q=value.trim().toLowerCase();
+function productCard(product){
 
- if(!q){
-  box.style.display="none";
-  return;
- }
+    const wished =
+        state.wishlist.includes(product.id);
 
- const matches=products.filter(p=>
-   p.name.toLowerCase().includes(q)||
-   p.brand.toLowerCase().includes(q)||
-   p.cat.toLowerCase().includes(q)
- ).slice(0,6);
+    const discount =
+        Math.round(
+            ((product.old-product.price)/product.old)*100
+        );
 
- box.innerHTML=matches.length
- ? matches.map(p=>`
-   <div onclick="selectSuggestion(${p.id})"
-    style="padding:11px;border-radius:9px;cursor:pointer">
-    ${p.emoji} <b>${p.name}</b>
-    <small style="color:var(--muted)"> · ${p.cat}</small>
-   </div>`).join("")
- : `<div style="padding:12px;color:var(--muted)">No matching products</div>`;
+    return `
 
- box.style.display="block";
+        <article
+            class="product-card"
+            data-product-id="${product.id}"
+        >
+
+            <div class="product-image-wrap">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                >
+
+                <span class="product-badge">
+                    ${product.badge}
+                </span>
+
+                <button
+                    class="product-wish"
+                    onclick="toggleWishlist(${product.id})"
+                    aria-label="Wishlist"
+                >
+                    ${wished ? "♥" : "♡"}
+                </button>
+
+                <button
+                    class="quick-view"
+                    onclick="openProduct(${product.id})"
+                >
+                    👁 Quick View
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-brand">
+                    ${product.brand}
+                </div>
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div>
+
+                    <span class="rating">
+                        ★ ${product.rating}
+                    </span>
+
+                    <span class="product-rating-count">
+                        (${product.reviews})
+                    </span>
+
+                </div>
+
+                <div class="price-row">
+
+                    <span class="price">
+                        ₹${product.price.toLocaleString("en-IN")}
+                    </span>
+
+                    <span class="old-price">
+                        ₹${product.old.toLocaleString("en-IN")}
+                    </span>
+
+                    <span class="discount">
+                        ${discount}% off
+                    </span>
+
+                </div>
+
+                <div class="product-actions">
+
+                    <button
+                        class="small-btn add-cart"
+                        onclick="addToCart(${product.id})"
+                    >
+                        🛒 Add
+                    </button>
+
+                    <button
+                        class="small-btn buy-now"
+                        onclick="buyNow(${product.id})"
+                    >
+                        ⚡ Buy
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
 }
 
-function selectSuggestion(id){
- document.getElementById("searchSuggestions").style.display="none";
- openProduct(id);
+/* =========================================================
+   ADD CART
+   ========================================================= */
+
+function addToCart(id){
+
+    const product =
+        products.find(p=>p.id===id);
+
+    if(!product) return;
+
+    const existing =
+        state.cart.find(item=>item.id===id);
+
+    if(existing){
+
+        if(existing.qty >= product.stock){
+
+            showToast(
+                "Maximum available stock reached",
+                "error"
+            );
+
+            return;
+        }
+
+        existing.qty++;
+
+    }else{
+
+        state.cart.push({
+            id:id,
+            qty:1
+        });
+
+    }
+
+    saveState();
+    updateCounts();
+    renderCart();
+
+    showToast(
+        `${product.name} added to cart`,
+        "success"
+    );
+
 }
 
-function doSearch(){
- const q=document.getElementById("searchInput").value.trim();
- document.getElementById("searchSuggestions").style.display="none";
- showPage("shop");
- document.getElementById("shopSearch").value=q;
- renderShop();
+/* =========================================================
+   BUY NOW
+   ========================================================= */
+
+function buyNow(id){
+
+    addToCart(id);
+
+    setTimeout(()=>{
+        checkout();
+    },200);
+
+}
+
+/* =========================================================
+   CART RENDER
+   ========================================================= */
+
+function renderCart(){
+
+    const container =
+        document.getElementById("cartItems");
+
+    if(!state.cart.length){
+
+        container.innerHTML = `
+
+            <div
+                class="center"
+                style="padding:60px 15px"
+            >
+
+                <div style="font-size:60px">
+                    🛒
+                </div>
+
+                <h3>
+                    Your cart is empty
+                </h3>
+
+                <p
+                    class="text-muted"
+                    style="margin:7px 0 15px"
+                >
+                    Add something you like.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="closeCart();scrollToSection('products')"
+                >
+                    Start Shopping
+                </button>
+
+            </div>
+
+        `;
+
+    }else{
+
+        container.innerHTML =
+            state.cart.map(item=>{
+
+                const product =
+                    products.find(p=>p.id===item.id);
+
+                if(!product) return "";
+
+                return `
+
+                    <div class="cart-item">
+
+                        <div class="cart-item-img">
+
+                            <img
+                                src="${product.image}"
+                                alt=""
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <div class="cart-item-name">
+                                ${product.name}
+                            </div>
+
+                            <div class="cart-item-price">
+                                ₹${(
+                                    product.price*item.qty
+                                ).toLocaleString("en-IN")}
+                            </div>
+
+                            <div class="qty-control">
+
+                                <button
+                                    onclick="changeQty(${item.id},-1)"
+                                >
+                                    −
+                                </button>
+
+                                <span>
+                                    ${item.qty}
+                                </span>
+
+                                <button
+                                    onclick="changeQty(${item.id},1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                            <span
+                                class="remove-cart"
+                                onclick="removeFromCart(${item.id})"
+                            >
+                                Remove
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }).join("");
+
+    }
+
+    const total =
+        getCartTotal();
+
+    document.getElementById("cartSubtotal").textContent =
+        "₹"+total.toLocaleString("en-IN");
+
+    document.getElementById("cartItemText").textContent =
+        `${getCartCount()} item${getCartCount()===1?"":"s"}`;
+
+}
+
+/* =========================================================
+   CART TOTAL
+   ========================================================= */
+
+function getCartTotal(){
+
+    return state.cart.reduce((total,item)=>{
+
+        const product =
+            products.find(p=>p.id===item.id);
+
+        return total +
+            (product ? product.price*item.qty : 0);
+
+    },0);
+
+}
+
+/* =========================================================
+   CART COUNT
+   ========================================================= */
+
+function getCartCount(){
+
+    return state.cart.reduce(
+        (sum,item)=>sum+item.qty,
+        0
+    );
+
+}
+
+/* =========================================================
+   CHANGE QTY
+   ========================================================= */
+
+function changeQty(id,delta){
+
+    const item =
+        state.cart.find(i=>i.id===id);
+
+    if(!item) return;
+
+    item.qty += delta;
+
+    if(item.qty<=0){
+
+        state.cart =
+            state.cart.filter(i=>i.id!==id);
+
+    }
+
+    saveState();
+    updateCounts();
+    renderCart();
+
+}
+
+/* =========================================================
+   REMOVE CART
+   ========================================================= */
+
+function removeFromCart(id){
+
+    state.cart =
+        state.cart.filter(
+            item=>item.id!==id
+        );
+
+    saveState();
+    updateCounts();
+    renderCart();
+
+    showToast(
+        "Item removed from cart",
+        "info"
+    );
+
+}
+
+/* =========================================================
+   CART OPEN/CLOSE
+   ========================================================= */
+
+function openCart(){
+
+    renderCart();
+
+    document
+        .getElementById("cartDrawer")
+        .classList.add("active");
+
+}
+
+function closeCart(){
+
+    document
+        .getElementById("cartDrawer")
+        .classList.remove("active");
+
+}
+
+function closeCartOnOverlay(event){
+
+    if(event.target.id==="cartDrawer"){
+        closeCart();
+    }
+
 }
 
 /* =========================================================
    WISHLIST
-========================================================= */
+   ========================================================= */
 
 function toggleWishlist(id){
- if(wishlist.includes(id)){
-  wishlist=wishlist.filter(x=>x!==id);
-  toast("Removed from wishlist");
- }else{
-  wishlist.push(id);
-  toast("❤️ Added to wishlist");
- }
- save();
- renderHome();
- if(document.getElementById("wishlist").classList.contains("active")) renderWishlist();
-}
 
-function renderWishlist(){
- const list=products.filter(p=>wishlist.includes(p.id));
- const el=document.getElementById("wishlistProducts");
+    const index =
+        state.wishlist.indexOf(id);
 
- if(!list.length){
-  el.innerHTML=`<div class="empty" style="grid-column:1/-1">
-    <div style="font-size:55px">❤️</div>
-    <h2>Your wishlist is empty</h2>
-    <p>Save products you want to explore later.</p>
-    <button class="btn" style="margin-top:15px" onclick="showPage('shop')">Explore Products</button>
-  </div>`;
-  return;
- }
- renderProducts(list,"wishlistProducts");
+    const product =
+        products.find(p=>p.id===id);
+
+    if(index===-1){
+
+        state.wishlist.push(id);
+
+        showToast(
+            `${product.name} added to wishlist`,
+            "success"
+        );
+
+    }else{
+
+        state.wishlist.splice(index,1);
+
+        showToast(
+            "Removed from wishlist",
+            "info"
+        );
+
+    }
+
+    saveState();
+    updateCounts();
+    renderProducts();
+
 }
 
 /* =========================================================
-   PRODUCT DETAILS
-========================================================= */
+   WISHLIST PAGE / DEMO
+   ========================================================= */
+
+function openWishlist(){
+
+    const items =
+        products.filter(
+            p=>state.wishlist.includes(p.id)
+        );
+
+    if(!items.length){
+
+        showToast(
+            "Your wishlist is empty",
+            "info"
+        );
+
+        return;
+    }
+
+    document
+        .getElementById("productGrid")
+        .innerHTML =
+        items.map(product=>productCard(product)).join("");
+
+    document
+        .getElementById("products")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    showToast(
+        `${items.length} wishlist item(s) shown`,
+        "success"
+    );
+
+}
+
+/* =========================================================
+   PRODUCT DETAIL
+   ========================================================= */
 
 function openProduct(id){
- currentProduct=products.find(p=>p.id===id);
- if(!currentProduct)return;
 
- const p=currentProduct;
+    const product =
+        products.find(p=>p.id===id);
 
- document.getElementById("productDetails").innerHTML=`
-  <div class="modal-grid">
-   <div>
-    <div class="big-product">${p.emoji}</div>
-    <div style="display:flex;gap:8px;margin-top:10px">
-      <button class="variant">🖼️</button>
-      <button class="variant">🖼️</button>
-      <button class="variant">🖼️</button>
-      <button class="variant">🖼️</button>
-    </div>
-   </div>
+    if(!product) return;
 
-   <div>
-    <div class="product-meta">${p.brand} · ${p.cat}</div>
-    <h1 style="font-size:32px;margin:8px 0">${p.name}</h1>
-    <div class="rating">★ ${p.rating} · ${p.reviews.toLocaleString()} reviews</div>
+    addRecentlyViewed(id);
 
-    <div class="price" style="font-size:32px;margin-top:20px">
-      ₹${p.price.toLocaleString()}
-      <span class="old">₹${p.old.toLocaleString()}</span>
-    </div>
+    const discount =
+        Math.round(
+            ((product.old-product.price)/product.old)*100
+        );
 
-    <div class="discount" style="margin-top:4px">${discount(p)}% OFF</div>
+    document
+        .getElementById("productModalBody")
+        .innerHTML = `
 
-    <p style="color:var(--muted);line-height:1.6;margin:18px 0">
-      Premium ${p.cat.toLowerCase()} product from ${p.brand}.
-      Explore specifications, seller information, offers and customer reviews.
-    </p>
+            <div class="product-detail">
 
-    <h3>Choose Variant</h3>
-    <div class="variant-row">
-      <button class="variant active">Standard</button>
-      <button class="variant">Premium</button>
-      <button class="variant">Pro</button>
-    </div>
+                <div class="detail-image">
 
-    <h3>Highlights</h3>
-    <ul style="margin:10px 0 20px 20px;color:var(--muted);line-height:1.8">
-      <li>Verified marketplace seller</li>
-      <li>Fast delivery available</li>
-      <li>Easy return-style demo flow</li>
-      <li>Customer support available</li>
-    </ul>
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
 
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn" onclick="addCart(${p.id});closeProduct()">🛒 Add to Cart</button>
-      <button class="btn outline" onclick="toggleWishlist(${p.id})">❤️ Wishlist</button>
-      <button class="btn dark" onclick="buyNow(${p.id})">Buy Now</button>
-    </div>
+                </div>
 
-    <div style="margin-top:20px;padding:15px;background:var(--bg);border-radius:13px">
-      <b>🏪 Sold by ${p.seller}</b>
-      <p style="color:var(--muted);font-size:13px;margin-top:5px">⭐ 4.8 seller rating · Verified store</p>
-    </div>
-   </div>
-  </div>
- `;
- document.getElementById("productOverlay").classList.add("show");
-}
+                <div class="detail-info">
 
-function closeProduct(){
- document.getElementById("productOverlay").classList.remove("show");
-}
+                    <div class="detail-brand">
+                        ${product.brand}
+                    </div>
 
-function buyNow(id){
- addCart(id);
- closeProduct();
- openCart();
+                    <h2>
+                        ${product.name}
+                    </h2>
+
+                    <div style="margin-top:8px">
+
+                        <span class="rating">
+                            ★ ${product.rating}
+                        </span>
+
+                        <span class="text-muted">
+                            ${product.reviews} ratings
+                        </span>
+
+                    </div>
+
+                    <div class="detail-price">
+
+                        <strong>
+                            ₹${product.price.toLocaleString("en-IN")}
+                        </strong>
+
+                        <span class="old-price">
+                            ₹${product.old.toLocaleString("en-IN")}
+                        </span>
+
+                        <span class="discount">
+                            ${discount}% OFF
+                        </span>
+
+                    </div>
+
+                    <div class="detail-section">
+
+                        <strong>
+                            About this product
+                        </strong>
+
+                        <p
+                            class="text-muted"
+                            style="font-size:13px;margin-top:6px"
+                        >
+                            ${product.description}
+                        </p>
+
+                    </div>
+
+                    <div class="detail-section">
+
+                        <strong>
+                            Color
+                        </strong>
+
+                        <div class="option-row">
+
+                            ${product.colors.map(
+                                color=>`
+                                    <button class="option">
+                                        ${color}
+                                    </button>
+                                `
+                            ).join("")}
+
+                        </div>
+
+                    </div>
+
+                    <div class="detail-section">
+
+                        <strong>
+                            Size / Variant
+                        </strong>
+
+                        <div class="option-row">
+
+                            ${product.sizes.map(
+                                size=>`
+                                    <button class="option">
+                                        ${size}
+                                    </button>
+                                `
+                            ).join("")}
+
+                        </div>
+
+                    </div>
+
+                    <div class="detail-section">
+
+                        <strong>
+                            Availability
+                        </strong>
+
+                        <p
+                            class="text-success"
+                            style="font-size:12px;margin-top:5px"
+                        >
+                            ● ${product.stock} units currently available
+                        </p>
+
+                    </div>
+
+                    <div class="detail-actions">
+
+                        <button
+                            class="btn btn-warning"
+                            onclick="addToCart(${product.id});closeModal('productModal')"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="buyNow(${product.id});closeModal('productModal')"
+                        >
+                            ⚡ Buy Now
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="btn btn-outline"
+                        style="width:100%;margin-top:8px"
+                        onclick="toggleWishlist(${product.id})"
+                    >
+                        ♡ Add to Wishlist
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    document
+        .getElementById("productModal")
+        .classList.add("active");
+
 }
 
 /* =========================================================
-   CART
-========================================================= */
+   RECENTLY VIEWED
+   ========================================================= */
 
-function addCart(id){
- const p=products.find(x=>x.id===id);
- if(!p)return;
+function addRecentlyViewed(id){
 
- const existing=cart.find(x=>x.id===id);
+    state.recentlyViewed =
+        state.recentlyViewed.filter(
+            x=>x!==id
+        );
 
- if(existing) existing.qty++;
- else cart.push({id,qty:1});
+    state.recentlyViewed.unshift(id);
 
- save();
- toast(`🛒 ${p.name} added to cart`);
+    state.recentlyViewed =
+        state.recentlyViewed.slice(0,10);
+
+    saveState();
+    renderRecentlyViewed();
+
 }
 
-function removeCart(id){
- cart=cart.filter(x=>x.id!==id);
- save();
- renderCart();
+function renderRecentlyViewed(){
+
+    const container =
+        document.getElementById("recentProducts");
+
+    const items =
+        state.recentlyViewed
+            .map(id=>products.find(p=>p.id===id))
+            .filter(Boolean);
+
+    if(!items.length){
+
+        container.innerHTML = `
+
+            <div
+                style="
+                    background:#fff;
+                    padding:25px;
+                    border-radius:13px;
+                    width:100%;
+                "
+            >
+
+                <strong>
+                    Nothing here yet
+                </strong>
+
+                <p class="text-muted">
+                    Open a product and it will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+    container.innerHTML =
+        items.map(product=>productCard(product)).join("");
+
 }
 
-function changeQty(id,delta){
- const item=cart.find(x=>x.id===id);
- if(!item)return;
+function clearRecentlyViewed(){
 
- item.qty+=delta;
+    state.recentlyViewed=[];
 
- if(item.qty<=0){
-  cart=cart.filter(x=>x.id!==id);
- }
+    saveState();
+    renderRecentlyViewed();
 
- save();
- renderCart();
+    showToast(
+        "Recently viewed cleared",
+        "info"
+    );
+
 }
 
-function renderCart(){
- const el=document.getElementById("cartItems");
+/* =========================================================
+   CATEGORY FILTER
+   ========================================================= */
 
- if(!cart.length){
-  el.innerHTML=`<div class="empty">
-   <div style="font-size:50px">🛒</div>
-   <h3>Your cart is empty</h3>
-   <p>Add products from the marketplace.</p>
-  </div>`;
-  document.getElementById("cartSubtotal").textContent="₹0";
-  document.getElementById("cartTotal").textContent="₹0";
-  return;
- }
+function filterCategory(category){
 
- let total=0;
+    const filtered =
+        products.filter(
+            p=>p.category===category
+        );
 
- el.innerHTML=cart.map(item=>{
-  const p=products.find(x=>x.id===item.id);
-  if(!p)return"";
-  total+=p.price*item.qty;
+    renderProducts(filtered);
 
-  return `
-   <div class="cart-item">
-    <div class="cart-img">${p.emoji}</div>
-    <div>
-      <b>${p.name}</b>
-      <div style="color:var(--muted);font-size:12px">₹${p.price.toLocaleString()} each</div>
-      <div class="qty">
-       <button onclick="changeQty(${p.id},-1)">−</button>
-       <b>${item.qty}</b>
-       <button onclick="changeQty(${p.id},1)">+</button>
-      </div>
-    </div>
-    <div>
-      <b>₹${(p.price*item.qty).toLocaleString()}</b>
-      <button onclick="removeCart(${p.id})" style="display:block;margin-top:7px;color:var(--danger);background:none">Remove</button>
-    </div>
-   </div>`;
- }).join("");
+    scrollToSection("products");
 
- document.getElementById("cartSubtotal").textContent="₹"+total.toLocaleString();
- document.getElementById("cartTotal").textContent="₹"+total.toLocaleString();
+    showToast(
+        `${category} products loaded`,
+        "success"
+    );
+
 }
 
-function openCart(){
- renderCart();
- document.getElementById("cartOverlay").classList.add("show");
+/* =========================================================
+   BRAND FILTER
+   ========================================================= */
+
+function filterBrand(brand){
+
+    const filtered =
+        products.filter(
+            p=>p.brand===brand
+        );
+
+    renderProducts(filtered);
+
+    scrollToSection("products");
+
+    showToast(
+        `${brand} products loaded`,
+        "success"
+    );
+
 }
 
-function closeCart(){
- document.getElementById("cartOverlay").classList.remove("show");
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function performSearch(){
+
+    const input =
+        document.getElementById("searchInput");
+
+    const query =
+        input.value.trim().toLowerCase();
+
+    if(!query){
+
+        renderProducts();
+
+        scrollToSection("products");
+
+        return;
+    }
+
+    const category =
+        document.getElementById("searchCategory").value;
+
+    let filtered =
+        products.filter(product=>{
+
+            const searchable =
+                (
+                    product.name+
+                    " "+
+                    product.brand+
+                    " "+
+                    product.category+
+                    " "+
+                    product.description
+                ).toLowerCase();
+
+            const matchesSearch =
+                searchable.includes(query);
+
+            const matchesCategory =
+                category==="all" ||
+                product.category===category;
+
+            return matchesSearch && matchesCategory;
+
+        });
+
+    renderProducts(filtered);
+
+    scrollToSection("products");
+
+    showToast(
+        `${filtered.length} result(s) found`,
+        "info"
+    );
+
+    document
+        .getElementById("searchSuggestions")
+        .classList.remove("active");
+
 }
+
+/* =========================================================
+   SEARCH SETUP
+   ========================================================= */
+
+function setupSearch(){
+
+    const input =
+        document.getElementById("searchInput");
+
+    const suggestions =
+        document.getElementById("searchSuggestions");
+
+    input.addEventListener("input",()=>{
+
+        const value =
+            input.value.trim().toLowerCase();
+
+        if(!value){
+
+            suggestions.classList.remove("active");
+
+            return;
+        }
+
+        const matches =
+            products
+                .filter(p=>
+                    (
+                        p.name+
+                        " "+
+                        p.brand+
+                        " "+
+                        p.category
+                    )
+                    .toLowerCase()
+                    .includes(value)
+                )
+                .slice(0,6);
+
+        if(!matches.length){
+
+            suggestions.classList.remove("active");
+
+            return;
+        }
+
+        suggestions.innerHTML =
+            matches.map(product=>`
+
+                <div
+                    class="suggestion"
+                    onclick="selectSuggestion(${product.id})"
+                >
+
+                    <div class="suggestion-icon">
+                        🔎
+                    </div>
+
+                    <div>
+
+                        <strong
+                            style="font-size:12px"
+                        >
+                            ${product.name}
+                        </strong>
+
+                        <div
+                            class="text-muted"
+                            style="font-size:10px"
+                        >
+                            ${product.brand} · ${product.category}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `).join("");
+
+        suggestions.classList.add("active");
+
+    });
+
+    input.addEventListener("keydown",event=>{
+
+        if(event.key==="Enter"){
+            performSearch();
+        }
+
+    });
+
+    document.addEventListener("click",event=>{
+
+        if(
+            !event.target.closest(".search-wrap")
+        ){
+
+            suggestions.classList.remove("active");
+
+        }
+
+    });
+
+}
+
+function selectSuggestion(id){
+
+    document
+        .getElementById("searchInput")
+        .value =
+        products.find(p=>p.id===id)?.name || "";
+
+    performSearch();
+
+}
+
+/* =========================================================
+   HERO SLIDER
+   ========================================================= */
+
+function setHero(index){
+
+    const slides =
+        document.querySelectorAll(".hero-slide");
+
+    const dots =
+        document.querySelectorAll(".hero-dot");
+
+    slides.forEach(
+        slide=>slide.classList.remove("active")
+    );
+
+    dots.forEach(
+        dot=>dot.classList.remove("active")
+    );
+
+    state.heroIndex=index;
+
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+
+}
+
+function changeHero(direction){
+
+    const total=3;
+
+    let next =
+        state.heroIndex+direction;
+
+    if(next<0) next=total-1;
+    if(next>=total) next=0;
+
+    setHero(next);
+
+}
+
+function startHero(){
+
+    setInterval(()=>{
+        changeHero(1);
+    },5000);
+
+}
+
+/* =========================================================
+   COUNTDOWN
+   ========================================================= */
+
+let saleEnd =
+    Date.now() + (5*60*60*1000) + (32*60*1000) + 19000;
+
+function startCountdown(){
+
+    setInterval(()=>{
+
+        let diff =
+            Math.max(0,saleEnd-Date.now());
+
+        const hours =
+            Math.floor(diff/(1000*60*60));
+
+        diff -=
+            hours*1000*60*60;
+
+        const minutes =
+            Math.floor(diff/(1000*60));
+
+        diff -=
+            minutes*1000*60;
+
+        const seconds =
+            Math.floor(diff/1000);
+
+        document.getElementById("hours")
+            .textContent =
+            String(hours).padStart(2,"0");
+
+        document.getElementById("minutes")
+            .textContent =
+            String(minutes).padStart(2,"0");
+
+        document.getElementById("seconds")
+            .textContent =
+            String(seconds).padStart(2,"0");
+
+    },1000);
+
+}
+
+/* =========================================================
+   COUNTS
+   ========================================================= */
+
+function updateCounts(){
+
+    document.getElementById("cartCount")
+        .textContent =
+        getCartCount();
+
+    document.getElementById("wishlistCount")
+        .textContent =
+        state.wishlist.length;
+
+}
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("active");
+
+}
+
+function closeModalOnOverlay(event,id){
+
+    if(event.target.id===id){
+        closeModal(id);
+    }
+
+}
+
+/* =========================================================
+   AUTH
+   ========================================================= */
+
+function openAuthModal(){
+
+    document
+        .getElementById("authModal")
+        .classList.add("active");
+
+}
+
+function switchAuth(type){
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+    const loginTab =
+        document.getElementById("loginTab");
+
+    const registerTab =
+        document.getElementById("registerTab");
+
+    if(type==="login"){
+
+        loginForm.classList.remove("hidden");
+        registerForm.classList.add("hidden");
+
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
+
+    }else{
+
+        loginForm.classList.add("hidden");
+        registerForm.classList.remove("hidden");
+
+        loginTab.classList.remove("active");
+        registerTab.classList.add("active");
+
+    }
+
+}
+
+function loginUser(event){
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("loginEmail").value;
+
+    state.user={
+        name:"NEXORA User",
+        email:email
+    };
+
+    saveState();
+
+    closeModal("authModal");
+
+    showToast(
+        "Login successful in demo mode",
+        "success"
+    );
+
+}
+
+function registerUser(event){
+
+    event.preventDefault();
+
+    const first =
+        document.getElementById("firstName").value;
+
+    const last =
+        document.getElementById("lastName").value;
+
+    const email =
+        document.getElementById("registerEmail").value;
+
+    state.user={
+        name:`${first} ${last}`,
+        email:email
+    };
+
+    saveState();
+
+    closeModal("authModal");
+
+    showToast(
+        `Welcome ${first}! Account created in demo mode`,
+        "success"
+    );
+
+}
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+function openLocationModal(){
+
+    document
+        .getElementById("locationModal")
+        .classList.add("active");
+
+}
+
+function setLocation(){
+
+    const pin =
+        document
+            .getElementById("pincodeInput")
+            .value.trim();
+
+    if(pin.length!==6){
+
+        showToast(
+            "Please enter a valid 6-digit PIN",
+            "error"
+        );
+
+        return;
+    }
+
+    state.location=pin;
+
+    localStorage.setItem(
+        "nexora_location",
+        pin
+    );
+
+    document.getElementById("locationText")
+        .textContent=pin;
+
+    closeModal("locationModal");
+
+    showToast(
+        `Delivery location set to ${pin}`,
+        "success"
+    );
+
+}
+
+function useCurrentLocation(){
+
+    showToast(
+        "Location permission is not connected in demo mode",
+        "info"
+    );
+
+}
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
 
 function checkout(){
- if(!cart.length){
-  toast("Your cart is empty");
-  return;
- }
 
- closeCart();
+    if(!state.cart.length){
 
- document.getElementById("productOverlay").classList.add("show");
- document.getElementById("productDetails").innerHTML=`
-  <button class="close" onclick="closeProduct()">×</button>
-  <h1>🧾 Checkout</h1>
-  <p style="color:var(--muted);margin:7px 0 25px">Demo checkout experience</p>
+        showToast(
+            "Your cart is empty",
+            "error"
+        );
 
-  <div class="cards" style="grid-template-columns:1fr 1fr">
-   <div class="info-card">
-    <h3>📍 Delivery Address</h3>
-    <p style="margin-top:10px">Add or select your delivery address.</p>
-    <button class="btn small" style="margin-top:15px" onclick="toast('Address selector opened')">Select Address</button>
-   </div>
+        return;
+    }
 
-   <div class="info-card">
-    <h3>🚚 Delivery</h3>
-    <p style="margin-top:10px">Standard delivery · Free</p>
-    <button class="btn small" style="margin-top:15px" onclick="toast('Delivery options opened')">Change</button>
-   </div>
+    closeCart();
 
-   <div class="info-card">
-    <h3>🎟️ Coupon</h3>
-    <p style="margin-top:10px">Have a coupon?</p>
-    <button class="btn small" style="margin-top:15px" onclick="toast('Coupon applied in demo')">Apply Coupon</button>
-   </div>
+    showToast(
+        "Checkout flow will be expanded in Part 2",
+        "info"
+    );
 
-   <div class="info-card">
-    <h3>💳 Payment</h3>
-    <p style="margin-top:10px">Choose payment method.</p>
-    <button class="btn small" style="margin-top:15px" onclick="toast('Payment selector opened')">Select Payment</button>
-   </div>
-  </div>
-
-  <div style="margin-top:25px;padding:20px;background:var(--bg);border-radius:15px">
-   <h3>Order Summary</h3>
-   <p style="color:var(--muted);margin:8px 0">${cart.reduce((a,b)=>a+b.qty,0)} items selected</p>
-   <button class="btn success" style="width:100%;margin-top:12px" onclick="placeOrder()">Place Demo Order</button>
-  </div>
- `;
-}
-
-function placeOrder(){
- cart=[];
- save();
- closeProduct();
- showPage("orders");
- toast("🎉 Demo order placed successfully!");
 }
 
 /* =========================================================
-   ACCOUNT
-========================================================= */
+   ORDERS
+   ========================================================= */
 
-function openAccount(){
- document.getElementById("accountOverlay").classList.add("show");
-}
+function openOrders(){
 
-function closeAccount(){
- document.getElementById("accountOverlay").classList.remove("show");
-}
+    showToast(
+        "Orders dashboard will be added in the next part",
+        "info"
+    );
 
-function loginDemo(){
- closeAccount();
- showPage("account");
- toast("👤 Demo account opened");
 }
 
 /* =========================================================
-   TRACKING
-========================================================= */
+   ALL CATEGORIES
+   ========================================================= */
 
-function openTracking(order){
- document.getElementById("trackingContent").innerHTML=`
-  <h2>📦 Track Order ${order}</h2>
-  <p style="color:var(--muted);margin:7px 0 25px">Demo shipment timeline</p>
+function showAllCategories(){
 
-  <div style="border-left:3px solid var(--primary);padding-left:20px">
-   <div style="margin-bottom:25px">
-    <b>✓ Order placed</b>
-    <p style="color:var(--muted);font-size:13px">Your order was received.</p>
-   </div>
-   <div style="margin-bottom:25px">
-    <b>✓ Order confirmed</b>
-    <p style="color:var(--muted);font-size:13px">Seller confirmed the order.</p>
-   </div>
-   <div style="margin-bottom:25px">
-    <b>✓ Packed</b>
-    <p style="color:var(--muted);font-size:13px">Package prepared for shipping.</p>
-   </div>
-   <div style="margin-bottom:25px">
-    <b>🚚 Shipped</b>
-    <p style="color:var(--muted);font-size:13px">Package is moving through the delivery network.</p>
-   </div>
-   <div>
-    <b style="color:var(--primary)">○ Out for delivery</b>
-    <p style="color:var(--muted);font-size:13px">Next delivery milestone.</p>
-   </div>
-  </div>
- `;
- document.getElementById("trackingOverlay").classList.add("show");
-}
+    const categoryNames =
+        categories
+            .map(c=>c.name)
+            .join(" • ");
 
-function closeTracking(){
- document.getElementById("trackingOverlay").classList.remove("show");
+    showToast(
+        categoryNames,
+        "info"
+    );
+
+    scrollToSection("categories");
+
 }
 
 /* =========================================================
-   THEME
-========================================================= */
+   PRODUCT NAVIGATION
+   ========================================================= */
 
-function toggleTheme(){
- document.body.classList.toggle("dark");
- localStorage.setItem("mw_dark",document.body.classList.contains("dark"));
- toast(document.body.classList.contains("dark")?"🌙 Dark mode":"☀️ Light mode");
+function previousProducts(){
+
+    showToast(
+        "Previous product collection",
+        "info"
+    );
+
+}
+
+function nextProducts(){
+
+    showToast(
+        "Next product collection",
+        "info"
+    );
+
+}
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+function goHome(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    renderProducts();
+
+}
+
+/* =========================================================
+   SCROLL
+   ========================================================= */
+
+function scrollToSection(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+}
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+
+function subscribeNewsletter(event){
+
+    event.preventDefault();
+
+    const email =
+        document
+            .getElementById("newsletterEmail")
+            .value;
+
+    showToast(
+        `Subscribed: ${email}`,
+        "success"
+    );
+
+    event.target.reset();
+
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark");
+
+    state.theme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+    localStorage.setItem(
+        "nexora_theme",
+        state.theme
+    );
+
+    showToast(
+        state.theme==="dark"
+            ? "Dark mode enabled"
+            : "Light mode enabled",
+        "success"
+    );
+
 }
 
 /* =========================================================
    TOAST
-========================================================= */
+   ========================================================= */
 
-let toastTimer;
+function showToast(message,type="info"){
 
-function toast(message){
- const el=document.getElementById("toast");
- el.textContent=message;
- el.classList.add("show");
+    const container =
+        document.getElementById("toastContainer");
 
- clearTimeout(toastTimer);
+    const toast =
+        document.createElement("div");
 
- toastTimer=setTimeout(()=>{
-  el.classList.remove("show");
- },2200);
+    toast.className=
+        `toast ${type}`;
+
+    const icon =
+        type==="success"
+            ? "✓"
+            : type==="error"
+                ? "!"
+                : "i";
+
+    toast.innerHTML=`
+
+        <div
+            style="
+                width:25px;
+                height:25px;
+                border-radius:50%;
+                background:rgba(255,255,255,.12);
+                display:grid;
+                place-items:center;
+                font-weight:900;
+            "
+        >
+            ${icon}
+        </div>
+
+        <div>
+            ${message}
+        </div>
+
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(()=>{
+
+        toast.style.opacity="0";
+        toast.style.transform="translateX(30px)";
+
+        setTimeout(
+            ()=>toast.remove(),
+            250
+        );
+
+    },3000);
+
 }
-
-/* =========================================================
-   OVERLAY HANDLER
-========================================================= */
-
-function closeOverlay(event,id){
- if(event.target.id===id){
-  document.getElementById(id).classList.remove("show");
- }
-}
-
-/* =========================================================
-   FLASH SALE TIMER
-========================================================= */
-
-let saleSeconds=5*60*60+42*60+19;
-
-function updateTimer(){
- saleSeconds--;
-
- if(saleSeconds<0){
-  saleSeconds=5*60*60+59*60+59;
- }
-
- const h=Math.floor(saleSeconds/3600);
- const m=Math.floor((saleSeconds%3600)/60);
- const s=saleSeconds%60;
-
- document.getElementById("hh").textContent=String(h).padStart(2,"0");
- document.getElementById("mm").textContent=String(m).padStart(2,"0");
- document.getElementById("ss").textContent=String(s).padStart(2,"0");
-}
-
-setInterval(updateTimer,1000);
 
 /* =========================================================
    KEYBOARD SHORTCUTS
-========================================================= */
+   ========================================================= */
 
-document.addEventListener("keydown",e=>{
- if(e.key==="/"){
-  e.preventDefault();
-  document.getElementById("searchInput").focus();
- }
+document.addEventListener("keydown",event=>{
 
- if(e.key==="Escape"){
-  document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("show"));
- }
+    if(event.key==="Escape"){
+
+        closeCart();
+
+        document
+            .querySelectorAll(".modal-overlay.active")
+            .forEach(modal=>{
+                modal.classList.remove("active");
+            });
+
+    }
+
+    if(
+        (event.ctrlKey || event.metaKey) &&
+        event.key.toLowerCase()==="k"
+    ){
+
+        event.preventDefault();
+
+        document
+            .getElementById("searchInput")
+            .focus();
+
+    }
+
 });
 
 /* =========================================================
-   INITIALIZATION
-========================================================= */
+   PART 1 END
+   ========================================================= */
 
-if(localStorage.getItem("mw_dark")==="true"){
- document.body.classList.add("dark");
-}
-
-updateCounts();
-renderHome();
-renderShop();
-
-/* Close suggestions */
-document.addEventListener("click",e=>{
- const search=e.target.closest(".search");
- if(!search){
-  document.getElementById("searchSuggestions").style.display="none";
- }
-});
 </script>
 
 </body>
