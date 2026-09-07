@@ -21713,5 +21713,5163 @@ body.p4-dark .p4-offer-card {
 })();
 </script>
 
-<!-
+<!-- ============================================================
+     NEXORA MARKETPLACE
+     PART 5 / 30K BUILD
+     PRO COMMERCE ENGINE
+     SEARCH • COMPARE • WISHLIST • ORDERS • TRACKING
+     SELLER • INVENTORY • SUPPORT • LOYALTY • SETTINGS
+     ============================================================ -->
+
+<style>
+/* ============================================================
+   PART 5 FOUNDATION
+   ============================================================ */
+
+#NEXORA_P5_ROOT{
+  --p5-bg:#f5f7fb;
+  --p5-card:#ffffff;
+  --p5-text:#111827;
+  --p5-muted:#6b7280;
+  --p5-border:#e5e7eb;
+  --p5-primary:#4f46e5;
+  --p5-primary2:#7c3aed;
+  --p5-success:#16a34a;
+  --p5-warning:#f59e0b;
+  --p5-danger:#ef4444;
+  --p5-shadow:0 18px 50px rgba(15,23,42,.08);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--p5-text);
+}
+
+#NEXORA_P5_ROOT *{
+  box-sizing:border-box;
+}
+
+.p5-hidden{
+  display:none!important;
+}
+
+.p5-container{
+  width:min(1400px,94%);
+  margin:0 auto;
+}
+
+.p5-section{
+  padding:34px 0;
+}
+
+.p5-section-title{
+  font-size:28px;
+  font-weight:850;
+  margin:0 0 8px;
+  letter-spacing:-.7px;
+}
+
+.p5-section-subtitle{
+  color:var(--p5-muted);
+  margin:0 0 24px;
+}
+
+.p5-card{
+  background:var(--p5-card);
+  border:1px solid var(--p5-border);
+  border-radius:22px;
+  box-shadow:var(--p5-shadow);
+}
+
+.p5-btn{
+  border:0;
+  cursor:pointer;
+  border-radius:12px;
+  padding:11px 16px;
+  font-weight:750;
+  transition:.2s ease;
+}
+
+.p5-btn:hover{
+  transform:translateY(-1px);
+}
+
+.p5-btn-primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--p5-primary),var(--p5-primary2));
+}
+
+.p5-btn-light{
+  color:var(--p5-text);
+  background:#f3f4f6;
+}
+
+.p5-btn-success{
+  color:#fff;
+  background:var(--p5-success);
+}
+
+.p5-btn-danger{
+  color:#fff;
+  background:var(--p5-danger);
+}
+
+.p5-grid{
+  display:grid;
+  gap:18px;
+}
+
+.p5-grid-2{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.p5-grid-3{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.p5-grid-4{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.p5-input,
+.p5-select,
+.p5-textarea{
+  width:100%;
+  border:1px solid var(--p5-border);
+  background:#fff;
+  border-radius:12px;
+  padding:12px 14px;
+  outline:none;
+  font:inherit;
+}
+
+.p5-input:focus,
+.p5-select:focus,
+.p5-textarea:focus{
+  border-color:var(--p5-primary);
+  box-shadow:0 0 0 4px rgba(79,70,229,.08);
+}
+
+.p5-label{
+  display:block;
+  font-size:13px;
+  font-weight:750;
+  margin-bottom:7px;
+}
+
+.p5-field{
+  margin-bottom:15px;
+}
+
+.p5-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.p5-badge-green{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.p5-badge-yellow{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.p5-badge-red{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.p5-badge-blue{
+  background:#dbeafe;
+  color:#1e40af;
+}
+
+.p5-divider{
+  height:1px;
+  background:var(--p5-border);
+  margin:18px 0;
+}
+
+/* ============================================================
+   COMMAND CENTER
+   ============================================================ */
+
+.p5-command{
+  margin:30px 0;
+  padding:22px;
+  background:
+    radial-gradient(circle at top right,rgba(124,58,237,.15),transparent 35%),
+    linear-gradient(135deg,#111827,#1f2937);
+  border-radius:26px;
+  color:#fff;
+  box-shadow:0 25px 60px rgba(15,23,42,.2);
+}
+
+.p5-command-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-bottom:18px;
+}
+
+.p5-command-title{
+  font-size:25px;
+  font-weight:850;
+}
+
+.p5-command-desc{
+  color:#cbd5e1;
+  font-size:14px;
+  margin-top:5px;
+}
+
+.p5-command-search{
+  display:flex;
+  gap:10px;
+  background:#fff;
+  border-radius:15px;
+  padding:7px;
+}
+
+.p5-command-search input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:10px;
+  font-size:15px;
+}
+
+.p5-command-search button{
+  border:0;
+  background:#111827;
+  color:#fff;
+  border-radius:10px;
+  padding:10px 18px;
+  cursor:pointer;
+  font-weight:800;
+}
+
+.p5-command-shortcuts{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:15px;
+}
+
+.p5-shortcut{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.12);
+  color:#e5e7eb;
+  padding:8px 11px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:12px;
+}
+
+/* ============================================================
+   SEARCH RESULTS
+   ============================================================ */
+
+.p5-search-layout{
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:20px;
+}
+
+.p5-filter-panel{
+  padding:20px;
+}
+
+.p5-filter-title{
+  font-weight:850;
+  font-size:17px;
+  margin-bottom:16px;
+}
+
+.p5-filter-option{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:14px;
+}
+
+.p5-result-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.p5-result-count{
+  font-weight:800;
+}
+
+.p5-sort{
+  min-width:180px;
+}
+
+.p5-product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.p5-product{
+  overflow:hidden;
+  position:relative;
+}
+
+.p5-product-image{
+  height:210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:62px;
+  background:linear-gradient(135deg,#eef2ff,#f5f3ff);
+}
+
+.p5-product-body{
+  padding:15px;
+}
+
+.p5-product-brand{
+  font-size:11px;
+  font-weight:800;
+  color:var(--p5-primary);
+  text-transform:uppercase;
+  letter-spacing:.6px;
+}
+
+.p5-product-name{
+  font-size:15px;
+  font-weight:800;
+  margin:6px 0;
+  min-height:42px;
+}
+
+.p5-product-rating{
+  font-size:12px;
+  color:#92400e;
+}
+
+.p5-product-price{
+  margin-top:9px;
+  font-size:20px;
+  font-weight:900;
+}
+
+.p5-product-old{
+  color:#9ca3af;
+  font-size:12px;
+  text-decoration:line-through;
+  margin-left:6px;
+}
+
+.p5-product-actions{
+  display:flex;
+  gap:7px;
+  margin-top:12px;
+}
+
+.p5-product-actions button{
+  flex:1;
+}
+
+.p5-heart{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:0;
+  background:#fff;
+  cursor:pointer;
+  font-size:18px;
+  box-shadow:0 7px 20px rgba(0,0,0,.1);
+}
+
+/* ============================================================
+   QUICK VIEW
+   ============================================================ */
+
+.p5-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.62);
+  backdrop-filter:blur(7px);
+  z-index:99990;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.p5-overlay.active{
+  display:flex;
+}
+
+.p5-modal{
+  width:min(1000px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:28px;
+  box-shadow:0 40px 100px rgba(0,0,0,.3);
+  position:relative;
+}
+
+.p5-modal-close{
+  position:absolute;
+  right:16px;
+  top:16px;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  background:#f3f4f6;
+  font-size:20px;
+  z-index:3;
+}
+
+.p5-quick-view{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.p5-gallery{
+  padding:25px;
+}
+
+.p5-gallery-main{
+  height:420px;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#eef2ff,#faf5ff);
+  font-size:120px;
+}
+
+.p5-gallery-thumbs{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.p5-thumb{
+  width:65px;
+  height:65px;
+  border:1px solid var(--p5-border);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  background:#fff;
+  font-size:28px;
+}
+
+.p5-detail{
+  padding:35px 30px 30px;
+}
+
+.p5-detail-brand{
+  color:var(--p5-primary);
+  font-weight:850;
+  font-size:13px;
+}
+
+.p5-detail-title{
+  font-size:31px;
+  line-height:1.12;
+  margin:8px 0 12px;
+}
+
+.p5-detail-rating{
+  color:#a16207;
+  font-weight:750;
+}
+
+.p5-detail-price{
+  font-size:34px;
+  font-weight:950;
+  margin:20px 0;
+}
+
+.p5-variant-row{
+  margin:20px 0;
+}
+
+.p5-variant-title{
+  font-size:13px;
+  font-weight:850;
+  margin-bottom:9px;
+}
+
+.p5-variants{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.p5-variant{
+  border:1px solid var(--p5-border);
+  padding:9px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  background:#fff;
+  font-weight:700;
+}
+
+.p5-variant.active{
+  border-color:var(--p5-primary);
+  color:var(--p5-primary);
+  background:#eef2ff;
+}
+
+.p5-buy-row{
+  display:flex;
+  gap:9px;
+  margin-top:20px;
+}
+
+.p5-buy-row button{
+  flex:1;
+}
+
+/* ============================================================
+   COMPARE
+   ============================================================ */
+
+.p5-compare-bar{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1100px,92%);
+  background:#111827;
+  color:#fff;
+  padding:14px;
+  border-radius:20px;
+  z-index:9990;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  display:none;
+}
+
+.p5-compare-bar.active{
+  display:block;
+}
+
+.p5-compare-inner{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.p5-compare-items{
+  flex:1;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+}
+
+.p5-compare-mini{
+  min-width:150px;
+  padding:10px;
+  background:rgba(255,255,255,.08);
+  border-radius:12px;
+}
+
+.p5-compare-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.p5-compare-table th,
+.p5-compare-table td{
+  padding:15px;
+  border-bottom:1px solid var(--p5-border);
+  text-align:left;
+}
+
+.p5-compare-table th{
+  width:180px;
+  background:#f9fafb;
+}
+
+/* ============================================================
+   WISHLIST
+   ============================================================ */
+
+.p5-wishlist-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.p5-wishlist-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:15px;
+}
+
+.p5-wish-card{
+  padding:15px;
+  position:relative;
+}
+
+.p5-wish-icon{
+  height:150px;
+  border-radius:17px;
+  background:#f5f3ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+}
+
+/* ============================================================
+   RECENTLY VIEWED
+   ============================================================ */
+
+.p5-recent{
+  display:flex;
+  gap:15px;
+  overflow:auto;
+  padding-bottom:7px;
+}
+
+.p5-recent-card{
+  min-width:190px;
+  padding:12px;
+}
+
+.p5-recent-image{
+  height:125px;
+  border-radius:15px;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+}
+
+/* ============================================================
+   ORDER CENTER
+   ============================================================ */
+
+.p5-order-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.p5-order-tab{
+  border:1px solid var(--p5-border);
+  background:#fff;
+  padding:10px 14px;
+  border-radius:11px;
+  cursor:pointer;
+  font-weight:750;
+}
+
+.p5-order-tab.active{
+  background:#111827;
+  color:#fff;
+}
+
+.p5-order{
+  padding:20px;
+  margin-bottom:15px;
+}
+
+.p5-order-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.p5-order-number{
+  font-weight:900;
+}
+
+.p5-order-date{
+  color:var(--p5-muted);
+  font-size:12px;
+}
+
+.p5-order-products{
+  display:flex;
+  gap:10px;
+  margin:18px 0;
+  overflow:auto;
+}
+
+.p5-order-item{
+  min-width:170px;
+  padding:10px;
+  background:#f9fafb;
+  border-radius:14px;
+}
+
+.p5-order-item-icon{
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+}
+
+.p5-order-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+/* ============================================================
+   TRACKING
+   ============================================================ */
+
+.p5-tracking{
+  padding:25px;
+}
+
+.p5-tracking-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.p5-track-number{
+  font-size:20px;
+  font-weight:900;
+}
+
+.p5-timeline{
+  position:relative;
+  margin-left:16px;
+}
+
+.p5-timeline:before{
+  content:"";
+  position:absolute;
+  left:12px;
+  top:10px;
+  bottom:10px;
+  width:2px;
+  background:#e5e7eb;
+}
+
+.p5-step{
+  position:relative;
+  display:flex;
+  gap:17px;
+  padding-bottom:28px;
+}
+
+.p5-step-dot{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:#e5e7eb;
+  border:6px solid #fff;
+  box-shadow:0 0 0 1px #d1d5db;
+  z-index:2;
+}
+
+.p5-step.done .p5-step-dot{
+  background:var(--p5-success);
+}
+
+.p5-step-content{
+  flex:1;
+}
+
+.p5-step-title{
+  font-weight:850;
+}
+
+.p5-step-time{
+  color:var(--p5-muted);
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* ============================================================
+   RETURN CENTER
+   ============================================================ */
+
+.p5-return{
+  padding:25px;
+}
+
+.p5-return-status{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:15px 0 25px;
+}
+
+.p5-return-card{
+  padding:18px;
+  border:1px solid var(--p5-border);
+  border-radius:17px;
+  margin-bottom:12px;
+}
+
+.p5-return-card-title{
+  font-weight:850;
+  margin-bottom:6px;
+}
+
+/* ============================================================
+   WALLET / REWARDS
+   ============================================================ */
+
+.p5-wallet{
+  padding:25px;
+}
+
+.p5-wallet-balance{
+  padding:28px;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed,#9333ea);
+}
+
+.p5-wallet-label{
+  font-size:13px;
+  opacity:.85;
+}
+
+.p5-wallet-value{
+  font-size:42px;
+  font-weight:950;
+  margin:6px 0;
+}
+
+.p5-wallet-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:18px;
+}
+
+.p5-reward-card{
+  padding:20px;
+}
+
+.p5-progress{
+  height:10px;
+  background:#e5e7eb;
+  border-radius:999px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.p5-progress span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#4f46e5,#9333ea);
+  border-radius:999px;
+}
+
+/* ============================================================
+   SELLER CENTER
+   ============================================================ */
+
+.p5-seller-hero{
+  padding:30px;
+  color:#fff;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.18),transparent 25%),
+    linear-gradient(135deg,#111827,#312e81);
+}
+
+.p5-seller-title{
+  font-size:31px;
+  font-weight:950;
+}
+
+.p5-seller-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+  margin-top:25px;
+}
+
+.p5-seller-stat{
+  background:rgba(255,255,255,.1);
+  padding:17px;
+  border-radius:16px;
+}
+
+.p5-stat-label{
+  color:#cbd5e1;
+  font-size:12px;
+}
+
+.p5-stat-value{
+  font-size:24px;
+  font-weight:900;
+  margin-top:4px;
+}
+
+.p5-table-wrap{
+  overflow:auto;
+}
+
+.p5-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+.p5-table th,
+.p5-table td{
+  padding:14px;
+  border-bottom:1px solid var(--p5-border);
+  text-align:left;
+}
+
+.p5-table th{
+  background:#f9fafb;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+}
+
+/* ============================================================
+   SUPPORT
+   ============================================================ */
+
+.p5-support-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+
+.p5-support-card{
+  padding:22px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.p5-support-card:hover{
+  transform:translateY(-3px);
+}
+
+.p5-support-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:#eef2ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  margin-bottom:13px;
+}
+
+.p5-support-title{
+  font-weight:900;
+}
+
+.p5-support-text{
+  color:var(--p5-muted);
+  font-size:13px;
+  line-height:1.5;
+  margin-top:5px;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+
+.p5-faq{
+  padding:20px;
+}
+
+.p5-faq-item{
+  border-bottom:1px solid var(--p5-border);
+}
+
+.p5-faq-question{
+  width:100%;
+  border:0;
+  background:none;
+  text-align:left;
+  padding:17px 4px;
+  cursor:pointer;
+  font-weight:800;
+  display:flex;
+  justify-content:space-between;
+}
+
+.p5-faq-answer{
+  display:none;
+  color:var(--p5-muted);
+  line-height:1.6;
+  padding:0 4px 18px;
+}
+
+.p5-faq-item.open .p5-faq-answer{
+  display:block;
+}
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+
+.p5-settings{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:18px;
+}
+
+.p5-settings-nav{
+  padding:12px;
+}
+
+.p5-settings-link{
+  display:block;
+  width:100%;
+  border:0;
+  background:transparent;
+  padding:12px;
+  text-align:left;
+  border-radius:11px;
+  cursor:pointer;
+  font-weight:750;
+}
+
+.p5-settings-link.active{
+  background:#eef2ff;
+  color:var(--p5-primary);
+}
+
+.p5-settings-content{
+  padding:25px;
+}
+
+.p5-setting-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:17px 0;
+  border-bottom:1px solid var(--p5-border);
+}
+
+.p5-setting-title{
+  font-weight:850;
+}
+
+.p5-setting-desc{
+  color:var(--p5-muted);
+  font-size:12px;
+  margin-top:4px;
+}
+
+.p5-switch{
+  width:48px;
+  height:27px;
+  border-radius:999px;
+  background:#d1d5db;
+  position:relative;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.p5-switch:after{
+  content:"";
+  position:absolute;
+  top:4px;
+  left:4px;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  background:#fff;
+  transition:.2s ease;
+}
+
+.p5-switch.active{
+  background:var(--p5-primary);
+}
+
+.p5-switch.active:after{
+  left:25px;
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+
+.p5-toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#111827;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:14px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  z-index:999999;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(15px);
+  transition:.25s ease;
+}
+
+.p5-toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media(max-width:1100px){
+  .p5-product-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .p5-wishlist-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .p5-seller-stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:800px){
+  .p5-search-layout{
+    grid-template-columns:1fr;
+  }
+
+  .p5-product-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .p5-quick-view{
+    grid-template-columns:1fr;
+  }
+
+  .p5-gallery-main{
+    height:280px;
+    font-size:85px;
+  }
+
+  .p5-support-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p5-settings{
+    grid-template-columns:1fr;
+  }
+
+  .p5-command-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media(max-width:520px){
+  .p5-section{
+    padding:23px 0;
+  }
+
+  .p5-section-title{
+    font-size:23px;
+  }
+
+  .p5-product-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .p5-product-image{
+    height:150px;
+    font-size:48px;
+  }
+
+  .p5-product-body{
+    padding:11px;
+  }
+
+  .p5-product-actions{
+    flex-direction:column;
+  }
+
+  .p5-wishlist-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p5-support-grid{
+    grid-template-columns:1fr;
+  }
+
+  .p5-seller-stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p5-setting-row{
+    align-items:flex-start;
+  }
+
+  .p5-detail{
+    padding:25px 20px;
+  }
+
+  .p5-detail-title{
+    font-size:25px;
+  }
+
+  .p5-buy-row{
+    flex-direction:column;
+  }
+}
+</style>
+
+<div id="NEXORA_P5_ROOT">
+
+  <!-- ========================================================
+       COMMAND CENTER
+       ======================================================== -->
+
+  <section class="p5-section">
+    <div class="p5-container">
+
+      <div class="p5-command">
+
+        <div class="p5-command-top">
+
+          <div>
+            <div class="p5-command-title">
+              ⚡ NEXORA Command Center
+            </div>
+
+            <div class="p5-command-desc">
+              Search products, manage orders, wishlist, seller tools
+              and your complete shopping workspace.
+            </div>
+          </div>
+
+          <button
+            class="p5-btn p5-btn-primary"
+            onclick="NEXORA_P5.openSection('orders')">
+            📦 My Orders
+          </button>
+
+        </div>
+
+        <div class="p5-command-search">
+
+          <input
+            id="p5GlobalSearch"
+            type="text"
+            placeholder="Search products, brands, categories..."
+            onkeydown="if(event.key==='Enter')NEXORA_P5.search()">
+
+          <button onclick="NEXORA_P5.search()">
+            🔎 Search
+          </button>
+
+        </div>
+
+        <div class="p5-command-shortcuts">
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Mobiles')">
+            📱 Mobiles
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Laptops')">
+            💻 Laptops
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Fashion')">
+            👕 Fashion
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Gaming')">
+            🎮 Gaming
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Home')">
+            🏠 Home
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Beauty')">
+            ✨ Beauty
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Books')">
+            📚 Books
+          </button>
+
+          <button class="p5-shortcut"
+            onclick="NEXORA_P5.quickSearch('Sports')">
+            🏏 Sports
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       SEARCH AREA
+       ======================================================== -->
+
+  <section
+    id="p5-search-section"
+    class="p5-section p5-hidden">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        Search Results
+      </h2>
+
+      <p
+        id="p5SearchText"
+        class="p5-section-subtitle">
+        Discover products across NEXORA.
+      </p>
+
+      <div class="p5-search-layout">
+
+        <aside class="p5-card p5-filter-panel">
+
+          <div class="p5-filter-title">
+            Filters
+          </div>
+
+          <div class="p5-field">
+
+            <label class="p5-label">
+              Category
+            </label>
+
+            <select
+              id="p5CategoryFilter"
+              class="p5-select"
+              onchange="NEXORA_P5.renderProducts()">
+
+              <option value="all">
+                All Categories
+              </option>
+
+              <option value="electronics">
+                Electronics
+              </option>
+
+              <option value="fashion">
+                Fashion
+              </option>
+
+              <option value="gaming">
+                Gaming
+              </option>
+
+              <option value="home">
+                Home
+              </option>
+
+              <option value="beauty">
+                Beauty
+              </option>
+
+              <option value="books">
+                Books
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="p5-field">
+
+            <label class="p5-label">
+              Maximum Price
+            </label>
+
+            <input
+              id="p5PriceFilter"
+              class="p5-input"
+              type="number"
+              placeholder="₹ Maximum"
+              onchange="NEXORA_P5.renderProducts()">
+
+          </div>
+
+          <div class="p5-divider"></div>
+
+          <div class="p5-filter-option">
+            <span>⭐ 4+ Rating</span>
+            <input
+              id="p5RatingFilter"
+              type="checkbox"
+              onchange="NEXORA_P5.renderProducts()">
+          </div>
+
+          <div class="p5-filter-option">
+            <span>🚚 Fast Delivery</span>
+            <input type="checkbox">
+          </div>
+
+          <div class="p5-filter-option">
+            <span>🔥 Deals</span>
+            <input type="checkbox">
+          </div>
+
+        </aside>
+
+
+        <main>
+
+          <div class="p5-result-toolbar">
+
+            <div
+              id="p5ResultCount"
+              class="p5-result-count">
+              0 products
+            </div>
+
+            <select
+              id="p5Sort"
+              class="p5-select p5-sort"
+              onchange="NEXORA_P5.renderProducts()">
+
+              <option value="popular">
+                Most Popular
+              </option>
+
+              <option value="priceLow">
+                Price: Low to High
+              </option>
+
+              <option value="priceHigh">
+                Price: High to Low
+              </option>
+
+              <option value="rating">
+                Highest Rated
+              </option>
+
+            </select>
+
+          </div>
+
+          <div
+            id="p5ProductGrid"
+            class="p5-product-grid">
+          </div>
+
+        </main>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       WISHLIST
+       ======================================================== -->
+
+  <section
+    id="p5-wishlist-section"
+    class="p5-section">
+
+    <div class="p5-container">
+
+      <div class="p5-wishlist-header">
+
+        <div>
+          <h2 class="p5-section-title">
+            ❤️ My Wishlist
+          </h2>
+
+          <p class="p5-section-subtitle">
+            Save products you want to buy later.
+          </p>
+        </div>
+
+        <button
+          class="p5-btn p5-btn-light"
+          onclick="NEXORA_P5.clearWishlist()">
+          Clear Wishlist
+        </button>
+
+      </div>
+
+      <div
+        id="p5WishlistGrid"
+        class="p5-wishlist-grid">
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       RECENTLY VIEWED
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        🕘 Recently Viewed
+      </h2>
+
+      <p class="p5-section-subtitle">
+        Continue exploring products you checked recently.
+      </p>
+
+      <div
+        id="p5RecentProducts"
+        class="p5-recent">
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       ORDERS
+       ======================================================== -->
+
+  <section
+    id="p5-orders-section"
+    class="p5-section">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        📦 Order Center
+      </h2>
+
+      <p class="p5-section-subtitle">
+        Track purchases, invoices, returns and deliveries.
+      </p>
+
+      <div class="p5-order-tabs">
+
+        <button
+          class="p5-order-tab active"
+          onclick="NEXORA_P5.filterOrders('all',this)">
+          All Orders
+        </button>
+
+        <button
+          class="p5-order-tab"
+          onclick="NEXORA_P5.filterOrders('processing',this)">
+          Processing
+        </button>
+
+        <button
+          class="p5-order-tab"
+          onclick="NEXORA_P5.filterOrders('shipped',this)">
+          Shipped
+        </button>
+
+        <button
+          class="p5-order-tab"
+          onclick="NEXORA_P5.filterOrders('delivered',this)">
+          Delivered
+        </button>
+
+        <button
+          class="p5-order-tab"
+          onclick="NEXORA_P5.filterOrders('cancelled',this)">
+          Cancelled
+        </button>
+
+      </div>
+
+      <div id="p5OrdersList"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       WALLET & REWARDS
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        💎 Wallet & Rewards
+      </h2>
+
+      <p class="p5-section-subtitle">
+        Manage demo reward points and loyalty benefits.
+      </p>
+
+      <div class="p5-grid p5-grid-2">
+
+        <div class="p5-wallet">
+
+          <div class="p5-wallet-balance">
+
+            <div class="p5-wallet-label">
+              Available Reward Balance
+            </div>
+
+            <div
+              id="p5WalletBalance"
+              class="p5-wallet-value">
+              ₹1,250
+            </div>
+
+            <div>
+              1,250 NEXORA Points
+            </div>
+
+            <div class="p5-wallet-actions">
+
+              <button
+                class="p5-btn p5-btn-light"
+                onclick="NEXORA_P5.showToast('Demo redeem system opened')">
+                🎁 Redeem
+              </button>
+
+              <button
+                class="p5-btn p5-btn-light"
+                onclick="NEXORA_P5.showToast('Points history opened')">
+                📊 History
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="p5-card p5-reward-card">
+
+          <div class="p5-badge p5-badge-blue">
+            ✨ SILVER MEMBER
+          </div>
+
+          <h3>
+            Loyalty Progress
+          </h3>
+
+          <p class="p5-section-subtitle">
+            Earn more points to unlock Gold benefits.
+          </p>
+
+          <div class="p5-progress">
+            <span style="width:68%"></span>
+          </div>
+
+          <strong>
+            680 / 1000 points
+          </strong>
+
+          <div class="p5-divider"></div>
+
+          <div class="p5-grid p5-grid-2">
+
+            <div>
+              <strong>5%</strong>
+              <div class="p5-setting-desc">
+                Bonus Rewards
+              </div>
+            </div>
+
+            <div>
+              <strong>₹100</strong>
+              <div class="p5-setting-desc">
+                Monthly Voucher
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       SELLER CENTER
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <div class="p5-seller-hero">
+
+        <div class="p5-seller-title">
+          🏪 NEXORA Seller Center
+        </div>
+
+        <p>
+          Manage products, inventory, orders and store performance.
+        </p>
+
+        <div class="p5-seller-stats">
+
+          <div class="p5-seller-stat">
+            <div class="p5-stat-label">
+              Revenue
+            </div>
+            <div class="p5-stat-value">
+              ₹4.82L
+            </div>
+          </div>
+
+          <div class="p5-seller-stat">
+            <div class="p5-stat-label">
+              Orders
+            </div>
+            <div class="p5-stat-value">
+              1,284
+            </div>
+          </div>
+
+          <div class="p5-seller-stat">
+            <div class="p5-stat-label">
+              Products
+            </div>
+            <div class="p5-stat-value">
+              386
+            </div>
+          </div>
+
+          <div class="p5-seller-stat">
+            <div class="p5-stat-label">
+              Rating
+            </div>
+            <div class="p5-stat-value">
+              4.8 ⭐
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:9px;flex-wrap:wrap">
+
+          <button
+            class="p5-btn p5-btn-light"
+            onclick="NEXORA_P5.openSellerTab('inventory')">
+            📦 Inventory
+          </button>
+
+          <button
+            class="p5-btn p5-btn-light"
+            onclick="NEXORA_P5.openSellerTab('orders')">
+            🧾 Seller Orders
+          </button>
+
+          <button
+            class="p5-btn p5-btn-light"
+            onclick="NEXORA_P5.openSellerTab('analytics')">
+            📈 Analytics
+          </button>
+
+          <button
+            class="p5-btn p5-btn-light"
+            onclick="NEXORA_P5.openSellerTab('campaigns')">
+            🚀 Campaigns
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       SELLER TABLE
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <div class="p5-card" style="padding:22px">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px">
+
+          <div>
+            <h2 class="p5-section-title" style="font-size:23px">
+              Inventory Manager
+            </h2>
+
+            <p class="p5-section-subtitle">
+              Monitor your store inventory.
+            </p>
+          </div>
+
+          <button
+            class="p5-btn p5-btn-primary"
+            onclick="NEXORA_P5.showToast('Add product form opened')">
+            + Add Product
+          </button>
+
+        </div>
+
+        <div class="p5-table-wrap">
+
+          <table class="p5-table">
+
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>SKU</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>Nova Smartphone X</td>
+                <td>NX-X01</td>
+                <td>82</td>
+                <td>₹29,999</td>
+                <td>
+                  <span class="p5-badge p5-badge-green">
+                    Active
+                  </span>
+                </td>
+                <td>
+                  <button
+                    class="p5-btn p5-btn-light"
+                    onclick="NEXORA_P5.showToast('Product editor opened')">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Ultra Gaming Laptop</td>
+                <td>GM-LP22</td>
+                <td>19</td>
+                <td>₹79,999</td>
+                <td>
+                  <span class="p5-badge p5-badge-green">
+                    Active
+                  </span>
+                </td>
+                <td>
+                  <button
+                    class="p5-btn p5-btn-light"
+                    onclick="NEXORA_P5.showToast('Product editor opened')">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Wireless Pro Headphones</td>
+                <td>WH-P90</td>
+                <td>4</td>
+                <td>₹4,999</td>
+                <td>
+                  <span class="p5-badge p5-badge-yellow">
+                    Low Stock
+                  </span>
+                </td>
+                <td>
+                  <button
+                    class="p5-btn p5-btn-light"
+                    onclick="NEXORA_P5.showToast('Restock panel opened')">
+                    Restock
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Mechanical RGB Keyboard</td>
+                <td>KB-RGB7</td>
+                <td>0</td>
+                <td>₹3,299</td>
+                <td>
+                  <span class="p5-badge p5-badge-red">
+                    Out of Stock
+                  </span>
+                </td>
+                <td>
+                  <button
+                    class="p5-btn p5-btn-danger"
+                    onclick="NEXORA_P5.showToast('Restock required')">
+                    Restock
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       CUSTOMER SUPPORT
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        🎧 Customer Support
+      </h2>
+
+      <p class="p5-section-subtitle">
+        Need help? Find the right support option.
+      </p>
+
+      <div class="p5-support-grid">
+
+        <div
+          class="p5-card p5-support-card"
+          onclick="NEXORA_P5.openSupport('orders')">
+
+          <div class="p5-support-icon">
+            📦
+          </div>
+
+          <div class="p5-support-title">
+            Order Help
+          </div>
+
+          <div class="p5-support-text">
+            Delivery, tracking, cancellation and order issues.
+          </div>
+
+        </div>
+
+
+        <div
+          class="p5-card p5-support-card"
+          onclick="NEXORA_P5.openSupport('payments')">
+
+          <div class="p5-support-icon">
+            💳
+          </div>
+
+          <div class="p5-support-title">
+            Payment Help
+          </div>
+
+          <div class="p5-support-text">
+            Get help with demo payment and checkout questions.
+          </div>
+
+        </div>
+
+
+        <div
+          class="p5-card p5-support-card"
+          onclick="NEXORA_P5.openSupport('returns')">
+
+          <div class="p5-support-icon">
+            🔄
+          </div>
+
+          <div class="p5-support-title">
+            Returns & Refunds
+          </div>
+
+          <div class="p5-support-text">
+            Manage return requests and refund information.
+          </div>
+
+        </div>
+
+
+        <div
+          class="p5-card p5-support-card"
+          onclick="NEXORA_P5.openSupport('account')">
+
+          <div class="p5-support-icon">
+            👤
+          </div>
+
+          <div class="p5-support-title">
+            Account Help
+          </div>
+
+          <div class="p5-support-text">
+            Profile, address and account settings.
+          </div>
+
+        </div>
+
+
+        <div
+          class="p5-card p5-support-card"
+          onclick="NEXORA_P5.openSupport('seller')">
+
+          <div class="p5-support-icon">
+            🏪
+          </div>
+
+          <div class="p5-support-title">
+            Seller Support
+          </div>
+
+          <div class="p5-support-text">
+            Store management and seller dashboard assistance.
+          </div>
+
+        </div>
+
+
+        <div
+          class="p5-card p5-support-card"
+          onclick="NEXORA_P5.openSupport('chat')">
+
+          <div class="p5-support-icon">
+            💬
+          </div>
+
+          <div class="p5-support-title">
+            Live Support
+          </div>
+
+          <div class="p5-support-text">
+            Open the NEXORA support demo chat.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       FAQ
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        ❓ Frequently Asked Questions
+      </h2>
+
+      <div class="p5-card p5-faq">
+
+        <div class="p5-faq-item">
+
+          <button
+            class="p5-faq-question"
+            onclick="NEXORA_P5.toggleFaq(this)">
+            How can I track my order?
+            <span>＋</span>
+          </button>
+
+          <div class="p5-faq-answer">
+            Open Order Center and select Track Order to view
+            the demo delivery timeline.
+          </div>
+
+        </div>
+
+
+        <div class="p5-faq-item">
+
+          <button
+            class="p5-faq-question"
+            onclick="NEXORA_P5.toggleFaq(this)">
+            How does wishlist work?
+            <span>＋</span>
+          </button>
+
+          <div class="p5-faq-answer">
+            Add any product to your wishlist and it will be
+            saved locally in this demo marketplace.
+          </div>
+
+        </div>
+
+
+        <div class="p5-faq-item">
+
+          <button
+            class="p5-faq-question"
+            onclick="NEXORA_P5.toggleFaq(this)">
+            Can I compare products?
+            <span>＋</span>
+          </button>
+
+          <div class="p5-faq-answer">
+            Yes. Use the Compare button on supported products.
+          </div>
+
+        </div>
+
+
+        <div class="p5-faq-item">
+
+          <button
+            class="p5-faq-question"
+            onclick="NEXORA_P5.toggleFaq(this)">
+            Is payment real?
+            <span>＋</span>
+          </button>
+
+          <div class="p5-faq-answer">
+            No. This interface is a frontend demo and does not
+            process real payments.
+          </div>
+
+        </div>
+
+
+        <div class="p5-faq-item">
+
+          <button
+            class="p5-faq-question"
+            onclick="NEXORA_P5.toggleFaq(this)">
+            Can sellers manage inventory?
+            <span>＋</span>
+          </button>
+
+          <div class="p5-faq-answer">
+            The Seller Center contains demo inventory, order,
+            campaign and analytics interfaces.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       SETTINGS
+       ======================================================== -->
+
+  <section class="p5-section">
+
+    <div class="p5-container">
+
+      <h2 class="p5-section-title">
+        ⚙️ Preferences
+      </h2>
+
+      <div class="p5-settings">
+
+        <div class="p5-card p5-settings-nav">
+
+          <button
+            class="p5-settings-link active"
+            onclick="NEXORA_P5.settingTab(this,'general')">
+            ⚙️ General
+          </button>
+
+          <button
+            class="p5-settings-link"
+            onclick="NEXORA_P5.settingTab(this,'notifications')">
+            🔔 Notifications
+          </button>
+
+          <button
+            class="p5-settings-link"
+            onclick="NEXORA_P5.settingTab(this,'privacy')">
+            🔒 Privacy
+          </button>
+
+          <button
+            class="p5-settings-link"
+            onclick="NEXORA_P5.settingTab(this,'accessibility')">
+            ♿ Accessibility
+          </button>
+
+        </div>
+
+
+        <div class="p5-card p5-settings-content">
+
+          <div id="p5GeneralSettings">
+
+            <h3>
+              General Settings
+            </h3>
+
+            <div class="p5-setting-row">
+
+              <div>
+                <div class="p5-setting-title">
+                  Save Search History
+                </div>
+
+                <div class="p5-setting-desc">
+                  Remember recent searches on this device.
+                </div>
+              </div>
+
+              <div
+                class="p5-switch active"
+                onclick="NEXORA_P5.toggleSwitch(this)">
+              </div>
+
+            </div>
+
+
+            <div class="p5-setting-row">
+
+              <div>
+                <div class="p5-setting-title">
+                  Auto Save Wishlist
+                </div>
+
+                <div class="p5-setting-desc">
+                  Keep wishlist data in local storage.
+                </div>
+              </div>
+
+              <div
+                class="p5-switch active"
+                onclick="NEXORA_P5.toggleSwitch(this)">
+              </div>
+
+            </div>
+
+
+            <div class="p5-setting-row">
+
+              <div>
+                <div class="p5-setting-title">
+                  Compact Product Cards
+                </div>
+
+                <div class="p5-setting-desc">
+                  Use smaller product cards on desktop.
+                </div>
+              </div>
+
+              <div
+                class="p5-switch"
+                onclick="NEXORA_P5.toggleSwitch(this)">
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       QUICK VIEW MODAL
+       ======================================================== -->
+
+  <div
+    id="p5QuickViewOverlay"
+    class="p5-overlay"
+    onclick="if(event.target===this)NEXORA_P5.closeQuickView()">
+
+    <div class="p5-modal">
+
+      <button
+        class="p5-modal-close"
+        onclick="NEXORA_P5.closeQuickView()">
+        ×
+      </button>
+
+      <div class="p5-quick-view">
+
+        <div class="p5-gallery">
+
+          <div
+            id="p5GalleryMain"
+            class="p5-gallery-main">
+            📱
+          </div>
+
+          <div class="p5-gallery-thumbs">
+
+            <button
+              class="p5-thumb"
+              onclick="NEXORA_P5.gallery('📱')">
+              📱
+            </button>
+
+            <button
+              class="p5-thumb"
+              onclick="NEXORA_P5.gallery('📦')">
+              📦
+            </button>
+
+            <button
+              class="p5-thumb"
+              onclick="NEXORA_P5.gallery('✨')">
+              ✨
+            </button>
+
+            <button
+              class="p5-thumb"
+              onclick="NEXORA_P5.gallery('🔍')">
+              🔍
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="p5-detail">
+
+          <div
+            id="p5DetailBrand"
+            class="p5-detail-brand">
+            NEXORA
+          </div>
+
+          <h2
+            id="p5DetailTitle"
+            class="p5-detail-title">
+            Product
+          </h2>
+
+          <div
+            id="p5DetailRating"
+            class="p5-detail-rating">
+            ⭐ 4.7 · 2,481 ratings
+          </div>
+
+          <div
+            id="p5DetailPrice"
+            class="p5-detail-price">
+            ₹0
+          </div>
+
+          <div class="p5-badge p5-badge-green">
+            ✓ Available
+          </div>
+
+          <div class="p5-variant-row">
+
+            <div class="p5-variant-title">
+              Choose Variant
+            </div>
+
+            <div class="p5-variants">
+
+              <button
+                class="p5-variant active"
+                onclick="NEXORA_P5.variant(this)">
+                Standard
+              </button>
+
+              <button
+                class="p5-variant"
+                onclick="NEXORA_P5.variant(this)">
+                Premium
+              </button>
+
+              <button
+                class="p5-variant"
+                onclick="NEXORA_P5.variant(this)">
+                Pro
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="p5-variant-row">
+
+            <div class="p5-variant-title">
+              Delivery
+            </div>
+
+            <div class="p5-card" style="padding:13px">
+
+              🚚 Free delivery available
+
+              <div class="p5-setting-desc">
+                Estimated delivery: 2–5 days
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="p5-buy-row">
+
+            <button
+              class="p5-btn p5-btn-light"
+              onclick="NEXORA_P5.addWishlistFromModal()">
+              ❤️ Wishlist
+            </button>
+
+            <button
+              class="p5-btn p5-btn-primary"
+              onclick="NEXORA_P5.buyFromModal()">
+              🛒 Add to Cart
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================
+       TRACKING MODAL
+       ======================================================== -->
+
+  <div
+    id="p5TrackingOverlay"
+    class="p5-overlay"
+    onclick="if(event.target===this)NEXORA_P5.closeTracking()">
+
+    <div class="p5-modal">
+
+      <button
+        class="p5-modal-close"
+        onclick="NEXORA_P5.closeTracking()">
+        ×
+      </button>
+
+      <div class="p5-tracking">
+
+        <div class="p5-tracking-head">
+
+          <div>
+
+            <div class="p5-track-number">
+              Order #NX204829
+            </div>
+
+            <div class="p5-setting-desc">
+              Ultra Gaming Laptop
+            </div>
+
+          </div>
+
+          <span class="p5-badge p5-badge-blue">
+            🚚 On the way
+          </span>
+
+        </div>
+
+
+        <div class="p5-timeline">
+
+          <div class="p5-step done">
+
+            <div class="p5-step-dot"></div>
+
+            <div class="p5-step-content">
+
+              <div class="p5-step-title">
+                Order Confirmed
+              </div>
+
+              <div class="p5-step-time">
+                Today · 09:10 AM
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="p5-step done">
+
+            <div class="p5-step-dot"></div>
+
+            <div class="p5-step-content">
+
+              <div class="p5-step-title">
+                Packed
+              </div>
+
+              <div class="p5-step-time">
+                Today · 12:40 PM
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="p5-step done">
+
+            <div class="p5-step-dot"></div>
+
+            <div class="p5-step-content">
+
+              <div class="p5-step-title">
+                Shipped
+              </div>
+
+              <div class="p5-step-time">
+                Today · 04:20 PM
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="p5-step">
+
+            <div class="p5-step-dot"></div>
+
+            <div class="p5-step-content">
+
+              <div class="p5-step-title">
+                Out for Delivery
+              </div>
+
+              <div class="p5-step-time">
+                Expected tomorrow
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="p5-step">
+
+            <div class="p5-step-dot"></div>
+
+            <div class="p5-step-content">
+
+              <div class="p5-step-title">
+                Delivered
+              </div>
+
+              <div class="p5-step-time">
+                Estimated in 1–2 days
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================
+       COMPARE BAR
+       ======================================================== -->
+
+  <div
+    id="p5CompareBar"
+    class="p5-compare-bar">
+
+    <div class="p5-compare-inner">
+
+      <strong>
+        Compare
+      </strong>
+
+      <div
+        id="p5CompareItems"
+        class="p5-compare-items">
+      </div>
+
+      <button
+        class="p5-btn p5-btn-primary"
+        onclick="NEXORA_P5.openCompare()">
+        Compare
+      </button>
+
+      <button
+        class="p5-btn p5-btn-light"
+        onclick="NEXORA_P5.clearCompare()">
+        Clear
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================
+       TOAST
+       ======================================================== -->
+
+  <div
+    id="p5Toast"
+    class="p5-toast">
+    Done
+  </div>
+
+</div>
+
+
+<script>
+/* ============================================================
+   NEXORA PART 5 ENGINE
+   ============================================================ */
+
+(function(){
+
+  "use strict";
+
+  const NEXORA_P5 = {
+
+    /* ========================================================
+       DATA
+       ======================================================== */
+
+    products:[
+      {
+        id:501,
+        name:"Nova Smartphone X",
+        brand:"NEXORA Mobile",
+        category:"electronics",
+        price:29999,
+        old:34999,
+        rating:4.8,
+        icon:"📱",
+        stock:82
+      },
+
+      {
+        id:502,
+        name:"Ultra Gaming Laptop",
+        brand:"NEXORA Gaming",
+        category:"gaming",
+        price:79999,
+        old:89999,
+        rating:4.9,
+        icon:"💻",
+        stock:19
+      },
+
+      {
+        id:503,
+        name:"Wireless Pro Headphones",
+        brand:"SoundMax",
+        category:"electronics",
+        price:4999,
+        old:6999,
+        rating:4.7,
+        icon:"🎧",
+        stock:4
+      },
+
+      {
+        id:504,
+        name:"Mechanical RGB Keyboard",
+        brand:"GameCore",
+        category:"gaming",
+        price:3299,
+        old:4299,
+        rating:4.6,
+        icon:"⌨️",
+        stock:0
+      },
+
+      {
+        id:505,
+        name:"Urban Premium Hoodie",
+        brand:"StreetLine",
+        category:"fashion",
+        price:1799,
+        old:2499,
+        rating:4.5,
+        icon:"🧥",
+        stock:40
+      },
+
+      {
+        id:506,
+        name:"Smart LED TV 55",
+        brand:"VisionMax",
+        category:"electronics",
+        price:42999,
+        old:52999,
+        rating:4.7,
+        icon:"📺",
+        stock:27
+      },
+
+      {
+        id:507,
+        name:"Gaming Controller Pro",
+        brand:"PlayZone",
+        category:"gaming",
+        price:4499,
+        old:5999,
+        rating:4.8,
+        icon:"🎮",
+        stock:51
+      },
+
+      {
+        id:508,
+        name:"Modern Office Chair",
+        brand:"ComfortHub",
+        category:"home",
+        price:8999,
+        old:11999,
+        rating:4.4,
+        icon:"🪑",
+        stock:23
+      },
+
+      {
+        id:509,
+        name:"Premium Coffee Maker",
+        brand:"HomeBrew",
+        category:"home",
+        price:6499,
+        old:7999,
+        rating:4.5,
+        icon:"☕",
+        stock:31
+      },
+
+      {
+        id:510,
+        name:"Skincare Essentials Kit",
+        brand:"GlowCare",
+        category:"beauty",
+        price:1299,
+        old:1899,
+        rating:4.6,
+        icon:"🧴",
+        stock:62
+      },
+
+      {
+        id:511,
+        name:"Best Coding Handbook",
+        brand:"BookWorld",
+        category:"books",
+        price:799,
+        old:999,
+        rating:4.9,
+        icon:"📚",
+        stock:90
+      },
+
+      {
+        id:512,
+        name:"Smart Fitness Watch",
+        brand:"FitPro",
+        category:"electronics",
+        price:6999,
+        old:8999,
+        rating:4.7,
+        icon:"⌚",
+        stock:48
+      },
+
+      {
+        id:513,
+        name:"Running Shoes Pro",
+        brand:"ActiveRun",
+        category:"fashion",
+        price:2899,
+        old:3999,
+        rating:4.6,
+        icon:"👟",
+        stock:71
+      },
+
+      {
+        id:514,
+        name:"Portable Bluetooth Speaker",
+        brand:"BassBox",
+        category:"electronics",
+        price:2499,
+        old:3499,
+        rating:4.5,
+        icon:"🔊",
+        stock:38
+      },
+
+      {
+        id:515,
+        name:"Gaming Mouse Ultra",
+        brand:"GameCore",
+        category:"gaming",
+        price:1899,
+        old:2499,
+        rating:4.7,
+        icon:"🖱️",
+        stock:55
+      },
+
+      {
+        id:516,
+        name:"Luxury Table Lamp",
+        brand:"DecorX",
+        category:"home",
+        price:1599,
+        old:2199,
+        rating:4.4,
+        icon:"💡",
+        stock:44
+      },
+
+      {
+        id:517,
+        name:"Daily Backpack",
+        brand:"TravelPro",
+        category:"fashion",
+        price:1299,
+        old:1799,
+        rating:4.5,
+        icon:"🎒",
+        stock:82
+      },
+
+      {
+        id:518,
+        name:"Wireless Earbuds Max",
+        brand:"SoundMax",
+        category:"electronics",
+        price:3499,
+        old:4999,
+        rating:4.8,
+        icon:"🎵",
+        stock:63
+      }
+    ],
+
+
+    orders:[
+      {
+        id:"NX204829",
+        date:"7 Sep 2026",
+        status:"shipped",
+        total:79999,
+        items:[
+          {
+            name:"Ultra Gaming Laptop",
+            icon:"💻",
+            qty:1
+          }
+        ]
+      },
+
+      {
+        id:"NX204102",
+        date:"5 Sep 2026",
+        status:"processing",
+        total:4999,
+        items:[
+          {
+            name:"Wireless Pro Headphones",
+            icon:"🎧",
+            qty:1
+          }
+        ]
+      },
+
+      {
+        id:"NX203891",
+        date:"31 Aug 2026",
+        status:"delivered",
+        total:3299,
+        items:[
+          {
+            name:"Mechanical RGB Keyboard",
+            icon:"⌨️",
+            qty:1
+          }
+        ]
+      },
+
+      {
+        id:"NX203701",
+        date:"28 Aug 2026",
+        status:"delivered",
+        total:1799,
+        items:[
+          {
+            name:"Urban Premium Hoodie",
+            icon:"🧥",
+            qty:1
+          }
+        ]
+      },
+
+      {
+        id:"NX203221",
+        date:"20 Aug 2026",
+        status:"cancelled",
+        total:1299,
+        items:[
+          {
+            name:"Skincare Essentials Kit",
+            icon:"🧴",
+            qty:1
+          }
+        ]
+      }
+    ],
+
+
+    wishlist:[],
+
+    recent:[],
+
+    compare:[],
+
+    currentProduct:null,
+
+    searchTerm:"",
+
+
+    /* ========================================================
+       INIT
+       ======================================================== */
+
+    init(){
+
+      this.loadStorage();
+
+      this.renderProducts();
+
+      this.renderWishlist();
+
+      this.renderRecent();
+
+      this.renderOrders("all");
+
+      this.renderCompare();
+
+      this.bindKeyboard();
+
+    },
+
+
+    /* ========================================================
+       STORAGE
+       ======================================================== */
+
+    loadStorage(){
+
+      try{
+
+        const savedWishlist =
+          localStorage.getItem("NEXORA_P5_WISHLIST");
+
+        const savedRecent =
+          localStorage.getItem("NEXORA_P5_RECENT");
+
+        const savedCompare =
+          localStorage.getItem("NEXORA_P5_COMPARE");
+
+        if(savedWishlist){
+          this.wishlist =
+            JSON.parse(savedWishlist);
+        }
+
+        if(savedRecent){
+          this.recent =
+            JSON.parse(savedRecent);
+        }
+
+        if(savedCompare){
+          this.compare =
+            JSON.parse(savedCompare);
+        }
+
+      }catch(error){
+
+        console.warn(
+          "NEXORA P5 storage unavailable",
+          error
+        );
+
+      }
+
+    },
+
+
+    saveStorage(){
+
+      try{
+
+        localStorage.setItem(
+          "NEXORA_P5_WISHLIST",
+          JSON.stringify(this.wishlist)
+        );
+
+        localStorage.setItem(
+          "NEXORA_P5_RECENT",
+          JSON.stringify(this.recent)
+        );
+
+        localStorage.setItem(
+          "NEXORA_P5_COMPARE",
+          JSON.stringify(this.compare)
+        );
+
+      }catch(error){
+
+        console.warn(
+          "NEXORA P5 save failed",
+          error
+        );
+
+      }
+
+    },
+
+
+    /* ========================================================
+       SEARCH
+       ======================================================== */
+
+    search(){
+
+      const input =
+        document.getElementById("p5GlobalSearch");
+
+      this.searchTerm =
+        input ?
+        input.value.trim().toLowerCase() :
+        "";
+
+      document
+        .getElementById("p5-search-section")
+        .classList.remove("p5-hidden");
+
+      const text =
+        document.getElementById("p5SearchText");
+
+      if(text){
+
+        text.textContent =
+          this.searchTerm ?
+          "Results for: " + this.searchTerm :
+          "Showing all products";
+
+      }
+
+      this.renderProducts();
+
+      document
+        .getElementById("p5-search-section")
+        .scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+    },
+
+
+    quickSearch(term){
+
+      const input =
+        document.getElementById("p5GlobalSearch");
+
+      if(input){
+        input.value = term;
+      }
+
+      this.searchTerm =
+        term.toLowerCase();
+
+      document
+        .getElementById("p5-search-section")
+        .classList.remove("p5-hidden");
+
+      const text =
+        document.getElementById("p5SearchText");
+
+      if(text){
+        text.textContent =
+          "Results for: " + term;
+      }
+
+      this.renderProducts();
+
+      document
+        .getElementById("p5-search-section")
+        .scrollIntoView({
+          behavior:"smooth"
+        });
+
+    },
+
+
+    /* ========================================================
+       RENDER PRODUCTS
+       ======================================================== */
+
+    renderProducts(){
+
+      const grid =
+        document.getElementById("p5ProductGrid");
+
+      if(!grid){
+        return;
+      }
+
+      let list =
+        this.products.slice();
+
+
+      /* SEARCH */
+
+      if(this.searchTerm){
+
+        list =
+          list.filter(product=>{
+
+            const searchable =
+              (
+                product.name +
+                " " +
+                product.brand +
+                " " +
+                product.category
+              ).toLowerCase();
+
+            return searchable.includes(
+              this.searchTerm
+            );
+
+          });
+
+      }
+
+
+      /* CATEGORY */
+
+      const category =
+        document.getElementById(
+          "p5CategoryFilter"
+        );
+
+      if(
+        category &&
+        category.value !== "all"
+      ){
+
+        list =
+          list.filter(product=>
+            product.category ===
+            category.value
+          );
+
+      }
+
+
+      /* PRICE */
+
+      const maxPrice =
+        document.getElementById(
+          "p5PriceFilter"
+        );
+
+      if(
+        maxPrice &&
+        maxPrice.value
+      ){
+
+        const maximum =
+          Number(maxPrice.value);
+
+        list =
+          list.filter(product=>
+            product.price <= maximum
+          );
+
+      }
+
+
+      /* RATING */
+
+      const ratingFilter =
+        document.getElementById(
+          "p5RatingFilter"
+        );
+
+      if(
+        ratingFilter &&
+        ratingFilter.checked
+      ){
+
+        list =
+          list.filter(product=>
+            product.rating >= 4
+          );
+
+      }
+
+
+      /* SORT */
+
+      const sort =
+        document.getElementById(
+          "p5Sort"
+        );
+
+      if(sort){
+
+        if(sort.value === "priceLow"){
+
+          list.sort(
+            (a,b)=>a.price-b.price
+          );
+
+        }
+
+        if(sort.value === "priceHigh"){
+
+          list.sort(
+            (a,b)=>b.price-a.price
+          );
+
+        }
+
+        if(sort.value === "rating"){
+
+          list.sort(
+            (a,b)=>b.rating-a.rating
+          );
+
+        }
+
+      }
+
+
+      const count =
+        document.getElementById(
+          "p5ResultCount"
+        );
+
+      if(count){
+
+        count.textContent =
+          list.length +
+          " products";
+
+      }
+
+
+      if(!list.length){
+
+        grid.innerHTML = `
+
+          <div
+            class="p5-card"
+            style="
+              grid-column:1/-1;
+              padding:40px;
+              text-align:center;
+            ">
+
+            <div style="font-size:50px">
+              🔍
+            </div>
+
+            <h3>
+              No products found
+            </h3>
+
+            <p class="p5-section-subtitle">
+              Try another search or remove some filters.
+            </p>
+
+            <button
+              class="p5-btn p5-btn-primary"
+              onclick="NEXORA_P5.clearSearch()">
+              Clear Filters
+            </button>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      grid.innerHTML =
+        list.map(
+          product =>
+          this.productCard(product)
+        ).join("");
+
+    },
+
+
+    /* ========================================================
+       PRODUCT CARD
+       ======================================================== */
+
+    productCard(product){
+
+      const liked =
+        this.wishlist.includes(
+          product.id
+        );
+
+      const compared =
+        this.compare.includes(
+          product.id
+        );
+
+      return `
+
+        <article class="p5-card p5-product">
+
+          <button
+            class="p5-heart"
+            onclick="NEXORA_P5.toggleWishlist(${product.id})">
+
+            ${liked ? "❤️" : "♡"}
+
+          </button>
+
+          <div
+            class="p5-product-image"
+            onclick="NEXORA_P5.openQuickView(${product.id})">
+
+            ${product.icon}
+
+          </div>
+
+          <div class="p5-product-body">
+
+            <div class="p5-product-brand">
+              ${product.brand}
+            </div>
+
+            <div
+              class="p5-product-name">
+
+              ${product.name}
+
+            </div>
+
+            <div class="p5-product-rating">
+
+              ⭐ ${product.rating}
+
+            </div>
+
+            <div class="p5-product-price">
+
+              ₹${this.money(product.price)}
+
+              <span class="p5-product-old">
+                ₹${this.money(product.old)}
+              </span>
+
+            </div>
+
+            <div class="p5-product-actions">
+
+              <button
+                class="p5-btn p5-btn-light"
+                onclick="NEXORA_P5.openQuickView(${product.id})">
+
+                👁 View
+
+              </button>
+
+              <button
+                class="p5-btn p5-btn-primary"
+                onclick="NEXORA_P5.addCart(${product.id})">
+
+                🛒 Add
+
+              </button>
+
+            </div>
+
+            <button
+              class="p5-btn p5-btn-light"
+              style="width:100%;margin-top:7px"
+              onclick="NEXORA_P5.toggleCompare(${product.id})">
+
+              ${compared ? "✓ Added to Compare" : "⚖ Compare"}
+
+            </button>
+
+          </div>
+
+        </article>
+
+      `;
+
+    },
+
+
+    /* ========================================================
+       MONEY
+       ======================================================== */
+
+    money(value){
+
+      return Number(value)
+        .toLocaleString("en-IN");
+
+    },
+
+
+    /* ========================================================
+       QUICK VIEW
+       ======================================================== */
+
+    openQuickView(id){
+
+      const product =
+        this.products.find(
+          item => item.id === id
+        );
+
+      if(!product){
+        return;
+      }
+
+      this.currentProduct =
+        product;
+
+      const brand =
+        document.getElementById(
+          "p5DetailBrand"
+        );
+
+      const title =
+        document.getElementById(
+          "p5DetailTitle"
+        );
+
+      const rating =
+        document.getElementById(
+          "p5DetailRating"
+        );
+
+      const price =
+        document.getElementById(
+          "p5DetailPrice"
+        );
+
+      const gallery =
+        document.getElementById(
+          "p5GalleryMain"
+        );
+
+      if(brand){
+        brand.textContent =
+          product.brand;
+      }
+
+      if(title){
+        title.textContent =
+          product.name;
+      }
+
+      if(rating){
+        rating.textContent =
+          "⭐ " +
+          product.rating +
+          " · Trusted reviews";
+      }
+
+      if(price){
+        price.textContent =
+          "₹" +
+          this.money(product.price);
+      }
+
+      if(gallery){
+        gallery.textContent =
+          product.icon;
+      }
+
+      this.addRecent(product.id);
+
+      document
+        .getElementById(
+          "p5QuickViewOverlay"
+        )
+        .classList.add("active");
+
+    },
+
+
+    closeQuickView(){
+
+      document
+        .getElementById(
+          "p5QuickViewOverlay"
+        )
+        .classList.remove("active");
+
+    },
+
+
+    gallery(icon){
+
+      const main =
+        document.getElementById(
+          "p5GalleryMain"
+        );
+
+      if(main){
+        main.textContent = icon;
+      }
+
+    },
+
+
+    variant(button){
+
+      document
+        .querySelectorAll(
+          ".p5-variant"
+        )
+        .forEach(item=>{
+          item.classList.remove(
+            "active"
+          );
+        });
+
+      button.classList.add(
+        "active"
+      );
+
+    },
+
+
+    buyFromModal(){
+
+      if(!this.currentProduct){
+        return;
+      }
+
+      this.addCart(
+        this.currentProduct.id
+      );
+
+    },
+
+
+    addWishlistFromModal(){
+
+      if(!this.currentProduct){
+        return;
+      }
+
+      this.toggleWishlist(
+        this.currentProduct.id
+      );
+
+    },
+
+
+    /* ========================================================
+       CART
+       ======================================================== */
+
+    addCart(id){
+
+      const product =
+        this.products.find(
+          item => item.id === id
+        );
+
+      if(!product){
+        return;
+      }
+
+      this.showToast(
+        product.name +
+        " added to cart 🛒"
+      );
+
+      this.closeQuickView();
+
+      try{
+
+        const existing =
+          JSON.parse(
+            localStorage.getItem(
+              "NEXORA_CART"
+            ) || "[]"
+          );
+
+        existing.push({
+          id:product.id,
+          qty:1
+        });
+
+        localStorage.setItem(
+          "NEXORA_CART",
+          JSON.stringify(existing)
+        );
+
+      }catch(error){
+
+        console.warn(error);
+
+      }
+
+    },
+
+
+    /* ========================================================
+       WISHLIST
+       ======================================================== */
+
+    toggleWishlist(id){
+
+      const index =
+        this.wishlist.indexOf(id);
+
+      const product =
+        this.products.find(
+          item => item.id === id
+        );
+
+      if(index >= 0){
+
+        this.wishlist.splice(
+          index,
+          1
+        );
+
+        this.showToast(
+          "Removed from wishlist"
+        );
+
+      }else{
+
+        this.wishlist.push(id);
+
+        this.showToast(
+          "Added to wishlist ❤️"
+        );
+
+      }
+
+      this.saveStorage();
+
+      this.renderWishlist();
+
+      this.renderProducts();
+
+      if(product){
+        this.renderRecent();
+      }
+
+    },
+
+
+    renderWishlist(){
+
+      const grid =
+        document.getElementById(
+          "p5WishlistGrid"
+        );
+
+      if(!grid){
+        return;
+      }
+
+      const products =
+        this.wishlist
+          .map(
+            id =>
+              this.products.find(
+                p => p.id === id
+              )
+          )
+          .filter(Boolean);
+
+
+      if(!products.length){
+
+        grid.innerHTML = `
+
+          <div
+            class="p5-card"
+            style="
+              grid-column:1/-1;
+              padding:35px;
+              text-align:center;
+            ">
+
+            <div style="font-size:50px">
+              💔
+            </div>
+
+            <h3>
+              Your wishlist is empty
+            </h3>
+
+            <p class="p5-section-subtitle">
+              Save products here to find them later.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      grid.innerHTML =
+        products.map(product=>`
+
+          <div class="p5-card p5-wish-card">
+
+            <div
+              class="p5-wish-icon"
+              onclick="NEXORA_P5.openQuickView(${product.id})">
+
+              ${product.icon}
+
+            </div>
+
+            <div
+              class="p5-product-brand"
+              style="margin-top:10px">
+
+              ${product.brand}
+
+            </div>
+
+            <div
+              class="p5-product-name">
+
+              ${product.name}
+
+            </div>
+
+            <strong>
+              ₹${this.money(product.price)}
+            </strong>
+
+            <button
+              class="p5-btn p5-btn-primary"
+              style="width:100%;margin-top:10px"
+              onclick="NEXORA_P5.addCart(${product.id})">
+
+              🛒 Add to Cart
+
+            </button>
+
+          </div>
+
+        `).join("");
+
+    },
+
+
+    clearWishlist(){
+
+      this.wishlist = [];
+
+      this.saveStorage();
+
+      this.renderWishlist();
+
+      this.renderProducts();
+
+      this.showToast(
+        "Wishlist cleared"
+      );
+
+    },
+
+
+    /* ========================================================
+       RECENT
+       ======================================================== */
+
+    addRecent(id){
+
+      this.recent =
+        this.recent.filter(
+          item => item !== id
+        );
+
+      this.recent.unshift(id);
+
+      this.recent =
+        this.recent.slice(0,8);
+
+      this.saveStorage();
+
+      this.renderRecent();
+
+    },
+
+
+    renderRecent(){
+
+      const box =
+        document.getElementById(
+          "p5RecentProducts"
+        );
+
+      if(!box){
+        return;
+      }
+
+      const products =
+        this.recent
+          .map(
+            id =>
+              this.products.find(
+                p=>p.id===id
+              )
+          )
+          .filter(Boolean);
+
+
+      if(!products.length){
+
+        box.innerHTML = `
+
+          <div
+            class="p5-card"
+            style="padding:25px;min-width:300px">
+
+            Browse products to build
+            your recently viewed list.
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      box.innerHTML =
+        products.map(product=>`
+
+          <div
+            class="p5-card p5-recent-card"
+            onclick="NEXORA_P5.openQuickView(${product.id})">
+
+            <div class="p5-recent-image">
+              ${product.icon}
+            </div>
+
+            <div
+              class="p5-product-name"
+              style="margin-top:9px">
+
+              ${product.name}
+
+            </div>
+
+            <strong>
+              ₹${this.money(product.price)}
+            </strong>
+
+          </div>
+
+        `).join("");
+
+    },
+
+
+    /* ========================================================
+       COMPARE
+       ======================================================== */
+
+    toggleCompare(id){
+
+      const index =
+        this.compare.indexOf(id);
+
+      if(index >= 0){
+
+        this.compare.splice(
+          index,
+          1
+        );
+
+        this.showToast(
+          "Removed from comparison"
+        );
+
+      }else{
+
+        if(this.compare.length >= 4){
+
+          this.showToast(
+            "Maximum 4 products can be compared"
+          );
+
+          return;
+
+        }
+
+        this.compare.push(id);
+
+        this.showToast(
+          "Added to comparison ⚖"
+        );
+
+      }
+
+      this.saveStorage();
+
+      this.renderCompare();
+
+      this.renderProducts();
+
+    },
+
+
+    renderCompare(){
+
+      const bar =
+        document.getElementById(
+          "p5CompareBar"
+        );
+
+      const items =
+        document.getElementById(
+          "p5CompareItems"
+        );
+
+      if(!bar || !items){
+        return;
+      }
+
+      if(!this.compare.length){
+
+        bar.classList.remove(
+          "active"
+        );
+
+        items.innerHTML = "";
+
+        return;
+
+      }
+
+
+      bar.classList.add(
+        "active"
+      );
+
+
+      items.innerHTML =
+        this.compare
+          .map(id=>{
+
+            const product =
+              this.products.find(
+                p=>p.id===id
+              );
+
+            if(!product){
+              return "";
+            }
+
+            return `
+
+              <div class="p5-compare-mini">
+
+                ${product.icon}
+                ${product.name}
+
+              </div>
+
+            `;
+
+          })
+          .join("");
+
+    },
+
+
+    clearCompare(){
+
+      this.compare = [];
+
+      this.saveStorage();
+
+      this.renderCompare();
+
+      this.renderProducts();
+
+      this.showToast(
+        "Comparison cleared"
+      );
+
+    },
+
+
+    openCompare(){
+
+      if(this.compare.length < 2){
+
+        this.showToast(
+          "Select at least 2 products"
+        );
+
+        return;
+
+      }
+
+
+      const products =
+        this.compare
+          .map(
+            id =>
+              this.products.find(
+                p=>p.id===id
+              )
+          )
+          .filter(Boolean);
+
+
+      const rows = [
+
+        ["Product","name"],
+
+        ["Brand","brand"],
+
+        ["Category","category"],
+
+        ["Price","price"],
+
+        ["Old Price","old"],
+
+        ["Rating","rating"],
+
+        ["Stock","stock"]
+
+      ];
+
+
+      const html = `
+
+        <div
+          class="p5-overlay active"
+          id="p5CompareModal"
+          onclick="
+            if(event.target===this)
+            NEXORA_P5.closeCompareModal()
+          ">
+
+          <div
+            class="p5-modal"
+            style="padding:25px">
+
+            <button
+              class="p5-modal-close"
+              onclick="NEXORA_P5.closeCompareModal()">
+              ×
+            </button>
+
+            <h2>
+              ⚖ Product Comparison
+            </h2>
+
+            <div
+              class="p5-table-wrap"
+              style="margin-top:20px">
+
+              <table class="p5-compare-table">
+
+                <tbody>
+
+                  ${rows.map(row=>`
+
+                    <tr>
+
+                      <th>
+                        ${row[0]}
+                      </th>
+
+                      ${
+                        products
+                          .map(product=>`
+
+                            <td>
+
+                              ${
+                                row[1]==="price" ||
+                                row[1]==="old"
+                                ?
+                                "₹"+this.money(
+                                  product[row[1]]
+                                )
+                                :
+                                product[row[1]]
+                              }
+
+                            </td>
+
+                          `)
+                          .join("")
+                      }
+
+                    </tr>
+
+                  `).join("")}
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        html
+      );
+
+    },
+
+
+    closeCompareModal(){
+
+      const modal =
+        document.getElementById(
+          "p5CompareModal"
+        );
+
+      if(modal){
+        modal.remove();
+      }
+
+    },
+
+
+    /* ========================================================
+       ORDERS
+       ======================================================== */
+
+    filterOrders(
+      status,
+      button
+    ){
+
+      document
+        .querySelectorAll(
+          ".p5-order-tab"
+        )
+        .forEach(tab=>{
+          tab.classList.remove(
+            "active"
+          );
+        });
+
+      if(button){
+        button.classList.add(
+          "active"
+        );
+      }
+
+      this.renderOrders(
+        status
+      );
+
+    },
+
+
+    renderOrders(status){
+
+      const list =
+        document.getElementById(
+          "p5OrdersList"
+        );
+
+      if(!list){
+        return;
+      }
+
+      let orders =
+        this.orders.slice();
+
+
+      if(status !== "all"){
+
+        orders =
+          orders.filter(
+            order =>
+              order.status === status
+          );
+
+      }
+
+
+      if(!orders.length){
+
+        list.innerHTML = `
+
+          <div
+            class="p5-card"
+            style="padding:35px;text-align:center">
+
+            <div style="font-size:45px">
+              📭
+            </div>
+
+            <h3>
+              No orders found
+            </h3>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      list.innerHTML =
+        orders.map(
+          order =>
+          this.orderCard(order)
+        ).join("");
+
+    },
+
+
+    orderCard(order){
+
+      let badge =
+        "p5-badge-blue";
+
+      let label =
+        "Processing";
+
+      if(order.status==="delivered"){
+
+        badge =
+          "p5-badge-green";
+
+        label =
+          "Delivered";
+
+      }
+
+      if(order.status==="cancelled"){
+
+        badge =
+          "p5-badge-red";
+
+        label =
+          "Cancelled";
+
+      }
+
+      if(order.status==="shipped"){
+
+        badge =
+          "p5-badge-blue";
+
+        label =
+          "Shipped";
+
+      }
+
+
+      if(order.status==="processing"){
+
+        badge =
+          "p5-badge-yellow";
+
+        label =
+          "Processing";
+
+      }
+
+
+      return `
+
+        <div class="p5-card p5-order">
+
+          <div class="p5-order-top">
+
+            <div>
+
+              <div class="p5-order-number">
+                Order #${order.id}
+              </div>
+
+              <div class="p5-order-date">
+                ${order.date}
+              </div>
+
+            </div>
+
+            <span
+              class="p5-badge ${badge}">
+
+              ${label}
+
+            </span>
+
+          </div>
+
+
+          <div class="p5-order-products">
+
+            ${order.items.map(item=>`
+
+              <div class="p5-order-item">
+
+                <div
+                  class="p5-order-item-icon">
+
+                  ${item.icon}
+
+                </div>
+
+                <strong>
+                  ${item.name}
+                </strong>
+
+                <div class="p5-setting-desc">
+                  Qty: ${item.qty}
+                </div>
+
+              </div>
+
+            `).join("")}
+
+          </div>
+
+
+          <div class="p5-order-bottom">
+
+            <strong>
+              Total: ₹${this.money(order.total)}
+            </strong>
+
+            <div style="display:flex;gap:7px;flex-wrap:wrap">
+
+              ${
+                order.status !== "cancelled"
+                ?
+                `
+                  <button
+                    class="p5-btn p5-btn-primary"
+                    onclick="NEXORA_P5.openTracking()">
+                    🚚 Track
+                  </button>
+                `
+                :
+                ""
+              }
+
+              <button
+                class="p5-btn p5-btn-light"
+                onclick="NEXORA_P5.invoice('${order.id}')">
+                🧾 Invoice
+              </button>
+
+              ${
+                order.status === "delivered"
+                ?
+                `
+                  <button
+                    class="p5-btn p5-btn-light"
+                    onclick="NEXORA_P5.returnOrder('${order.id}')">
+                    🔄 Return
+                  </button>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    },
+
+
+    /* ========================================================
+       TRACKING
+       ======================================================== */
+
+    openTracking(){
+
+      document
+        .getElementById(
+          "p5TrackingOverlay"
+        )
+        .classList.add("active");
+
+    },
+
+
+    closeTracking(){
+
+      document
+        .getElementById(
+          "p5TrackingOverlay"
+        )
+        .classList.remove("active");
+
+    },
+
+
+    /* ========================================================
+       INVOICE
+       ======================================================== */
+
+    invoice(orderId){
+
+      const order =
+        this.orders.find(
+          item =>
+            item.id === orderId
+        );
+
+      if(!order){
+        return;
+      }
+
+
+      const html = `
+
+        <div
+          class="p5-overlay active"
+          id="p5InvoiceModal">
+
+          <div
+            class="p5-modal"
+            style="padding:30px">
+
+            <button
+              class="p5-modal-close"
+              onclick="
+                document
+                  .getElementById('p5InvoiceModal')
+                  .remove()
+              ">
+              ×
+            </button>
+
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                gap:20px;
+              ">
+
+              <div>
+
+                <h2>
+                  NEXORA
+                </h2>
+
+                <div>
+                  Marketplace Invoice
+                </div>
+
+              </div>
+
+              <div>
+                <strong>
+                  Invoice #INV-${order.id}
+                </strong>
+
+                <div class="p5-setting-desc">
+                  ${order.date}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="p5-divider"></div>
+
+            <div class="p5-table-wrap">
+
+              <table class="p5-table">
+
+                <thead>
+
+                  <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  ${order.items.map(item=>`
+
+                    <tr>
+
+                      <td>
+                        ${item.name}
+                      </td>
+
+                      <td>
+                        ${item.qty}
+                      </td>
+
+                      <td>
+                        ₹${this.money(order.total)}
+                      </td>
+
+                    </tr>
+
+                  `).join("")}
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+            <div
+              style="
+                text-align:right;
+                margin-top:20px;
+                font-size:22px;
+                font-weight:900;
+              ">
+
+              Total:
+              ₹${this.money(order.total)}
+
+            </div>
+
+            <p
+              class="p5-setting-desc"
+              style="margin-top:20px">
+
+              Demo invoice generated by NEXORA frontend.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        html
+      );
+
+    },
+
+
+    /* ========================================================
+       RETURN
+       ======================================================== */
+
+    returnOrder(orderId){
+
+      const html = `
+
+        <div
+          class="p5-overlay active"
+          id="p5ReturnModal">
+
+          <div
+            class="p5-modal"
+            style="padding:30px">
+
+            <button
+              class="p5-modal-close"
+              onclick="
+                document
+                  .getElementById('p5ReturnModal')
+                  .remove()
+              ">
+              ×
+            </button>
+
+            <h2>
+              🔄 Return Request
+            </h2>
+
+            <p class="p5-section-subtitle">
+              Order #${orderId}
+            </p>
+
+            <div class="p5-field">
+
+              <label class="p5-label">
+                Reason
+              </label>
+
+              <select class="p5-select">
+
+                <option>
+                  Product not required
+                </option>
+
+                <option>
+                  Wrong product received
+                </option>
+
+                <option>
+                  Damaged product
+                </option>
+
+                <option>
+                  Size / variant issue
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="p5-field">
+
+              <label class="p5-label">
+                Additional Details
+              </label>
+
+              <textarea
+                class="p5-textarea"
+                rows="4"
+                placeholder="Describe the issue...">
+              </textarea>
+
+            </div>
+
+            <button
+              class="p5-btn p5-btn-primary"
+              style="width:100%"
+              onclick="
+                document
+                  .getElementById('p5ReturnModal')
+                  .remove();
+                NEXORA_P5.showToast(
+                  'Return request submitted in demo'
+                )
+              ">
+
+              Submit Return Request
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        html
+      );
+
+    },
+
+
+    /* ========================================================
+       SUPPORT
+       ======================================================== */
+
+    openSupport(type){
+
+      const titles = {
+
+        orders:"Order Help",
+
+        payments:"Payment Help",
+
+        returns:"Returns & Refunds",
+
+        account:"Account Help",
+
+        seller:"Seller Support",
+
+        chat:"Live Support"
+
+      };
+
+
+      const title =
+        titles[type] ||
+        "Support";
+
+
+      const html = `
+
+        <div
+          class="p5-overlay active"
+          id="p5SupportModal">
+
+          <div
+            class="p5-modal"
+            style="padding:30px">
+
+            <button
+              class="p5-modal-close"
+              onclick="
+                document
+                  .getElementById('p5SupportModal')
+                  .remove()
+              ">
+              ×
+            </button>
+
+            <div style="font-size:45px">
+              🎧
+            </div>
+
+            <h2>
+              ${title}
+            </h2>
+
+            <p class="p5-section-subtitle">
+              NEXORA support center demo.
+            </p>
+
+            <div class="p5-card" style="padding:17px">
+
+              <strong>
+                How can we help?
+              </strong>
+
+              <p class="p5-setting-desc">
+                Select an issue below or describe your question.
+              </p>
+
+            </div>
+
+            <div
+              style="
+                display:grid;
+                grid-template-columns:1fr 1fr;
+                gap:9px;
+                margin-top:15px;
+              ">
+
+              <button
+                class="p5-btn p5-btn-light"
+                onclick="NEXORA_P5.showToast('FAQ opened')">
+                📚 Browse FAQ
+              </button>
+
+              <button
+                class="p5-btn p5-btn-primary"
+                onclick="NEXORA_P5.showToast('Support chat opened')">
+                💬 Start Chat
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        html
+      );
+
+    },
+
+
+    /* ========================================================
+       SELLER
+       ======================================================== */
+
+    openSellerTab(tab){
+
+      const messages = {
+
+        inventory:
+          "Inventory dashboard opened",
+
+        orders:
+          "Seller order manager opened",
+
+        analytics:
+          "Seller analytics opened",
+
+        campaigns:
+          "Campaign manager opened"
+
+      };
+
+
+      this.showToast(
+        messages[tab] ||
+        "Seller dashboard opened"
+      );
+
+    },
+
+
+    /* ========================================================
+       FAQ
+       ======================================================== */
+
+    toggleFaq(button){
+
+      const item =
+        button.closest(
+          ".p5-faq-item"
+        );
+
+      if(!item){
+        return;
+      }
+
+      item.classList.toggle(
+        "open"
+      );
+
+      const icon =
+        button.querySelector(
+          "span"
+        );
+
+      if(icon){
+
+        icon.textContent =
+          item.classList.contains("open")
+          ?
+          "−"
+          :
+          "＋";
+
+      }
+
+    },
+
+
+    /* ========================================================
+       SETTINGS
+       ======================================================== */
+
+    settingTab(
+      button,
+      tab
+    ){
+
+      document
+        .querySelectorAll(
+          ".p5-settings-link"
+        )
+        .forEach(item=>{
+          item.classList.remove(
+            "active"
+          );
+        });
+
+      button.classList.add(
+        "active"
+      );
+
+      this.showToast(
+        tab.charAt(0).toUpperCase() +
+        tab.slice(1) +
+        " settings selected"
+      );
+
+    },
+
+
+    toggleSwitch(element){
+
+      element.classList.toggle(
+        "active"
+      );
+
+    },
+
+
+    /* ========================================================
+       NAVIGATION
+       ======================================================== */
+
+    openSection(section){
+
+      if(section==="orders"){
+
+        document
+          .getElementById(
+            "p5-orders-section"
+          )
+          .scrollIntoView({
+            behavior:"smooth"
+          });
+
+      }
+
+    },
+
+
+    clearSearch(){
+
+      this.searchTerm = "";
+
+      const input =
+        document.getElementById(
+          "p5GlobalSearch"
+        );
+
+      if(input){
+        input.value = "";
+      }
+
+      const category =
+        document.getElementById(
+          "p5CategoryFilter"
+        );
+
+      if(category){
+        category.value = "all";
+      }
+
+      const price =
+        document.getElementById(
+          "p5PriceFilter"
+        );
+
+      if(price){
+        price.value = "";
+      }
+
+      const rating =
+        document.getElementById(
+          "p5RatingFilter"
+        );
+
+      if(rating){
+        rating.checked = false;
+      }
+
+      this.renderProducts();
+
+    },
+
+
+    /* ========================================================
+       KEYBOARD SHORTCUTS
+       ======================================================== */
+
+    bindKeyboard(){
+
+      document.addEventListener(
+        "keydown",
+        event=>{
+
+          if(
+            event.ctrlKey &&
+            event.key.toLowerCase()==="k"
+          ){
+
+            event.preventDefault();
+
+            const input =
+              document.getElementById(
+                "p5GlobalSearch"
+              );
+
+            if(input){
+
+              input.focus();
+
+              this.showToast(
+                "Search focused 🔎"
+              );
+
+            }
+
+          }
+
+
+          if(
+            event.key === "Escape"
+          ){
+
+            this.closeQuickView();
+
+            this.closeTracking();
+
+          }
+
+        }
+      );
+
+    },
+
+
+    /* ========================================================
+       TOAST
+       ======================================================== */
+
+    showToast(message){
+
+      const toast =
+        document.getElementById(
+          "p5Toast"
+        );
+
+      if(!toast){
+        return;
+      }
+
+      toast.textContent =
+        message;
+
+      toast.classList.add(
+        "show"
+      );
+
+      clearTimeout(
+        this.toastTimer
+      );
+
+      this.toastTimer =
+        setTimeout(()=>{
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },2600);
+
+    }
+
+  };
+
+
+  /* ==========================================================
+     GLOBAL EXPORT
+     ========================================================== */
+
+  window.NEXORA_P5 =
+    NEXORA_P5;
+
+
+  /* ==========================================================
+     START
+     ========================================================== */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+      NEXORA_P5.init();
+
+    }
+  );
+
+
+})();
+</script>
+
+<!
 
