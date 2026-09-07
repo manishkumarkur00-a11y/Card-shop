@@ -30142,7 +30142,781 @@ body.p4-dark .p4-offer-card {
 
 })();
 </script>
+<!-- ================================
+     NEXORA AUTO-MARKET ENGINE
+     AUTOMATIC PRODUCT IMPORT + PRICE
+     + COMMISSION + STOCK SYNC DEMO
+================================ -->
 
+<style>
+#NEXORA_AUTO_MARKET{
+  margin:30px 15px;
+  padding:24px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#111827,#1e293b);
+  color:#fff;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  font-family:inherit;
+}
+
+.nam-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+
+.nam-title{
+  font-size:28px;
+  font-weight:900;
+}
+
+.nam-sub{
+  opacity:.7;
+  font-size:14px;
+  margin-top:5px;
+}
+
+.nam-status{
+  padding:10px 15px;
+  border-radius:999px;
+  background:#064e3b;
+  color:#6ee7b7;
+  font-weight:800;
+}
+
+.nam-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:14px;
+}
+
+.nam-card{
+  padding:18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.nam-card b{
+  display:block;
+  font-size:26px;
+  margin-top:6px;
+}
+
+.nam-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:22px 0;
+}
+
+.nam-btn{
+  border:0;
+  padding:12px 17px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:800;
+  background:#fff;
+  color:#111827;
+}
+
+.nam-btn:hover{
+  transform:translateY(-2px);
+}
+
+.nam-btn.primary{
+  background:#22c55e;
+  color:#052e16;
+}
+
+.nam-btn.danger{
+  background:#ef4444;
+  color:#fff;
+}
+
+.nam-log{
+  max-height:220px;
+  overflow:auto;
+  padding:15px;
+  border-radius:15px;
+  background:#020617;
+  font-family:monospace;
+  font-size:12px;
+}
+
+.nam-product{
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.nam-product small{
+  opacity:.65;
+}
+
+.nam-on{
+  color:#4ade80;
+}
+
+.nam-off{
+  color:#f87171;
+}
+
+@media(max-width:600px){
+  #NEXORA_AUTO_MARKET{
+    margin:20px 8px;
+    padding:16px;
+  }
+
+  .nam-title{
+    font-size:22px;
+  }
+}
+</style>
+
+<section id="NEXORA_AUTO_MARKET">
+
+  <div class="nam-head">
+    <div>
+      <div class="nam-title">⚡ NEXORA AUTO-MARKET</div>
+      <div class="nam-sub">
+        Automatic Product Import • Pricing • Commission • Stock Sync
+      </div>
+    </div>
+
+    <div class="nam-status" id="namStatus">
+      ● AUTO MODE ON
+    </div>
+  </div>
+
+  <div class="nam-grid">
+
+    <div class="nam-card">
+      📦 Products
+      <b id="namProducts">0</b>
+    </div>
+
+    <div class="nam-card">
+      💰 Store Value
+      <b id="namValue">₹0</b>
+    </div>
+
+    <div class="nam-card">
+      📈 Commission
+      <b id="namCommission">₹0</b>
+    </div>
+
+    <div class="nam-card">
+      🟢 Stock
+      <b id="namStock">0</b>
+    </div>
+
+  </div>
+
+  <div class="nam-actions">
+
+    <button class="nam-btn primary"
+      type="button"
+      onclick="NEXORA_AUTO_MARKET.importProducts()">
+      ⚡ AUTO IMPORT
+    </button>
+
+    <button class="nam-btn"
+      type="button"
+      onclick="NEXORA_AUTO_MARKET.syncPrices()">
+      🔄 SYNC PRICES
+    </button>
+
+    <button class="nam-btn"
+      type="button"
+      onclick="NEXORA_AUTO_MARKET.syncStock()">
+      📦 SYNC STOCK
+    </button>
+
+    <button class="nam-btn"
+      type="button"
+      onclick="NEXORA_AUTO_MARKET.calculate()">
+      🧮 CALCULATE
+    </button>
+
+    <button class="nam-btn danger"
+      type="button"
+      onclick="NEXORA_AUTO_MARKET.clearDemo()">
+      RESET DEMO
+    </button>
+
+  </div>
+
+  <div class="nam-card">
+
+    <strong>🛒 AUTO PRODUCTS</strong>
+
+    <div id="namProductsList">
+      No products imported yet.
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="nam-card">
+
+    <strong>⚙️ AUTO ENGINE LOG</strong>
+
+    <div class="nam-log" id="namLog">
+      NEXORA Auto-Market ready...
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+(function(){
+
+"use strict";
+
+window.NEXORA_AUTO_MARKET = {
+
+  storageKey: "nexora_auto_market_products",
+
+  commissionRate: 10,
+
+  products: [],
+
+  demoProducts: [
+
+    {
+      id:"AUTO-1001",
+      name:"Wireless Headphones",
+      category:"Electronics",
+      supplierPrice:799,
+      stock:42,
+      source:"Demo Supplier"
+    },
+
+    {
+      id:"AUTO-1002",
+      name:"Smart Watch",
+      category:"Wearables",
+      supplierPrice:1199,
+      stock:25,
+      source:"Demo Supplier"
+    },
+
+    {
+      id:"AUTO-1003",
+      name:"Gaming Mouse",
+      category:"Gaming",
+      supplierPrice:499,
+      stock:60,
+      source:"Demo Supplier"
+    },
+
+    {
+      id:"AUTO-1004",
+      name:"LED Desk Lamp",
+      category:"Home",
+      supplierPrice:649,
+      stock:31,
+      source:"Demo Supplier"
+    },
+
+    {
+      id:"AUTO-1005",
+      name:"Bluetooth Speaker",
+      category:"Electronics",
+      supplierPrice:899,
+      stock:18,
+      source:"Demo Supplier"
+    },
+
+    {
+      id:"AUTO-1006",
+      name:"Mobile Stand",
+      category:"Accessories",
+      supplierPrice:299,
+      stock:75,
+      source:"Demo Supplier"
+    }
+
+  ],
+
+  init:function(){
+
+    try{
+
+      const saved =
+        localStorage.getItem(this.storageKey);
+
+      if(saved){
+
+        this.products =
+          JSON.parse(saved);
+
+      }
+
+    }catch(e){
+
+      this.products=[];
+
+    }
+
+    this.render();
+
+    this.log(
+      "AUTO ENGINE INITIALIZED"
+    );
+
+  },
+
+  save:function(){
+
+    try{
+
+      localStorage.setItem(
+        this.storageKey,
+        JSON.stringify(this.products)
+      );
+
+    }catch(e){}
+
+  },
+
+  log:function(message){
+
+    const box =
+      document.getElementById("namLog");
+
+    if(!box) return;
+
+    const time =
+      new Date().toLocaleTimeString();
+
+    box.innerHTML +=
+      "<br>[" +
+      time +
+      "] " +
+      message;
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  },
+
+  calculatePrice:function(cost){
+
+    /*
+      Demo pricing rule:
+
+      Supplier Cost
+      + 20% operating margin
+      + 10% commission
+    */
+
+    const margin =
+      cost * 0.20;
+
+    const commission =
+      cost * (this.commissionRate / 100);
+
+    return Math.ceil(
+      cost + margin + commission
+    );
+
+  },
+
+  importProducts:function(){
+
+    this.log(
+      "Starting automatic product import..."
+    );
+
+    let imported=0;
+
+    this.demoProducts.forEach(sourceProduct=>{
+
+      const exists =
+        this.products.some(
+          p=>p.id===sourceProduct.id
+        );
+
+      if(!exists){
+
+        const sellingPrice =
+          this.calculatePrice(
+            sourceProduct.supplierPrice
+          );
+
+        const commission =
+          sellingPrice *
+          (this.commissionRate/100);
+
+        this.products.push({
+
+          id:sourceProduct.id,
+
+          name:sourceProduct.name,
+
+          category:sourceProduct.category,
+
+          supplierPrice:
+            sourceProduct.supplierPrice,
+
+          sellingPrice:
+            sellingPrice,
+
+          commission:
+            Math.round(commission),
+
+          stock:
+            sourceProduct.stock,
+
+          source:
+            sourceProduct.source,
+
+          status:"published",
+
+          importedAt:
+            new Date().toISOString()
+
+        });
+
+        imported++;
+
+      }
+
+    });
+
+    this.save();
+
+    this.render();
+
+    this.log(
+      imported +
+      " new products imported automatically."
+    );
+
+    this.log(
+      "Pricing + commission calculated."
+    );
+
+  },
+
+  syncPrices:function(){
+
+    if(!this.products.length){
+
+      this.log(
+        "No products available."
+      );
+
+      return;
+
+    }
+
+    this.products.forEach(product=>{
+
+      const randomChange =
+        0.97 +
+        Math.random()*0.06;
+
+      product.supplierPrice =
+        Math.round(
+          product.supplierPrice *
+          randomChange
+        );
+
+      product.sellingPrice =
+        this.calculatePrice(
+          product.supplierPrice
+        );
+
+      product.commission =
+        Math.round(
+          product.sellingPrice *
+          (this.commissionRate/100)
+        );
+
+    });
+
+    this.save();
+
+    this.render();
+
+    this.log(
+      "Supplier prices synchronized."
+    );
+
+    this.log(
+      "Selling prices automatically recalculated."
+    );
+
+  },
+
+  syncStock:function(){
+
+    if(!this.products.length){
+
+      this.log(
+        "No products available."
+      );
+
+      return;
+
+    }
+
+    this.products.forEach(product=>{
+
+      const change =
+        Math.floor(
+          Math.random()*9
+        )-4;
+
+      product.stock =
+        Math.max(
+          0,
+          product.stock + change
+        );
+
+      product.status =
+        product.stock > 0
+        ? "published"
+        : "out-of-stock";
+
+    });
+
+    this.save();
+
+    this.render();
+
+    this.log(
+      "Stock synchronization completed."
+    );
+
+  },
+
+  calculate:function(){
+
+    let totalValue=0;
+    let totalCommission=0;
+    let totalStock=0;
+
+    this.products.forEach(product=>{
+
+      totalValue +=
+        product.sellingPrice *
+        product.stock;
+
+      totalCommission +=
+        product.commission *
+        product.stock;
+
+      totalStock +=
+        product.stock;
+
+    });
+
+    this.log(
+      "Catalog value: ₹"+
+      totalValue.toLocaleString("en-IN")
+    );
+
+    this.log(
+      "Potential commission: ₹"+
+      totalCommission.toLocaleString("en-IN")
+    );
+
+    this.log(
+      "Available stock: "+
+      totalStock
+    );
+
+    this.render();
+
+  },
+
+  render:function(){
+
+    const count =
+      document.getElementById(
+        "namProducts"
+      );
+
+    const value =
+      document.getElementById(
+        "namValue"
+      );
+
+    const commission =
+      document.getElementById(
+        "namCommission"
+      );
+
+    const stock =
+      document.getElementById(
+        "namStock"
+      );
+
+    const list =
+      document.getElementById(
+        "namProductsList"
+      );
+
+    if(!count) return;
+
+    let totalValue=0;
+
+    let totalCommission=0;
+
+    let totalStock=0;
+
+    this.products.forEach(product=>{
+
+      totalValue +=
+        product.sellingPrice *
+        product.stock;
+
+      totalCommission +=
+        product.commission *
+        product.stock;
+
+      totalStock +=
+        product.stock;
+
+    });
+
+    count.textContent =
+      this.products.length;
+
+    value.textContent =
+      "₹"+
+      totalValue.toLocaleString(
+        "en-IN"
+      );
+
+    commission.textContent =
+      "₹"+
+      totalCommission.toLocaleString(
+        "en-IN"
+      );
+
+    stock.textContent =
+      totalStock;
+
+    if(!this.products.length){
+
+      list.innerHTML =
+        "No products imported yet.";
+
+      return;
+
+    }
+
+    list.innerHTML =
+      this.products.map(product=>{
+
+        return `
+
+          <div class="nam-product">
+
+            <div>
+
+              <strong>
+                ${this.escape(product.name)}
+              </strong>
+
+              <br>
+
+              <small>
+                ${this.escape(product.category)}
+                •
+                ${this.escape(product.source)}
+              </small>
+
+            </div>
+
+            <div style="text-align:right">
+
+              <strong>
+                ₹${product.sellingPrice.toLocaleString("en-IN")}
+              </strong>
+
+              <br>
+
+              <small>
+                Stock: ${product.stock}
+                •
+                Commission: ₹${product.commission}
+              </small>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  },
+
+  escape:function(value){
+
+    return String(value)
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  },
+
+  clearDemo:function(){
+
+    if(!confirm(
+      "Reset NEXORA Auto-Market demo?"
+    )) return;
+
+    this.products=[];
+
+    this.save();
+
+    this.render();
+
+    const log =
+      document.getElementById(
+        "namLog"
+      );
+
+    if(log){
+
+      log.innerHTML =
+        "AUTO MARKET RESET.";
+
+    }
+
+  }
+
+};
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    NEXORA_AUTO_MARKET.init();
+
+  }
+);
+
+})();
+</script>
 </body>
 </html>
 
