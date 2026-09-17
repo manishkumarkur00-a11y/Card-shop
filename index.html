@@ -3,235 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ColorWin Demo</title>
+<title>PlayWin — Demo</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 body{
-  font-family:Arial,sans-serif;
-  background:#f5f6fa;
-  color:#222;
+  margin:0;background:#05070a;color:#fff;
+  font-family:Inter,Arial,sans-serif;
 }
 .app{
-  max-width:520px;
-  margin:auto;
-  min-height:100vh;
-  padding-bottom:80px;
+  width:100%;max-width:480px;min-height:100vh;
+  margin:auto;background:#080b10;padding-bottom:80px;
 }
 header{
-  height:70px;
-  background:#171a2c;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px;
 }
-.logo{font-size:25px;font-weight:bold}
-.balance{
-  background:#29304e;
-  padding:11px 15px;
-  border-radius:25px;
+.logo{font-size:23px;font-weight:900}
+.logo span{color:#32d477}
+.demo{
+  font-size:9px;color:#7fe7a9;
+  border:1px solid #245b3d;border-radius:20px;
+  padding:5px 8px;background:#0c1b13;
 }
+.icons{display:flex;gap:8px}
+.circle{
+  width:36px;height:36px;border-radius:50%;
+  background:#121720;border:1px solid #252c36;
+  display:grid;place-items:center;
+}
+
+/* Hero */
 .hero{
-  margin:16px;
-  padding:25px 20px;
-  border-radius:18px;
-  color:#fff;
-  background:linear-gradient(135deg,#6936ff,#ee3688);
+  margin:5px 14px 18px;padding:20px;
+  border-radius:20px;border:1px solid #24352b;
+  background:linear-gradient(135deg,#102018,#0d1218);
 }
-.hero h1{font-size:28px;margin-bottom:8px}
-.hero p{font-size:17px}
-.quick{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  padding:0 16px;
+.hero small{
+  color:#72dda0;letter-spacing:1.5px;font-size:10px;
 }
-.quick button{
-  background:#fff;
-  padding:16px 8px;
-  border:0;
-  border-radius:14px;
-  font-size:16px;
-  font-weight:bold;
+.hero h1{font-size:28px;margin:7px 0}
+.hero p{color:#929ba8;font-size:12px;margin:0}
+.hero button{
+  margin-top:15px;border:0;border-radius:10px;
+  padding:10px 17px;background:#32d477;
+  font-weight:800;
 }
+
+/* Balance demo */
+.balance{
+  margin:0 14px 18px;padding:15px;
+  background:#11161e;border:1px solid #252c36;
+  border-radius:16px;
+}
+.balance-top{
+  display:flex;justify-content:space-between;
+  color:#8993a2;font-size:11px;
+}
+.amount{font-size:24px;font-weight:800;margin-top:5px}
+.demoMoney{color:#75dfa2;font-size:10px}
+
+/* Tabs */
+.section{padding:0 14px}
 .title{
-  margin:22px 16px 12px;
-  font-size:22px;
+  display:flex;justify-content:space-between;
+  align-items:center;margin:16px 0 10px;
 }
+.title h2{font-size:16px;margin:0}
+.title span{font-size:11px;color:#69d998}
+
+.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}
+.tab{
+  white-space:nowrap;padding:9px 13px;
+  background:#11161e;border:1px solid #252c36;
+  color:#9ba4b1;border-radius:10px;font-size:11px;
+}
+.tab.active{
+  background:#123521;color:#82e5ab;border-color:#276b45;
+}
+
+/* Games */
 .games{
-  padding:0 16px;
-  display:grid;
-  gap:12px;
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
 }
-.card{
-  background:#fff;
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 3px 12px #0001;
+.game{
+  background:#11161e;border:1px solid #252c36;
+  border-radius:16px;padding:14px;min-height:145px;
 }
-.card h3{
-  font-size:21px;
-  margin-bottom:6px;
+.game.big{
+  grid-column:span 2;
+  display:flex;align-items:center;gap:14px;
+  min-height:115px;
 }
-.card p{
-  color:#777;
-  margin-bottom:14px;
+.game-icon{
+  font-size:32px;margin-bottom:10px;
 }
-.play,.confirm{
-  width:100%;
-  padding:13px;
-  background:#6936ff;
-  color:#fff;
-  border:0;
-  border-radius:12px;
-  font-weight:bold;
+.big .game-icon{font-size:43px;margin:0}
+.game h3{font-size:14px;margin:0 0 4px}
+.game p{font-size:10px;color:#858f9e;margin:0}
+.tag{
+  display:inline-block;margin-top:9px;
+  padding:4px 7px;border-radius:20px;
+  background:#19231f;color:#72d99b;font-size:8px;
 }
-.screen{
-  display:none;
-  padding:16px;
+.play{
+  display:block;width:100%;margin-top:12px;
+  border:0;border-radius:9px;padding:8px;
+  background:#202732;color:white;font-size:10px;
+  font-weight:700;
 }
-.screen.active{display:block}
-.back{
-  background:#fff;
-  border:0;
-  padding:10px 15px;
-  border-radius:10px;
-  margin-bottom:12px;
-  font-weight:bold;
+.big .play{width:auto;padding:9px 14px}
+
+/* Activity */
+.activity{
+  background:#11161e;border:1px solid #252c36;
+  border-radius:16px;overflow:hidden;
 }
-.panel{
-  background:#fff;
-  border-radius:18px;
-  padding:17px;
-  margin-bottom:13px;
+.row{
+  display:flex;align-items:center;gap:10px;
+  padding:12px;border-bottom:1px solid #202630;
 }
-.gamehead{
-  display:flex;
-  justify-content:space-between;
-}
-.round{
-  color:#777;
-  font-size:13px;
-  margin-top:4px;
-}
-.timer{
-  text-align:center;
-  font-size:32px;
-  font-weight:bold;
-  margin:10px;
-}
-.colors{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin:15px 0;
-}
-.colors button{
-  padding:14px 5px;
-  border:0;
-  border-radius:12px;
-  color:#fff;
-  font-weight:bold;
-}
-.red{background:#ef4444}
-.green{background:#20a65a}
-.violet{background:#7b42e8}
-.numbers{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
-  margin-top:10px;
-}
-.numbers button{
-  padding:12px;
-  border:0;
-  border-radius:9px;
-  background:#eee;
-  font-weight:bold;
-}
-.history div{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid #eee;
-}
-.menu{
-  display:grid;
-  gap:10px;
-}
-.menu button{
-  background:#fff;
-  border:0;
-  padding:16px;
-  border-radius:12px;
-  text-align:left;
-  font-weight:bold;
-}
+.row:last-child{border-bottom:0}
 .avatar{
-  width:70px;
-  height:70px;
-  margin:auto;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#6936ff;
-  color:white;
-  font-size:30px;
+  width:32px;height:32px;border-radius:50%;
+  background:#1b242e;display:grid;place-items:center;
 }
-.profile{text-align:center}
-.bottom{
-  position:fixed;
-  bottom:0;
-  left:50%;
+.row-text{flex:1;font-size:11px}
+.row-text span{display:block;color:#788392;font-size:9px;margin-top:3px}
+.status{font-size:9px;color:#72d99b}
+
+/* Bottom nav */
+nav{
+  position:fixed;bottom:0;left:50%;
   transform:translateX(-50%);
-  width:min(520px,100%);
-  height:70px;
-  background:white;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  box-shadow:0 -3px 15px #0002;
+  width:min(100%,480px);
+  height:68px;background:#0d1117;
+  border-top:1px solid #252c36;
+  display:flex;justify-content:space-around;
+  padding-top:8px;z-index:10;
 }
-.bottom button{
-  border:0;
-  background:white;
-  font-size:12px;
-  font-weight:bold;
+.navitem{
+  color:#737d8b;text-align:center;
+  font-size:9px;min-width:55px;
 }
-.bottom b{
-  display:block;
-  font-size:20px;
-  margin-bottom:3px;
-}
+.navitem b{display:block;font-size:19px;margin-bottom:3px}
+.navitem.active{color:#68dc98}
+
+/* Modal */
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:50;
-  align-items:flex-end;
+  display:none;position:fixed;inset:0;
+  background:#000b;z-index:20;
+  align-items:flex-end;justify-content:center;
 }
-.modal.show{display:flex}
 .sheet{
-  background:#fff;
-  width:min(520px,100%);
-  padding:20px;
-  border-radius:22px 22px 0 0;
+  width:min(100%,480px);
+  background:#11161e;border:1px solid #29313c;
+  border-radius:22px 22px 0 0;padding:20px;
 }
-.sheet input{
-  width:100%;
-  padding:13px;
-  margin:6px 0;
-  border:1px solid #ddd;
-  border-radius:10px;
-}
+.sheet h2{margin:0 0 8px;font-size:19px}
+.sheet p{font-size:11px;color:#8e98a7}
 .close{
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:10px;
-  margin-top:8px;
+  width:100%;padding:11px;border:0;
+  border-radius:10px;background:#252c36;color:white;
 }
 </style>
 </head>
@@ -241,477 +174,181 @@ header{
 <div class="app">
 
 <header>
-  <div class="logo">🎯 ColorWin</div>
-  <div class="balance">
-    Demo ₹ <b id="balance">10,000</b>
+  <div>
+    <div class="logo">Play<span>Win</span></div>
+    <div class="demo">DEMO MODE</div>
+  </div>
+
+  <div class="icons">
+    <div class="circle">🔔</div>
+    <div class="circle">👤</div>
   </div>
 </header>
 
-<!-- HOME -->
-<section id="home" class="screen active">
-
-<div class="hero">
-  <h1>Welcome to ColorWin</h1>
-  <p>Color prediction demo platform</p>
-</div>
-
-<div class="quick">
-<button onclick="modal('Login')">🔐 Login</button>
-<button onclick="modal('Register')">📝 Register</button>
-<button onclick="alert('Gift Code')">🎁 Gift Code</button>
-<button onclick="show('referral')">👥 Referral</button>
-<button onclick="show('wallet')">💰 Wallet</button>
-<button onclick="show('history')">📜 History</button>
-<button onclick="alert('Bonus Center')">🎉 Bonus</button>
-<button onclick="alert('Support')">💬 Support</button>
-</div>
-
-<h2 class="title">🎮 Games</h2>
-
-<div class="games">
-
-<div class="card">
-<h3>🔴 Win Go</h3>
-<p>Colour & number prediction demo</p>
-<button class="play" onclick="game('Win Go')">
-PLAY NOW
-</button>
-</div>
-
-<div class="card">
-<h3>🎲 K3 Lottery</h3>
-<p>Three-number lottery demo</p>
-<button class="play" onclick="game('K3 Lottery')">
-PLAY NOW
-</button>
-</div>
-
-<div class="card">
-<h3>🔢 5D Lottery</h3>
-<p>Five-digit lottery demo</p>
-<button class="play" onclick="game('5D Lottery')">
-PLAY NOW
-</button>
-</div>
-
-<div class="card">
-<h3>💎 TRX Win</h3>
-<p>Token-style game demo</p>
-<button class="play" onclick="game('TRX Win')">
-PLAY NOW
-</button>
-</div>
-
-<div class="card">
-<h3>🏍️ MotoRace</h3>
-<p>Race prediction demo</p>
-<button class="play" onclick="game('MotoRace')">
-PLAY NOW
-</button>
-</div>
-
-</div>
+<section class="hero">
+  <small>WELCOME BACK</small>
+  <h1>Game Lobby</h1>
+  <p>Explore games and play with demo credits.</p>
+  <button onclick="openModal('Featured Game')">Explore Games</button>
 </section>
 
-
-<!-- GAME -->
-<section id="game" class="screen">
-
-<button class="back" onclick="show('home')">
-← Back
-</button>
-
-<div class="panel gamehead">
-<div>
-<b id="gameName">Win Go</b>
-<div class="round">Period #100025</div>
-</div>
-<b>DEMO</b>
-</div>
-
-<div class="panel">
-
-<div class="timer">
-00:<span id="timer">30</span>
-</div>
-
-<div class="colors">
-<button class="red" onclick="selectColor('Red')">
-🔴 RED
-</button>
-
-<button class="green" onclick="selectColor('Green')">
-🟢 GREEN
-</button>
-
-<button class="violet" onclick="selectColor('Violet')">
-🟣 VIOLET
-</button>
-</div>
-
-<h3>Choose Number</h3>
-
-<div class="numbers">
-<button onclick="number(0)">0</button>
-<button onclick="number(1)">1</button>
-<button onclick="number(2)">2</button>
-<button onclick="number(3)">3</button>
-<button onclick="number(4)">4</button>
-<button onclick="number(5)">5</button>
-<button onclick="number(6)">6</button>
-<button onclick="number(7)">7</button>
-<button onclick="number(8)">8</button>
-<button onclick="number(9)">9</button>
-</div>
-
-<br>
-
-<h3>Demo Amount</h3>
-
-<div class="numbers">
-<button onclick="stake=10">₹10</button>
-<button onclick="stake=20">₹20</button>
-<button onclick="stake=50">₹50</button>
-<button onclick="stake=100">₹100</button>
-</div>
-
-<button class="confirm" onclick="play()">
-CONFIRM DEMO PLAY
-</button>
-
-</div>
-
-<div class="panel history">
-
-<h3>📊 Recent Results</h3>
-
-<div>
-<span>#100024</span>
-<b>🟢 7</b>
-</div>
-
-<div>
-<span>#100023</span>
-<b>🔴 2</b>
-</div>
-
-<div>
-<span>#100022</span>
-<b>🟣 5</b>
-</div>
-
-<div>
-<span>#100021</span>
-<b>🟢 8</b>
-</div>
-
-</div>
-
+<section class="balance">
+  <div class="balance-top">
+    <span>Demo Balance</span>
+    <span class="demoMoney">VIRTUAL CREDITS</span>
+  </div>
+  <div class="amount">25,000</div>
 </section>
 
+<section class="section">
 
-<!-- WALLET -->
-<section id="wallet" class="screen">
+  <div class="title">
+    <h2>Games</h2>
+    <span>View all</span>
+  </div>
 
-<button class="back" onclick="show('home')">
-← Back
-</button>
+  <div class="tabs">
+    <div class="tab active">All Games</div>
+    <div class="tab">Popular</div>
+    <div class="tab">Arcade</div>
+    <div class="tab">Cards</div>
+  </div>
 
-<div class="panel">
-<h2>💰 Demo Wallet</h2>
-<br>
-<h1>₹ <span id="walletBalance">10,000</span></h1>
-<p>Virtual balance only</p>
-</div>
+  <div class="games">
 
-<div class="menu">
-<button onclick="alert('Demo Deposit')">
-➕ Demo Deposit
-</button>
+    <div class="game big">
+      <div class="game-icon">🎯</div>
+      <div style="flex:1">
+        <h3>Lucky Spin</h3>
+        <p>Fast arcade demo game</p>
+        <span class="tag">LIVE DEMO</span>
+        <button class="play"
+          onclick="openModal('Lucky Spin')">PLAY DEMO</button>
+      </div>
+    </div>
 
-<button onclick="alert('Demo Withdrawal')">
-➖ Demo Withdrawal
-</button>
+    <div class="game">
+      <div class="game-icon">🎰</div>
+      <h3>Win Go</h3>
+      <p>Number prediction demo</p>
+      <span class="tag">POPULAR</span>
+      <button class="play"
+        onclick="openModal('Win Go')">OPEN</button>
+    </div>
 
-<button onclick="show('history')">
-📜 Transaction History
-</button>
-</div>
+    <div class="game">
+      <div class="game-icon">🃏</div>
+      <h3>Card Zone</h3>
+      <p>Casual card game</p>
+      <span class="tag">NEW</span>
+      <button class="play"
+        onclick="openModal('Card Zone')">OPEN</button>
+    </div>
 
-</section>
+    <div class="game">
+      <div class="game-icon">🏎️</div>
+      <h3>Moto Race</h3>
+      <p>Speed racing demo</p>
+      <span class="tag">ARCADE</span>
+      <button class="play"
+        onclick="openModal('Moto Race')">OPEN</button>
+    </div>
 
+    <div class="game">
+      <div class="game-icon">🎲</div>
+      <h3>Dice Arena</h3>
+      <p>Casual dice demo</p>
+      <span class="tag">FUN</span>
+      <button class="play"
+        onclick="openModal('Dice Arena')">OPEN</button>
+    </div>
 
-<!-- HISTORY -->
-<section id="history" class="screen">
+  </div>
 
-<button class="back" onclick="show('home')">
-← Back
-</button>
+  <div class="title">
+    <h2>Recent Activity</h2>
+    <span>History</span>
+  </div>
 
-<div class="panel history">
+  <div class="activity">
 
-<h2>📜 History</h2>
+    <div class="row">
+      <div class="avatar">🎯</div>
+      <div class="row-text">
+        Lucky Spin
+        <span>Demo round completed</span>
+      </div>
+      <div class="status">+120</div>
+    </div>
 
-<div>
-<span>Win Go #100024</span>
-<b>₹10</b>
-</div>
+    <div class="row">
+      <div class="avatar">🏎️</div>
+      <div class="row-text">
+        Moto Race
+        <span>Demo race completed</span>
+      </div>
+      <div class="status">+80</div>
+    </div>
 
-<div>
-<span>K3 #100023</span>
-<b>₹20</b>
-</div>
+    <div class="row">
+      <div class="avatar">🃏</div>
+      <div class="row-text">
+        Card Zone
+        <span>Demo session</span>
+      </div>
+      <div class="status">+60</div>
+    </div>
 
-<div>
-<span>5D #100022</span>
-<b>₹50</b>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- REFERRAL -->
-<section id="referral" class="screen">
-
-<button class="back" onclick="show('home')">
-← Back
-</button>
-
-<div class="panel">
-
-<h2>👥 Referral</h2>
-<br>
-
-<p>Invite friends using your demo referral code.</p>
-
-<br>
-
-<input
-style="width:100%;padding:13px;border:1px solid #ddd;border-radius:10px"
-value="COLORWIN-DEMO"
-readonly>
-
-<button class="confirm"
-onclick="alert('Referral code copied')">
-COPY CODE
-</button>
-
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-<section id="profile" class="screen">
-
-<button class="back" onclick="show('home')">
-← Back
-</button>
-
-<div class="panel profile">
-
-<div class="avatar">👤</div>
-
-<h2>Demo User</h2>
-<p>User ID: CW100025</p>
-
-</div>
-
-<div class="menu">
-
-<button onclick="modal('Login')">
-🔐 Login
-</button>
-
-<button onclick="modal('Register')">
-📝 Register
-</button>
-
-<button onclick="alert('Settings')">
-⚙️ Settings
-</button>
-
-<button onclick="alert('Support')">
-💬 Support
-</button>
-
-</div>
+  </div>
 
 </section>
+</div>
 
-
-<!-- BOTTOM NAV -->
-<nav class="bottom">
-
-<button onclick="show('home')">
-<b>🏠</b>
-Home
-</button>
-
-<button onclick="show('game')">
-<b>🎮</b>
-Games
-</button>
-
-<button onclick="show('wallet')">
-<b>💰</b>
-Wallet
-</button>
-
-<button onclick="show('profile')">
-<b>👤</b>
-Profile
-</button>
-
-<button onclick="alert('Support')">
-<b>💬</b>
-Support
-</button>
-
+<nav>
+  <div class="navitem active">
+    <b>⌂</b>Home
+  </div>
+  <div class="navitem">
+    <b>🎮</b>Games
+  </div>
+  <div class="navitem">
+    <b>◷</b>History
+  </div>
+  <div class="navitem">
+    <b>🎁</b>Bonus
+  </div>
+  <div class="navitem">
+    <b>●</b>Profile
+  </div>
 </nav>
 
-</div>
-
-
-<!-- LOGIN / REGISTER -->
 <div class="modal" id="modal">
-
-<div class="sheet">
-
-<h2 id="modalTitle">Login</h2>
-
-<input
-type="text"
-placeholder="Mobile / Email">
-
-<input
-type="password"
-placeholder="Password">
-
-<button
-class="confirm"
-onclick="closeModal()">
-CONTINUE
-</button>
-
-<button
-class="close"
-onclick="closeModal()">
-CLOSE
-</button>
-
+  <div class="sheet">
+    <h2 id="modalTitle">Game</h2>
+    <p>
+      This is a fictional demo screen. No real-money
+      betting, deposits or withdrawals are available.
+    </p>
+    <button class="close" onclick="closeModal()">Close</button>
+  </div>
 </div>
-
-</div>
-
 
 <script>
-
-let balance=10000;
-let selectedColor="";
-let selectedNumber="";
-let stake=10;
-let seconds=30;
-
-function show(id){
-
-document.querySelectorAll(".screen")
-.forEach(x=>x.classList.remove("active"));
-
-document.getElementById(id)
-.classList.add("active");
-
-window.scrollTo(0,0);
+function openModal(name){
+  document.getElementById("modalTitle").textContent=name;
+  document.getElementById("modal").style.display="flex";
 }
-
-function game(name){
-
-document.getElementById("gameName")
-.innerText=name;
-
-show("game");
-}
-
-function selectColor(color){
-
-selectedColor=color;
-
-alert("Selected: "+color);
-}
-
-function number(num){
-
-selectedNumber=num;
-
-alert("Selected number: "+num);
-}
-
-function play(){
-
-if(selectedColor==="" && selectedNumber===""){
-
-alert("Please select color or number");
-
-return;
-}
-
-if(balance<stake){
-
-alert("Insufficient demo balance");
-
-return;
-}
-
-balance-=stake;
-
-document.getElementById("balance")
-.innerText=balance.toLocaleString();
-
-document.getElementById("walletBalance")
-.innerText=balance.toLocaleString();
-
-alert(
-"Demo play placed!\n\n"+
-"Color: "+(selectedColor||"None")+
-"\nNumber: "+(selectedNumber===""?"None":selectedNumber)+
-"\nAmount: ₹"+stake
-);
-
-selectedColor="";
-selectedNumber="";
-}
-
-function modal(type){
-
-document.getElementById("modalTitle")
-.innerText=type;
-
-document.getElementById("modal")
-.classList.add("show");
-}
-
 function closeModal(){
-
-document.getElementById("modal")
-.classList.remove("show");
+  document.getElementById("modal").style.display="none";
 }
 
-setInterval(function(){
-
-seconds--;
-
-if(seconds<0){
-seconds=30;
-}
-
-document.getElementById("timer")
-.innerText=
-String(seconds).padStart(2,"0");
-
-},1000);
-
+document.querySelectorAll(".tab").forEach(tab=>{
+  tab.onclick=()=>{
+    document.querySelectorAll(".tab")
+      .forEach(x=>x.classList.remove("active"));
+    tab.classList.add("active");
+  };
+});
 </script>
 
 </body>
