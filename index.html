@@ -2,1789 +2,603 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
-<title>MANISH CLUB</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MANISH CLUB — 3D Game Portal</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#171527;
-  --panel:#211b35;
-  --panel2:#2a2142;
-  --purple:#8255ff;
-  --blue:#5e9dff;
-  --pink:#ff6d9c;
-  --gold:#ffd64a;
-  --muted:#bcb5ca;
+ --bg:#09051a;
+ --panel:#17102d;
+ --panel2:#211441;
+ --purple:#8b4dff;
+ --blue:#39a7ff;
+ --pink:#ff3ca6;
+ --cyan:#20e6ff;
+ --gold:#ffd45a;
+ --text:#fff;
+ --muted:#aaa1c7;
 }
+html,body{min-height:100%;font-family:Arial,sans-serif;background:
+ radial-gradient(circle at 20% 0%,#35106b 0,transparent 35%),
+ radial-gradient(circle at 100% 30%,#071f54 0,transparent 30%),
+ var(--bg);color:var(--text)}
+body{padding-bottom:90px;overflow-x:hidden}
+button{font:inherit;border:0;cursor:pointer}
+.app{width:100%;max-width:520px;margin:auto;min-height:100vh}
 
-*{
-  box-sizing:border-box;
+/* HEADER */
+.header{
+ position:sticky;top:0;z-index:20;
+ height:68px;padding:10px 14px;
+ display:flex;align-items:center;justify-content:space-between;
+ background:rgba(12,6,31,.88);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(255,255,255,.08);
 }
-
-html,body{
-  margin:0;
-  padding:0;
-  background:#09090d;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
+.logo{
+ font-size:23px;font-weight:900;letter-spacing:1px;
+ background:linear-gradient(90deg,#fff,#9d67ff,#31d9ff);
+ -webkit-background-clip:text;color:transparent;
+ text-shadow:0 0 25px #864cff;
 }
-
-body{
-  min-height:100vh;
-}
-
-button{
-  font:inherit;
-  color:inherit;
-  cursor:pointer;
-}
-
-#app{
-  width:min(100%,520px);
-  margin:auto;
-  min-height:100vh;
-  background:
-    radial-gradient(
-      circle at 50% -10%,
-      #5f45b555,
-      transparent 34%
-    ),
-    var(--bg);
-  overflow:hidden;
-  position:relative;
-  padding-bottom:82px;
-}
-
-/* ================= TOP BAR ================= */
-
-.topbar{
-  height:66px;
-  padding:8px 10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  background:
-    linear-gradient(
-      90deg,
-      #3036a5,
-      #542d91,
-      #7b3ca2
-    );
-
-  box-shadow:
-    0 4px 18px #0008,
-    inset 0 -1px #ffffff22;
-}
-
-.brand{
-  font-size:25px;
-  font-weight:1000;
-  letter-spacing:-1px;
-  text-shadow:0 3px 7px #000;
-}
-
-.brand em{
-  font-style:normal;
-  color:#ffd64a;
-}
-
+.logo small{display:block;font-size:8px;letter-spacing:4px;color:#a99dc7}
 .balance{
-  min-width:108px;
-  padding:9px 13px;
-  border-radius:24px;
-
-  background:#25205d;
-  border:1px solid #8c79ff;
-
-  color:#ffe34f;
-  font-weight:900;
-  text-align:center;
-
-  box-shadow:
-    inset 0 0 12px #0005,
-    0 2px 7px #0005;
+ padding:8px 12px;border-radius:18px;
+ background:linear-gradient(135deg,#26134c,#111e43);
+ border:1px solid rgba(145,82,255,.45);
+ box-shadow:0 0 18px rgba(110,58,255,.25);
+ font-size:12px;font-weight:bold;
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-  margin:10px;
-  min-height:175px;
-  padding:20px;
-
-  position:relative;
-  overflow:hidden;
-
-  border:1px solid #9c76ff;
-  border-radius:17px;
-
-  background:
-    radial-gradient(
-      circle at 84% 42%,
-      #ffdb6c77 0 5%,
-      transparent 6%
-    ),
-    radial-gradient(
-      circle at 78% 45%,
-      #ff70dd55 0 20%,
-      transparent 42%
-    ),
-    linear-gradient(
-      125deg,
-      #122b65,
-      #54209d 54%,
-      #1e357d
-    );
-
-  box-shadow:
-    0 8px 22px #0008,
-    inset 0 0 35px #fff1;
+ margin:14px;border-radius:25px;min-height:190px;
+ position:relative;overflow:hidden;
+ background:
+ linear-gradient(110deg,rgba(16,5,43,.95),rgba(50,9,100,.45)),
+ linear-gradient(135deg,#6024d9,#101b5a);
+ border:1px solid rgba(255,255,255,.14);
+ box-shadow:0 18px 45px rgba(0,0,0,.45);
+ transform:perspective(900px) rotateX(.5deg);
 }
-
+.hero:before,.hero:after{
+ content:"";position:absolute;border-radius:50%;filter:blur(2px);
+}
 .hero:before{
-  content:"";
-  position:absolute;
-
-  width:420px;
-  height:150px;
-
-  top:-60px;
-  right:-100px;
-
-  border:3px solid #ff7cff66;
-  border-radius:50%;
-
-  transform:rotate(-13deg);
+ width:180px;height:180px;right:-30px;top:-40px;
+ background:radial-gradient(circle,#30d9ff 0,#7040ff 30%,transparent 70%);
+ opacity:.65;
 }
-
 .hero:after{
-  content:"";
-  position:absolute;
-  width:280px;
-  height:280px;
-
-  right:-120px;
-  bottom:-160px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      #fff4 0 2%,
-      transparent 3%
-    );
-
-  opacity:.5;
+ width:130px;height:130px;left:-45px;bottom:-50px;
+ background:#ff2fa4;filter:blur(35px);opacity:.45;
+}
+.hero-content{position:relative;z-index:2;padding:27px 22px}
+.hero-tag{
+ display:inline-block;padding:6px 11px;border-radius:15px;
+ background:rgba(255,255,255,.1);font-size:10px;
+ border:1px solid rgba(255,255,255,.18);
+}
+.hero h1{font-size:32px;margin:12px 0 5px;text-shadow:0 5px 25px #000}
+.hero p{font-size:12px;color:#ddd}
+.hero-btn{
+ margin-top:18px;padding:11px 20px;border-radius:20px;
+ color:white;font-weight:800;
+ background:linear-gradient(90deg,#8a3cff,#20bfff);
+ box-shadow:0 8px 25px rgba(96,63,255,.5);
 }
 
-.hero small{
-  position:relative;
-  z-index:2;
-
-  color:#ffd06b;
-  font-weight:900;
-  letter-spacing:1px;
+/* FLOATING 3D SHAPES */
+.cube{
+ position:absolute;right:38px;top:54px;width:70px;height:70px;
+ transform-style:preserve-3d;animation:spin 7s linear infinite;
+}
+.face{
+ position:absolute;width:70px;height:70px;
+ border:1px solid rgba(255,255,255,.45);
+ background:linear-gradient(135deg,rgba(77,216,255,.55),rgba(126,48,255,.35));
+ box-shadow:inset 0 0 25px rgba(255,255,255,.15),0 0 25px #704cff;
+}
+.front{transform:translateZ(35px)}
+.back{transform:rotateY(180deg) translateZ(35px)}
+.right{transform:rotateY(90deg) translateZ(35px)}
+.left{transform:rotateY(-90deg) translateZ(35px)}
+.top{transform:rotateX(90deg) translateZ(35px)}
+.bottom{transform:rotateX(-90deg) translateZ(35px)}
+@keyframes spin{
+ from{transform:rotateX(-15deg) rotateY(0)}
+ to{transform:rotateX(345deg) rotateY(360deg)}
 }
 
-.hero h1{
-  position:relative;
-  z-index:2;
-
-  font-size:31px;
-  margin:8px 0 4px;
-
-  text-shadow:
-    0 3px 5px #000,
-    0 0 15px #7d75ff;
-}
-
-.hero p{
-  position:relative;
-  z-index:2;
-
-  font-size:12px;
-  color:#e8def4;
-
-  max-width:245px;
-}
-
-.hero .art{
-  position:absolute;
-  right:12px;
-  bottom:14px;
-
-  font-size:62px;
-
-  filter:
-    drop-shadow(0 8px 8px #0008);
-
-  z-index:1;
-}
-
-.gradbtn{
-  position:relative;
-  z-index:3;
-
-  border:0;
-  border-radius:25px;
-
-  padding:11px 23px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #ff718c,
-      #9d5bff,
-      #55a7ff
-    );
-
-  font-weight:900;
-
-  box-shadow:
-    0 5px 12px #0005,
-    inset 0 1px #ffffff66;
-}
-
-/* ================= NOTICE ================= */
-
+/* NOTICE */
 .notice{
-  margin:0 10px 12px;
-  padding:10px 13px;
-
-  border:1px solid #514267;
-  border-radius:25px;
-
-  background:#29223b;
-
-  color:#ddd4e8;
-  font-size:11px;
-
-  box-shadow:
-    inset 0 0 12px #0003;
+ margin:0 14px 15px;padding:11px 14px;border-radius:16px;
+ background:linear-gradient(90deg,#19102e,#101c39);
+ border:1px solid rgba(255,255,255,.08);
+ color:#d9d0ed;font-size:11px;
 }
+.notice b{color:#a76cff}
 
-.notice button{
-  float:right;
-
-  border:0;
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #a15be9,
-      #638fff
-    );
-
-  padding:5px 13px;
-  font-size:10px;
-}
-
-/* ================= CATEGORY TABS ================= */
-
+/* TABS */
 .tabs{
-  display:flex;
-  gap:10px;
-
-  overflow-x:auto;
-
-  padding:
-    0 10px
-    13px;
+ display:flex;gap:8px;padding:0 14px 14px;
+ overflow:auto;scrollbar-width:none;
 }
-
-.tabs::-webkit-scrollbar{
-  display:none;
-}
-
 .tabs button{
-  white-space:nowrap;
-
-  border:1px solid #7565a2;
-
-  background:#211b31;
-
-  border-radius:26px;
-
-  padding:11px 18px;
-
-  font-weight:900;
-
-  box-shadow:
-    inset 0 0 8px #0003;
+ white-space:nowrap;padding:10px 17px;border-radius:18px;
+ color:#aaa1c7;background:#171029;
+ border:1px solid rgba(255,255,255,.06);
 }
-
 .tabs button.active{
-  background:
-    linear-gradient(
-      90deg,
-      #ff7192,
-      #638fff
-    );
-
-  box-shadow:
-    0 4px 14px #775bff66,
-    inset 0 1px #fff5;
+ color:#fff;background:linear-gradient(90deg,#7135d7,#306bdf);
+ box-shadow:0 7px 22px rgba(93,52,220,.4);
 }
 
-/* ================= SECTIONS ================= */
-
-.section{
-  margin:
-    0 10px
-    14px;
-
-  border:
-    1px solid #44365d;
-
-  border-radius:16px;
-
-  background:#211a32;
-
-  padding:10px;
-
-  box-shadow:
-    0 5px 15px #0005,
-    inset 0 0 20px #ffffff04;
+/* SECTION */
+.section{padding:0 14px}
+.section-head{
+ display:flex;align-items:center;justify-content:space-between;
+ margin:7px 0 13px;
 }
+.section-head h2{font-size:18px}
+.section-head span{font-size:10px;color:#9185ac}
 
-.titlebar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:10px 12px;
-  margin-bottom:10px;
-
-  border-radius:11px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #3046a9,
-      #713ed0 55%,
-      transparent
-    );
-
-  font-size:18px;
-  font-weight:900;
-
-  box-shadow:
-    inset 0 1px #fff3;
+/* GAME GRID */
+.game-grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
 }
-
-/* ================= GAME GRID ================= */
-
-.games{
-  display:grid;
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:9px;
-}
-
 .game{
-  min-width:0;
+ position:relative;min-height:145px;padding:9px;border-radius:19px;
+ overflow:hidden;cursor:pointer;
+ background:linear-gradient(145deg,#241444,#100b22);
+ border:1px solid rgba(255,255,255,.09);
+ box-shadow:0 9px 25px rgba(0,0,0,.35);
+ transition:.25s;
+ transform-style:preserve-3d;
+}
+.game:hover{
+ transform:translateY(-5px) rotateX(3deg) rotateY(-3deg);
+ box-shadow:0 18px 35px rgba(98,54,220,.35);
+}
+.game-art{
+ height:94px;border-radius:14px;position:relative;
+ display:flex;align-items:center;justify-content:center;
+ overflow:hidden;
+ background:linear-gradient(135deg,#5015a8,#142a73);
+}
+.game-art:before{
+ content:"";position:absolute;width:90px;height:90px;border-radius:50%;
+ background:radial-gradient(circle,rgba(255,255,255,.5),transparent 65%);
+ filter:blur(8px);
+}
+.game-icon{
+ position:relative;font-size:44px;
+ filter:drop-shadow(0 7px 9px #000);
+ transform:translateZ(20px);
+}
+.game-name{font-size:11px;font-weight:bold;margin-top:8px}
+.game-type{font-size:8px;color:#8f84a7;margin-top:3px}
+.badge{
+ position:absolute;top:8px;left:8px;z-index:3;
+ padding:4px 6px;border-radius:8px;
+ font-size:7px;background:#ff3d91;color:#fff;font-weight:bold;
 }
 
-.thumb{
-  height:144px;
-
-  border-radius:13px;
-
-  border:1px solid #735c8e;
-
-  position:relative;
-  overflow:hidden;
-
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-
-  padding:10px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #241f27,
-      #a50e42,
-      #df7920
-    );
-
-  box-shadow:
-    inset 0 0 20px #fff1,
-    0 3px 7px #0006;
+/* 3D CARD */
+.three-card{
+ margin-top:16px;padding:18px;border-radius:24px;
+ background:linear-gradient(135deg,rgba(65,27,116,.85),rgba(10,26,62,.9));
+ border:1px solid rgba(255,255,255,.1);
+ box-shadow:0 15px 40px rgba(0,0,0,.35);
+ perspective:800px;
 }
-
-.thumb:before{
-  content:"";
-
-  position:absolute;
-  width:170px;
-  height:170px;
-
-  top:-70px;
-  left:-40px;
-
-  border-radius:50%;
-
-  border:2px solid #fff2;
+.three-card-inner{
+ min-height:125px;display:flex;align-items:center;
+ justify-content:space-between;
+ transform-style:preserve-3d;
 }
-
-.thumb:after{
-  content:"✦";
-
-  position:absolute;
-  right:8px;
-  top:5px;
-
-  color:#ffe991;
-  font-size:24px;
-
-  text-shadow:
-    0 0 10px #ffe76a;
+.coin3d{
+ width:92px;height:92px;border-radius:50%;
+ background:radial-gradient(circle at 30% 25%,#fff5a8,#ffd331 25%,#ff9d00 55%,#9a4c00);
+ border:5px solid #ffe27b;
+ box-shadow:inset -12px -15px 20px rgba(100,30,0,.35),
+ 0 10px 30px rgba(255,174,0,.35);
+ display:flex;align-items:center;justify-content:center;
+ font-size:30px;color:#7a3b00;font-weight:900;
+ transform:rotateX(12deg) rotateY(-20deg);
+ animation:coin 3s ease-in-out infinite alternate;
 }
+@keyframes coin{to{transform:rotateX(18deg) rotateY(25deg) translateY(-7px)}}
 
-.thumb .emoji{
-  position:absolute;
-
-  top:34px;
-
-  font-size:50px;
-
-  filter:
-    drop-shadow(0 6px 5px #0008);
-}
-
-.thumb strong{
-  position:relative;
-  z-index:1;
-
-  font-size:11px;
-
-  text-shadow:
-    0 3px 5px #000;
-}
-
-.g2{
-  background:
-    linear-gradient(
-      145deg,
-      #172b64,
-      #345cff,
-      #741bb2
-    );
-}
-
-.g3{
-  background:
-    linear-gradient(
-      145deg,
-      #a64a12,
-      #f0b22d,
-      #8b211c
-    );
-}
-
-.g4{
-  background:
-    linear-gradient(
-      145deg,
-      #65ae29,
-      #c7ef67,
-      #438e28
-    );
-}
-
-.g5{
-  background:
-    linear-gradient(
-      145deg,
-      #252525,
-      #75401f,
-      #d39c3b
-    );
-}
-
-.g6{
-  background:
-    linear-gradient(
-      145deg,
-      #034d63,
-      #13a4ad,
-      #163d78
-    );
-}
-
-.game button{
-  width:100%;
-
-  margin-top:5px;
-
-  padding:8px;
-
-  border:0;
-  border-radius:10px;
-
-  background:#32264a;
-
-  font-size:10px;
-  font-weight:900;
-
-  transition:.15s;
-}
-
-.game button:active{
-  transform:scale(.94);
-  background:#60438d;
-}
-
-/* ================= PROMOTION ================= */
-
+/* PROMO */
 .promo{
-  display:flex;
-  gap:12px;
-  align-items:center;
-
-  padding:15px;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      115deg,
-      #54245f,
-      #28265d
-    );
-
-  border:1px solid #7359a7;
-
-  box-shadow:
-    inset 0 0 20px #fff2;
+ margin-top:16px;padding:18px;border-radius:23px;
+ background:linear-gradient(120deg,#321060,#102e64);
+ border:1px solid rgba(255,255,255,.1);
 }
-
-.promo .gift{
-  font-size:43px;
-
-  filter:
-    drop-shadow(
-      0 5px 6px #0008
-    );
+.promo h3{font-size:17px}.promo p{font-size:10px;color:#aaa0c0;margin-top:5px}
+.progress{height:7px;background:#0c0818;border-radius:9px;margin:14px 0 8px;overflow:hidden}
+.progress i{
+ display:block;width:72%;height:100%;
+ background:linear-gradient(90deg,#ff39a5,#713dff,#27d9ff);
+ box-shadow:0 0 15px #7547ff;
 }
+.promo-row{display:flex;justify-content:space-between;font-size:9px;color:#aaa}
 
-.promo h3{
-  margin:
-    0 0 5px;
-}
-
-.promo p{
-  margin:0;
-
-  color:#c9bfd6;
-
-  font-size:10px;
-  line-height:1.4;
-}
-
-.promo button{
-  margin-top:8px;
-
-  border:0;
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #a15be9,
-      #658fff
-    );
-
-  padding:7px 13px;
-
-  font-size:10px;
-  font-weight:900;
-}
-
-/* ================= LEADERBOARD ================= */
-
+/* LEADERBOARD */
 .leader{
-  display:grid;
-
-  grid-template-columns:
-    1fr 1.16fr 1fr;
-
-  align-items:end;
-
-  gap:5px;
-
-  padding:12px 7px;
-
-  border-radius:12px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #b65fc8,
-      #62a5e8
-    );
-
-  box-shadow:
-    inset 0 0 25px #fff2;
+ margin-top:16px;padding:15px;border-radius:22px;
+ background:#140d28;border:1px solid rgba(255,255,255,.08);
 }
-
-.rank{
-  background:
-    linear-gradient(
-      160deg,
-      #9149d4,
-      #5689f1
-    );
-
-  padding:
-    15px 4px
-    13px;
-
-  text-align:center;
-
-  border-radius:10px;
-
-  box-shadow:
-    0 5px 10px #0005,
-    inset 0 1px #fff4;
+.leader-row{
+ display:grid;grid-template-columns:28px 1fr auto;
+ align-items:center;gap:10px;padding:10px 0;
+ border-bottom:1px solid rgba(255,255,255,.05);
 }
-
-.rank.big{
-  padding:
-    29px 4px
-    13px;
-}
-
 .avatar{
-  width:45px;
-  height:45px;
+ width:30px;height:30px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(135deg,#703dff,#22c8ff);
+ font-size:12px;font-weight:bold;
+}
+.user-name{font-size:11px;font-weight:bold}
+.user-sub{font-size:8px;color:#847b9b;margin-top:3px}
+.amount{font-size:11px;color:#6df0c4;font-weight:bold}
 
-  margin:auto;
+/* CHART */
+.chart{
+ margin-top:16px;padding:17px;border-radius:22px;
+ background:linear-gradient(135deg,#160c2e,#0b1733);
+ border:1px solid rgba(255,255,255,.07);
+}
+.chart-box{height:125px;position:relative;margin-top:15px}
+svg{width:100%;height:100%;overflow:visible}
+.gridline{stroke:rgba(255,255,255,.06);stroke-width:1}
+.line{
+ fill:none;stroke:#7c52ff;stroke-width:3;
+ stroke-linecap:round;filter:drop-shadow(0 0 5px #754dff);
+}
+.area{fill:url(#areaGrad);opacity:.35}
+.point{fill:#fff;filter:drop-shadow(0 0 5px #49cfff)}
+.chart-labels{display:flex;justify-content:space-between;color:#77708c;font-size:8px}
 
-  border-radius:50%;
+/* WINNING */
+.win-list{margin-top:16px}
+.win{
+ display:flex;align-items:center;gap:10px;padding:11px 12px;
+ background:#15102a;border-radius:16px;margin-bottom:8px;
+ border:1px solid rgba(255,255,255,.05);
+}
+.win-icon{
+ width:35px;height:35px;border-radius:12px;
+ display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(135deg,#5722b9,#1476b9);
+}
+.win-info{flex:1}.win-info b{font-size:10px}.win-info small{display:block;color:#77718b;font-size:8px;margin-top:3px}
+.win-money{color:#5ee9ad;font-size:10px;font-weight:bold}
 
-  display:grid;
-  place-items:center;
-
-  background:#eee;
-
-  font-size:24px;
-
-  border:2px solid #ffd64a;
-
-  box-shadow:
-    0 4px 8px #0005;
+/* NAV */
+.bottom-nav{
+ position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+ width:100%;max-width:520px;height:74px;z-index:50;
+ display:grid;grid-template-columns:repeat(5,1fr);
+ background:rgba(12,7,27,.94);backdrop-filter:blur(20px);
+ border-top:1px solid rgba(255,255,255,.1);
+}
+.nav-btn{
+ background:none;color:#77718b;font-size:9px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+}
+.nav-btn b{font-size:21px;font-weight:normal}
+.nav-btn.active{color:#b779ff}
+.nav-btn.center b{
+ width:48px;height:48px;border-radius:50%;margin-top:-22px;
+ display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(135deg,#843cff,#23c7ff);
+ color:white;box-shadow:0 5px 25px rgba(111,55,255,.65);
 }
 
-.rank b{
-  display:block;
-
-  font-size:10px;
-
-  margin-top:6px;
-}
-
-.rank span{
-  display:block;
-
-  font-size:10px;
-
-  color:#ffe65b;
-
-  margin-top:4px;
-}
-
-/* ================= WINNING FEED ================= */
-
-.feed{
-  display:flex;
-
-  gap:7px;
-
-  overflow-x:auto;
-}
-
-.feed::-webkit-scrollbar{
-  display:none;
-}
-
-.feedcard{
-  min-width:108px;
-
-  text-align:center;
-
-  padding:10px;
-
-  border-radius:11px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #bb68c9,
-      #628af1
-    );
-
-  box-shadow:
-    inset 0 0 15px #fff2;
-}
-
-.feedcard b{
-  font-size:11px;
-}
-
-.balls{
-  font-size:23px;
-
-  margin:7px 0;
-}
-
-.feedcard button{
-  border:0;
-
-  border-radius:16px;
-
-  padding:6px 12px;
-
-  background:#29203c;
-
-  font-size:9px;
-}
-
-/* ================= BOTTOM NAV ================= */
-
-.bottom{
-  position:fixed;
-
-  bottom:0;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  width:min(100%,520px);
-  height:76px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
-  background:
-    linear-gradient(
-      90deg,
-      #526fe0,
-      #7037a7,
-      #526fe0
-    );
-
-  border-top:1px solid #9e8dff;
-
-  z-index:5;
-
-  box-shadow:
-    0 -5px 20px #0008,
-    inset 0 1px #fff3;
-}
-
-.bottom button{
-  border:0;
-  background:transparent;
-
-  font-size:10px;
-
-  color:#eee;
-
-  position:relative;
-}
-
-.bottom button b{
-  display:block;
-
-  font-size:22px;
-
-  margin-bottom:2px;
-}
-
-.bottom .on{
-  color:#ffe65b;
-}
-
-/* ================= MODAL ================= */
-
+/* MODAL */
 .modal{
-  position:fixed;
-
-  inset:0;
-
-  background:#000b;
-
-  z-index:10;
-
-  display:none;
-
-  align-items:flex-end;
-  justify-content:center;
+ position:fixed;inset:0;z-index:100;
+ display:none;align-items:flex-end;
+ background:rgba(0,0,0,.72);backdrop-filter:blur(7px);
 }
-
+.modal.show{display:flex}
 .sheet{
-  width:min(100%,520px);
-
-  background:#251c38;
-
-  border:
-    1px solid #7955aa;
-
-  border-radius:
-    22px 22px
-    0 0;
-
-  padding:20px;
-
-  box-shadow:
-    0 -8px 30px #000;
+ width:100%;max-width:520px;margin:auto;
+ min-height:55vh;padding:20px;border-radius:30px 30px 0 0;
+ background:linear-gradient(160deg,#241143,#0d112a);
+ border:1px solid rgba(255,255,255,.1);
+ animation:up .25s ease;
+}
+@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.close{float:right;background:#ffffff12;color:#fff;width:35px;height:35px;border-radius:50%}
+.game-title{font-size:23px;font-weight:900;margin-top:15px}
+.demo-stage{
+ margin-top:18px;height:170px;border-radius:22px;
+ display:flex;align-items:center;justify-content:center;
+ background:radial-gradient(circle,#42207d,#080916);
+ border:1px solid rgba(255,255,255,.08);
+}
+.big-orb{
+ width:100px;height:100px;border-radius:50%;
+ background:radial-gradient(circle at 35% 25%,#fff,#58d9ff 18%,#6545ff 48%,#160b48 75%);
+ box-shadow:0 0 45px #6650ff;
+ animation:orb 2s infinite alternate;
+}
+@keyframes orb{to{transform:scale(1.12) rotate(20deg)}}
+.bet-title{font-size:11px;color:#9c92b3;margin-top:16px}
+.amounts{display:flex;gap:8px;margin-top:8px}
+.amounts button{
+ flex:1;padding:11px;border-radius:13px;
+ background:#171029;color:#aaa;border:1px solid #2d2145;
+}
+.amounts button.selected{background:linear-gradient(90deg,#7135d7,#287fe0);color:#fff}
+.play{
+ width:100%;margin-top:15px;padding:14px;border-radius:17px;
+ background:linear-gradient(90deg,#9a3dff,#22caff);
+ color:white;font-weight:900;
+ box-shadow:0 10px 30px rgba(94,65,255,.4);
+}
+.result{
+ text-align:center;margin-top:14px;min-height:20px;
+ color:#63edb1;font-size:12px;font-weight:bold;
 }
 
-.sheet h2{
-  margin:
-    0 0 5px;
-}
-
-.sheet p{
-  font-size:11px;
-  color:#cfc5da;
-}
-
-.opts{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:8px;
-
-  margin:15px 0;
-}
-
-.opts button{
-  padding:13px;
-
-  border-radius:11px;
-
-  border:
-    1px solid #67537e;
-
-  background:#34274b;
-}
-
-.opts button.sel{
-  outline:
-    2px solid #fff;
-
-  background:#61418d;
-}
-
-.sheet .close{
-  width:100%;
-
-  margin-top:10px;
-
-  padding:11px;
-
-  border:0;
-
-  border-radius:12px;
-
-  background:#4b3b5f;
-}
-
-/* ================= TOAST ================= */
-
-.toast{
-  position:fixed;
-
-  z-index:20;
-
-  left:50%;
-  bottom:90px;
-
-  transform:
-    translateX(-50%);
-
-  display:none;
-
-  padding:
-    11px 15px;
-
-  border-radius:12px;
-
-  background:#fff;
-
-  color:#111;
-
-  font-size:11px;
-
-  font-weight:900;
-
-  white-space:nowrap;
-
-  box-shadow:
-    0 5px 20px #0008;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:380px){
-
-  .thumb{
-    height:125px;
-  }
-
-  .hero h1{
-    font-size:27px;
-  }
-
-  .hero .art{
-    font-size:52px;
-  }
+/* RESPONSIVE */
+@media(max-width:360px){
+ .game-grid{gap:7px}.game{min-height:135px}
+ .game-art{height:84px}.game-icon{font-size:37px}
+ .hero h1{font-size:28px}
 }
 </style>
 </head>
 
 <body>
+<div class="app">
 
-<div id="app">
-
-<!-- TOP BAR -->
-
-<header class="topbar">
-
-  <div class="brand">
-    MANISH<em>★</em>CLUB
-  </div>
-
-  <div
-    class="balance"
-    id="balance">
-    ₹10,000
-  </div>
-
+<header class="header">
+ <div class="logo">MANISH★CLUB<small>3D GAME ZONE</small></div>
+ <div class="balance">💰 ₹<span id="balance">10000</span></div>
 </header>
 
-
-<!-- HERO -->
-
 <section class="hero">
-
-  <small>
-    LUCKY REWARD
-  </small>
-
-  <h1>
-    GRAND GAME ZONE
-  </h1>
-
-  <p>
-    Premium 3D gaming experience
-    with virtual demo credits.
-  </p>
-
-  <button
-    class="gradbtn"
-    data-promo>
-    Highest Reward
-  </button>
-
-  <div class="art">
-    🎁🎡
-  </div>
-
+ <div class="cube">
+  <div class="face front"></div><div class="face back"></div>
+  <div class="face right"></div><div class="face left"></div>
+  <div class="face top"></div><div class="face bottom"></div>
+ </div>
+ <div class="hero-content">
+  <span class="hero-tag">✦ PREMIUM GAME ZONE</span>
+  <h1>GRAND GAME ZONE</h1>
+  <p>Play • Spin • Win virtual rewards</p>
+  <button class="hero-btn" onclick="openGame('Lucky 3D')">PLAY NOW ›</button>
+ </div>
 </section>
 
+<div class="notice">🔊 <b>Notice:</b> New games and virtual rewards are available today.</div>
 
-<!-- NOTICE -->
-
-<div class="notice">
-
-  🔔 Welcome reward • Daily bonus • Special events
-
-  <button data-promo>
-    Detail
-  </button>
-
+<div class="tabs">
+ <button class="active" onclick="tab(this,'popular')">🔥 Popular</button>
+ <button onclick="tab(this,'lottery')">🎟 Lottery</button>
+ <button onclick="tab(this,'mini')">🎮 Mini Games</button>
+ <button onclick="tab(this,'arcade')">🕹 Arcade</button>
 </div>
 
+<section class="section">
+ <div class="section-head">
+  <h2 id="sectionTitle">Popular Games</h2><span>VIEW ALL ›</span>
+ </div>
+ <div class="game-grid" id="games"></div>
+</section>
 
-<!-- CATEGORY -->
+<section class="section">
+ <div class="three-card">
+  <div class="three-card-inner">
+   <div>
+    <div style="font-size:9px;color:#aaa0bd">TODAY'S FEATURE</div>
+    <h2 style="margin-top:8px">3D Lucky Coin</h2>
+    <p style="font-size:10px;color:#9186a9;margin-top:6px">Interactive virtual game</p>
+    <button class="hero-btn" onclick="openGame('3D Lucky Coin')">OPEN GAME</button>
+   </div>
+   <div class="coin3d">★</div>
+  </div>
+ </div>
 
-<nav class="tabs">
+ <div class="promo">
+  <h3>🎁 Daily Rewards</h3>
+  <p>Complete virtual missions and collect bonus credits.</p>
+  <div class="progress"><i></i></div>
+  <div class="promo-row"><span>Progress 72%</span><span>720 / 1000</span></div>
+ </div>
 
-  <button
-    class="active"
-    data-tab="popular">
-    🔥 Popular
-  </button>
+ <div class="leader">
+  <div class="section-head"><h2>🏆 Leaderboard</h2><span>LIVE</span></div>
+  <div class="leader-row"><div class="avatar">A</div><div><div class="user-name">Arjun</div><div class="user-sub">Lucky Coin</div></div><div class="amount">+₹8,420</div></div>
+  <div class="leader-row"><div class="avatar">R</div><div><div class="user-name">Rahul</div><div class="user-sub">Sky Rush</div></div><div class="amount">+₹7,860</div></div>
+  <div class="leader-row"><div class="avatar">K</div><div><div class="user-name">Karan</div><div class="user-sub">Win Wheel</div></div><div class="amount">+₹6,940</div></div>
+  <div class="leader-row"><div class="avatar">M</div><div><div class="user-name">Manav</div><div class="user-sub">Fortune Gems</div></div><div class="amount">+₹5,720</div></div>
+ </div>
 
-  <button
-    data-tab="lottery">
-    🎱 Lottery
-  </button>
+ <div class="chart">
+  <div class="section-head"><h2>📈 Virtual Earnings</h2><span>7 DAYS</span></div>
+  <div class="chart-box">
+   <svg viewBox="0 0 400 125" preserveAspectRatio="none">
+    <defs>
+     <linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#7650ff"/>
+      <stop offset="1" stop-color="#7650ff" stop-opacity="0"/>
+     </linearGradient>
+    </defs>
+    <path class="gridline" d="M0 20H400M0 60H400M0 100H400"/>
+    <path class="area" d="M0 100 C50 80 65 92 100 68 S145 78 175 50 S220 66 250 38 S300 58 330 22 S370 35 400 8 V125 H0Z"/>
+    <path class="line" d="M0 100 C50 80 65 92 100 68 S145 78 175 50 S220 66 250 38 S300 58 330 22 S370 35 400 8"/>
+    <circle class="point" cx="0" cy="100" r="3"/><circle class="point" cx="100" cy="68" r="3"/>
+    <circle class="point" cx="175" cy="50" r="3"/><circle class="point" cx="250" cy="38" r="3"/>
+    <circle class="point" cx="330" cy="22" r="3"/><circle class="point" cx="400" cy="8" r="3"/>
+   </svg>
+  </div>
+  <div class="chart-labels"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div>
+ </div>
 
-  <button
-    data-tab="mini">
-    🚀 Mini games
-  </button>
+ <div class="win-list">
+  <div class="section-head"><h2>💎 Winning Information</h2><span>RECENT</span></div>
+  <div class="win"><div class="win-icon">🚀</div><div class="win-info"><b>Sky Aviator</b><small>Player • 2 min ago</small></div><div class="win-money">+₹1,250</div></div>
+  <div class="win"><div class="win-icon">🎡</div><div class="win-info"><b>Win Wheel</b><small>Player • 4 min ago</small></div><div class="win-money">+₹980</div></div>
+  <div class="win"><div class="win-icon">💎</div><div class="win-info"><b>Fortune Gems</b><small>Player • 7 min ago</small></div><div class="win-money">+₹2,400</div></div>
+  <div class="win"><div class="win-icon">🏏</div><div class="win-info"><b>Cricket Pro</b><small>Player • 9 min ago</small></div><div class="win-money">+₹760</div></div>
+ </div>
+</section>
+</div>
 
+<nav class="bottom-nav">
+ <button class="nav-btn active"><b>⌂</b>Home</button>
+ <button class="nav-btn"><b>◈</b>Games</button>
+ <button class="nav-btn center" onclick="openGame('Quick Play')"><b>▶</b>Play</button>
+ <button class="nav-btn"><b>🎁</b>Rewards</button>
+ <button class="nav-btn"><b>●</b>Account</button>
 </nav>
 
-
-<!-- GAMES -->
-
-<section class="section">
-
-  <div class="titlebar">
-
-    <span>
-      Popular
-    </span>
-
-    <span>
-      ALL ›
-    </span>
-
+<div class="modal" id="modal" onclick="outside(event)">
+ <div class="sheet">
+  <button class="close" onclick="closeGame()">×</button>
+  <div class="game-title" id="modalTitle">Game</div>
+  <div style="font-size:9px;color:#8e84a7;margin-top:5px">VIRTUAL CREDIT DEMO</div>
+  <div class="demo-stage"><div class="big-orb" id="orb">★</div></div>
+  <div class="bet-title">SELECT VIRTUAL PLAY AMOUNT</div>
+  <div class="amounts">
+   <button onclick="amount(10,this)">₹10</button>
+   <button class="selected" onclick="amount(50,this)">₹50</button>
+   <button onclick="amount(100,this)">₹100</button>
+   <button onclick="amount(500,this)">₹500</button>
   </div>
-
-
-  <div class="games">
-
-
-    <article class="game">
-
-      <div class="thumb">
-
-        <span class="emoji">
-          ✈️
-        </span>
-
-        <strong>
-          AVIATOR
-        </strong>
-
-      </div>
-
-      <button
-        data-game="Aviator">
-        PLAY NOW
-      </button>
-
-    </article>
-
-
-    <article class="game">
-
-      <div class="thumb g2">
-
-        <span class="emoji">
-          🚀
-        </span>
-
-        <strong>
-          SKY AVIATOR
-        </strong>
-
-      </div>
-
-      <button
-        data-game="Sky Aviator">
-        PLAY NOW
-      </button>
-
-    </article>
-
-
-    <article class="game">
-
-      <div class="thumb g3">
-
-        <span class="emoji">
-          🎡
-        </span>
-
-        <strong>
-          WIN WHEEL
-        </strong>
-
-      </div>
-
-      <button
-        data-game="Win Wheel">
-        PLAY NOW
-      </button>
-
-    </article>
-
-
-    <article class="game">
-
-      <div class="thumb g4">
-
-        <span class="emoji">
-          🏏
-        </span>
-
-        <strong>
-          CRICKET
-        </strong>
-
-      </div>
-
-      <button
-        data-game="Cricket">
-        PLAY NOW
-      </button>
-
-    </article>
-
-
-    <article class="game">
-
-      <div class="thumb g5">
-
-        <span class="emoji">
-          💎
-        </span>
-
-        <strong>
-          FORTUNE GEMS
-        </strong>
-
-      </div>
-
-      <button
-        data-game="Fortune Gems">
-        PLAY NOW
-      </button>
-
-    </article>
-
-
-    <article class="game">
-
-      <div class="thumb g6">
-
-        <span class="emoji">
-          🐙
-        </span>
-
-        <strong>
-          POWER OF SEA
-        </strong>
-
-      </div>
-
-      <button
-        data-game="Power of Sea">
-        PLAY NOW
-      </button>
-
-    </article>
-
-
-  </div>
-
-</section>
-
-
-<!-- PROMOTION -->
-
-<section class="section">
-
-  <div class="promo">
-
-    <div class="gift">
-      🎁
-    </div>
-
-    <div style="flex:1">
-
-      <h3>
-        Today's Promotions
-      </h3>
-
-      <p>
-        Demo rewards, lucky streaks
-        and special virtual events.
-      </p>
-
-      <button data-promo>
-        VIEW ALL PROMOTIONS
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- LEADERBOARD -->
-
-<section class="section">
-
-  <div class="titlebar">
-
-    <span>
-      Today's earnings chart
-    </span>
-
-  </div>
-
-
-  <div class="leader">
-
-
-    <div class="rank">
-
-      <div class="avatar">
-        👩
-      </div>
-
-      <b>
-        Mem***WX4
-      </b>
-
-      <span>
-        ₹60,259,774
-      </span>
-
-    </div>
-
-
-    <div class="rank big">
-
-      <div class="avatar">
-        👩
-      </div>
-
-      <b>
-        Mem***UEN
-      </b>
-
-      <span>
-        ₹141,478,460
-      </span>
-
-    </div>
-
-
-    <div class="rank">
-
-      <div class="avatar">
-        👨
-      </div>
-
-      <b>
-        Mem***0EO
-      </b>
-
-      <span>
-        ₹21,636,400
-      </span>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- WINNING -->
-
-<section class="section">
-
-  <div class="titlebar">
-
-    <span>
-      Winning information
-    </span>
-
-  </div>
-
-
-  <div class="feed">
-
-
-    <div class="feedcard">
-
-      🎱
-
-      <br>
-
-      <b>
-        Win Go
-      </b>
-
-      <div class="balls">
-        ⑤⑧④
-      </div>
-
-      <button
-        data-game="Win Go">
-        Demo
-      </button>
-
-    </div>
-
-
-    <div class="feedcard">
-
-      🎱
-
-      <br>
-
-      <b>
-        Win Go
-      </b>
-
-      <div class="balls">
-        ⑤③⑧
-      </div>
-
-      <button
-        data-game="Win Go">
-        Demo
-      </button>
-
-    </div>
-
-
-    <div class="feedcard">
-
-      🎱
-
-      <br>
-
-      <b>
-        Win Go
-      </b>
-
-      <div class="balls">
-        ⑦⑧①
-      </div>
-
-      <button
-        data-game="Win Go">
-        Demo
-      </button>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-<!-- BOTTOM -->
-
-<nav class="bottom">
-
-  <button class="on">
-    <b>🎮</b>
-    Home
-  </button>
-
-  <button>
-    <b>🎁</b>
-    Activity
-  </button>
-
-  <button data-promo>
-    <b>💎</b>
-    Promotion
-  </button>
-
-  <button>
-    <b>💼</b>
-    Wallet
-  </button>
-
-  <button>
-    <b>👤</b>
-    Account
-  </button>
-
-</nav>
-
+  <button class="play" onclick="playGame()">PLAY DEMO</button>
+  <div class="result" id="result"></div>
+ </div>
 </div>
-
-
-<!-- GAME MODAL -->
-
-<div
-  class="modal"
-  id="modal">
-
-  <div class="sheet">
-
-    <h2 id="gameName">
-      Game
-    </h2>
-
-    <p>
-      Fictional demo screen.
-      Uses virtual credits only.
-    </p>
-
-
-    <div class="opts">
-
-      <button data-amt="10">
-        ₹10
-      </button>
-
-      <button data-amt="50">
-        ₹50
-      </button>
-
-      <button data-amt="100">
-        ₹100
-      </button>
-
-    </div>
-
-
-    <button
-      class="gradbtn"
-      id="play"
-      style="width:100%">
-
-      PLAY DEMO ROUND
-
-    </button>
-
-
-    <button
-      class="close"
-      id="close">
-
-      Close
-
-    </button>
-
-  </div>
-
-</div>
-
-
-<div
-  class="toast"
-  id="toast">
-</div>
-
 
 <script>
-
-(function(){
-
-  const app =
-    document.getElementById("app");
-
-  const modal =
-    document.getElementById("modal");
-
-  const balance =
-    document.getElementById("balance");
-
-  const toast =
-    document.getElementById("toast");
-
-  const gameName =
-    document.getElementById("gameName");
-
-  const play =
-    document.getElementById("play");
-
-  const close =
-    document.getElementById("close");
-
-
-  let credits = 10000;
-
-  let amount = 0;
-
-
-  /* BALANCE */
-
-  function updateBalance(){
-
-    balance.textContent =
-      "₹" +
-      credits.toLocaleString("en-IN");
-
-  }
-
-
-  /* TOAST */
-
-  function notify(message){
-
-    toast.textContent =
-      message;
-
-    toast.style.display =
-      "block";
-
-    clearTimeout(
-      window.toastTimer
-    );
-
-    window.toastTimer =
-      setTimeout(
-        function(){
-
-          toast.style.display =
-            "none";
-
-        },
-        1700
-      );
-
-  }
-
-
-  /* CATEGORY */
-
-  app
-    .querySelectorAll(
-      ".tabs button"
-    )
-    .forEach(
-      function(button){
-
-        button.onclick =
-          function(){
-
-            app
-              .querySelectorAll(
-                ".tabs button"
-              )
-              .forEach(
-                function(item){
-
-                  item.classList
-                    .remove("active");
-
-                }
-              );
-
-            button.classList
-              .add("active");
-
-            notify(
-              button.textContent
-                .trim() +
-              " selected"
-            );
-
-          };
-
-      }
-    );
-
-
-  /* PROMOTION */
-
-  app
-    .querySelectorAll(
-      "[data-promo]"
-    )
-    .forEach(
-      function(button){
-
-        button.onclick =
-          function(){
-
-            notify(
-              "Promotions opened • Virtual rewards available"
-            );
-
-          };
-
-      }
-    );
-
-
-  /* GAME OPEN */
-
-  app
-    .querySelectorAll(
-      "[data-game]"
-    )
-    .forEach(
-      function(button){
-
-        button.onclick =
-          function(){
-
-            gameName.textContent =
-              button.dataset.game;
-
-            amount = 0;
-
-            document
-              .querySelectorAll(
-                "[data-amt]"
-              )
-              .forEach(
-                function(item){
-
-                  item.classList
-                    .remove("sel");
-
-                }
-              );
-
-            modal.style.display =
-              "flex";
-
-          };
-
-      }
-    );
-
-
-  /* AMOUNT */
-
-  document
-    .querySelectorAll(
-      "[data-amt]"
-    )
-    .forEach(
-      function(button){
-
-        button.onclick =
-          function(){
-
-            document
-              .querySelectorAll(
-                "[data-amt]"
-              )
-              .forEach(
-                function(item){
-
-                  item.classList
-                    .remove("sel");
-
-                }
-              );
-
-            button.classList
-              .add("sel");
-
-            amount =
-              Number(
-                button.dataset.amt
-              );
-
-          };
-
-      }
-    );
-
-
-  /* CLOSE */
-
-  close.onclick =
-    function(){
-
-      modal.style.display =
-        "none";
-
-    };
-
-
-  /* DEMO ROUND */
-
-  play.onclick =
-    function(){
-
-      if(!amount){
-
-        notify(
-          "Choose a demo amount"
-        );
-
-        return;
-
-      }
-
-
-      if(amount > credits){
-
-        notify(
-          "Not enough virtual credits"
-        );
-
-        return;
-
-      }
-
-
-      credits -= amount;
-
-
-      /*
-        Fictional local demo result.
-        No real money is involved.
-      */
-
-      if(
-        Math.random() > 0.56
-      ){
-
-        const win =
-          amount * 2;
-
-        credits += win;
-
-        notify(
-          "Demo WIN +₹" +
-          win
-        );
-
-      }else{
-
-        notify(
-          "Demo round complete • -₹" +
-          amount
-        );
-
-      }
-
-
-      updateBalance();
-
-      modal.style.display =
-        "none";
-
-    };
-
-
-  /* INITIAL */
-
-  updateBalance();
-
-})();
-
+const gameData={
+ popular:[
+  ['🚀','Aviator','Multiplier','red'],
+  ['☁️','Sky Aviator','Crash Demo','blue'],
+  ['🎡','Win Wheel','Spin Game','pink'],
+  ['🏏','Cricket Pro','Sports Demo','green'],
+  ['💎','Fortune Gems','Puzzle','purple'],
+  ['🌊','Power of Sea','Slots Demo','cyan'],
+  ['🪙','Lucky Coin','3D Game','gold'],
+  ['🎯','Target Rush','Arcade','blue'],
+  ['🔥','Fire Spin','Spin Game','red'],
+  ['👑','Royal Crown','Lucky Game','purple'],
+  ['⚡','Thunder','Arcade','cyan'],
+  ['🐉','Dragon Gold','Adventure','gold']
+ ],
+ lottery:[
+  ['🎟','Lucky 7','Lottery','purple'],
+  ['🔢','Number Pick','Numbers','blue'],
+  ['🎫','Mega Draw','Draw','pink'],
+  ['🏆','Daily Jackpot','Jackpot','gold'],
+  ['🎯','Lucky Number','Numbers','cyan'],
+  ['💰','Cash Pot','Prize Demo','green']
+ ],
+ mini:[
+  ['🧠','Memory Match','Puzzle','purple'],
+  ['🎯','Quick Target','Skill','blue'],
+  ['🧩','Block Puzzle','Puzzle','pink'],
+  ['🐦','Bird Jump','Arcade','cyan'],
+  ['🚗','Speed Drive','Racing','red'],
+  ['⚽','Goal Master','Sports','green'],
+  ['🏓','Ping Pong','Sports','blue'],
+  ['🎈','Balloon Pop','Arcade','pink'],
+  ['🪄','Magic Box','Lucky','purple']
+ ],
+ arcade:[
+  ['👾','Space Attack','Arcade','blue'],
+  ['🚀','Rocket Run','Arcade','cyan'],
+  ['🏎️','Turbo Race','Racing','red'],
+  ['🥊','Boxing Star','Fighting','pink'],
+  ['🛸','Galaxy War','Action','purple'],
+  ['🧟','Zombie Run','Adventure','green'],
+  ['⚔️','Blade Hero','Action','gold'],
+  ['🏹','Arrow King','Skill','blue'],
+  ['🧙','Magic Quest','Adventure','purple']
+ ]
+};
+
+let currentTab='popular';
+let selectedAmount=50;
+let balance=10000;
+
+function render(){
+ const box=document.getElementById('games');
+ box.innerHTML='';
+ gameData[currentTab].forEach((g,i)=>{
+  const el=document.createElement('div');
+  el.className='game';
+  el.onclick=()=>openGame(g[1]);
+  el.innerHTML=`
+   ${i<2?'<span class="badge">HOT</span>':''}
+   <div class="game-art" style="background:linear-gradient(135deg,${tone(g[3])},#10152f)">
+    <div class="game-icon">${g[0]}</div>
+   </div>
+   <div class="game-name">${g[1]}</div>
+   <div class="game-type">${g[2]}</div>`;
+  box.appendChild(el);
+ });
+}
+function tone(t){
+ return {
+  red:'#8d164e',blue:'#144d91',pink:'#8d165f',green:'#14654e',
+  purple:'#5b21a4',cyan:'#126a86',gold:'#805719'
+ }[t]||'#35205f';
+}
+function tab(btn,name){
+ document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');
+ currentTab=name;
+ document.getElementById('sectionTitle').textContent=
+  name==='popular'?'Popular Games':
+  name==='lottery'?'Lottery Games':
+  name==='mini'?'Mini Games':'Arcade Games';
+ render();
+}
+function openGame(name){
+ document.getElementById('modalTitle').textContent=name;
+ document.getElementById('result').textContent='';
+ document.getElementById('modal').classList.add('show');
+}
+function closeGame(){document.getElementById('modal').classList.remove('show')}
+function outside(e){if(e.target.id==='modal')closeGame()}
+function amount(n,b){
+ selectedAmount=n;
+ document.querySelectorAll('.amounts button').forEach(x=>x.classList.remove('selected'));
+ b.classList.add('selected');
+}
+function playGame(){
+ if(balance<selectedAmount){
+  document.getElementById('result').textContent='Not enough virtual credits';
+  return;
+ }
+ balance-=selectedAmount;
+ const win=Math.random()>.48;
+ let reward=0;
+ if(win){
+  const mult=[1.2,1.5,2,3,5][Math.floor(Math.random()*5)];
+  reward=Math.floor(selectedAmount*mult);
+  balance+=reward;
+  document.getElementById('result').textContent=
+   '✨ DEMO WIN +₹'+reward+' virtual credits';
+ }else{
+  document.getElementById('result').textContent=
+   'Try again — virtual credits used: ₹'+selectedAmount;
+ }
+ document.getElementById('balance').textContent=balance;
+ document.getElementById('orb').style.transform=
+  'scale(1.25) rotate('+Math.floor(Math.random()*360)+'deg)';
+}
+render();
 </script>
-
 </body>
 </html>
