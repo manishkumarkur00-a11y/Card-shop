@@ -2,353 +2,1788 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PlayWin — Demo</title>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>MANISH CLUB</title>
 
 <style>
-*{box-sizing:border-box}
+:root{
+  --bg:#171527;
+  --panel:#211b35;
+  --panel2:#2a2142;
+  --purple:#8255ff;
+  --blue:#5e9dff;
+  --pink:#ff6d9c;
+  --gold:#ffd64a;
+  --muted:#bcb5ca;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:#09090d;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
 body{
-  margin:0;background:#05070a;color:#fff;
-  font-family:Inter,Arial,sans-serif;
-}
-.app{
-  width:100%;max-width:480px;min-height:100vh;
-  margin:auto;background:#080b10;padding-bottom:80px;
-}
-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px;
-}
-.logo{font-size:23px;font-weight:900}
-.logo span{color:#32d477}
-.demo{
-  font-size:9px;color:#7fe7a9;
-  border:1px solid #245b3d;border-radius:20px;
-  padding:5px 8px;background:#0c1b13;
-}
-.icons{display:flex;gap:8px}
-.circle{
-  width:36px;height:36px;border-radius:50%;
-  background:#121720;border:1px solid #252c36;
-  display:grid;place-items:center;
+  min-height:100vh;
 }
 
-/* Hero */
-.hero{
-  margin:5px 14px 18px;padding:20px;
-  border-radius:20px;border:1px solid #24352b;
-  background:linear-gradient(135deg,#102018,#0d1218);
-}
-.hero small{
-  color:#72dda0;letter-spacing:1.5px;font-size:10px;
-}
-.hero h1{font-size:28px;margin:7px 0}
-.hero p{color:#929ba8;font-size:12px;margin:0}
-.hero button{
-  margin-top:15px;border:0;border-radius:10px;
-  padding:10px 17px;background:#32d477;
-  font-weight:800;
+button{
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
 }
 
-/* Balance demo */
+#app{
+  width:min(100%,520px);
+  margin:auto;
+  min-height:100vh;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      #5f45b555,
+      transparent 34%
+    ),
+    var(--bg);
+  overflow:hidden;
+  position:relative;
+  padding-bottom:82px;
+}
+
+/* ================= TOP BAR ================= */
+
+.topbar{
+  height:66px;
+  padding:8px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:
+    linear-gradient(
+      90deg,
+      #3036a5,
+      #542d91,
+      #7b3ca2
+    );
+
+  box-shadow:
+    0 4px 18px #0008,
+    inset 0 -1px #ffffff22;
+}
+
+.brand{
+  font-size:25px;
+  font-weight:1000;
+  letter-spacing:-1px;
+  text-shadow:0 3px 7px #000;
+}
+
+.brand em{
+  font-style:normal;
+  color:#ffd64a;
+}
+
 .balance{
-  margin:0 14px 18px;padding:15px;
-  background:#11161e;border:1px solid #252c36;
+  min-width:108px;
+  padding:9px 13px;
+  border-radius:24px;
+
+  background:#25205d;
+  border:1px solid #8c79ff;
+
+  color:#ffe34f;
+  font-weight:900;
+  text-align:center;
+
+  box-shadow:
+    inset 0 0 12px #0005,
+    0 2px 7px #0005;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  margin:10px;
+  min-height:175px;
+  padding:20px;
+
+  position:relative;
+  overflow:hidden;
+
+  border:1px solid #9c76ff;
+  border-radius:17px;
+
+  background:
+    radial-gradient(
+      circle at 84% 42%,
+      #ffdb6c77 0 5%,
+      transparent 6%
+    ),
+    radial-gradient(
+      circle at 78% 45%,
+      #ff70dd55 0 20%,
+      transparent 42%
+    ),
+    linear-gradient(
+      125deg,
+      #122b65,
+      #54209d 54%,
+      #1e357d
+    );
+
+  box-shadow:
+    0 8px 22px #0008,
+    inset 0 0 35px #fff1;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+
+  width:420px;
+  height:150px;
+
+  top:-60px;
+  right:-100px;
+
+  border:3px solid #ff7cff66;
+  border-radius:50%;
+
+  transform:rotate(-13deg);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+
+  right:-120px;
+  bottom:-160px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff4 0 2%,
+      transparent 3%
+    );
+
+  opacity:.5;
+}
+
+.hero small{
+  position:relative;
+  z-index:2;
+
+  color:#ffd06b;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.hero h1{
+  position:relative;
+  z-index:2;
+
+  font-size:31px;
+  margin:8px 0 4px;
+
+  text-shadow:
+    0 3px 5px #000,
+    0 0 15px #7d75ff;
+}
+
+.hero p{
+  position:relative;
+  z-index:2;
+
+  font-size:12px;
+  color:#e8def4;
+
+  max-width:245px;
+}
+
+.hero .art{
+  position:absolute;
+  right:12px;
+  bottom:14px;
+
+  font-size:62px;
+
+  filter:
+    drop-shadow(0 8px 8px #0008);
+
+  z-index:1;
+}
+
+.gradbtn{
+  position:relative;
+  z-index:3;
+
+  border:0;
+  border-radius:25px;
+
+  padding:11px 23px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff718c,
+      #9d5bff,
+      #55a7ff
+    );
+
+  font-weight:900;
+
+  box-shadow:
+    0 5px 12px #0005,
+    inset 0 1px #ffffff66;
+}
+
+/* ================= NOTICE ================= */
+
+.notice{
+  margin:0 10px 12px;
+  padding:10px 13px;
+
+  border:1px solid #514267;
+  border-radius:25px;
+
+  background:#29223b;
+
+  color:#ddd4e8;
+  font-size:11px;
+
+  box-shadow:
+    inset 0 0 12px #0003;
+}
+
+.notice button{
+  float:right;
+
+  border:0;
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a15be9,
+      #638fff
+    );
+
+  padding:5px 13px;
+  font-size:10px;
+}
+
+/* ================= CATEGORY TABS ================= */
+
+.tabs{
+  display:flex;
+  gap:10px;
+
+  overflow-x:auto;
+
+  padding:
+    0 10px
+    13px;
+}
+
+.tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.tabs button{
+  white-space:nowrap;
+
+  border:1px solid #7565a2;
+
+  background:#211b31;
+
+  border-radius:26px;
+
+  padding:11px 18px;
+
+  font-weight:900;
+
+  box-shadow:
+    inset 0 0 8px #0003;
+}
+
+.tabs button.active{
+  background:
+    linear-gradient(
+      90deg,
+      #ff7192,
+      #638fff
+    );
+
+  box-shadow:
+    0 4px 14px #775bff66,
+    inset 0 1px #fff5;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  margin:
+    0 10px
+    14px;
+
+  border:
+    1px solid #44365d;
+
   border-radius:16px;
-}
-.balance-top{
-  display:flex;justify-content:space-between;
-  color:#8993a2;font-size:11px;
-}
-.amount{font-size:24px;font-weight:800;margin-top:5px}
-.demoMoney{color:#75dfa2;font-size:10px}
 
-/* Tabs */
-.section{padding:0 14px}
-.title{
-  display:flex;justify-content:space-between;
-  align-items:center;margin:16px 0 10px;
-}
-.title h2{font-size:16px;margin:0}
-.title span{font-size:11px;color:#69d998}
+  background:#211a32;
 
-.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}
-.tab{
-  white-space:nowrap;padding:9px 13px;
-  background:#11161e;border:1px solid #252c36;
-  color:#9ba4b1;border-radius:10px;font-size:11px;
-}
-.tab.active{
-  background:#123521;color:#82e5ab;border-color:#276b45;
+  padding:10px;
+
+  box-shadow:
+    0 5px 15px #0005,
+    inset 0 0 20px #ffffff04;
 }
 
-/* Games */
+.titlebar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:10px 12px;
+  margin-bottom:10px;
+
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #3046a9,
+      #713ed0 55%,
+      transparent
+    );
+
+  font-size:18px;
+  font-weight:900;
+
+  box-shadow:
+    inset 0 1px #fff3;
+}
+
+/* ================= GAME GRID ================= */
+
 .games{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  display:grid;
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:9px;
 }
+
 .game{
-  background:#11161e;border:1px solid #252c36;
-  border-radius:16px;padding:14px;min-height:145px;
+  min-width:0;
 }
-.game.big{
-  grid-column:span 2;
-  display:flex;align-items:center;gap:14px;
-  min-height:115px;
-}
-.game-icon{
-  font-size:32px;margin-bottom:10px;
-}
-.big .game-icon{font-size:43px;margin:0}
-.game h3{font-size:14px;margin:0 0 4px}
-.game p{font-size:10px;color:#858f9e;margin:0}
-.tag{
-  display:inline-block;margin-top:9px;
-  padding:4px 7px;border-radius:20px;
-  background:#19231f;color:#72d99b;font-size:8px;
-}
-.play{
-  display:block;width:100%;margin-top:12px;
-  border:0;border-radius:9px;padding:8px;
-  background:#202732;color:white;font-size:10px;
-  font-weight:700;
-}
-.big .play{width:auto;padding:9px 14px}
 
-/* Activity */
-.activity{
-  background:#11161e;border:1px solid #252c36;
-  border-radius:16px;overflow:hidden;
+.thumb{
+  height:144px;
+
+  border-radius:13px;
+
+  border:1px solid #735c8e;
+
+  position:relative;
+  overflow:hidden;
+
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+
+  padding:10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #241f27,
+      #a50e42,
+      #df7920
+    );
+
+  box-shadow:
+    inset 0 0 20px #fff1,
+    0 3px 7px #0006;
 }
-.row{
-  display:flex;align-items:center;gap:10px;
-  padding:12px;border-bottom:1px solid #202630;
+
+.thumb:before{
+  content:"";
+
+  position:absolute;
+  width:170px;
+  height:170px;
+
+  top:-70px;
+  left:-40px;
+
+  border-radius:50%;
+
+  border:2px solid #fff2;
 }
-.row:last-child{border-bottom:0}
+
+.thumb:after{
+  content:"✦";
+
+  position:absolute;
+  right:8px;
+  top:5px;
+
+  color:#ffe991;
+  font-size:24px;
+
+  text-shadow:
+    0 0 10px #ffe76a;
+}
+
+.thumb .emoji{
+  position:absolute;
+
+  top:34px;
+
+  font-size:50px;
+
+  filter:
+    drop-shadow(0 6px 5px #0008);
+}
+
+.thumb strong{
+  position:relative;
+  z-index:1;
+
+  font-size:11px;
+
+  text-shadow:
+    0 3px 5px #000;
+}
+
+.g2{
+  background:
+    linear-gradient(
+      145deg,
+      #172b64,
+      #345cff,
+      #741bb2
+    );
+}
+
+.g3{
+  background:
+    linear-gradient(
+      145deg,
+      #a64a12,
+      #f0b22d,
+      #8b211c
+    );
+}
+
+.g4{
+  background:
+    linear-gradient(
+      145deg,
+      #65ae29,
+      #c7ef67,
+      #438e28
+    );
+}
+
+.g5{
+  background:
+    linear-gradient(
+      145deg,
+      #252525,
+      #75401f,
+      #d39c3b
+    );
+}
+
+.g6{
+  background:
+    linear-gradient(
+      145deg,
+      #034d63,
+      #13a4ad,
+      #163d78
+    );
+}
+
+.game button{
+  width:100%;
+
+  margin-top:5px;
+
+  padding:8px;
+
+  border:0;
+  border-radius:10px;
+
+  background:#32264a;
+
+  font-size:10px;
+  font-weight:900;
+
+  transition:.15s;
+}
+
+.game button:active{
+  transform:scale(.94);
+  background:#60438d;
+}
+
+/* ================= PROMOTION ================= */
+
+.promo{
+  display:flex;
+  gap:12px;
+  align-items:center;
+
+  padding:15px;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      115deg,
+      #54245f,
+      #28265d
+    );
+
+  border:1px solid #7359a7;
+
+  box-shadow:
+    inset 0 0 20px #fff2;
+}
+
+.promo .gift{
+  font-size:43px;
+
+  filter:
+    drop-shadow(
+      0 5px 6px #0008
+    );
+}
+
+.promo h3{
+  margin:
+    0 0 5px;
+}
+
+.promo p{
+  margin:0;
+
+  color:#c9bfd6;
+
+  font-size:10px;
+  line-height:1.4;
+}
+
+.promo button{
+  margin-top:8px;
+
+  border:0;
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a15be9,
+      #658fff
+    );
+
+  padding:7px 13px;
+
+  font-size:10px;
+  font-weight:900;
+}
+
+/* ================= LEADERBOARD ================= */
+
+.leader{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1.16fr 1fr;
+
+  align-items:end;
+
+  gap:5px;
+
+  padding:12px 7px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b65fc8,
+      #62a5e8
+    );
+
+  box-shadow:
+    inset 0 0 25px #fff2;
+}
+
+.rank{
+  background:
+    linear-gradient(
+      160deg,
+      #9149d4,
+      #5689f1
+    );
+
+  padding:
+    15px 4px
+    13px;
+
+  text-align:center;
+
+  border-radius:10px;
+
+  box-shadow:
+    0 5px 10px #0005,
+    inset 0 1px #fff4;
+}
+
+.rank.big{
+  padding:
+    29px 4px
+    13px;
+}
+
 .avatar{
-  width:32px;height:32px;border-radius:50%;
-  background:#1b242e;display:grid;place-items:center;
-}
-.row-text{flex:1;font-size:11px}
-.row-text span{display:block;color:#788392;font-size:9px;margin-top:3px}
-.status{font-size:9px;color:#72d99b}
+  width:45px;
+  height:45px;
 
-/* Bottom nav */
-nav{
-  position:fixed;bottom:0;left:50%;
+  margin:auto;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#eee;
+
+  font-size:24px;
+
+  border:2px solid #ffd64a;
+
+  box-shadow:
+    0 4px 8px #0005;
+}
+
+.rank b{
+  display:block;
+
+  font-size:10px;
+
+  margin-top:6px;
+}
+
+.rank span{
+  display:block;
+
+  font-size:10px;
+
+  color:#ffe65b;
+
+  margin-top:4px;
+}
+
+/* ================= WINNING FEED ================= */
+
+.feed{
+  display:flex;
+
+  gap:7px;
+
+  overflow-x:auto;
+}
+
+.feed::-webkit-scrollbar{
+  display:none;
+}
+
+.feedcard{
+  min-width:108px;
+
+  text-align:center;
+
+  padding:10px;
+
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #bb68c9,
+      #628af1
+    );
+
+  box-shadow:
+    inset 0 0 15px #fff2;
+}
+
+.feedcard b{
+  font-size:11px;
+}
+
+.balls{
+  font-size:23px;
+
+  margin:7px 0;
+}
+
+.feedcard button{
+  border:0;
+
+  border-radius:16px;
+
+  padding:6px 12px;
+
+  background:#29203c;
+
+  font-size:9px;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom{
+  position:fixed;
+
+  bottom:0;
+  left:50%;
+
   transform:translateX(-50%);
-  width:min(100%,480px);
-  height:68px;background:#0d1117;
-  border-top:1px solid #252c36;
-  display:flex;justify-content:space-around;
-  padding-top:8px;z-index:10;
-}
-.navitem{
-  color:#737d8b;text-align:center;
-  font-size:9px;min-width:55px;
-}
-.navitem b{display:block;font-size:19px;margin-bottom:3px}
-.navitem.active{color:#68dc98}
 
-/* Modal */
+  width:min(100%,520px);
+  height:76px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(5,1fr);
+
+  background:
+    linear-gradient(
+      90deg,
+      #526fe0,
+      #7037a7,
+      #526fe0
+    );
+
+  border-top:1px solid #9e8dff;
+
+  z-index:5;
+
+  box-shadow:
+    0 -5px 20px #0008,
+    inset 0 1px #fff3;
+}
+
+.bottom button{
+  border:0;
+  background:transparent;
+
+  font-size:10px;
+
+  color:#eee;
+
+  position:relative;
+}
+
+.bottom button b{
+  display:block;
+
+  font-size:22px;
+
+  margin-bottom:2px;
+}
+
+.bottom .on{
+  color:#ffe65b;
+}
+
+/* ================= MODAL ================= */
+
 .modal{
-  display:none;position:fixed;inset:0;
-  background:#000b;z-index:20;
-  align-items:flex-end;justify-content:center;
+  position:fixed;
+
+  inset:0;
+
+  background:#000b;
+
+  z-index:10;
+
+  display:none;
+
+  align-items:flex-end;
+  justify-content:center;
 }
+
 .sheet{
-  width:min(100%,480px);
-  background:#11161e;border:1px solid #29313c;
-  border-radius:22px 22px 0 0;padding:20px;
+  width:min(100%,520px);
+
+  background:#251c38;
+
+  border:
+    1px solid #7955aa;
+
+  border-radius:
+    22px 22px
+    0 0;
+
+  padding:20px;
+
+  box-shadow:
+    0 -8px 30px #000;
 }
-.sheet h2{margin:0 0 8px;font-size:19px}
-.sheet p{font-size:11px;color:#8e98a7}
-.close{
-  width:100%;padding:11px;border:0;
-  border-radius:10px;background:#252c36;color:white;
+
+.sheet h2{
+  margin:
+    0 0 5px;
+}
+
+.sheet p{
+  font-size:11px;
+  color:#cfc5da;
+}
+
+.opts{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:8px;
+
+  margin:15px 0;
+}
+
+.opts button{
+  padding:13px;
+
+  border-radius:11px;
+
+  border:
+    1px solid #67537e;
+
+  background:#34274b;
+}
+
+.opts button.sel{
+  outline:
+    2px solid #fff;
+
+  background:#61418d;
+}
+
+.sheet .close{
+  width:100%;
+
+  margin-top:10px;
+
+  padding:11px;
+
+  border:0;
+
+  border-radius:12px;
+
+  background:#4b3b5f;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+
+  z-index:20;
+
+  left:50%;
+  bottom:90px;
+
+  transform:
+    translateX(-50%);
+
+  display:none;
+
+  padding:
+    11px 15px;
+
+  border-radius:12px;
+
+  background:#fff;
+
+  color:#111;
+
+  font-size:11px;
+
+  font-weight:900;
+
+  white-space:nowrap;
+
+  box-shadow:
+    0 5px 20px #0008;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:380px){
+
+  .thumb{
+    height:125px;
+  }
+
+  .hero h1{
+    font-size:27px;
+  }
+
+  .hero .art{
+    font-size:52px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<div id="app">
 
-<header>
-  <div>
-    <div class="logo">Play<span>Win</span></div>
-    <div class="demo">DEMO MODE</div>
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+  <div class="brand">
+    MANISH<em>★</em>CLUB
   </div>
 
-  <div class="icons">
-    <div class="circle">🔔</div>
-    <div class="circle">👤</div>
+  <div
+    class="balance"
+    id="balance">
+    ₹10,000
   </div>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
-  <small>WELCOME BACK</small>
-  <h1>Game Lobby</h1>
-  <p>Explore games and play with demo credits.</p>
-  <button onclick="openModal('Featured Game')">Explore Games</button>
+
+  <small>
+    LUCKY REWARD
+  </small>
+
+  <h1>
+    GRAND GAME ZONE
+  </h1>
+
+  <p>
+    Premium 3D gaming experience
+    with virtual demo credits.
+  </p>
+
+  <button
+    class="gradbtn"
+    data-promo>
+    Highest Reward
+  </button>
+
+  <div class="art">
+    🎁🎡
+  </div>
+
 </section>
 
-<section class="balance">
-  <div class="balance-top">
-    <span>Demo Balance</span>
-    <span class="demoMoney">VIRTUAL CREDITS</span>
-  </div>
-  <div class="amount">25,000</div>
-</section>
+
+<!-- NOTICE -->
+
+<div class="notice">
+
+  🔔 Welcome reward • Daily bonus • Special events
+
+  <button data-promo>
+    Detail
+  </button>
+
+</div>
+
+
+<!-- CATEGORY -->
+
+<nav class="tabs">
+
+  <button
+    class="active"
+    data-tab="popular">
+    🔥 Popular
+  </button>
+
+  <button
+    data-tab="lottery">
+    🎱 Lottery
+  </button>
+
+  <button
+    data-tab="mini">
+    🚀 Mini games
+  </button>
+
+</nav>
+
+
+<!-- GAMES -->
 
 <section class="section">
 
-  <div class="title">
-    <h2>Games</h2>
-    <span>View all</span>
+  <div class="titlebar">
+
+    <span>
+      Popular
+    </span>
+
+    <span>
+      ALL ›
+    </span>
+
   </div>
 
-  <div class="tabs">
-    <div class="tab active">All Games</div>
-    <div class="tab">Popular</div>
-    <div class="tab">Arcade</div>
-    <div class="tab">Cards</div>
-  </div>
 
   <div class="games">
 
-    <div class="game big">
-      <div class="game-icon">🎯</div>
-      <div style="flex:1">
-        <h3>Lucky Spin</h3>
-        <p>Fast arcade demo game</p>
-        <span class="tag">LIVE DEMO</span>
-        <button class="play"
-          onclick="openModal('Lucky Spin')">PLAY DEMO</button>
+
+    <article class="game">
+
+      <div class="thumb">
+
+        <span class="emoji">
+          ✈️
+        </span>
+
+        <strong>
+          AVIATOR
+        </strong>
+
       </div>
-    </div>
 
-    <div class="game">
-      <div class="game-icon">🎰</div>
-      <h3>Win Go</h3>
-      <p>Number prediction demo</p>
-      <span class="tag">POPULAR</span>
-      <button class="play"
-        onclick="openModal('Win Go')">OPEN</button>
-    </div>
+      <button
+        data-game="Aviator">
+        PLAY NOW
+      </button>
 
-    <div class="game">
-      <div class="game-icon">🃏</div>
-      <h3>Card Zone</h3>
-      <p>Casual card game</p>
-      <span class="tag">NEW</span>
-      <button class="play"
-        onclick="openModal('Card Zone')">OPEN</button>
-    </div>
+    </article>
 
-    <div class="game">
-      <div class="game-icon">🏎️</div>
-      <h3>Moto Race</h3>
-      <p>Speed racing demo</p>
-      <span class="tag">ARCADE</span>
-      <button class="play"
-        onclick="openModal('Moto Race')">OPEN</button>
-    </div>
 
-    <div class="game">
-      <div class="game-icon">🎲</div>
-      <h3>Dice Arena</h3>
-      <p>Casual dice demo</p>
-      <span class="tag">FUN</span>
-      <button class="play"
-        onclick="openModal('Dice Arena')">OPEN</button>
-    </div>
+    <article class="game">
+
+      <div class="thumb g2">
+
+        <span class="emoji">
+          🚀
+        </span>
+
+        <strong>
+          SKY AVIATOR
+        </strong>
+
+      </div>
+
+      <button
+        data-game="Sky Aviator">
+        PLAY NOW
+      </button>
+
+    </article>
+
+
+    <article class="game">
+
+      <div class="thumb g3">
+
+        <span class="emoji">
+          🎡
+        </span>
+
+        <strong>
+          WIN WHEEL
+        </strong>
+
+      </div>
+
+      <button
+        data-game="Win Wheel">
+        PLAY NOW
+      </button>
+
+    </article>
+
+
+    <article class="game">
+
+      <div class="thumb g4">
+
+        <span class="emoji">
+          🏏
+        </span>
+
+        <strong>
+          CRICKET
+        </strong>
+
+      </div>
+
+      <button
+        data-game="Cricket">
+        PLAY NOW
+      </button>
+
+    </article>
+
+
+    <article class="game">
+
+      <div class="thumb g5">
+
+        <span class="emoji">
+          💎
+        </span>
+
+        <strong>
+          FORTUNE GEMS
+        </strong>
+
+      </div>
+
+      <button
+        data-game="Fortune Gems">
+        PLAY NOW
+      </button>
+
+    </article>
+
+
+    <article class="game">
+
+      <div class="thumb g6">
+
+        <span class="emoji">
+          🐙
+        </span>
+
+        <strong>
+          POWER OF SEA
+        </strong>
+
+      </div>
+
+      <button
+        data-game="Power of Sea">
+        PLAY NOW
+      </button>
+
+    </article>
+
 
   </div>
 
-  <div class="title">
-    <h2>Recent Activity</h2>
-    <span>History</span>
-  </div>
+</section>
 
-  <div class="activity">
 
-    <div class="row">
-      <div class="avatar">🎯</div>
-      <div class="row-text">
-        Lucky Spin
-        <span>Demo round completed</span>
-      </div>
-      <div class="status">+120</div>
+<!-- PROMOTION -->
+
+<section class="section">
+
+  <div class="promo">
+
+    <div class="gift">
+      🎁
     </div>
 
-    <div class="row">
-      <div class="avatar">🏎️</div>
-      <div class="row-text">
-        Moto Race
-        <span>Demo race completed</span>
-      </div>
-      <div class="status">+80</div>
-    </div>
+    <div style="flex:1">
 
-    <div class="row">
-      <div class="avatar">🃏</div>
-      <div class="row-text">
-        Card Zone
-        <span>Demo session</span>
-      </div>
-      <div class="status">+60</div>
+      <h3>
+        Today's Promotions
+      </h3>
+
+      <p>
+        Demo rewards, lucky streaks
+        and special virtual events.
+      </p>
+
+      <button data-promo>
+        VIEW ALL PROMOTIONS
+      </button>
+
     </div>
 
   </div>
 
 </section>
-</div>
 
-<nav>
-  <div class="navitem active">
-    <b>⌂</b>Home
+
+<!-- LEADERBOARD -->
+
+<section class="section">
+
+  <div class="titlebar">
+
+    <span>
+      Today's earnings chart
+    </span>
+
   </div>
-  <div class="navitem">
-    <b>🎮</b>Games
+
+
+  <div class="leader">
+
+
+    <div class="rank">
+
+      <div class="avatar">
+        👩
+      </div>
+
+      <b>
+        Mem***WX4
+      </b>
+
+      <span>
+        ₹60,259,774
+      </span>
+
+    </div>
+
+
+    <div class="rank big">
+
+      <div class="avatar">
+        👩
+      </div>
+
+      <b>
+        Mem***UEN
+      </b>
+
+      <span>
+        ₹141,478,460
+      </span>
+
+    </div>
+
+
+    <div class="rank">
+
+      <div class="avatar">
+        👨
+      </div>
+
+      <b>
+        Mem***0EO
+      </b>
+
+      <span>
+        ₹21,636,400
+      </span>
+
+    </div>
+
+
   </div>
-  <div class="navitem">
-    <b>◷</b>History
+
+</section>
+
+
+<!-- WINNING -->
+
+<section class="section">
+
+  <div class="titlebar">
+
+    <span>
+      Winning information
+    </span>
+
   </div>
-  <div class="navitem">
-    <b>🎁</b>Bonus
+
+
+  <div class="feed">
+
+
+    <div class="feedcard">
+
+      🎱
+
+      <br>
+
+      <b>
+        Win Go
+      </b>
+
+      <div class="balls">
+        ⑤⑧④
+      </div>
+
+      <button
+        data-game="Win Go">
+        Demo
+      </button>
+
+    </div>
+
+
+    <div class="feedcard">
+
+      🎱
+
+      <br>
+
+      <b>
+        Win Go
+      </b>
+
+      <div class="balls">
+        ⑤③⑧
+      </div>
+
+      <button
+        data-game="Win Go">
+        Demo
+      </button>
+
+    </div>
+
+
+    <div class="feedcard">
+
+      🎱
+
+      <br>
+
+      <b>
+        Win Go
+      </b>
+
+      <div class="balls">
+        ⑦⑧①
+      </div>
+
+      <button
+        data-game="Win Go">
+        Demo
+      </button>
+
+    </div>
+
+
   </div>
-  <div class="navitem">
-    <b>●</b>Profile
-  </div>
+
+</section>
+
+
+<!-- BOTTOM -->
+
+<nav class="bottom">
+
+  <button class="on">
+    <b>🎮</b>
+    Home
+  </button>
+
+  <button>
+    <b>🎁</b>
+    Activity
+  </button>
+
+  <button data-promo>
+    <b>💎</b>
+    Promotion
+  </button>
+
+  <button>
+    <b>💼</b>
+    Wallet
+  </button>
+
+  <button>
+    <b>👤</b>
+    Account
+  </button>
+
 </nav>
 
-<div class="modal" id="modal">
-  <div class="sheet">
-    <h2 id="modalTitle">Game</h2>
-    <p>
-      This is a fictional demo screen. No real-money
-      betting, deposits or withdrawals are available.
-    </p>
-    <button class="close" onclick="closeModal()">Close</button>
-  </div>
 </div>
 
-<script>
-function openModal(name){
-  document.getElementById("modalTitle").textContent=name;
-  document.getElementById("modal").style.display="flex";
-}
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
 
-document.querySelectorAll(".tab").forEach(tab=>{
-  tab.onclick=()=>{
-    document.querySelectorAll(".tab")
-      .forEach(x=>x.classList.remove("active"));
-    tab.classList.add("active");
-  };
-});
+<!-- GAME MODAL -->
+
+<div
+  class="modal"
+  id="modal">
+
+  <div class="sheet">
+
+    <h2 id="gameName">
+      Game
+    </h2>
+
+    <p>
+      Fictional demo screen.
+      Uses virtual credits only.
+    </p>
+
+
+    <div class="opts">
+
+      <button data-amt="10">
+        ₹10
+      </button>
+
+      <button data-amt="50">
+        ₹50
+      </button>
+
+      <button data-amt="100">
+        ₹100
+      </button>
+
+    </div>
+
+
+    <button
+      class="gradbtn"
+      id="play"
+      style="width:100%">
+
+      PLAY DEMO ROUND
+
+    </button>
+
+
+    <button
+      class="close"
+      id="close">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
+  class="toast"
+  id="toast">
+</div>
+
+
+<script>
+
+(function(){
+
+  const app =
+    document.getElementById("app");
+
+  const modal =
+    document.getElementById("modal");
+
+  const balance =
+    document.getElementById("balance");
+
+  const toast =
+    document.getElementById("toast");
+
+  const gameName =
+    document.getElementById("gameName");
+
+  const play =
+    document.getElementById("play");
+
+  const close =
+    document.getElementById("close");
+
+
+  let credits = 10000;
+
+  let amount = 0;
+
+
+  /* BALANCE */
+
+  function updateBalance(){
+
+    balance.textContent =
+      "₹" +
+      credits.toLocaleString("en-IN");
+
+  }
+
+
+  /* TOAST */
+
+  function notify(message){
+
+    toast.textContent =
+      message;
+
+    toast.style.display =
+      "block";
+
+    clearTimeout(
+      window.toastTimer
+    );
+
+    window.toastTimer =
+      setTimeout(
+        function(){
+
+          toast.style.display =
+            "none";
+
+        },
+        1700
+      );
+
+  }
+
+
+  /* CATEGORY */
+
+  app
+    .querySelectorAll(
+      ".tabs button"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            app
+              .querySelectorAll(
+                ".tabs button"
+              )
+              .forEach(
+                function(item){
+
+                  item.classList
+                    .remove("active");
+
+                }
+              );
+
+            button.classList
+              .add("active");
+
+            notify(
+              button.textContent
+                .trim() +
+              " selected"
+            );
+
+          };
+
+      }
+    );
+
+
+  /* PROMOTION */
+
+  app
+    .querySelectorAll(
+      "[data-promo]"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            notify(
+              "Promotions opened • Virtual rewards available"
+            );
+
+          };
+
+      }
+    );
+
+
+  /* GAME OPEN */
+
+  app
+    .querySelectorAll(
+      "[data-game]"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            gameName.textContent =
+              button.dataset.game;
+
+            amount = 0;
+
+            document
+              .querySelectorAll(
+                "[data-amt]"
+              )
+              .forEach(
+                function(item){
+
+                  item.classList
+                    .remove("sel");
+
+                }
+              );
+
+            modal.style.display =
+              "flex";
+
+          };
+
+      }
+    );
+
+
+  /* AMOUNT */
+
+  document
+    .querySelectorAll(
+      "[data-amt]"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            document
+              .querySelectorAll(
+                "[data-amt]"
+              )
+              .forEach(
+                function(item){
+
+                  item.classList
+                    .remove("sel");
+
+                }
+              );
+
+            button.classList
+              .add("sel");
+
+            amount =
+              Number(
+                button.dataset.amt
+              );
+
+          };
+
+      }
+    );
+
+
+  /* CLOSE */
+
+  close.onclick =
+    function(){
+
+      modal.style.display =
+        "none";
+
+    };
+
+
+  /* DEMO ROUND */
+
+  play.onclick =
+    function(){
+
+      if(!amount){
+
+        notify(
+          "Choose a demo amount"
+        );
+
+        return;
+
+      }
+
+
+      if(amount > credits){
+
+        notify(
+          "Not enough virtual credits"
+        );
+
+        return;
+
+      }
+
+
+      credits -= amount;
+
+
+      /*
+        Fictional local demo result.
+        No real money is involved.
+      */
+
+      if(
+        Math.random() > 0.56
+      ){
+
+        const win =
+          amount * 2;
+
+        credits += win;
+
+        notify(
+          "Demo WIN +₹" +
+          win
+        );
+
+      }else{
+
+        notify(
+          "Demo round complete • -₹" +
+          amount
+        );
+
+      }
+
+
+      updateBalance();
+
+      modal.style.display =
+        "none";
+
+    };
+
+
+  /* INITIAL */
+
+  updateBalance();
+
+})();
+
 </script>
 
 </body>
